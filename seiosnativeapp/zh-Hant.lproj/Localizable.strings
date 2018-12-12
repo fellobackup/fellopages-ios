@@ -1,0 +1,788 @@
+/* 
+  Localizable.strings
+  seiosnativeapp
+
+  Created by bigstep on 09/02/15.
+  Copyright (c) 2015 bigstep. All rights reserved.
+*/
+
+
+/* ~~~~~~~~~~~~~~~~~LoginViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "No Internet Connection";
+
+/* No comment provided by engineer. */
+"Sign In" = "Sign In";
+
+/* No comment provided by engineer. */
+"Sign Up" = "Sign Up";
+
+/* No comment provided by engineer. */
+"Email Address" = "Email Address";
+
+/* No comment provided by engineer. */
+"Password" = "Password";
+
+/* No comment provided by engineer. */
+"Please enter the Email Address and Password." = "Please enter the Email Address and Password.";
+
+/* No comment provided by engineer. */
+"Please enter the Email Address." = "Please enter the Email Address.";
+
+/* No comment provided by engineer. */
+"Please enter the valid Email Address." = "Please enter the valid Email Address.";
+
+/* No comment provided by engineer. */
+"Please enter the Password." = "Please enter the Password.";
+
+
+
+/* ~~~~~~~~~~~~~~~~~Common~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Search" = "Search";
+
+/* No comment provided by engineer. */
+"Delete Entry" = "Delete Entry";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this blog entry?" = "Are you sure you want to delete this blog entry?";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+" views" = " views";
+
+/* No comment provided by engineer. */
+" view" = " view";
+
+/* No comment provided by engineer. */
+" members" = " members";
+
+/* No comment provided by engineer. */
+" member" = " member";
+
+/* No comment provided by engineer. */
+"led by %@" = "led by %@";
+
+/* No comment provided by engineer. */
+"Pull to Refresh" = "Pull to Refresh";
+
+/* No comment provided by engineer. Currently used in Blog & Group */
+"You do not have permission to view this private page." = "You do not have permission to view this private page.";
+
+
+
+/* ~~~~~~~~~~~~~~~~~MemberHomePageViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Member Home Page" = "Member Home Page";
+
+
+/* ~~~~~~~~~~~~~~~~BlogViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Blog" = "Blog";
+
+/* No comment provided by engineer. */
+"Browse Entries" = "Browse Entries";
+
+/* No comment provided by engineer. */
+"My Entries" = "My Entries";
+
+
+/* No comment provided by engineer. */
+"You do not have any blog entries. Get started by writing a new entry." = "You do not have any blog entries. Get started by writing a new entry.";
+
+/* No comment provided by engineer. */
+"By %@ on %@" = "By %@ on %@";
+
+
+/* ~~~~~~~~~~~~~~~~~~CreateNewBlog~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Write New Entry" = "Write New Entry";
+
+/* No comment provided by engineer. */
+"Edit Entry" = "Edit Entry";
+
+/* No comment provided by engineer. */
+"Please Enter an Title." = "Please Enter an Title.";
+
+/* No comment provided by engineer. */
+"Please Enter body." = "Please Enter body.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~BlogDetailViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Would you like to %@ to this member's blog?" = "Would you like to %@ to this member's blog?";
+
+/* No comment provided by engineer. */
+"Would you like to %@ from this member's blog?" = "Would you like to %@ from this member's blog?";
+
+
+
+/* ============================================== */
+
+/* ~~~~~~~~~~~~~~~~~~GroupViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Browse Group" = "Browse Group";
+
+/* No comment provided by engineer. */
+"My Group" = "My Group";
+
+/* No comment provided by engineer. */
+"Delete Group" = "Delete Group";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this group?" = "Are you sure you want to delete this group?";
+
+/* No comment provided by engineer. */
+"Leave Group" = "Leave Group";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this group?" = "Are you sure you want to leave this group?";
+
+/* No comment provided by engineer. */
+"You do not have any group entries. Get started by writing a new entry." = "You do not have any group entries. Get started by writing a new entry.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~CreateNewGroup~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Please Enter Group Name." = "Please Enter Group Name.";
+
+/* No comment provided by engineer. */
+"Please Enter Group Description." = "Please Enter Group Description.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~GroupDetailViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+" Title" = " Title";
+
+/* No comment provided by engineer. */
+" Category" = " Category";
+
+/* No comment provided by engineer. */
+" Description" = " Description";
+
+/* No comment provided by engineer. */
+" Staff" = " Staff";
+
+/* No comment provided by engineer. */
+" View Counts" = " View Counts";
+
+/* No comment provided by engineer. */
+" Members Count" = " Members Count";
+
+/* No comment provided by engineer. */
+" Creation Date" = " Creation Date";
+
+/* No comment provided by engineer. */
+" Last Updated" = " Last Updated";
+
+/* No comment provided by engineer. */
+"Join Group" = "Join Group";
+
+/* No comment provided by engineer. */
+"Would you like to join this group?" = "Would you like to join this group?";
+
+/* No comment provided by engineer. */
+"Request Group Membership" = "Request Group Membership";
+
+/* No comment provided by engineer. */
+"Would you like to request membership in this group?" = "Would you like to request membership in this group?";
+
+/* No comment provided by engineer. */
+"Send Request" = "Send Request";
+
+/* No comment provided by engineer. */
+"Cancel Group Membership Request" = "Cancel Group Membership Request";
+
+/* No comment provided by engineer. */
+"Would you like to cancel your request for membership in this group?" = "Would you like to cancel your request for membership in this group?";
+
+/* No comment provided by engineer. */
+"Cancel Request" = "Cancel Request";
+
+/* No comment provided by engineer. */
+"Accept Group Invitation" = "Accept Group Invitation";
+
+/* No comment provided by engineer. */
+"Would you like to join this group?" = "Would you like to join this group?";
+
+/* No comment provided by engineer. */
+"Reject Group Invitation" = "Reject Group Invitation";
+
+/* No comment provided by engineer. */
+"Would you like to reject the invitation to this group?" = "Would you like to reject the invitation to this group?";
+
+/* No comment provided by engineer. */
+"Reject Invitation" = "Reject Invitation";
+
+
+/* ~~~~~~~~~~~~~~~~~~~InviteMemberViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Invite Members" = "Invite Members";
+
+/* No comment provided by engineer. */
+"Choose the people you want to invite to this group." = "Choose the people you want to invite to this group.";
+
+/* No comment provided by engineer. */
+"You did not select any Friend." = "You did not select any Friend.";
+
+
+/* ~~~~~~~~~~~~~~~~~ShowGroupMemberViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Members" = "Members";
+
+/* No comment provided by engineer. */
+"Search Members" = "Search Members";
+
+/* No comment provided by engineer. */
+"This group has %d member waiting for approval or waiting for an invite response." = "This group has %d member waiting for approval or waiting for an invite response.";
+
+/* No comment provided by engineer. */
+"This group has  member." = "This group has  member.";
+
+/* No comment provided by engineer. */
+"This group has  members." = "This group has  members.";
+
+/* No comment provided by engineer. */
+"See Waiting" = "See Waiting";
+
+/* No comment provided by engineer. */
+"View all approved members" = "View all approved members";
+
+/* No comment provided by engineer. */
+"Remove Member" = "Remove Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to remove this member from the group?" = "Are you sure you want to remove this member from the group?";
+
+/* No comment provided by engineer. */
+"Promote Member" = "Promote Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to promote this member to officer?" = "Are you sure you want to promote this member to officer?";
+
+/* No comment provided by engineer. */
+"Demote Member" = "Demote Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to demote this member from officer?" = "Are you sure you want to demote this member from officer?";
+
+/* No comment provided by engineer. */
+"Remove Member" = "Remove Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to remove this member from the group?" = "Are you sure you want to remove this member from the group?";
+
+/* No comment provided by engineer. */
+"Approve Group Membership Request" = "Approve Group Membership Request";
+
+/* No comment provided by engineer. */
+"Would you like to approve the request for membership in this group?" = "Would you like to approve the request for membership in this group?";
+
+/* No comment provided by engineer. */
+"Approve Request" = "Approve Request";
+
+/* No comment provided by engineer. */
+"Reject Group Invitation" = "Reject Group Invitation";
+
+/* No comment provided by engineer. */
+"Would you like to reject the invitation to this group?" = "Would you like to reject the invitation to this group?";
+
+/* No comment provided by engineer. */
+"Reject Invitation" = "Reject Invitation";
+
+/* No comment provided by engineer. */
+"Edit Staff" = "Edit Staff";
+
+/* No comment provided by engineer. */
+"Update Staff" = "Update Staff";
+
+/* No comment provided by engineer. */
+"Submit" = "Submit";
+
+/* No comment provided by engineer. */
+"Please Update Staff" = "Please Update Staff";
+
+
+/* ~~~~~~~~~~~~~~~~PhotoListViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Upload Images" = "Upload Images";
+
+
+/* ~~~~~~~~~~~~~~~~~~~FilterSearch~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Filter Search" = "Filter Search";
+
+
+/* ~~~~~~~~~~~~~~~~~~~~PhotoViewController~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Photo  of " = "Photo  of ";
+
+/* No comment provided by engineer. */
+"No more Photos, Slide Left!" = "No more Photos, Slide Left!";
+
+/* No comment provided by engineer. */
+"No more Photos, Slide Right!" = "No more Photos, Slide Right!";
+
+/* No comment provided by engineer. */
+"Delete Group Photo" = "Delete Group Photo";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this photo?" = "Are you sure you want to delete this photo?";
+
+/* No comment provided by engineer. */
+"Delete Photo" = "Delete Photo";
+
+/* No comment provided by engineer. */
+"Make Profile Photo" = "Make Profile Photo";
+
+/* No comment provided by engineer. */
+"Do you want to make this photo your profile photo?" = "Do you want to make this photo your profile photo?";
+
+/* No comment provided by engineer. */
+"Save" = "Save";
+
+
+/* ~~~~~~~~~~~~~~~~~~~UploadPhotoViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Upload" = "Upload";
+
+
+/* ~~~~~~~~~~~~~~~~~~~~EditPhotoViewController~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Edit Photo" = "Edit Photo";
+
+/* No comment provided by engineer. */
+"Please Enter Title." = "Please Enter Title.";
+
+/* No comment provided by engineer. */
+"Please Enter Description." = "Please Enter Description.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Report~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Report" = "Report";
+
+/* No comment provided by engineer. */
+"Do you want to Report this?" = "Do you want to Report this?";
+
+/* No comment provided by engineer. */
+"Please Enter Your Message." = "Please Enter Your Message.";
+
+/* No comment provided by engineer. */
+"Please Select Report Type." = "Please Select Report Type.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Share~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Share" = "Share";
+
+/* No comment provided by engineer. */
+"Share this by re-posting it with your own message." = "Share this by re-posting it with your own message.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Like_CommentViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+//
+///* No comment provided by engineer. */
+//" Like" = " Like";
+//
+//
+///* No comment provided by engineer. */
+//" Unlike" = " Unlike";
+//
+///* No comment provided by engineer. */
+//" Comment" = " Comment";
+//
+///* No comment provided by engineer. */
+//"%d Comments" = "%d Comments";
+//
+///* No comment provided by engineer. */
+//"%d Likes" = "%d Likes";
+//
+///* No comment provided by engineer. */
+//"%d Likes " = "%d Likes ";
+//
+///* No comment provided by engineer. */
+//"%d Like " = "%d Like ";
+//
+///* No comment provided by engineer. */
+//"%d Like" = "%d Like";
+//
+///* No comment provided by engineer. */
+//"\n %d Comments" = "\n %d Comments";
+//
+///* No comment provided by engineer. */
+//"\n %d Comment" = "\n %d Comment";
+
+
+/* ~~~~~~~~~~~~~~~~~~~CommentsViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Write a Comment..." = "Write a Comment...";
+
+/* No comment provided by engineer. */
+"  People like this" = "  People like this";
+
+/* No comment provided by engineer. */
+"Please Enter Comment." = "Please Enter Comment.";
+
+/* No comment provided by engineer. */
+"Post Comment" = "Post Comment";
+
+/* No comment provided by engineer. */
+"View All" = "View All";
+
+/* ~~~~~~~~~~~~~~~~~~~MembersViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"People who like this" = "People who like this";
+
+/* ~~~~~~~~~~~~~~~~~~~FXForm~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Photo Library" = "Photo Library";
+
+/* No comment provided by engineer. */
+"Take Photo" = "Take Photo";
+
+/* No comment provided by engineer. */
+"Add Item" = "Add Item";
+
+
+/* ~~~~~~~~~~~~~~~~~~~ELCImagePicker~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Loading..." = "Loading...";
+
+/* No comment provided by engineer. */
+"This app does not have access to your photos or videos. You can enable access in Privacy Settings." = "This app does not have access to your photos or videos. You can enable access in Privacy Settings.";
+
+/* No comment provided by engineer. */
+"Access Denied" = "Access Denied";
+
+/* No comment provided by engineer. */
+"Ok" = "Ok";
+
+/* No comment provided by engineer. */
+"Error" = "Error";
+
+/* No comment provided by engineer. */
+"Select an Album" = "Select an Album";
+
+/* No comment provided by engineer. */
+"Pick Photo" = "Pick Photo";
+
+/* No comment provided by engineer. */
+"Pick Photos" = "Pick Photos";
+
+/* No comment provided by engineer. */
+"Only  photos please!" = "Only  photos please!";
+
+/* No comment provided by engineer. */
+"You can only send  photos at a time." = "You can only send  photos at a time.";
+
+
+
+ ~~~~~~~~~~~~~~~~~~~AdvanceActivityFeedViewController/ AdvanceActivityFeedViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+/* No comment provided by engineer. */
+" Status" = " Status";
+
+/* No comment provided by engineer. */
+" Photo" = " Photo";
+
+/* No comment provided by engineer. */
+" Check In" = " Check In";
+
+/* No comment provided by engineer. */
+"All Updates" = "All Updates";
+
+/* No comment provided by engineer. */
+"Delete Activity Item?" = "Delete Activity Item?";
+
+/* No comment provided by engineer. */
+"Are you sure that you want to delete this activity item? This action cannot be undone." = "Are you sure that you want to delete this activity item? This action cannot be undone.";
+
+/* No comment provided by engineer. */
+"There are no more posts to show." = "There are no more posts to show.";
+
+/* No comment provided by engineer. */
+"Loading..." = "Loading...";
+
+/* No comment provided by engineer. */
+" new stories" = " new stories";
+
+/* No comment provided by engineer. */
+"... more" = "... more";
+
+/* No comment provided by engineer. */
+" less" = " less";
+
+/* No comment provided by engineer. */
+"more" = "more";
+
+/* No comment provided by engineer. */
+"less" = "less";
+
+/* No comment provided by engineer. */
+" — with" = " — with";
+
+/* No comment provided by engineer. */
+" — in" = " — in";
+
+/* No comment provided by engineer. */
+" and" = " and";
+
+/* No comment provided by engineer. */
+"There are no more posts to show." = "There are no more posts to show.";
+
+
+ ~~~~~~~~~~~~~~~~~~~PostFeedViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+/* No comment provided by engineer. */
+"Update Status" = "Update Status";
+
+/* No comment provided by engineer. */
+"Post Something..."= "Post Something...";
+
+/* No comment provided by engineer. */
+"Post" = "Post";
+
+/* No comment provided by engineer. */
+"Please Enter Status." = "Please Enter Status.";
+
+/* No comment provided by engineer. */
+"Add Photo" = "Add Photo";
+
+/* No comment provided by engineer. */
+"(Cancel)" = "(Cancel)";
+
+/* No comment provided by engineer. */
+"Choose Photo" = "Choose Photo";
+
+/* No comment provided by engineer. */
+"Capture" = "Capture";
+
+/* No comment provided by engineer. */
+"Choose From Gallery" = "Choose From Gallery";
+
+/* No comment provided by engineer. */
+"Music" = "Music";
+
+/* No comment provided by engineer. */
+"Photo" = "Photo";
+
+/* No comment provided by engineer. */
+"Video" = "Video";
+
+/* No comment provided by engineer. */
+"Link" = "Link";
+
+/* No comment provided by engineer. */
+"no file Selected" = "no file Selected";
+
+/* No comment provided by engineer. */
+"Choose File" = "Choose File";
+
+/* No comment provided by engineer. */
+"Choose Source" = "Choose Source";
+
+/* No comment provided by engineer. */
+"Attach" = "Attach";
+
+/* No comment provided by engineer. */
+"Post" = "Post";
+
+/* No comment provided by engineer. */
+"Where are you?" = "Where are you?";
+
+/* No comment provided by engineer. */
+"Search..." = "Search...";
+
+/* No comment provided by engineer. */
+"Link" = "Link";
+
+/* No comment provided by engineer. */
+"Who're you with?" = "Who're you with?";
+
+/* No comment provided by engineer. */
+"Start typing a name..." = "Start typing a name...";
+
+/* No comment provided by engineer. */
+"Add" = "Add";
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~EventViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Events Home" = "Events Home";
+
+/* No comment provided by engineer. */
+"My Events" = "My Events";
+
+/* No comment provided by engineer. */
+"Upcoming" = "Upcoming";
+
+/* No comment provided by engineer. */
+"Past" = "Past";
+
+/* No comment provided by engineer. */
+" [Map]" = " [Map]";
+
+/* No comment provided by engineer. */
+"Attending" = "Attending";
+
+/* No comment provided by engineer. */
+"Maybe Attending" = "Maybe Attending";
+
+/* No comment provided by engineer. */
+"Not Attending" = "Not Attending";
+
+"Edit My photo" = "Edit My photo Srijan";
+
+
+/* ~~~~~~~~~~~~~~~~~~~ClassifiedViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Classified Listing" = "Classified Listing";
+
+/* No comment provided by engineer. */
+"Browse Listings" = "Browse Listings";
+
+/* No comment provided by engineer. */
+"My Listings" = "My Listings";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Album Profile Page~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Delete Album" = "Delete Album";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this album?" = "Are you sure you want to delete this album?";
+
+
+/* ~~~~~~~~~~~~~~~~~~~ForumHomePageController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Forum Main" = "Forum Main";
+
+/* No comment provided by engineer. */
+"Forum" = "Forum";
+
+/* No comment provided by engineer. */
+" replies" = " replies";
+
+
+/* No comment provided by engineer. */
+"Edit Album Settings" = "Edit Album Settings" ;
+
+/* No comment provided by engineer. */
+"Add New Photos" = "Add New Photos" ;
+
+/* No comment provided by engineer. */
+"Edit Blog Entry" = "Edit Blog Entry" ;
+
+/* No comment provided by engineer. */
+"Write New Entry" = "Write New Entry" ;
+
+/* No comment provided by engineer. */
+"Edit Classified Listing"  = "Edit Classified Listing" ;
+
+/* No comment provided by engineer. */
+"Post New Listing" = "Post New Listing" ;
+
+/* No comment provided by engineer. */
+"Create New Event" = "Create New Event" ;
+
+/* No comment provided by engineer. */
+"Edit Event" = "Edit Event" ;
+
+/* No comment provided by engineer. */
+"Post Topic" = "Post Topic" ;
+
+/* No comment provided by engineer. */
+"Edit Post" = "Edit Post" ;
+
+/* No comment provided by engineer. */
+"Post Reply" = "Post Reply" ;
+
+/* No comment provided by engineer. */
+"Quick Reply" = "Quick Reply" ;
+
+/* No comment provided by engineer. */
+"Rename Topic" = "Rename Topic" ;
+
+/* No comment provided by engineer. */
+"Move Topic" = "Move Topic" ;
+
+/* No comment provided by engineer. */
+"Create New Group" = "Create New Group" ;
+
+/* No comment provided by engineer. */
+"Edit Group" = "Edit Group" ;
+
+/* No comment provided by engineer. */
+"Create Poll" = "Create Poll" ;
+
+/* No comment provided by engineer. */
+"Edit Poll Privacy" = "Edit Poll Privacy" ;
+
+/* No comment provided by engineer. */
+"Add New Video" = "Add New Video" ;
+
+/* No comment provided by engineer. */
+"Edit Video" = "Edit Video" ;
+
+
+/* ~~~~~~~~~~~~~~~~~~~PollViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Posted by %@ %@" = "Posted by %@ %@" ;
+
+/* No comment provided by engineer. */
+" -  votes" = " -  votes" ;
+
+/* No comment provided by engineer. */
+" -  vote" = " -  vote" ;
+
+/* No comment provided by engineer. */
+" -  views" = " -  views" ;
+
+/* No comment provided by engineer. */
+" -  view" = " -  view" ;
+
+/* No comment provided by engineer. */
+"Are you sure that you want to delete this Poll? This action cannot be undone." = "Are you sure that you want to delete this Poll? This action cannot be undone." ;
+
+/* No comment provided by engineer. */
+"Delete Poll" = "Delete Poll" ;
+
+
+"Add Options" = "Add Options" ;
+"a few seconds ago" = "a few seconds ago";
+
+// Events
+"You have no friends you can invite." = "You have no friends you can invite.";
+
+

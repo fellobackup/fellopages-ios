@@ -1,1 +1,2 @@
-# fellopages-ios
+# SocialEngineAddOns-iOS
+SocialEngineAddOns iOS App Code

@@ -1,0 +1,490 @@
+/* 
+  Localizable.strings
+  seiosnativeapp
+
+  Created by bigstep on 09/02/15.
+  Copyright (c) 2015 bigstep. All rights reserved.
+*/
+
+/* ~~~~~~~~~~~~~~~~~LoginViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "BigstepNo Internet Connection";
+
+/* No comment provided by engineer. */
+"Sign In" = "BigstepSign In";
+
+/* No comment provided by engineer. */
+"Sign Up" = "BigstepSign Up";
+
+/* No comment provided by engineer. */
+"Email Address" =  "BigstepEmail Address";
+
+/* No comment provided by engineer. */
+"Password" = "BigstepPassword";
+
+/* No comment provided by engineer. */
+"Please enter the Email Address and Password." = "BigstepPlease enter the Email Address and Password.";
+
+/* No comment provided by engineer. */
+"Please enter the Email Address." = "BigstepPlease enter the Email Address.";
+
+/* No comment provided by engineer. */
+"Please enter the valid Email Address." = "BigstepPlease enter the valid Email Address.";
+
+/* No comment provided by engineer. */
+"Please enter the Password." = "BigstepPlease enter the Password.";
+
+
+
+/* ~~~~~~~~~~~~~~~~~Common~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Search" = "BigstepSearch";
+
+/* No comment provided by engineer. */
+"Delete Entry" = "BigstepDelete Entry";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this blog entry?" = "BigstepAre you sure you want to delete this blog entry?";
+
+/* No comment provided by engineer. */
+"Cancel" = "BigstepCancel";
+
+/* No comment provided by engineer. */
+"%d views" = "Bigstep%d views";
+
+/* No comment provided by engineer. */
+"%d view" = "Bigstep%d view";
+
+/* No comment provided by engineer. */
+"%d members" = "Bigstep%d members";
+
+/* No comment provided by engineer. */
+"%d member" = "Bigstep%d member";
+
+/* No comment provided by engineer. */
+"led by %@" = "Bigstepled by %@";
+
+/* No comment provided by engineer. */
+"Pull to Refresh" = "BigstepPull to Refresh";
+
+/* No comment provided by engineer. Currently used in Blog & Group */
+"You do not have permission to view this private page." = "BigstepYou do not have permission to view this private page.";
+
+
+
+/* ~~~~~~~~~~~~~~~~~MemberHomePageViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Member Home Page" = "BigstepMember Home Page";
+
+
+/* ~~~~~~~~~~~~~~~~BlogViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Blog" = "BigstepBlog";
+
+/* No comment provided by engineer. */
+"Browse Entries" = "BigstepBrowse Entries";
+
+/* No comment provided by engineer. */
+"My Entries" = "BigstepMy Entries";
+
+
+/* No comment provided by engineer. */
+"You do not have any blog entries. Get started by writing a new entry." = "BigstepYou do not have any blog entries. Get started by writing a new entry.";
+
+/* No comment provided by engineer. */
+"Posted %@ by %@" = "BigstepPosted %@ by %@";
+
+
+/* ~~~~~~~~~~~~~~~~~~CreateNewBlog~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Write New Entry" = "BigstepWrite New Entry";
+
+/* No comment provided by engineer. */
+"Edit Entry" = "BigstepEdit Entry";
+
+/* No comment provided by engineer. */
+"Please Enter an Title." = "BigstepPlease Enter an Title.";
+
+/* No comment provided by engineer. */
+"Please Enter body." = "BigstepPlease Enter body.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~BlogDetailViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Would you like to %@ to this member's blog?" = "BigstepWould you like to %@ to this member's blog?";
+
+/* No comment provided by engineer. */
+"Would you like to %@ from this member's blog?" = "BigstepWould you like to %@ from this member's blog?";
+
+
+
+/* ============================================== */
+
+/* ~~~~~~~~~~~~~~~~~~GroupViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Browse Group" = "BigstepBrowse Group";
+
+/* No comment provided by engineer. */
+"My Group" = "BigstepMy Group";
+
+/* No comment provided by engineer. */
+"Delete Group" = "BigstepDelete Group";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this group?" = "BigstepAre you sure you want to delete this group?";
+
+/* No comment provided by engineer. */
+"Leave Group" = "BigstepLeave Group";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this group?" = "BigstepAre you sure you want to leave this group?";
+
+/* No comment provided by engineer. */
+"You do not have any group entries. Get started by writing a new entry." = "BigstepYou do not have any group entries. Get started by writing a new entry.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~CreateNewGroup~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Please Enter Group Name." = "BigstepPlease Enter Group Name.";
+
+/* No comment provided by engineer. */
+"Please Enter Group Description." = "BigstepPlease Enter Group Description.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~GroupDetailViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Title" = "BigstepTitle";
+
+/* No comment provided by engineer. */
+"Category" = "BigstepCategory";
+
+/* No comment provided by engineer. */
+"Description" = "BigstepDescription";
+
+/* No comment provided by engineer. */
+"Staff" = "BigstepStaff";
+
+/* No comment provided by engineer. */
+"View Counts" = "BigstepView Counts";
+
+/* No comment provided by engineer. */
+"Members Count" = "BigstepMembers Count";
+
+/* No comment provided by engineer. */
+"Creation Date" = "BigstepCreation Date";
+
+/* No comment provided by engineer. */
+"Last Updated" = "BigstepLast Updated";
+
+/* No comment provided by engineer. */
+"Join Group" = "BigstepJoin Group";
+
+/* No comment provided by engineer. */
+"Would you like to join this group?" = "BigstepWould you like to join this group?";
+
+/* No comment provided by engineer. */
+"Request Group Membership" = "BigstepRequest Group Membership";
+
+/* No comment provided by engineer. */
+"Would you like to request membership in this group?" = "BigstepWould you like to request membership in this group?";
+
+/* No comment provided by engineer. */
+"Send Request" = "BigstepSend Request";
+
+/* No comment provided by engineer. */
+"Cancel Group Membership Request" = "BigstepCancel Group Membership Request";
+
+/* No comment provided by engineer. */
+"Would you like to cancel your request for membership in this group?" = "BigstepWould you like to cancel your request for membership in this group?";
+
+/* No comment provided by engineer. */
+"Cancel Request" = "BigstepCancel Request";
+
+/* No comment provided by engineer. */
+"Accept Group Invitation" = "BigstepAccept Group Invitation";
+
+/* No comment provided by engineer. */
+"Would you like to join this group?" = "BigstepWould you like to join this group?";
+
+/* No comment provided by engineer. */
+"Reject Group Invitation" = "BigstepReject Group Invitation";
+
+/* No comment provided by engineer. */
+"Would you like to reject the invitation to this group?" = "BigstepWould you like to reject the invitation to this group?";
+
+/* No comment provided by engineer. */
+"Reject Invitation" = "BigstepReject Invitation";
+
+
+/* ~~~~~~~~~~~~~~~~~~~InviteMemberViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Invite Members" = "BigstepInvite Members";
+
+/* No comment provided by engineer. */
+"Choose the people you want to invite to this group." = "BigstepChoose the people you want to invite to this group.";
+
+/* No comment provided by engineer. */
+"You did not select any Friend." = "BigstepYou did not select any Friend.";
+
+
+/* ~~~~~~~~~~~~~~~~~ShowGroupMemberViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Members" = "BigstepMembers";
+
+/* No comment provided by engineer. */
+"Search Members" = "BigstepSearch Members";
+
+/* No comment provided by engineer. */
+"This group has %d member waiting for approval or waiting for an invite response." = "BigstepThis group has %d member waiting for approval or waiting for an invite response.";
+
+/* No comment provided by engineer. */
+"This group has %d member." = "BigstepThis group has %d member.";
+
+/* No comment provided by engineer. */
+"See Waiting" = "BigstepSee Waiting";
+
+/* No comment provided by engineer. */
+"View all approved members" = "BigstepView all approved members";
+
+/* No comment provided by engineer. */
+"Remove Member" = "BigstepRemove Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to remove this member from the group?" = "BigstepAre you sure you want to remove this member from the group?";
+
+/* No comment provided by engineer. */
+"Promote Member" = "BigstepPromote Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to promote this member to officer?" = "BigstepAre you sure you want to promote this member to officer?";
+
+/* No comment provided by engineer. */
+"Demote Member" = "BigstepDemote Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to demote this member from officer?" = "BigstepAre you sure you want to demote this member from officer?";
+
+/* No comment provided by engineer. */
+"Remove Member" = "BigstepRemove Member";
+
+/* No comment provided by engineer. */
+"Are you sure you want to remove this member from the group?" = "BigstepAre you sure you want to remove this member from the group?";
+
+/* No comment provided by engineer. */
+"Approve Group Membership Request" = "BigstepApprove Group Membership Request";
+
+/* No comment provided by engineer. */
+"Would you like to approve the request for membership in this group?" = "BigstepWould you like to approve the request for membership in this group?";
+
+/* No comment provided by engineer. */
+"Approve Request" = "BigstepApprove Request";
+
+/* No comment provided by engineer. */
+"Reject Group Invitation" = "BigstepReject Group Invitation";
+
+/* No comment provided by engineer. */
+"Would you like to reject the invitation to this group?" = "BigstepWould you like to reject the invitation to this group?";
+
+/* No comment provided by engineer. */
+"Reject Invitation" = "BigstepReject Invitation";
+
+/* No comment provided by engineer. */
+"Edit Staff" = "BigstepEdit Staff";
+
+/* No comment provided by engineer. */
+"Update Staff" = "BigstepUpdate Staff";
+
+/* No comment provided by engineer. */
+"Submit" = "BigstepSubmit";
+
+/* No comment provided by engineer. */
+"Please Update Staff" = "BigstepPlease Update Staff";
+
+
+/* ~~~~~~~~~~~~~~~~PhotoListViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Upload Images" = "BigstepUpload Images";
+
+
+/* ~~~~~~~~~~~~~~~~~~~FilterSearch~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Filter Search" = "BigstepFilter Search";
+
+
+/* ~~~~~~~~~~~~~~~~~~~~PhotoViewController~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Photo %d of %d" = "BigstepPhoto %d of %d";
+
+/* No comment provided by engineer. */
+"No more Photos, Slide Left!" = "BigstepNo more Photos, Slide Left!";
+
+/* No comment provided by engineer. */
+"Menu" = "BigstepMenu";
+
+/* No comment provided by engineer. */
+"No more Photos, Slide Right!" = "BigstepNo more Photos, Slide Right!";
+
+/* No comment provided by engineer. */
+"Delete Group Photo" = "BigstepDelete Group Photo";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this photo?" = "BigstepAre you sure you want to delete this photo?";
+
+/* No comment provided by engineer. */
+"Delete Photo" = "BigstepDelete Photo";
+
+/* No comment provided by engineer. */
+"Make Profile Photo" = "BigstepMake Profile Photo";
+
+/* No comment provided by engineer. */
+"Do you want to make this photo your profile photo?" = "BigstepDo you want to make this photo your profile photo?";
+
+/* No comment provided by engineer. */
+"Save" = "BigstepSave";
+
+
+/* ~~~~~~~~~~~~~~~~~~~UploadPhotoViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Upload" = "BigstepUpload";
+
+
+/* ~~~~~~~~~~~~~~~~~~~~EditPhotoViewController~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Edit Photo" = "BigstepEdit Photo";
+
+/* No comment provided by engineer. */
+"Please Enter Title." = "BigstepPlease Enter Title.";
+
+/* No comment provided by engineer. */
+"Please Enter Description." = "BigstepPlease Enter Description.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Report~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Report" = "BigstepReport";
+
+/* No comment provided by engineer. */
+"Do you want to Report this?" = "BigstepDo you want to Report this?";
+
+/* No comment provided by engineer. */
+"Please Enter Your Message." = "BigstepPlease Enter Your Message.";
+
+/* No comment provided by engineer. */
+"Please Select Report Type." = "BigstepPlease Select Report Type.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Share~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Share" = "BigstepShare";
+
+/* No comment provided by engineer. */
+"Share this by re-posting it with your own message." = "BigstepShare this by re-posting it with your own message.";
+
+
+/* ~~~~~~~~~~~~~~~~~~~Like_CommentViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+" Like" = "Bigstep Like";
+
+/* No comment provided by engineer. */
+" Comment" = "Bigstep Comment";
+
+/* No comment provided by engineer. */
+"%d Likes" = "Bigstep%d Likes";
+
+/* No comment provided by engineer. */
+"%d Comments" = "Bigstep%d Comments";
+
+/* No comment provided by engineer. */
+"%d Like" = "Bigstep%d Like";
+
+/* No comment provided by engineer. */
+"\n %d Comments" = "Bigstep\n %d Comments";
+
+/* No comment provided by engineer. */
+"\n %d Comment" = "Bigstep\n %d Comment";
+
+
+/* ~~~~~~~~~~~~~~~~~~~CommentsViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Write a Comment..." = "BigstepWrite a Comment...";
+
+/* No comment provided by engineer. */
+" %d People like this" = "Bigstep %d People like this";
+
+/* No comment provided by engineer. */
+"Please Enter Comment." = "BigstepPlease Enter Comment.";
+
+/* No comment provided by engineer. */
+"Post Comment" = "BigstepPost Comment";
+
+/* No comment provided by engineer. */
+"View All" = "BigstepView All";
+
+/* ~~~~~~~~~~~~~~~~~~~LikesViewController~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"People who like this" = "BigstepPeople who like this";
+
+/* ~~~~~~~~~~~~~~~~~~~FXForm~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Photo Library" = "BigstepPhoto Library";
+
+/* No comment provided by engineer. */
+"Take Photo" = "BigstepTake Photo";
+
+/* No comment provided by engineer. */
+"Add Item" = "BigstepAdd Item";
+
+
+/* ~~~~~~~~~~~~~~~~~~~ELCImagePicker~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* No comment provided by engineer. */
+"Loading..." = "BigstepLoading...";
+
+/* No comment provided by engineer. */
+"This app does not have access to your photos or videos. You can enable access in Privacy Settings." = "BigstepThis app does not have access to your photos or videos. You can enable access in Privacy Settings.";
+
+/* No comment provided by engineer. */
+"Access Denied" = "BigstepAccess Denied";
+
+/* No comment provided by engineer. */
+"Ok" = "BigstepOk";
+
+/* No comment provided by engineer. */
+"Error" = "BigstepError";
+
+/* No comment provided by engineer. */
+"Select an Album" = "BigstepSelect an Album";
+
+/* No comment provided by engineer. */
+"Pick Photo" = "BigstepPick Photo";
+
+/* No comment provided by engineer. */
+"Pick Photos" = "BigstepPick Photos";
+
+/* No comment provided by engineer. */
+"Only %d photos please!" = "BigstepOnly %d photos please!";
+
+/* No comment provided by engineer. */
+"You can only send %d photos at a time." = "BigstepYou can only send %d photos at a time.";
