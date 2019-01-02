@@ -693,7 +693,7 @@ class AdvancePhotoViewController: UIViewController, UIGestureRecognizerDelegate,
                     if height > 130{
                         height = 130
                     }
-                    self.bottomViewPhotoDescription.frame = CGRect(x: 0, y: self.view.frame.size.height - (height + 65 + self.reactionHeight + self.taggedHeight + iphonXBottomsafeArea), width: self.view.bounds.width, height: height + 15)
+//                    self.bottomViewPhotoDescription.frame = CGRect(x: 0, y: self.view.frame.size.height - (height + 65 + self.reactionHeight + self.taggedHeight + iphonXBottomsafeArea), width: self.view.bounds.width, height: height + 15)
                     self.bottomViewPhotoDescription.isHidden = false
                     self.bottomViewPhotoDescription.text = photoDescription
                 }
@@ -1211,7 +1211,7 @@ class AdvancePhotoViewController: UIViewController, UIGestureRecognizerDelegate,
         if height > 130{
             height = 130
         }
-        bottomViewPhotoDescription.frame = CGRect(x: 0, y: view.frame.size.height - (height + 65 + reactionHeight + taggedHeight + iphonXBottomsafeArea), width: view.bounds.width, height: height + 15)
+//        bottomViewPhotoDescription.frame = CGRect(x: 0, y: view.frame.size.height - (height + 65 + reactionHeight + taggedHeight + iphonXBottomsafeArea), width: view.bounds.width, height: height + 15)
         if self.editText.text != ""{
             bottomViewPhotoDescription.isHidden = false
         }

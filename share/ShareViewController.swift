@@ -114,7 +114,7 @@ class ShareViewController: SLComposeServiceViewController{
                             attachment.loadItem(forTypeIdentifier: contentTypeVideo, options: nil, completionHandler: { (data,error) in
                                 
                                 print(data.debugDescription)
-                                print(error.localizedDescription)
+                                print(error?.localizedDescription)
                                 
                             })
                         }

@@ -420,9 +420,9 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
         let userId = memberInfo["user_id"] as! Int
         if let strLength = cell.author_title.text
         {
-            let length =  strLength.length
-            
-            cell.author_title.addLink(toTransitInformation: [ "type" : "user", "user_id" : userId  ], with:NSMakeRange(0,length));
+//            let length =  strLength.length
+//            
+//            cell.author_title.addLink(toTransitInformation: [ "type" : "user", "user_id" : userId  ], with:NSMakeRange(0,length));
         }
 
         cell.author_title.lineBreakMode = NSLineBreakMode.byWordWrapping

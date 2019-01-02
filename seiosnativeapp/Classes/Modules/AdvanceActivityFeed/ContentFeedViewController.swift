@@ -1347,7 +1347,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             }
             else
             {
-                let bookNow = createButton(CGRect(x:5,y:originY,width:self.rsvp.bounds.width-15,height:ButtonHeight), title: "Book Now", border: false, bgColor: false, textColor: navColor)
+                let bookNow = createButton(CGRect(x:5,y:originY,width:self.rsvp.bounds.width-15,height:ButtonHeight), title: NSLocalizedString("Register", comment: ""), border: false, bgColor: false, textColor: navColor)
                 bookNow.backgroundColor = lightBgColor
                 bookNow.layer.borderWidth = borderWidth
                 bookNow.layer.borderColor = navColor.cgColor
@@ -2493,14 +2493,14 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             
             
             let category2 = response["category_id"] as? Int
-            if category2 != 0{
-                
-                origin_y = groupDescriptionView.bounds.height + mainSubView.bounds.height + topView.bounds.height + (3 * contentPADING) + 50 + groupMoreOrLess.frame.size.height
-            }
-            else{
-                origin_y = groupDescriptionView.bounds.height + mainSubView.bounds.height + topView.bounds.height + (3 * contentPADING) + 10 + groupMoreOrLess.frame.size.height
-            }
-            self.tabsContainerMenu.frame.origin.y = origin_y
+//            if category2 != 0{
+//                
+//                origin_y = groupDescriptionView.bounds.height + mainSubView.bounds.height + topView.bounds.height + (3 * contentPADING) + 50 + groupMoreOrLess.frame.size.height
+//            }
+//            else{
+//                origin_y = groupDescriptionView.bounds.height + mainSubView.bounds.height + topView.bounds.height + (3 * contentPADING) + 10 + groupMoreOrLess.frame.size.height
+//            }
+//            self.tabsContainerMenu.frame.origin.y = origin_y
             self.showtabMenu()
             self.headerHeight =  self.tabsContainerMenu.frame.origin.y + self.tabsContainerMenu.bounds.height
             self.feedFilter.isHidden = false
@@ -3167,7 +3167,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                         
                                                     else if (menuItem["name"] as! String == "book_now")
                                                     {
-                                                        rsvpOption.setTitle(NSLocalizedString("Book Now",  comment: ""), for: UIControlState())
+                                                        rsvpOption.setTitle(NSLocalizedString("Register",  comment: ""), for: UIControlState())
                                                         rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                                                         rsvpOption.isHidden = false
                                                         rsvpOption.tag = 15

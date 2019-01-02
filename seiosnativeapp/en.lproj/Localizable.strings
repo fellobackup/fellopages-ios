@@ -223,7 +223,7 @@
 " Type a message..." = " Type a message...";
 "Notifications" = "Notifications";
 "Requests" = "Requests";
-"%@ Like" = "%@ Like";
+"%@ Like" = "%@ Fello Like";
 "My Albums" = "My Albums";
 "Photos" = "Photos";
 "Albums" = "Albums";
@@ -244,7 +244,7 @@
 "...less" = "...less";
 " %d Comments" = " %d Comments";
 " %d Comment" = " %d Comment";
-"%@  Like" = "%@  Like";
+"%@  Like" = "%@  Fello Like";
 "Everyone" = "Everyone";
 "%@ Status " = "%@ Status ";
 "%@ Photo" = "%@ Photo";
@@ -253,8 +253,8 @@
 "Do you want to unblock this member?" = "Do you want to unblock this member?";
 "Do you want to cancel friend request?" = "Do you want to cancel friend request?";
 "Do you want to block this member?" = "Do you want to block this member?";
-"%d Likes " = "%d Likes ";
-"%d Like " = "%d Like ";
+"%d Likes " = "%d Fello Likes ";
+"%d Like " = "%d Fello Like ";
 "%d Comments" = "%d Comments";
 "%d Comment" = "%d Comment";
 "Share Outside" = "Share Outside";
@@ -520,7 +520,7 @@
 "Type location" = "Type location";
 "Spread the word" = "Spread the word";
 "Spread the Word" = "Spread the Word";
-"Like %@?" = "Like %@?";
+"Like %@?" = "Fello Like %@?";
 "Recommend it now to your friends and contacts!" = "Recommend it now to your friends and contacts!";
 "Forums" = "Forums";
 "Post New Topic" = "Post New Topic";
@@ -648,6 +648,7 @@ Come join our community.. Showcase your events, connect and expand your network.
 "Discount " = "Discount ";
 "Grand Total " = "Grand Total ";
 "Book Now" = "Book Now";
+"Register" = "Register";
 "Ticket Name" = "Ticket Name";
 "More Info" = "More Info";
 "Claimed TIckets:" = "Claimed TIckets:";

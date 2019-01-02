@@ -4147,8 +4147,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = seiosnativeapp/seiosnativeapp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = G8PXJBZ6GK;
@@ -4190,8 +4191,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = seiosnativeapp/seiosnativeapp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = G8PXJBZ6GK;
 				ENABLE_BITCODE = NO;

@@ -4290,6 +4290,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                         if let myReaction = activityFeed["my_feed_reaction"] as? NSDictionary{
                                             let titleReaction = myReaction["caption"] as? String ?? ""
                                             title =  NSLocalizedString("\(titleReaction)", comment: "")
+                                            //title = "Fello Like"
                                             if let myIcon = myReaction["reaction_image_icon"] as? String{
                                                 let ImageView = createButton(CGRect(x: 20,y: 11,width: 15,height: 20), title: "", border: false, bgColor: false, textColor: textColorLight)
                                                 ImageView.imageEdgeInsets =  UIEdgeInsets(top: 2, left: 0, bottom: 3, right: 0)
@@ -4402,7 +4403,6 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         cell.cellMenu.addSubview(menu)
                         
                     }
-                    
                 default:
                     print("Error")
                 }
