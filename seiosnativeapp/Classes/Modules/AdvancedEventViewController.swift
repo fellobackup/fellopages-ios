@@ -5329,18 +5329,18 @@ eventTableView.tableFooterView?.isHidden = true
         
         
         
-        if(eventInfo["allow_to_view"] as! Int == 1)
-        {
-            let presentedVC = ContentFeedViewController()
-            presentedVC.subjectId = eventInfo["event_id"] as! Int
-            presentedVC.subjectType = "advancedevents"
-            
-            navigationController?.pushViewController(presentedVC, animated: true)
-        }
-        else
-        {
-            self.view.makeToast("You do not have permission to view this private page.", duration: 5, position: "bottom")
-        }
+//        if(eventInfo["allow_to_view"] as! Int == 1)
+//        {
+        let presentedVC = ContentFeedViewController()
+        presentedVC.subjectId = eventInfo["event_id"] as! Int
+        presentedVC.subjectType = "advancedevents"
+        
+        navigationController?.pushViewController(presentedVC, animated: true)
+//        }
+//        else
+//        {
+//            self.view.makeToast("You do not have permission to view this private page.", duration: 5, position: "bottom")
+//        }
     }
     
     // MARK: - Cover Image Selection

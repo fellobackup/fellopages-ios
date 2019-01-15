@@ -43,16 +43,16 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
     var bottomView : UIView!
     var Subscriptionurl: String = ""
     var leftBarButtonItem : UIBarButtonItem!
-    
+    var fromPage:String!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+    
         if let tabBarObject = self.tabBarController?.tabBar
         {
             tabBarObject.isHidden = true
         }
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -60,7 +60,8 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
-        removeNavigationImage(controller: self)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//        removeNavigationImage(controller: self)
         
         //self.title = NSLocalizedString("Sign In",comment: "")
         let deviceIdiom = UIScreen.main.traitCollection.userInterfaceIdiom
@@ -106,7 +107,9 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         //
         //        let barButtonItem = UIBarButtonItem(customView: leftNavView)
         //        self.navigationItem.leftBarButtonItem = barButtonItem
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        if(self.fromPage == nil){
+            self.navigationItem.setHidesBackButton(true, animated: false)
+        }
         
         loginCustomView = createView( CGRect(x: 0, y: view.bounds.height/2+250, width: view.bounds.width, height: 320), borderColor: UIColor.clear , shadow: true)
         
@@ -420,16 +423,17 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+      
         
         if let tabBarObject = self.tabBarController?.tabBar
         {
             tabBarObject.isHidden = true
         }
-        
         self.email.resignFirstResponder()
         self.pass.resignFirstResponder()
         //self.view.endEditing(true)
-        removeNavigationImage(controller: self)
+//        removeNavigationImage(controller: self)
+
         //self.view.endEditing(true)
         if self.view.bounds.height == 568
         {
@@ -596,6 +600,9 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     @objc func signInAction(){
+        
+     
+        
         var error = ""
         if email.text == "" && pass.text == "" {
             error = NSLocalizedString("Please enter the Email Address and Password.",comment: "")
@@ -677,9 +684,18 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
                                         let defaults = UserDefaults.standard
                                         defaults.set("\(self.pass.text!)", forKey: "userPassword")
                                         if performLoginActionSuccessfully(succeeded["body"] as! NSDictionary){
-                                            
-                                            mergeAddToCart()
-                                            self.showHomePage()
+                                            if self.fromPage == nil {
+                                                mergeAddToCart()
+                                                self.showHomePage()
+                                            }
+                                            else {
+                                                if self.fromPage == NSLocalizedString("Tickets", comment: ""){
+                                                    self.navigationController?.popViewController(animated: false)
+                                                }
+                                                else{
+                                                    return
+                                                }
+                                            }
                                         }
                                         else
                                         {
@@ -687,7 +703,6 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
                                         }
                                     }
                                 }
-                                
                                 
                             }
                         }
@@ -848,9 +863,11 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         let defaults = UserDefaults.standard
         defaults.set("LoginScreenViewController", forKey: "Comingfrom")
         createTabs()
+        
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.pushViewController(baseController, animated: false)
         self.view.endEditing(true)
+        
         
     }
 }

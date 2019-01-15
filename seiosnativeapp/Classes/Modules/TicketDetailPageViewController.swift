@@ -78,7 +78,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.removeFromSuperview()
+        //view.removeFromSuperview()
         if let navigationBar = self.navigationController?.navigationBar
         {
             let firstFrame = CGRect(x: (view.frame.width/3), y:5, width: view.frame.width/3, height: navigationBar.frame.height - 10)
@@ -177,6 +177,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
     
     @objc func goBack(){
         navtitle.text = ""
+        
         _ = self.navigationController?.popViewController(animated: false)
     }
     
@@ -333,7 +334,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         label31.font = UIFont(name: fontBold, size: FONTSIZEMedium)
         view5.addSubview(label31)
         
-        BooknowButton = createButton(CGRect(x: Padding, y: getBottomEdgeY(inputView: label27) + 7, width: (view.bounds.width )/2 - (2 * Padding + 20), height: 50), title: NSLocalizedString("Book Now",  comment: ""), border: false, bgColor: true, textColor: UIColor.white)
+        BooknowButton = createButton(CGRect(x: Padding, y: getBottomEdgeY(inputView: label27) + 7, width: (view.bounds.width )/2 - (2 * Padding + 20), height: 50), title: NSLocalizedString("Register",  comment: ""), border: false, bgColor: true, textColor: UIColor.white)
         BooknowButton.backgroundColor = buttonColor
         BooknowButton.layer.cornerRadius = cornerRadiusNormal
         BooknowButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZELarge)
@@ -522,6 +523,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
             contentFeedUpdate = false
             _ = self.navigationController?.popViewController(animated: false)
         }
+        
     }
     
     
@@ -644,10 +646,52 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         }
     }
     
+    func showLoginOrSignUp(isLogin:Bool){
+        self.navtitle.text = ""
+        
+        if isLogin{
+            let presentedVC = LoginScreenViewController()
+            presentedVC.fromPage = NSLocalizedString("Tickets", comment: "")
+            self.navigationController?.pushViewController(presentedVC, animated: true)
+        }
+        else{
+            let presentedVC = SignupViewController()
+            self.navigationController?.pushViewController(presentedVC, animated: true)
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        navtitle.text = NSLocalizedString("Tickets", comment: "")
+        if let tabBarObject = self.tabBarController?.tabBar
+        {
+            tabBarObject.isHidden = false
+        }
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        baseController.tabBar.items![1].isEnabled = true
+        baseController.tabBar.items![2].isEnabled = true
+        baseController.tabBar.items![3].isEnabled = true
+        
+    }
     // Click on book now button
     @objc func booknow()
     {
         if canShowBookNow != 0 {
+
+            if !auth_user {
+                NSLog("Not Login")
+                let alert = UIAlertController(title: nil, message: NSLocalizedString("Please login or create and account to proceed.", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Sign In", comment: ""), style: .default, handler: { _ in
+                    self.showLoginOrSignUp(isLogin: true)
+                }))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Sign Up", comment: ""), style: .default, handler: { _ in
+                   self.showLoginOrSignUp(isLogin: false)
+                }))
+                alert.addAction(UIAlertAction(title:  NSLocalizedString("Cancel",comment: ""), style: .cancel, handler: { _ in
+                    NSLog("Cancel is clicked")
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             let presentedVC = BuyersTicketViewController()
             presentedVC.formTitle = NSLocalizedString("Buyer's Info", comment: "")
             presentedVC.contentType = "checkout"
@@ -658,6 +702,8 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
             presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
             let nativationController = UINavigationController(rootViewController: presentedVC)
             self.present(nativationController, animated:false, completion: nil)
+            
+
         }
         else
         {
@@ -698,6 +744,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                 DispatchQueue.main.async(execute: {
                     
                     activityIndicatorView.stopAnimating()
+                   
                     if msg{
                         
                         self.scrollView.isHidden = false
@@ -746,7 +793,6 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                     }
                     else
                     {
-                        
                         // Handle Server Error
                         if succeeded["message"] != nil{
                             self.view.makeToast(succeeded["message"] as! String, duration: 5, position: "bottom")

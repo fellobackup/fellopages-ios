@@ -986,7 +986,7 @@ func performLoginActionSuccessfully(_ body: NSDictionary) -> Bool {
             }
         }
         
-        auth_user = false
+        auth_user = true
         logoutUser = false
         refreshMenu = true
         dashboardRefreshInteger = 0

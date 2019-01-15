@@ -2730,21 +2730,21 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     let rightNavView = UIView(frame: CGRect(x: 0, y: 0, width: 66, height: 44))
                                     rightNavView.backgroundColor = UIColor.clear
                                     
-                                    if logoutUser == false{
-                                        let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                        shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
-                                        shareButton.addTarget(self, action: #selector(ContentFeedViewController.shareItem), for: .touchUpInside)
-                                        rightNavView.addSubview(shareButton)
-                                        
-                                        let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                        optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
-                                        optionButton.addTarget(self, action: #selector(ContentFeedViewController.showMainGutterMenu), for: .touchUpInside)
-                                        
-                                        rightNavView.addSubview(optionButton)
-                                        
-                                        self.rightBarButtonItem = UIBarButtonItem(customView: rightNavView)
-                                        self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
-                                    }
+//                                    if logoutUser == false{
+                                    let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.addTarget(self, action: #selector(ContentFeedViewController.shareItem), for: .touchUpInside)
+                                    rightNavView.addSubview(shareButton)
+                                    
+                                    let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.addTarget(self, action: #selector(ContentFeedViewController.showMainGutterMenu), for: .touchUpInside)
+                                    
+                                    rightNavView.addSubview(optionButton)
+                                    
+                                    self.rightBarButtonItem = UIBarButtonItem(customView: rightNavView)
+                                    self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
+//                                    }
                                     
                                     
                                 }
@@ -3261,8 +3261,6 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         // Handle Server Side Error
                         if succeeded["message"] != nil{
                             self.view.makeToast(succeeded["message"] as! String , duration: 5, position: "bottom")
-                            
-                            
                         }
                     }
                 })
@@ -3482,8 +3480,6 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         // Show Message on Failour
                         if succeeded["message"] != nil{
                             self.view.makeToast(succeeded["message"] as! String , duration: 5, position: "bottom")
-                            
-                            
                         }
                         self.updateScrollFlag = true
                     }

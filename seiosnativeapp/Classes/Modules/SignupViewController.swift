@@ -34,12 +34,12 @@ var sign_up : Int = 0
     var leftBarButtonItem : UIBarButtonItem!
     var phoneno : String = ""
     var isOtpSend : Bool = false
-    
+    var ticketViewController:TicketDetailViewController?
     // Initialization of class Object
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
         view.backgroundColor = bgColor
         
         self.navigationController?.navigationBar.isHidden = false
@@ -639,7 +639,6 @@ var sign_up : Int = 0
             if let tabBarObject = self.tabBarController?.tabBar
             {
                 tabBarObject.isHidden = false
-                
             }
             _ = self.navigationController?.popViewController(animated: false)
         }))

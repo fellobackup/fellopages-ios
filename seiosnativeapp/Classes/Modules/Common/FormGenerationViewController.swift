@@ -3299,7 +3299,7 @@ var videoDuration : Double = 0.00
                 }
                 
                 var Repetdays = "" as String
-                
+                var valuesByKey = form.valuesByKey
                 for (key, value) in form.valuesByKey
                 {
                     
@@ -3482,10 +3482,16 @@ var videoDuration : Double = 0.00
                             }
                         }
                         
+                        
                         if let receiver = value as? NSString {
-                            infoDic["\(key)"] = receiver as String
+                            if let keyName = key as? NSString {
+                                if keyName != "timezone" {
+                                     infoDic["\(key)"] = receiver as String
+                                }
+                            }
                         }
                         if let receiver = value as? Int {
+                            
                             infoDic["\(key)"] = String(receiver)
                         }
                         if let receiver = value as? Date {
