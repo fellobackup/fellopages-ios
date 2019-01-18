@@ -3302,7 +3302,8 @@ eventTableView.tableFooterView?.isHidden = true
                     cell.hostImage.isHidden = false
                     cell.hostSelection.isHidden = false
                     cell.hostSelection.isUserInteractionEnabled = true
-                    
+                   
+                   
                     var eventInfo:NSDictionary!
                     if(UIDevice.current.userInterfaceIdiom == .pad)
                     {
@@ -3419,7 +3420,17 @@ eventTableView.tableFooterView?.isHidden = true
                             cell.lblMembercount.isHidden = true
                             cell.lblviewcount.isHidden = true
                             cell.lbllikecount.isHidden = true
-                            
+                            if row == 1 {
+                                if let status = eventInfo["status"] as? String {
+                                    if status == "trial" {
+                                        cell.statusView.isHidden = false
+                                        cell.statusLabel?.text = NSLocalizedString("Trial", comment: "")
+                                    }
+                                    else {
+                                        cell.statusView.isHidden = true
+                                    }
+                                }
+                            }
                         }
                         
                     }

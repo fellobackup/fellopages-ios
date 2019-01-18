@@ -25,6 +25,7 @@ class EventViewTableViewCell: UITableViewCell {
     
     var cellView: UIView!
     var contentImage:UIImageView!
+    var statusView: UIView!
     var hostImage:UIImageView!
     var hostSelection:UIButton!
     var contentName:UILabel!
@@ -36,6 +37,7 @@ class EventViewTableViewCell: UITableViewCell {
     var dateView : UIView!
     var titleView : UIView!
     var titleLabel : UILabel!
+    var statusLabel : UILabel!
     var locLabel : UILabel!
     var dateLabel : UILabel!
     var dateLabel1 : UILabel!
@@ -128,6 +130,8 @@ class EventViewTableViewCell: UITableViewCell {
         titleLabel.font = UIFont(name: fontName, size: FONTSIZENormal)
         titleView.addSubview(titleLabel)
         
+        
+        
         btnTittle  = createButton(CGRect(x: titleLabel.frame.origin.x,y: titleLabel.frame.origin.y-5, width: titleView.frame.size.width-120, height: titleLabel.frame.size.height), title: "", border: false,bgColor: false,textColor: UIColor.clear)
         btnTittle.titleLabel?.font =  UIFont(name: "FontAwesome", size:FONTSIZELarge)
         titleLabel.addSubview(btnTittle)
@@ -214,6 +218,16 @@ class EventViewTableViewCell: UITableViewCell {
         contentImage.layer.shadowOffset = shadowOffset
         cellView.addSubview(contentImage)
         
+        //Status View Layout
+        statusView = UIView(frame: CGRect(x:10, y:10, width:100, height:30))
+        statusView.backgroundColor = UIColor.yellow
+        statusView.isHidden = true
+        cellView.addSubview(statusView)
+        
+        
+        statusLabel = createLabel(CGRect(x: 10, y: 0, width: 100, height: 30), text: "", alignment: .left, textColor: textColorDark)
+        statusLabel.font = UIFont(name: fontName, size: FONTSIZENormal)
+        statusView.addSubview(statusLabel)
         
         featuredLabel = createLabel(CGRect(x: 0, y: 0, width: 70, height: 20), text: "Featured", alignment: .center, textColor: textColorLight)
         featuredLabel.font = UIFont(name: fontName, size: FONTSIZEMedium)
