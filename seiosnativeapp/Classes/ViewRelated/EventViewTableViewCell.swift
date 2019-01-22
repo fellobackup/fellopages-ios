@@ -225,7 +225,7 @@ class EventViewTableViewCell: UITableViewCell {
         cellView.addSubview(statusView)
         
         
-        statusLabel = createLabel(CGRect(x: 10, y: 0, width: 100, height: 30), text: "", alignment: .left, textColor: textColorDark)
+        statusLabel = createLabel(CGRect(x: 0, y: 0, width: 100, height: 30), text: "", alignment: .center, textColor: textColorDark)
         statusLabel.font = UIFont(name: fontName, size: FONTSIZENormal)
         statusView.addSubview(statusLabel)
         

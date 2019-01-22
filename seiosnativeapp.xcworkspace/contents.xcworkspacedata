@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:seiosnativeapp.xcodeproj">
+      location = "group:/Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/@Fellopage$2017!.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

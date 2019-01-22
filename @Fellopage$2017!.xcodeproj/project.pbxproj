@@ -3050,7 +3050,7 @@
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = G8PXJBZ6GK;
 						LastSwiftMigration = 0940;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -3077,7 +3077,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = G8PXJBZ6GK;
 						LastSwiftMigration = 0940;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -3092,7 +3092,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EB7DF5781A42921C004628E7 /* Build configuration list for PBXProject "seiosnativeapp" */;
+			buildConfigurationList = EB7DF5781A42921C004628E7 /* Build configuration list for PBXProject "@Fellopage$2017!" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -4148,8 +4148,8 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = seiosnativeapp/seiosnativeapp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = G8PXJBZ6GK;
@@ -4169,8 +4169,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fellopages.app;
 				PRODUCT_NAME = seiosnativeapp;
-				PROVISIONING_PROFILE = "9373068a-c463-44a4-865f-7cd43d6c7d21";
-				PROVISIONING_PROFILE_SPECIFIER = 1dist_fello;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/seiosnativeapp/seiosnativeapp-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4192,8 +4192,8 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = seiosnativeapp/seiosnativeapp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = G8PXJBZ6GK;
 				ENABLE_BITCODE = NO;
@@ -4213,8 +4213,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fellopages.app;
 				PRODUCT_NAME = seiosnativeapp;
-				PROVISIONING_PROFILE = "9373068a-c463-44a4-865f-7cd43d6c7d21";
-				PROVISIONING_PROFILE_SPECIFIER = 1dist_fello;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/seiosnativeapp/seiosnativeapp-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -4292,8 +4292,9 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = share/share.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = G8PXJBZ6GK;
@@ -4303,8 +4304,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fellopages.app.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06fe0abb-180d-4d37-a64c-8dcbded200dd";
-				PROVISIONING_PROFILE_SPECIFIER = 2dist_fello;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -4322,8 +4323,9 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = share/share.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Canonigo Enterprise, LLC (G8PXJBZ6GK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
@@ -4335,8 +4337,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fellopages.app.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06fe0abb-180d-4d37-a64c-8dcbded200dd";
-				PROVISIONING_PROFILE_SPECIFIER = 2dist_fello;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -4348,7 +4350,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB7DF5781A42921C004628E7 /* Build configuration list for PBXProject "seiosnativeapp" */ = {
+		EB7DF5781A42921C004628E7 /* Build configuration list for PBXProject "@Fellopage$2017!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB7DF59D1A42921D004628E7 /* Debug */,
