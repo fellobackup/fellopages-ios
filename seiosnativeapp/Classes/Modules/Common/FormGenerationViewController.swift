@@ -2769,6 +2769,7 @@ var videoDuration : Double = 0.00
         self.navigationController?.pushViewController(presentedVC, animated: false)
 
     }
+    
 
     func submitForm(_ cell: FXFormFieldCellProtocol)
     {
@@ -3008,6 +3009,7 @@ var videoDuration : Double = 0.00
         
         if (self.contentType != nil && self.contentType == "listings") || (self.contentType != nil && self.contentType == "advancedevents"){
             
+            
             if ((form.valuesByKey["title"] == nil) || (form.valuesByKey["title"] as! String) == ""){
                 if self.contentType != nil && contentType == "advancedevents"
                 {
@@ -3036,7 +3038,6 @@ var videoDuration : Double = 0.00
                     }
                     //error = NSLocalizedString("Please enter \(contentType!) description.", comment: "")
                 }
-                
             }
             
             if ((form.valuesByKey["category_id"] == nil) || (form.valuesByKey["category_id"] as! String) == "") &&  error == ""{
@@ -3049,9 +3050,37 @@ var videoDuration : Double = 0.00
                     error = NSLocalizedString("Please enter \(contentType!) category.", comment: "")
                 }
                 
-                
             }
             
+            if (form.valuesByKey["starttime"] as? Date == nil || (form.valuesByKey["endtime"]) as? Date == nil) && error == ""{
+                if self.contentType != nil && contentType == "advancedevents"{
+                    error = NSLocalizedString("Invalid Time", comment: "")
+                }
+            }
+            if let startTime = form.valuesByKey["starttime"] as? Date{
+                if let endTime = form.valuesByKey["endtime"] as? Date{
+                    if self.contentType != nil && contentType == "advancedevents"{
+                        if endTime < startTime && error == ""{
+                            error = NSLocalizedString("Invalid Time", comment: "")
+                        }
+                    }
+                }
+            }
+            
+            if (form.valuesByKey["phone"] == nil) || (form.valuesByKey["phone"] as! String == "") && error == ""{
+                if self.contentType != nil && contentType == "advancedevents"{
+                    error = NSLocalizedString("Enter Phone", comment: "")
+                }
+            }
+         
+            if let email = form.valuesByKey["email"] as? String{
+                if checkValidEmail(email) == false && error == ""{
+                    if self.contentType != nil && contentType == "advancedevents"{
+                        error = NSLocalizedString("Enter Email", comment: "")
+                    }
+                }
+            }
+           
             
 //            if (self.contentType != nil && self.contentType == "advancedevents"){
 //                print("=====name4======")

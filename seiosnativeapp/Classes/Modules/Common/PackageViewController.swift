@@ -82,7 +82,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         
     
     }
-
+   
     override func viewWillAppear(_ animated: Bool)
     {
         view.backgroundColor = bgColor
@@ -406,20 +406,26 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         if let guttermenu = packageInfo["menu"] as? NSArray
         {
             self.contentGutterMenu = guttermenu as NSArray
-
+            
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
             for menu in contentGutterMenu
             {
                 if let menuItem = menu as? NSDictionary
                 {
+                    if menuItem["name"] as? String == "create"{
+                        if !auth_user {
+                            continue
+                        }
+                    }
+                    
                     alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in
                         let condition = menuItem["name"] as! String
                         
                         switch(condition)
                         {
+                            
                         case "create":
-                            
-                            
+                          
                             isCreateOrEdit = true
                             let presentedVC = FormGenerationViewController()
                             switch(self.contentType){
@@ -444,11 +450,12 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                                 presentedVC.url = menuItem["url"] as! String
                                 break
                             default:
+                                
                                 presentedVC.formTitle = NSLocalizedString("Create New Event", comment: "")
                                 if self.eventExtensionCheck == true {
                                     presentedVC.eventExtensionCheck = true
                                     let dict = (menuItem["urlParams"] as! NSDictionary) as! [AnyHashable : Any] as NSDictionary
-                                   let packageId = dict["package_id"] as! Int
+                                    let packageId = dict["package_id"] as! Int
                                     presentedVC.param = self.extensionParam//(menuItem["urlParams"] as! NSDictionary) as! [AnyHashable : Any] as NSDictionary
                                     presentedVC.url = self.extensionUrl //menuItem["url"] as! String
                                     presentedVC.packageId = packageId
@@ -460,7 +467,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                                 break
                             }
                             
-                           // presentedVC.param = (menuItem["urlParams"] as! NSDictionary) as! [AnyHashable : Any] as NSDictionary
+                            // presentedVC.param = (menuItem["urlParams"] as! NSDictionary) as! [AnyHashable : Any] as NSDictionary
                             presentedVC.contentType = self.contentType
                             
                             // Only for testing purpose to be updated later
@@ -473,7 +480,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                             }
                             
                             // Updation limit ends here
-
+                            
                             
                             if self.listingTypeId != nil{
                                 presentedVC.listingTypeId = self.listingTypeId

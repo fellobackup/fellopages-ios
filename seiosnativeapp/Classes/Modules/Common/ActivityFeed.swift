@@ -34,6 +34,7 @@ class ActivityFeed {
     var feed_Type :String?                  // Feed Type
     var feed_menus:NSArray?                 // Feed Gutter Menus
     var feed_footer_menus:NSDictionary?     // Feed Footer Menus
+    var save_feed:Bool?                     // Can Save Feed
     var comment:Bool?                       // CanComment
     var delete:Bool?                        // CanDelete
     var share:Bool?                         // CanShare
@@ -85,6 +86,7 @@ class ActivityFeed {
         comment = dictionary["can_comment"]  as? Bool
         delete = dictionary["can_delete"]  as? Bool
         share = dictionary["can_share"]  as? Bool
+        save_feed = dictionary["isSaveFeedOption"] as? Bool
         is_like = dictionary["is_like"]  as? Bool
         share_params_id = (dictionary["feed"] as! NSDictionary)["share_params_id"]  as? Int
         share_params_type = (dictionary["feed"] as! NSDictionary)["share_params_type"]  as? String

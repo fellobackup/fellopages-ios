@@ -692,6 +692,9 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
                                                 if self.fromPage == NSLocalizedString("Tickets", comment: ""){
                                                     self.navigationController?.popViewController(animated: false)
                                                 }
+                                                else if self.fromPage == NSLocalizedString("Package", comment: ""){
+                                                    self.navigationController?.popViewController(animated: false)
+                                                }
                                                 else{
                                                     return
                                                 }

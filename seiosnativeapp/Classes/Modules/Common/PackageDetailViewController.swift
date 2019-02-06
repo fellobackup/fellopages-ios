@@ -140,7 +140,16 @@ class PackageDetailViewController: UIViewController
    
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        if let tabBarObject = self.tabBarController?.tabBar
+        {
+            tabBarObject.isHidden = false
+        }
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        baseController.tabBar.items![1].isEnabled = true
+        baseController.tabBar.items![2].isEnabled = true
+        baseController.tabBar.items![3].isEnabled = true
+    }
     override func viewWillAppear(_ animated: Bool)
     {
         view.backgroundColor = bgColor
@@ -195,9 +204,34 @@ class PackageDetailViewController: UIViewController
         _ = self.navigationController?.popViewController(animated: true)
 
     }
-    
+    func showLoginOrSignUp(isLogin:Bool){
+        if isLogin{
+            let presentedVC = LoginScreenViewController()
+            presentedVC.fromPage = NSLocalizedString("Package", comment: "")
+            self.navigationController?.pushViewController(presentedVC, animated: true)
+        }
+        else{
+            let presentedVC = SignupViewController()
+            self.navigationController?.pushViewController(presentedVC, animated: true)
+        }
+    }
     @objc func send()
     {
+        if !auth_user {
+            NSLog("Not Login")
+            let alert = UIAlertController(title: nil, message: NSLocalizedString("Please login or create and account to proceed.", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Sign In", comment: ""), style: .default, handler: { _ in
+                self.showLoginOrSignUp(isLogin: true)
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Sign Up", comment: ""), style: .default, handler: { _ in
+                self.showLoginOrSignUp(isLogin: false)
+            }))
+            alert.addAction(UIAlertAction(title:  NSLocalizedString("Cancel",comment: ""), style: .cancel, handler: { _ in
+                NSLog("Cancel is clicked")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         redirect = 1
         isCreateOrEdit = true
         let presentedVC = FormGenerationViewController()

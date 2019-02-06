@@ -208,6 +208,8 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+     
         NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
         tableViewFrameType = "AdvanceActivityFeedViewController"
         if UserDefaults.standard.string(forKey: "isAppRated") != nil
@@ -2108,13 +2110,15 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             if packagesEnabled == 1
             {
                 isCreateOrEdit = true
-                let presentedVC = PackageViewController()
-                presentedVC.contentType = "advancedevents"
-                presentedVC.url = "advancedevents/packages"
-                presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-                let nativationController = UINavigationController(rootViewController: presentedVC)
-                self.present(nativationController, animated:false, completion: nil)
-                
+                let presentedVC = AdvancedEventViewController()
+//                presentedVC.contentType = "advancedevents"
+//                presentedVC.url = "advancedevents/packages"
+//                presentedVC.fromPage = NSLocalizedString("Home", comment: "")
+                presentedVC.fromTab = true
+                self.navigationController?.pushViewController(presentedVC, animated: true)
+//                presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//                let nativationController = UINavigationController(rootViewController: presentedVC)
+//                self.present(nativationController, animated:false, completion: nil)
             }
             else
             {
@@ -3105,6 +3109,9 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             if feed.comment != nil{
                 newDictionary["comment"] = feed.comment
             }
+            if feed.save_feed != nil{
+                newDictionary["save_feed"] = feed.save_feed
+            }
             if feed.delete != nil{
                 newDictionary["delete"] = feed.delete
             }
@@ -3367,6 +3374,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                     self.feedObj.tableView.tableFooterView?.isHidden = true
                     
                     // On Success Update Feeds
+
                     if msg
                     {
                         // If Message in Response show the Message

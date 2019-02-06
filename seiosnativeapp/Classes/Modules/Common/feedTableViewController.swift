@@ -54,6 +54,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
     var feedShowingFrom:String = ""
     var RedirectText : String!
     var listingTitle:String!
+    var footerMenu:NSDictionary!
    // var imageView : UIImageView!
     var lastContentOffset: CGFloat = 0
     var listingId:Int!
@@ -82,7 +83,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
     var shareDescription : String!
     var coverImageUrl : String!
     
-    
+    var saveFeedButton:UIButton!
     var extraMenuLeft:UIButton!
     var extraMenuRight:UIButton!
     var headerHeight:CGFloat = 0
@@ -3701,6 +3702,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             self.maxid = 0
                         }
                         // Update Feed Gutter Menu
+                        print(currentCell)
                         self.updateFeedMenu(parameter: dic["urlParams"] as! NSDictionary, url:dic["url"] as! String,feedIndex: currentCell)
                     }
                 }
@@ -4271,6 +4273,11 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 menuCount = menuCount + 1
                 menuSequence = menuSequence + ["share"]
             }
+//            if activityFeed["save_feed"] as? Bool == true{
+//                menuCount = menuCount + 1
+//                menuSequence = menuSequence + ["save_feed"]
+//            }
+            
             
             // Find out the Menu Width
             let menuItemWidth:CGFloat = (cell.cellView.bounds.width - 40)/CGFloat(menuCount)
@@ -4386,7 +4393,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         title = (feed_menu["share"] as! NSDictionary)["label"] as! String
                         icon = "share"
                         noshareMenu = false
-                        let menu = createButton(CGRect(x: 20 + origin_x,y: 0, width: menuItemWidth, height: 40), title: "\(icon)", border: false,bgColor: false, textColor: iconColor)
+                        let menu = createButton(CGRect(x: 20 + origin_x,y: 0, width: menuItemWidth - 5, height: 40), title: "\(icon)", border: false,bgColor: false, textColor: iconColor)
                         menu.tag = row
                         menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
                         menu.setTitle(" \(title)", for: UIControlState.normal)
@@ -4401,7 +4408,33 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         menu.backgroundColor = textColorLight
                         menu.addTarget(self, action: #selector(FeedTableViewController.feedMenuShare(sender:)), for: .touchUpInside)
                         cell.cellMenu.addSubview(menu)
+                        origin_x += menuItemWidth
+                    }
+                case "save_feed":
+                    if feed_menu["feed"] != nil{
+                        if let dic = feed_menu["feed"] as? NSDictionary{
+                            self.footerMenu = dic
+                            title = (feed_menu["feed"] as! NSDictionary)["label"] as! String
+                            icon = "save-link"
+                            saveFeedButton = createButton(CGRect(x: 20 + origin_x,y: 0, width: menuItemWidth, height: 40), title: "\(icon)", border: false,bgColor: false, textColor: iconColor)
+                            saveFeedButton.tag = row
+                            saveFeedButton.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
+                            saveFeedButton.setTitle(" \(title)", for: UIControlState.normal)
+                            saveFeedButton.titleLabel?.textColor = iconColor
+                            saveFeedButton.tintColor = textColorMedium
+                            saveFeedButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                            if menuSequence.count == 1{
+                                saveFeedButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                            }
+                            let image = UIImage(named: "\(icon)")
+                            saveFeedButton.tag = row
+                            saveFeedButton.setImage(image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+                            saveFeedButton.backgroundColor = textColorLight
                         
+                            saveFeedButton.addTarget(self, action: #selector(FeedTableViewController.saveFeedAction(sender:)), for: .touchUpInside)
+    
+                            cell.cellMenu.addSubview(saveFeedButton)
+                        }
                     }
                 default:
                     print("Error")
@@ -5096,8 +5129,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                // })
                                
                                 
-                          //  self.tableView.reloadData()
-                            
+                            self.tableView.reloadData()
                             
                             self.delegate?.reloaddata()
                             }
@@ -6803,6 +6835,21 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         // add
         self.navigationController?.pushViewController(presentedVC, animated: true)
         
+    }
+    
+    // Save feed button at the footer
+    @objc func saveFeedAction(sender:UIButton){
+        if let feed = globalArrayFeed[sender.tag] as? NSDictionary{
+            if let feed_menu = feed["feed_footer_menus"] as? NSDictionary{
+                if let  dic = feed_menu["feed"] as? NSDictionary{
+                    self.updateFeedMenu(parameter: dic["urlParams"] as! NSDictionary, url:dic["url"] as! String,feedIndex: sender.tag)
+                }
+            }
+        }
+//        if let dic = self.footerMenu as? NSDictionary {
+//            print(sender.tag)
+//            self.updateFeedMenu(parameter: dic["urlParams"] as! NSDictionary, url:dic["url"] as! String,feedIndex: sender.tag)
+//        }
     }
     
     // ActivityFeed Share Option

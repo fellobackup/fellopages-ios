@@ -720,3 +720,9 @@ Come join our community.. Showcase your events, connect and expand your network.
 "Please login or create and account to proceed." = "Please login or create and account to proceed.";
 "Trial" = "Trial";
 "Expired" = "Expired";
+"Timezone" = "(GMT)";
+"Package" = "Package";
+"Home" = "Home";
+"Invalid Time" = "You have entered an invalid time.";
+"Enter Phone" = "Please enter phone number.";
+"Enter Email" = "Please enter a valid email address.";

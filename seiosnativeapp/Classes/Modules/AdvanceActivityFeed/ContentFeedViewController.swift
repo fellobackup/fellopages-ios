@@ -1350,6 +1350,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 let bookNow = createButton(CGRect(x:5,y:originY,width:self.rsvp.bounds.width-15,height:ButtonHeight), title: NSLocalizedString("Register", comment: ""), border: false, bgColor: false, textColor: navColor)
                 bookNow.backgroundColor = lightBgColor
                 bookNow.layer.borderWidth = borderWidth
+                bookNow.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
                 bookNow.layer.borderColor = navColor.cgColor
                 bookNow.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                 bookNow.tag = 15
@@ -1778,6 +1779,11 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         origin_y += 70
         let location1 = response["location"] as? String
         let categ1 = response["category_title"] as? String
+        var timezone =  ""
+        
+        if let strTimezone = response["timezone"] as? String{
+            timezone = NSLocalizedString("Timezone", comment: "") + ": " + strTimezone
+        }
         if location1 != "" && location1 != nil{
             for event in eventInfoSequence{
                 eventInfo1 = TTTAttributedLabel(frame: CGRect(x: 2 * PADING, y: origin_y, width: self.view.bounds.width/2 - PADING, height: 55))
@@ -1801,17 +1807,25 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 eventInfo2.textColor = textColorMedium
                 self.feedObj.tableView.addSubview(eventInfo2)
                 
-                
-                
                 var tempInfo = ""
                 var locationInfo = ""
                 var location = ""
                 var boldText  = ""
+                
+                
                 if event == "starttime"{
                     if let info = response["\(event)"] as? String{
-                        
                         let date = dateDifferenceWithEventTime(info)
                         var dateArray = date.components(separatedBy: ", ")
+                        
+                        let dateFormatterFrom = DateFormatter()
+                        dateFormatterFrom.dateFormat = "HH:mm"
+                      
+                        let strTimeFrom = dateArray[3]
+                        let timeFrom = dateFormatterFrom.date(from: strTimeFrom)
+                        dateFormatterFrom.dateFormat = "h:mm a"
+                        let newTimeFrom = dateFormatterFrom.string(from: timeFrom!)
+                     
                         //                    boldText += dateArray[0]
                         if let info1 = response["endtime"] as? String{
                             let date1 = dateDifferenceWithEventTime(info1)
@@ -1820,10 +1834,16 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                             
                             tempInfo = "\(boldText)"
                             
+                            let dateFormatterTo = DateFormatter()
+                            dateFormatterTo.dateFormat = "HH:mm"
+                            let strTimeTo = dateArray1[3]
+                            let timeTo = dateFormatterTo.date(from: strTimeTo)
+                            dateFormatterTo.dateFormat = "h:mm a"
+                            let newTimeTo = dateFormatterTo.string(from: timeTo!)
                             
                            // tempInfo = "\(boldText)"
                             boldText += NSLocalizedString("\u{f073}  Date\n\n", comment: "")
-                            boldText += "\(dateArray[1]) \(dateArray[0]) \(dateArray[2]) at \(dateArray[3]) to \n\(dateArray1[1]) \(dateArray1[0]) \(dateArray1[2]) at \(dateArray1[3]) "
+                            boldText += "\(dateArray[1]) \(dateArray[0]) \(dateArray[2]) at \(newTimeFrom) to \n\(dateArray1[1]) \(dateArray1[0]) \(dateArray1[2]) at \(newTimeTo) \n\n\(timezone)"
                             tempInfo += boldText
                         }
                         var string :String! = ""
@@ -2041,17 +2061,30 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     if let info = response["\(event)"] as? String{
                         
                         let date = dateDifferenceWithEventTime(info)
-                        
-                        
                         var dateArray = date.components(separatedBy: ", ")
+                        
+                        let dateFormatterFrom = DateFormatter()
+                        dateFormatterFrom.dateFormat = "HH:mm"
+                        
+                        let strTimeFrom = dateArray[3]
+                        let timeFrom = dateFormatterFrom.date(from: strTimeFrom)
+                        dateFormatterFrom.dateFormat = "h:mm a"
+                        let newTimeFrom = dateFormatterFrom.string(from: timeFrom!)
                         
                         if let info1 = response["endtime"] as? String{
                             let date1 = dateDifferenceWithEventTime(info1)
                             var dateArray1 = date1.components(separatedBy: ", ")
                             
+                            let dateFormatterTo = DateFormatter()
+                            dateFormatterTo.dateFormat = "HH:mm"
+                            let strTimeTo = dateArray1[3]
+                            let timeTo = dateFormatterTo.date(from: strTimeTo)
+                            dateFormatterTo.dateFormat = "h:mm a"
+                            let newTimeTo = dateFormatterTo.string(from: timeTo!)
+                            
                             tempInfo = "\(boldText)"
                             boldText += NSLocalizedString("\u{f073}  Date\n\n", comment: "")
-                            boldText += "\(dateArray[1]) \(dateArray[0]) \(dateArray[2]) at \(dateArray[3]) to \(dateArray1[1]) \(dateArray1[0]) \(dateArray1[2]) at \(dateArray1[3]) "
+                            boldText += "\(dateArray[1]) \(dateArray[0]) \(dateArray[2]) at \(newTimeFrom) to \(dateArray1[1]) \(dateArray1[0]) \(dateArray1[2]) at \(newTimeTo) \n\n\(timezone)"
                             tempInfo += boldText
                         }
                         var string :String! = ""
@@ -3106,7 +3139,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                 self.feedObj.tableView.addSubview(self.rsvp)
                                                 
                                                 
-                                                rsvpOption = createButton(CGRect(x: 5, y: 2, width: self.rsvp.bounds.width-15, height: ButtonHeight-PADING), title: "", border: true,bgColor: false, textColor: textColorLight)
+                                                rsvpOption = createButton(CGRect(x: 5, y: 2, width: self.rsvp.bounds.width-15, height: ButtonHeight - PADING), title: "", border: true,bgColor: false, textColor: textColorLight)
                                                 rsvpOption.backgroundColor = lightBgColor
                                                 
                                                 rsvpOption.layer.cornerRadius = rsvpOption.frame.size.width / 2;
@@ -3114,9 +3147,10 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                 rsvpOption.layer.borderWidth = 2.5
                                                 rsvpOption.layer.masksToBounds = true
                                                 rsvpOption.layer.cornerRadius = 5.0
+                                              
                                                 
                                                 rsvpOption.contentHorizontalAlignment = .center
-                                                rsvpOption.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
+                                                rsvpOption.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
                                                 rsvpOption.layer.borderWidth = borderWidth
                                                 rsvpOption.layer.borderColor = navColor.cgColor
                                                 rsvpOption.isHidden = true
@@ -3746,6 +3780,10 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in
                             let condition = menuItem["name"] as! String
                             switch(condition){
+                            case "dashboard":
+                                if let url = URL(string: self.contentUrl){
+                                    UIApplication.shared.open(url, options: [:])
+                                }
                             case "edit":
                                 confirmationAlert = false
                                 isCreateOrEdit = false
@@ -4043,12 +4081,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 self.view.makeToast(unconditionalMessage, duration: 5, position: "bottom")
                             }
                             
-                            if confirmationAlert == true {
-                                displayAlertWithOtherButton(confirmationTitle, message: message, otherButton: confirmationTitle) { () -> () in
-                                    self.updateContentAction(param as NSDictionary,url: url)
-                                }
-                                self.present(alert, animated: true, completion: nil)
-                            }
+//                            if confirmationAlert == true {
+//                                displayAlertWithOtherButton(confirmationTitle, message: message, otherButton: confirmationTitle) { () -> () in
+//                                    self.updateContentAction(param as NSDictionary,url: url)
+//                                }
+//                                self.present(alert, animated: true, completion: nil)
+//                            }
                         }))
                     }
                     

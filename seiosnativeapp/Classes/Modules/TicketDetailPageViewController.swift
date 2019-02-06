@@ -217,18 +217,35 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         let postedDate = startdatetitle
         let date = dateDifferenceWithEventTime(postedDate)
         var DateC = date.components(separatedBy: ", ")
+        let dateFormatterFrom = DateFormatter()
+        dateFormatterFrom.dateFormat = "HH:mm"
+        
+        let strTimeFrom = DateC[3]
+        let timeFrom = dateFormatterFrom.date(from: strTimeFrom)
+        dateFormatterFrom.dateFormat = "h:mm a"
+        let newTimeFrom = dateFormatterFrom.string(from: timeFrom!)
+        
         tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
         if DateC.count > 3{
-            tempInfo += " at \(DateC[3])"
+            tempInfo += " at \(newTimeFrom)"
         }
         
         var tempInfo1 = ""
         let postedDate1 = enddatetitle
         let date1 = dateDifferenceWithEventTime(postedDate1)
         var DateC1 = date1.components(separatedBy: ", ")
+        
+        let dateFormatterTo = DateFormatter()
+        dateFormatterTo.dateFormat = "HH:mm"
+        
+        let strTimeTo = DateC1[3]
+        let timeTo = dateFormatterTo.date(from: strTimeTo)
+        dateFormatterTo.dateFormat = "h:mm a"
+        let newTimeTo = dateFormatterTo.string(from: timeTo!)
+        
         tempInfo1 += "\(DateC1[1]) \(DateC1[0]) \(DateC1[2])"
         if DateC1.count > 3{
-            tempInfo1 += " at \(DateC1[3])"
+            tempInfo1 += " at \(newTimeTo)"
         }
         
         label3 = createLabel(CGRect(x:Padding, y:getBottomEdgeY(inputView: label2) + spacePadding,width:(view.bounds.width - 20) , height:20), text: "\(tempInfo) - \(tempInfo1)", alignment: .left, textColor: textColorMedium)

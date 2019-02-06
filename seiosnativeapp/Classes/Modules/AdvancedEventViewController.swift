@@ -162,6 +162,8 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
     var coachMarksController = CoachMarksController()
     var targetCheckValue : Int = 1
     var targetSeeAllValue : Int = 1
+    var fromPage: String!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -685,6 +687,29 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         navigationController?.navigationBar.isHidden = false
         setNavigationImage(controller: self)
         
+        if fromPage != nil{
+            if fromPage == NSLocalizedString("Home", comment: ""){
+               
+                let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+                leftNavView.backgroundColor = UIColor.clear
+                let tapView = UITapGestureRecognizer(target: self, action: #selector(AdvancedEventViewController.cancel))
+                leftNavView.addGestureRecognizer(tapView)
+                let backIconImageView = createImageView(CGRect(x: 0, y: 12, width: 22, height: 22), border: false)
+                backIconImageView.image = UIImage(named: "back_icon")!.maskWithColor(color: textColorPrime)
+                leftNavView.addSubview(backIconImageView)
+
+                let barButtonItem = UIBarButtonItem(customView: leftNavView)
+
+                self.navigationItem.leftBarButtonItem = barButtonItem
+            }
+        }
+        
+    }
+    @objc func cancel()
+    {
+        print("cancel")
+        self.dismiss(animated: true, completion: nil)
+        
     }
     func Customnavigation()
     {
@@ -779,7 +804,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
     {
         timerFB.invalidate()
         myeventTableView.tableFooterView?.isHidden = true
-eventTableView.tableFooterView?.isHidden = true
+        eventTableView.tableFooterView?.isHidden = true
         ticketTableView.tableFooterView?.isHidden = true
         
         self.title = ""
@@ -2749,7 +2774,15 @@ eventTableView.tableFooterView?.isHidden = true
                 
                 tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                 if DateC.count > 3{
-                    tempInfo += " at \(DateC[3])"
+                    let dateFormatterFrom = DateFormatter()
+                    dateFormatterFrom.dateFormat = "HH:mm"
+                    
+                    let strTime = DateC[3]
+                    let timeFrom = dateFormatterFrom.date(from: strTime)
+                    dateFormatterFrom.dateFormat = "h:mm a"
+                    let newTime = dateFormatterFrom.string(from: timeFrom!)
+                    
+                    tempInfo += " at \(newTime)"
                 }
                 
                 cell.labMessage.frame = CGRect(x:cell.imgUser.bounds.width + 10, y:cell.labTitle.frame.origin.y + cell.labTitle.bounds.height + 5,width:(UIScreen.main.bounds.width - 75) , height:100)
@@ -3130,7 +3163,16 @@ eventTableView.tableFooterView?.isHidden = true
                             var DateC = date.components(separatedBy: ", ")
                             tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                             if DateC.count > 3{
-                                tempInfo += " at \(DateC[3]) "
+                                
+                                let dateFormatterFrom = DateFormatter()
+                                dateFormatterFrom.dateFormat = "HH:mm"
+                                
+                                let strTime = DateC[3]
+                                let timeFrom = dateFormatterFrom.date(from: strTime)
+                                dateFormatterFrom.dateFormat = "h:mm a"
+                                let newTime = dateFormatterFrom.string(from: timeFrom!)
+                                
+                                tempInfo += " at \(newTime) "
                             }
                             if eventInfo2["isRepeatEvent"] as? Int == 1
                             {
@@ -3545,7 +3587,14 @@ eventTableView.tableFooterView?.isHidden = true
                         var DateC = date.components(separatedBy: ", ")
                         tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                         if DateC.count > 3{
-                            tempInfo += " at \(DateC[3]) "
+                            let dateFormatterFrom = DateFormatter()
+                            dateFormatterFrom.dateFormat = "HH:mm"
+                            
+                            let strTime = DateC[3]
+                            let timeFrom = dateFormatterFrom.date(from: strTime)
+                            dateFormatterFrom.dateFormat = "h:mm a"
+                            let newTime = dateFormatterFrom.string(from: timeFrom!)
+                            tempInfo += " at \(newTime) "
                         }
                         if eventInfo["isRepeatEvent"] as? Int == 1
                         {
@@ -3878,7 +3927,14 @@ eventTableView.tableFooterView?.isHidden = true
                             var DateC = date.components(separatedBy: ", ")
                             tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                             if DateC.count > 3{
-                                tempInfo += " at \(DateC[3]) "
+                                let dateFormatterFrom = DateFormatter()
+                                dateFormatterFrom.dateFormat = "HH:mm"
+                                
+                                let strTime = DateC[3]
+                                let timeFrom = dateFormatterFrom.date(from: strTime)
+                                dateFormatterFrom.dateFormat = "h:mm a"
+                                let newTime = dateFormatterFrom.string(from: timeFrom!)
+                                tempInfo += " at \(newTime) "
                             }
                             if eventInfo2["isRepeatEvent"] as? Int == 1
                             {
@@ -4254,7 +4310,14 @@ eventTableView.tableFooterView?.isHidden = true
                                 var DateC = date.components(separatedBy: ", ")
                                 tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                                 if DateC.count > 3{
-                                    tempInfo += " at \(DateC[3]) "
+                                    let dateFormatterFrom = DateFormatter()
+                                    dateFormatterFrom.dateFormat = "HH:mm"
+                                    
+                                    let strTime = DateC[3]
+                                    let timeFrom = dateFormatterFrom.date(from: strTime)
+                                    dateFormatterFrom.dateFormat = "h:mm a"
+                                    let newTime = dateFormatterFrom.string(from: timeFrom!)
+                                    tempInfo += " at \(newTime) "
                                 }
                                 if eventInfo2["isRepeatEvent"] as? Int == 1
                                 {
@@ -4642,7 +4705,14 @@ eventTableView.tableFooterView?.isHidden = true
                             var DateC = date.components(separatedBy: ", ")
                             tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                             if DateC.count > 3{
-                                tempInfo += " at \(DateC[3]) "
+                                let dateFormatterFrom = DateFormatter()
+                                dateFormatterFrom.dateFormat = "HH:mm"
+                                
+                                let strTime = DateC[3]
+                                let timeFrom = dateFormatterFrom.date(from: strTime)
+                                dateFormatterFrom.dateFormat = "h:mm a"
+                                let newTime = dateFormatterFrom.string(from: timeFrom!)
+                                tempInfo += " at \(newTime) "
                             }
                             if eventInfo["isRepeatEvent"] as? Int == 1
                             {
@@ -4946,7 +5016,14 @@ eventTableView.tableFooterView?.isHidden = true
                                 var DateC = date.components(separatedBy: ", ")
                                 tempInfo += "\(DateC[1]) \(DateC[0]) \(DateC[2])"
                                 if DateC.count > 3{
-                                    tempInfo += " at \(DateC[3]) "
+                                    let dateFormatterFrom = DateFormatter()
+                                    dateFormatterFrom.dateFormat = "HH:mm"
+                                    
+                                    let strTime = DateC[3]
+                                    let timeFrom = dateFormatterFrom.date(from: strTime)
+                                    dateFormatterFrom.dateFormat = "h:mm a"
+                                    let newTime = dateFormatterFrom.string(from: timeFrom!)
+                                    tempInfo += " at \(newTime) "
                                 }
                                 if eventInfo2["isRepeatEvent"] as? Int == 1
                                 {
@@ -6629,27 +6706,27 @@ eventTableView.tableFooterView?.isHidden = true
                                 }
                                 if self.showOnlyMyContent == false
                                 {
-                                    if (response["canCreate"] as! Bool == true)
-                                    {
-                                        
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
-                                        searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
-                                        addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
-                                        self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
-                                        
-                                        searchItem.tintColor = textColorPrime
-                                        addBlog.tintColor = textColorPrime
-                                        
-                                        self.showAppTour()
-                                    }
-                                    else
-                                    {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
-                                        
-                                        self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
-                                        searchItem.tintColor = textColorPrime
-                                    }
+//                                    if (response["canCreate"] as! Bool == true)
+//                                    {
+                                    
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+                                    searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
+                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
+                                    addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                    self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
+                                    
+                                    searchItem.tintColor = textColorPrime
+                                    addBlog.tintColor = textColorPrime
+                                    
+                                    self.showAppTour()
+//                                    }
+//                                    else
+//                                    {
+//                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+//
+//                                        self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
+//                                        searchItem.tintColor = textColorPrime
+//                                    }
                                     
                                     
                                     

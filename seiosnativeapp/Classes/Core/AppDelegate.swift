@@ -65,7 +65,7 @@ var firstCompletionTime = true
 var arrRecentSearchOptions = [String]()
 //let kMapsAPIKey = "AIzaSyB7oOFvRUnqAmYj-Pe9B8KUNFZ7ffmIkX4"
 let kMapsAPIKey = "AIzaSyC3aV5YJDASbdHaUQppnlekizpTWn0ywsI"
-
+let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
