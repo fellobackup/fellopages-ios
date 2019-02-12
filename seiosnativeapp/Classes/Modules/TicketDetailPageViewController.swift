@@ -742,6 +742,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                 }
             }
             
+            print(parameters)
             parameters["event_id"] = "\(eventid)"
             let path = "advancedeventtickets/tickets/tickets-buy"
             

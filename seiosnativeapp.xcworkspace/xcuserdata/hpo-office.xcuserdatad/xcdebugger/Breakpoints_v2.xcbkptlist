@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0290999"
+            timestampString = "571566351.942953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4392"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.9141591"
+            timestampString = "571220748.5679539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.914239"
+            timestampString = "571220748.568009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "389"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.914304"
+            timestampString = "571220748.56805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3309"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.999072"
+            timestampString = "571566351.94309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.999138"
+            timestampString = "571566351.943572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5224"
-            endingLineNumber = "5224"
+            startingLineNumber = "5226"
+            endingLineNumber = "5226"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,13 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.830017"
+            timestampString = "571139278.098721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "409"
             endingLineNumber = "409"
-            landmarkName = "showHomePage2()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.91579"
+            timestampString = "571220748.569613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.999298"
+            timestampString = "571566351.944423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2848"
-            endingLineNumber = "2848"
+            startingLineNumber = "2850"
+            endingLineNumber = "2850"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.999352"
+            timestampString = "571566351.944864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2953"
-            endingLineNumber = "2953"
+            startingLineNumber = "2955"
+            endingLineNumber = "2955"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.9994119"
+            timestampString = "571566351.945186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4122"
-            endingLineNumber = "4122"
+            startingLineNumber = "4124"
+            endingLineNumber = "4124"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.999462"
+            timestampString = "571566351.94549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4126"
-            endingLineNumber = "4126"
+            startingLineNumber = "4128"
+            endingLineNumber = "4128"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694403.999509"
+            timestampString = "571566351.945793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4490"
-            endingLineNumber = "4490"
+            startingLineNumber = "4492"
+            endingLineNumber = "4492"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.411842"
+            timestampString = "571311677.116882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4874"
-            endingLineNumber = "4874"
+            startingLineNumber = "4876"
+            endingLineNumber = "4876"
             landmarkName = "openProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.411908"
+            timestampString = "571311677.1169339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "188"
@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.411953"
+            timestampString = "571311677.1169749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "480"
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.411994"
+            timestampString = "571311677.117016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3401"
-            endingLineNumber = "3401"
+            startingLineNumber = "3402"
+            endingLineNumber = "3402"
             landmarkName = "browseFeed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412035"
+            timestampString = "571311677.117085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2701"
@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412075"
+            timestampString = "571311677.117128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2713"
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4121161"
+            timestampString = "571311677.11717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3641"
-            endingLineNumber = "3641"
+            startingLineNumber = "3642"
+            endingLineNumber = "3642"
             landmarkName = "showMainGutterMenu()"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412156"
+            timestampString = "571311677.117241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3105"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4121929"
+            timestampString = "571311677.117311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2879"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412233"
+            timestampString = "571311677.117393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2933"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412272"
+            timestampString = "571311677.11744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1342"
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412311"
+            timestampString = "571311677.117485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4394"
-            endingLineNumber = "4394"
+            startingLineNumber = "4396"
+            endingLineNumber = "4396"
             landmarkName = "createEvent(_:title:startDate:endDate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4123501"
+            timestampString = "571311677.117528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4517"
-            endingLineNumber = "4517"
+            startingLineNumber = "4519"
+            endingLineNumber = "4519"
             landmarkName = "updateContentAction(_:url:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412388"
+            timestampString = "571311677.1175719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "499"
@@ -522,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.41247"
+            timestampString = "571311677.1176161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "509"
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.41251"
+            timestampString = "571311677.117661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1663"
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.41255"
+            timestampString = "571311677.1177059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3164"
-            endingLineNumber = "3164"
+            startingLineNumber = "3165"
+            endingLineNumber = "3165"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -566,15 +566,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412591"
+            timestampString = "571311677.11775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3161"
-            endingLineNumber = "3161"
+            startingLineNumber = "3162"
+            endingLineNumber = "3162"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -582,11 +582,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412631"
+            timestampString = "571311677.117794"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2691"
@@ -602,7 +602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412683"
+            timestampString = "571311677.117838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2698"
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412722"
+            timestampString = "571311677.117882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4123"
-            endingLineNumber = "4123"
+            startingLineNumber = "4125"
+            endingLineNumber = "4125"
             landmarkName = "RSVPJOINAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.030529"
+            timestampString = "571630774.737415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "739"
@@ -678,15 +678,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.030566"
+            timestampString = "571630774.73785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.0306"
+            timestampString = "571630774.73806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -714,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.030634"
+            timestampString = "571630774.738271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "358"
@@ -730,7 +730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.03067"
+            timestampString = "571630774.7384681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "369"
@@ -746,7 +746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.030704"
+            timestampString = "571630774.738664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "550"
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.412833"
+            timestampString = "571311677.120795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4197"
-            endingLineNumber = "4197"
+            startingLineNumber = "4199"
+            endingLineNumber = "4199"
             landmarkName = "RSVPJOINAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,13 +778,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.830422"
+            timestampString = "571139278.1005501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "660"
             endingLineNumber = "660"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -794,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.0307961"
+            timestampString = "571630774.738889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
@@ -806,15 +806,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.0308321"
+            timestampString = "571630774.739086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "776"
-            endingLineNumber = "776"
+            startingLineNumber = "777"
+            endingLineNumber = "777"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -826,7 +826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.41291"
+            timestampString = "571311677.121788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3134"
@@ -842,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.918723"
+            timestampString = "571220748.573612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -858,7 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.412968"
+            timestampString = "571542902.055402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1503"
@@ -874,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.413012"
+            timestampString = "571542902.055786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1766"
@@ -922,45 +922,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.413075"
+            timestampString = "571311677.1219161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4780"
-            endingLineNumber = "4780"
+            startingLineNumber = "4782"
+            endingLineNumber = "4782"
             landmarkName = "shareItem()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "seiosnativeapp.ContentFeedViewController.shareItem() -&gt; ()"
-                  moduleName = "seiosnativeapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-                  timestampString = "570702377.4884"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "4780"
-                  endingLineNumber = "4780"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in seiosnativeapp.ContentFeedViewController.shareItem() -&gt; ()"
-                  moduleName = "seiosnativeapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-                  timestampString = "570702377.49087"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "4781"
-                  endingLineNumber = "4781"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -970,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.413116"
+            timestampString = "571542902.056177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
@@ -986,7 +954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.413155"
+            timestampString = "571542902.056513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "308"
@@ -1002,7 +970,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.032203"
+            timestampString = "571630774.739365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "712"
@@ -1018,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.919019"
+            timestampString = "571220748.573777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3554"
@@ -1034,7 +1002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
-            timestampString = "570702720.41322"
+            timestampString = "571550980.495666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "865"
@@ -1066,13 +1034,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.413275"
+            timestampString = "571288833.768689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1082,13 +1050,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.413662"
+            timestampString = "571288833.768733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
             endingLineNumber = "303"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1098,13 +1066,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.413919"
+            timestampString = "571288833.76877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1114,13 +1082,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.414163"
+            timestampString = "571288833.768805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1146,13 +1114,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.414418"
+            timestampString = "571542902.0572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1162,13 +1130,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.414832"
+            timestampString = "571542902.057718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "801"
             endingLineNumber = "801"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "generateForm()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1178,13 +1146,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4152139"
+            timestampString = "571542902.057968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1095"
             endingLineNumber = "1095"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "generateForm()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1194,13 +1162,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.415519"
+            timestampString = "571542902.058192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "722"
             endingLineNumber = "722"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "generateForm()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1210,13 +1178,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.415815"
+            timestampString = "571542902.05841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1157"
             endingLineNumber = "1157"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "generateForm()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1242,13 +1210,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.833154"
+            timestampString = "571139278.102012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "686"
             endingLineNumber = "686"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1274,7 +1242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.920355"
+            timestampString = "571220748.574104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1063"
@@ -1290,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.416289"
+            timestampString = "571311677.124263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4636"
-            endingLineNumber = "4636"
+            startingLineNumber = "4638"
+            endingLineNumber = "4638"
             landmarkName = "attributedLabel(_:didSelectLinkWithTransitInformation:)"
             landmarkType = "7">
             <Locations>
@@ -1306,11 +1274,11 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-                  timestampString = "570702377.5506541"
+                  timestampString = "571630776.143579"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "4636"
-                  endingLineNumber = "4636"
+                  startingLineNumber = "4639"
+                  endingLineNumber = "4639"
                   offsetFromSymbolStart = "678">
                </Location>
                <Location
@@ -1321,11 +1289,11 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-                  timestampString = "570702377.552718"
+                  timestampString = "571630776.1457061"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "4636"
-                  endingLineNumber = "4636"
+                  startingLineNumber = "4639"
+                  endingLineNumber = "4639"
                   offsetFromSymbolStart = "697">
                </Location>
             </Locations>
@@ -1338,7 +1306,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/DashboardViewController.swift"
-            timestampString = "570613483.920475"
+            timestampString = "571220748.574187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3383"
@@ -1418,7 +1386,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.002895"
+            timestampString = "571566351.94879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "391"
@@ -1434,7 +1402,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.03365"
+            timestampString = "571630774.739778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "692"
@@ -1450,7 +1418,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.033689"
+            timestampString = "571630774.739994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "694"
@@ -1466,7 +1434,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.033725"
+            timestampString = "571630774.740194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "669"
@@ -1482,13 +1450,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.833323"
+            timestampString = "571139278.10234"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "602"
             endingLineNumber = "602"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1498,13 +1466,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.833365"
+            timestampString = "571139278.102556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "638"
             endingLineNumber = "638"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1514,13 +1482,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.8334039"
+            timestampString = "571139278.102751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "653"
             endingLineNumber = "653"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1562,13 +1530,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.833451"
+            timestampString = "571139278.102946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "664"
             endingLineNumber = "664"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1578,13 +1546,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.833486"
+            timestampString = "571139278.103139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "668"
             endingLineNumber = "668"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1594,13 +1562,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/LoginScreenViewController.swift"
-            timestampString = "570443950.833521"
+            timestampString = "571139278.1034091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "712"
             endingLineNumber = "712"
-            landmarkName = "signInAction()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1610,7 +1578,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.0338269"
+            timestampString = "571630774.740448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -1754,13 +1722,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.416664"
+            timestampString = "571542902.059706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "975"
             endingLineNumber = "975"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "generateForm()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1770,13 +1738,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4170099"
+            timestampString = "571542902.0599329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "392"
             endingLineNumber = "392"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "getresponse()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1786,76 +1754,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.417313"
+            timestampString = "571542902.060151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3752"
             endingLineNumber = "3752"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.417629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.417927"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1126"
-            endingLineNumber = "1126"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.418227"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.418492"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3783"
-            endingLineNumber = "3783"
-            landmarkName = "showMainGutterMenu()"
+            landmarkName = "submitForm(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1866,13 +1770,109 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.418545"
+            timestampString = "571542902.0603811"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "918"
+            endingLineNumber = "918"
+            landmarkName = "generateForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
+            timestampString = "571542902.0606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1126"
+            endingLineNumber = "1126"
+            landmarkName = "generateForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
+            timestampString = "571288833.771988"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571311677.127828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3784"
+            endingLineNumber = "3784"
+            landmarkName = "showMainGutterMenu()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.UIAlertAction) -&gt; () in seiosnativeapp.ContentFeedViewController.showMainGutterMenu() -&gt; ()"
+                  moduleName = "seiosnativeapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+                  timestampString = "571630776.26524"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3784"
+                  endingLineNumber = "3784"
+                  offsetFromSymbolStart = "919">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.UIAlertAction) -&gt; () in seiosnativeapp.ContentFeedViewController.showMainGutterMenu() -&gt; ()"
+                  moduleName = "seiosnativeapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+                  timestampString = "571630776.267674"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3784"
+                  endingLineNumber = "3784"
+                  offsetFromSymbolStart = "931">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
+            timestampString = "571542902.060845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3426"
             endingLineNumber = "3426"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1882,13 +1882,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.418857"
+            timestampString = "571542902.061074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3681"
             endingLineNumber = "3681"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1898,13 +1898,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.419161"
+            timestampString = "571542902.0615031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3256"
             endingLineNumber = "3256"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1914,13 +1914,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.419468"
+            timestampString = "571542902.061974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3431"
             endingLineNumber = "3431"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1930,13 +1930,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.419771"
+            timestampString = "571542902.062224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3959"
             endingLineNumber = "3959"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1946,13 +1946,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.420077"
+            timestampString = "571542902.062481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3242"
             endingLineNumber = "3242"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1962,13 +1962,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.42038"
+            timestampString = "571542902.062704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3938"
             endingLineNumber = "3938"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1978,13 +1978,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.420687"
+            timestampString = "571542902.0629261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4049"
             endingLineNumber = "4049"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1994,13 +1994,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.421021"
+            timestampString = "571542902.063192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4060"
             endingLineNumber = "4060"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2010,13 +2010,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.421326"
+            timestampString = "571542902.063468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3616"
             endingLineNumber = "3616"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2026,13 +2026,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.421626"
+            timestampString = "571542902.063792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3335"
             endingLineNumber = "3335"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2042,13 +2042,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.421931"
+            timestampString = "571542902.064015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3514"
             endingLineNumber = "3514"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2074,13 +2074,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.422256"
+            timestampString = "571542902.06425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2816"
             endingLineNumber = "2816"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2090,13 +2090,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.422622"
+            timestampString = "571542902.064483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4030"
             endingLineNumber = "4030"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2106,13 +2106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.422924"
+            timestampString = "571542902.064708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3331"
             endingLineNumber = "3331"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2122,7 +2122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423232"
+            timestampString = "571542902.064961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2505"
@@ -2138,7 +2138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.42328"
+            timestampString = "571542902.065232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "518"
@@ -2154,7 +2154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.423321"
+            timestampString = "571311677.13168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2794"
@@ -2170,7 +2170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423371"
+            timestampString = "571542902.065774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "520"
@@ -2186,7 +2186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423409"
+            timestampString = "571542902.066031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "525"
@@ -2202,7 +2202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.4234461"
+            timestampString = "571542902.066372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3308"
@@ -2218,7 +2218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423483"
+            timestampString = "571542902.066609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3310"
@@ -2234,7 +2234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423519"
+            timestampString = "571542902.066837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3378"
@@ -2250,7 +2250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.036424"
+            timestampString = "571566351.95048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
@@ -2266,7 +2266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423578"
+            timestampString = "571542902.067078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3075"
@@ -2282,7 +2282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423617"
+            timestampString = "571542902.067302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3227"
@@ -2298,7 +2298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0369771"
+            timestampString = "571566351.950554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1754"
@@ -2314,7 +2314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.037019"
+            timestampString = "571566351.950598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7801"
@@ -2330,7 +2330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0370589"
+            timestampString = "571566351.950639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4332"
@@ -2346,7 +2346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.037099"
+            timestampString = "571566351.950678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4266"
@@ -2362,7 +2362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.037136"
+            timestampString = "571566351.950716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4246"
@@ -2378,7 +2378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.009632"
+            timestampString = "571566351.950754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "336"
@@ -2394,11 +2394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.009676"
+            timestampString = "571566351.951056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6085"
-            endingLineNumber = "6085"
+            startingLineNumber = "6087"
+            endingLineNumber = "6087"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2410,11 +2410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.0097131"
+            timestampString = "571566351.951354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6209"
-            endingLineNumber = "6209"
+            startingLineNumber = "6211"
+            endingLineNumber = "6211"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2426,11 +2426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.009748"
+            timestampString = "571566351.951642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6268"
-            endingLineNumber = "6268"
+            startingLineNumber = "6270"
+            endingLineNumber = "6270"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2442,11 +2442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.009784"
+            timestampString = "571566351.951932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6296"
-            endingLineNumber = "6296"
+            startingLineNumber = "6298"
+            endingLineNumber = "6298"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2458,11 +2458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.00982"
+            timestampString = "571566351.952224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3572"
-            endingLineNumber = "3572"
+            startingLineNumber = "3574"
+            endingLineNumber = "3574"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2474,11 +2474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.009855"
+            timestampString = "571566351.952509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6404"
-            endingLineNumber = "6404"
+            startingLineNumber = "6406"
+            endingLineNumber = "6406"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2490,11 +2490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.00989"
+            timestampString = "571566351.952804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3350"
-            endingLineNumber = "3350"
+            startingLineNumber = "3352"
+            endingLineNumber = "3352"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2506,11 +2506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.009926"
+            timestampString = "571566351.95309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3418"
-            endingLineNumber = "3418"
+            startingLineNumber = "3420"
+            endingLineNumber = "3420"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2522,7 +2522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.037613"
+            timestampString = "571566351.953414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3999"
@@ -2538,7 +2538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.423946"
+            timestampString = "571542902.067669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3452"
@@ -2570,7 +2570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
-            timestampString = "570702720.424003"
+            timestampString = "571542902.067916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3457"
@@ -2634,7 +2634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038227"
+            timestampString = "571566351.95353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4290"
@@ -2650,7 +2650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038271"
+            timestampString = "571566351.953573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4414"
@@ -2666,7 +2666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0383101"
+            timestampString = "571566351.953613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4446"
@@ -2682,7 +2682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038348"
+            timestampString = "571566351.953652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4566"
@@ -2698,45 +2698,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038386"
+            timestampString = "571566351.953719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4605"
             endingLineNumber = "4605"
             landmarkName = "showGutterMenu(sender:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "seiosnativeapp.FeedTableViewController.showGutterMenu(sender: __C.UIButton) -&gt; ()"
-                  moduleName = "seiosnativeapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "570702377.824929"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "4605"
-                  endingLineNumber = "4605"
-                  offsetFromSymbolStart = "4979">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (__C.UIAlertAction) -&gt; () in seiosnativeapp.FeedTableViewController.showGutterMenu(sender: __C.UIButton) -&gt; ()"
-                  moduleName = "seiosnativeapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "570702377.827317"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "4606"
-                  endingLineNumber = "4606"
-                  offsetFromSymbolStart = "120">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2746,7 +2714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0384229"
+            timestampString = "571566351.953758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4556"
@@ -2762,7 +2730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.03846"
+            timestampString = "571566351.953795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4574"
@@ -2778,7 +2746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038496"
+            timestampString = "571566351.953833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6877"
@@ -2794,7 +2762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038534"
+            timestampString = "571566351.953871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3578"
@@ -2810,7 +2778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.03857"
+            timestampString = "571566351.953908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5158"
@@ -2826,7 +2794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038608"
+            timestampString = "571566351.953945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5200"
@@ -2842,7 +2810,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038645"
+            timestampString = "571566351.953981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4644"
@@ -2858,7 +2826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038682"
+            timestampString = "571566351.954018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4779"
@@ -2874,7 +2842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0387191"
+            timestampString = "571566351.954056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4826"
@@ -2890,7 +2858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0387551"
+            timestampString = "571566351.9540941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5023"
@@ -2906,7 +2874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.038792"
+            timestampString = "571566351.954132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5104"
@@ -2922,7 +2890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.42425"
+            timestampString = "571311677.132485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2787"
@@ -2938,7 +2906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424298"
+            timestampString = "571311677.132531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3039"
@@ -2954,11 +2922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4243391"
+            timestampString = "571311677.132571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3286"
-            endingLineNumber = "3286"
+            startingLineNumber = "3287"
+            endingLineNumber = "3287"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2970,7 +2938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424378"
+            timestampString = "571311677.13261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1787"
@@ -2986,7 +2954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424417"
+            timestampString = "571311677.1326489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2060"
@@ -3002,7 +2970,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424455"
+            timestampString = "571311677.132689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1818"
@@ -3018,7 +2986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424495"
+            timestampString = "571311677.1327291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1839"
@@ -3034,7 +3002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424533"
+            timestampString = "571311677.132769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1939"
@@ -3046,15 +3014,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424571"
+            timestampString = "571311677.132809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3166"
-            endingLineNumber = "3166"
+            startingLineNumber = "3167"
+            endingLineNumber = "3167"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3066,11 +3034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4246089"
+            timestampString = "571311677.132848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3174"
-            endingLineNumber = "3174"
+            startingLineNumber = "3175"
+            endingLineNumber = "3175"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3082,11 +3050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424648"
+            timestampString = "571311677.1328861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3183"
-            endingLineNumber = "3183"
+            startingLineNumber = "3184"
+            endingLineNumber = "3184"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3098,11 +3066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.424691"
+            timestampString = "571311677.132926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3192"
-            endingLineNumber = "3192"
+            startingLineNumber = "3193"
+            endingLineNumber = "3193"
             landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3114,7 +3082,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.42479"
+            timestampString = "571311677.132964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1847"
@@ -3146,13 +3114,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.424861"
+            timestampString = "571542902.069049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3983"
             endingLineNumber = "3983"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3162,13 +3130,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4252501"
+            timestampString = "571542902.069394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4074"
             endingLineNumber = "4074"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3178,13 +3146,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.425603"
+            timestampString = "571542902.069629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3746"
             endingLineNumber = "3746"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3194,7 +3162,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.039465"
+            timestampString = "571566351.9543411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6842"
@@ -3210,45 +3178,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.039505"
+            timestampString = "571566351.9543819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6359"
             endingLineNumber = "6359"
             landmarkName = "handleTapped(recognizer:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "seiosnativeapp.FeedTableViewController.handleTapped(recognizer: __C.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "seiosnativeapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "570702377.914925"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "6359"
-                  endingLineNumber = "6359"
-                  offsetFromSymbolStart = "93">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "seiosnativeapp.FeedTableViewController.handleTapped(recognizer: __C.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "seiosnativeapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "570702377.916929"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "6359"
-                  endingLineNumber = "6359"
-                  offsetFromSymbolStart = "14744">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3258,7 +3194,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.039543"
+            timestampString = "571566351.954423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7116"
@@ -3274,11 +3210,11 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "570702377.923992"
+                  timestampString = "571630776.484499"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "7116"
-                  endingLineNumber = "7116"
+                  startingLineNumber = "7117"
+                  endingLineNumber = "7117"
                   offsetFromSymbolStart = "37">
                </Location>
                <Location
@@ -3289,11 +3225,11 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "570702377.9270231"
+                  timestampString = "571630776.48683"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "7116"
-                  endingLineNumber = "7116"
+                  startingLineNumber = "7117"
+                  endingLineNumber = "7117"
                   offsetFromSymbolStart = "6408">
                </Location>
             </Locations>
@@ -3306,7 +3242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.03958"
+            timestampString = "571566351.954464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4684"
@@ -3322,7 +3258,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.011425"
+            timestampString = "571566351.9545031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -3338,7 +3274,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.0114729"
+            timestampString = "571566351.954824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "311"
@@ -3354,11 +3290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.011511"
+            timestampString = "571566351.955138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6706"
-            endingLineNumber = "6706"
+            startingLineNumber = "6708"
+            endingLineNumber = "6708"
             landmarkName = "browseEntries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3370,11 +3306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-            timestampString = "570694404.011547"
+            timestampString = "571566351.955447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5803"
-            endingLineNumber = "5803"
+            startingLineNumber = "5805"
+            endingLineNumber = "5805"
             landmarkName = "addNewEvent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3386,13 +3322,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.426124"
+            timestampString = "571288833.780328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3402,13 +3338,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.426415"
+            timestampString = "571288833.780369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "493"
+            endingLineNumber = "493"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3418,13 +3354,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-            timestampString = "570702720.4266551"
+            timestampString = "571288833.780405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "425"
+            endingLineNumber = "425"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3434,11 +3370,11 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-                  timestampString = "570702377.960161"
+                  timestampString = "571630776.5121059"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "424"
-                  endingLineNumber = "424"
+                  startingLineNumber = "425"
+                  endingLineNumber = "425"
                   offsetFromSymbolStart = "762">
                </Location>
                <Location
@@ -3449,11 +3385,11 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
-                  timestampString = "570702377.962932"
+                  timestampString = "571630776.514547"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "424"
-                  endingLineNumber = "424"
+                  startingLineNumber = "425"
+                  endingLineNumber = "425"
                   offsetFromSymbolStart = "774">
                </Location>
             </Locations>
@@ -3514,13 +3450,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.426988"
+            timestampString = "571542902.070032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "675"
             endingLineNumber = "675"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "generateForm()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3530,13 +3466,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4273109"
+            timestampString = "571542902.0702749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4053"
             endingLineNumber = "4053"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3546,13 +3482,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.427619"
+            timestampString = "571542902.07051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4058"
             endingLineNumber = "4058"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3562,12 +3498,12 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-                  timestampString = "570702377.993003"
+                  timestampString = "571630776.536494"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "4058"
                   endingLineNumber = "4058"
-                  offsetFromSymbolStart = "209990">
+                  offsetFromSymbolStart = "210106">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3577,7 +3513,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-                  timestampString = "570702377.995363"
+                  timestampString = "571630776.538646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "4059"
@@ -3594,7 +3530,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/seiosnativeappApi/NetworkConnection.swift"
-            timestampString = "570439929.524681"
+            timestampString = "571630774.741593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "595"
@@ -3610,13 +3546,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4279391"
+            timestampString = "571542902.070778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2933"
             endingLineNumber = "2933"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3626,7 +3562,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/seiosnativeappApi/NetworkConnection.swift"
-            timestampString = "570440950.809268"
+            timestampString = "571630774.741882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "613"
@@ -3642,11 +3578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
-            timestampString = "570617239.04079"
+            timestampString = "571630774.742057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "956"
-            endingLineNumber = "956"
+            startingLineNumber = "957"
+            endingLineNumber = "957"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3658,7 +3594,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.428288"
+            timestampString = "571311677.136084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2813"
@@ -3674,7 +3610,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.428341"
+            timestampString = "571311677.136149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3069"
@@ -3690,7 +3626,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4283839"
+            timestampString = "571311677.136196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3142"
@@ -3706,7 +3642,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.0409679"
+            timestampString = "571566351.956213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3699"
@@ -3722,7 +3658,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-            timestampString = "570617239.041007"
+            timestampString = "571566351.9562629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "6383"
@@ -3738,11 +3674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.4284509"
+            timestampString = "571311677.136274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3649"
-            endingLineNumber = "3649"
+            startingLineNumber = "3650"
+            endingLineNumber = "3650"
             landmarkName = "showMainGutterMenu()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3754,11 +3690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.428508"
+            timestampString = "571311677.1363209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4096"
-            endingLineNumber = "4096"
+            startingLineNumber = "4098"
+            endingLineNumber = "4098"
             landmarkName = "showMainGutterMenu()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3770,11 +3706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-            timestampString = "570702720.428562"
+            timestampString = "571311677.136366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3889"
-            endingLineNumber = "3889"
+            startingLineNumber = "3890"
+            endingLineNumber = "3890"
             landmarkName = "showMainGutterMenu()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3786,13 +3722,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4286031"
+            timestampString = "571542902.071787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2890"
             endingLineNumber = "2890"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3802,13 +3738,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.428929"
+            timestampString = "571542902.072065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2849"
             endingLineNumber = "2849"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3818,13 +3754,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.429274"
+            timestampString = "571542902.07232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2868"
             endingLineNumber = "2868"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3834,13 +3770,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.429575"
+            timestampString = "571542902.072585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2983"
             endingLineNumber = "2983"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3850,13 +3786,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.429883"
+            timestampString = "571542902.073011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3010"
             endingLineNumber = "3010"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3866,13 +3802,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.430194"
+            timestampString = "571542902.073258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3037"
             endingLineNumber = "3037"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3882,13 +3818,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.430499"
+            timestampString = "571542902.073585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3070"
             endingLineNumber = "3070"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3898,13 +3834,637 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/FormGenerationViewController.swift"
-            timestampString = "570702720.4307801"
+            timestampString = "571542902.073889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3074"
             endingLineNumber = "3074"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "submitForm(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Common/PackageViewController.swift"
+            timestampString = "571288833.783428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "showGutterMenuOptions(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/PaymentMethodViewController.swift"
+            timestampString = "571204588.771934"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "generatePaymentMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/PaymentMethodViewController.swift"
+            timestampString = "571204640.556547"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045393"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045455"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571311677.138749"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4077"
+            endingLineNumber = "4077"
+            landmarkName = "showMainGutterMenu()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045544"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.0458241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.045952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.046014"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/Sitestore/AddPaymentMethodViewController.swift"
+            timestampString = "571214737.046069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "generateShippingMethodForm()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571311677.138932"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2685"
+            endingLineNumber = "2685"
+            landmarkName = "exploreContent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571311677.138988"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2679"
+            endingLineNumber = "2679"
+            landmarkName = "exploreContent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571311677.1390361"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3087"
+            endingLineNumber = "3087"
+            landmarkName = "exploreContent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.9566211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6275"
+            endingLineNumber = "6275"
+            landmarkName = "browseEntries()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.956942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2379"
+            endingLineNumber = "2379"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.957242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2386"
+            endingLineNumber = "2386"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.957531"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2394"
+            endingLineNumber = "2394"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.957828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2402"
+            endingLineNumber = "2402"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.9581209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2424"
+            endingLineNumber = "2424"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.958405"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2438"
+            endingLineNumber = "2438"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.958758"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2449"
+            endingLineNumber = "2449"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.9590549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2458"
+            endingLineNumber = "2458"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
+            timestampString = "571566351.95934"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2465"
+            endingLineNumber = "2465"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
+            timestampString = "571630774.742637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
+            landmarkName = "browseEntries()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
+            timestampString = "571630774.7428401"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "760"
+            endingLineNumber = "760"
+            landmarkName = "browseEntries()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "seiosnativeapp.TicketDetailPageViewController.browseEntries() -&gt; ()"
+                  moduleName = "seiosnativeapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
+                  timestampString = "571630776.750385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "760"
+                  endingLineNumber = "760"
+                  offsetFromSymbolStart = "2288">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSDictionary, Swift.Bool) -&gt; () in seiosnativeapp.TicketDetailPageViewController.browseEntries() -&gt; ()"
+                  moduleName = "seiosnativeapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/TicketDetailPageViewController.swift"
+                  timestampString = "571630776.752913"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "762"
+                  endingLineNumber = "762"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571546753.76263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4127"
+            endingLineNumber = "4127"
+            landmarkName = "RSVPJOINAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
+            timestampString = "571550980.508094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2973"
+            endingLineNumber = "2973"
+            landmarkName = "getTabController(name:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
+            timestampString = "571550980.50814"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2942"
+            endingLineNumber = "2942"
+            landmarkName = "getTabController(name:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
+            timestampString = "571630999.7775871"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1831"
+            endingLineNumber = "1831"
+            landmarkName = "updateEventInfo(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
+            timestampString = "571634489.064036"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2310"
+            endingLineNumber = "2310"
+            landmarkName = "getLocationdata()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/AdvanceActivityFeedViewController.swift"
+            timestampString = "571634495.634352"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2333"
+            endingLineNumber = "2333"
+            landmarkName = "getLocationdata()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

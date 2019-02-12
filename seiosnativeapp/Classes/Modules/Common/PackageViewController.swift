@@ -301,6 +301,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
     @objc func showGutterMenuOptions(_ sender: UIButton)
     {
         var packageInfo:NSDictionary!
+        print(responseArr)
         packageInfo = responseArr[sender.tag] as! NSDictionary
         var packagedic = packageInfo["package"] as? NSDictionary
         
@@ -385,7 +386,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                      }))
                     }
                 }
-            }
+            }//for menu in contentGutterMenu
             
             if  (UIDevice.current.userInterfaceIdiom == .phone)
             {
@@ -401,7 +402,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                 popover?.permittedArrowDirections = UIPopoverArrowDirection()
             }
             self.present(alertController, animated:true, completion: nil)
-        }
+        }//if let guttermenu2 = packagedic?["menu"] as? NSArray
         
         if let guttermenu = packageInfo["menu"] as? NSArray
         {

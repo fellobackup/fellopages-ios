@@ -1752,9 +1752,11 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             searchDic.removeAll(keepingCapacity: false)
             
             showSpinner = false
+        
             pageNumber = 1
             updateAfterAlert = false
             scrollView.isUserInteractionEnabled = false
+            activityIndicatorView.stopAnimating()
             browseEntries()
         }
         else
@@ -3565,7 +3567,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                         cell.hostImage.image = nil
                     }
                     
-                    let name = eventInfo["title"] as? String
+                    let name = String(format: "%@", eventInfo["title"] as! CVarArg)
                     var tempInfo = ""
                     
                     
@@ -3604,7 +3606,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                     
                     cell.titleLabel.frame = CGRect(x: 10, y: 0, width: (cell.contentImage.bounds.width-110), height: 30)
                     
-                    cell.titleLabel.text = "\(name!)"
+                    cell.titleLabel.text = "\(name)"
                     cell.titleLabel.lineBreakMode = NSLineBreakMode.byTruncatingTail
                     // cell.contentName.font = UIFont(name: "FontAwesome", size: 18)
                     
@@ -4683,7 +4685,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             cell.hostImage.image = nil
                         }
                         
-                        let name = eventInfo["title"] as? String
+                        let name = String(format: "%@", eventInfo["title"] as! CVarArg)//eventInfo.value(forKey: "title") as! String
                         var tempInfo = ""
                         
                         
@@ -4722,7 +4724,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                         
                         cell.titleLabel.frame = CGRect(x: 10, y: 0, width: (cell.contentImage.bounds.width-110), height: 30)
                         
-                        cell.titleLabel.text = "\(name!)"
+                        cell.titleLabel.text = "\(name)"
                         cell.titleLabel.lineBreakMode = NSLineBreakMode.byTruncatingTail
                         // cell.contentName.font = UIFont(name: "FontAwesome", size: 18)
                         

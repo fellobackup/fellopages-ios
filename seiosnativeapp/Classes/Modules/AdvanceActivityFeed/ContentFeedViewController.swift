@@ -1815,6 +1815,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 
                 if event == "starttime"{
                     if let info = response["\(event)"] as? String{
+                        print(response)
                         let date = dateDifferenceWithEventTime(info)
                         var dateArray = date.components(separatedBy: ", ")
                         
@@ -3158,6 +3159,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                             }
                                             
                                             //Only one option will be shown at a time
+                                            print(self.contentGutterMenu)
                                             for menu in self.contentGutterMenu
                                             {
                                                 if let menuItem = menu as? NSDictionary
@@ -4070,6 +4072,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 self.present(navigationController, animated: true, completion: nil)
                             case "payment_method":
                                 isCreateOrEdit = true
+                                print(menuItem)
                                 let presentedVC = AddPaymentMethodViewController()
                                 presentedVC.url = menuItem["url"] as! String
                                 presentedVC.param = menuItem["urlParams"] as! NSDictionary
