@@ -1809,6 +1809,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 
                 var tempInfo = ""
                 var locationInfo = ""
+                var phoneNumber = ""
+                var emailAddress = ""
+                var websiteURL = ""
                 var location = ""
                 var boldText  = ""
                 
@@ -1892,34 +1895,93 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 }
                 
                 if  event == "location"{
-                    if let info = response["\(event)"] as? String{
+                    if let info = response["\(event)"] as? String, let contact = response["contact_info"] as? [String:Any] {
                         if info != ""{
                             //  locationInfo = "\u{f041} Location\n\n \(info)"
                             locationInfo = NSLocalizedString("\u{f041} Location\n\n", comment: "")
-                            locationInfo += info
+                            locationInfo += "\(info)\n\n"
                             location = info
                             
+                            
+                            
+                            let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
+                            let email = contact["email"] as? String ?? ""
+                            let phone = String(format: "%@", contact["phone"] as! CVarArg)
+                            let website = String(format: "%@", contact["website"] as! CVarArg)
+                            var websiteRange: NSRange!
+                            
+                            emailAddress = email
+                            phoneNumber = phone
+                            
+                            locationInfo += NSLocalizedString("\u{f0e0} Email\n\n", comment: "")
+                            locationInfo += "\(email)\n\n"
+                            locationInfo += NSLocalizedString("\u{f095} Phone\n\n", comment: "")
+                            locationInfo += "\(phone)\n\n"
+                            
+                            let range = (locationInfo as NSString).range(of: NSLocalizedString("\(info)", comment: ""))
+                            let emailRange = (locationInfo as NSString).range(of: NSLocalizedString("\(email)", comment: ""))
+                            let phoneRange = (locationInfo as NSString).range(of: NSLocalizedString("\(phone)", comment: ""))
+                            if website.isEmpty == false{
+                                locationInfo += NSLocalizedString("\u{f108} Website\n\n", comment: "")
+                                locationInfo += "\(website)\n "
+                                websiteRange = (locationInfo as NSString).range(of: NSLocalizedString("\(website)", comment: ""))
+                                websiteURL = website
+                            }
                             eventInfo1.setText(locationInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
-                                let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
                                 
-                                let range = (locationInfo as NSString).range(of: NSLocalizedString("\(info)", comment: ""))
+                                //Format location string link
                                 mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
                                 mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: range)
+                                
+                                //Format email string link
+                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: emailRange)
+                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: emailRange)
+                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: emailRange)
+                                
+                                //Format phone string link
+                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: phoneRange)
+                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: phoneRange)
+                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: phoneRange)
+                                
+                                if website.isEmpty == false{
+                                    
+                                    //Format website string link
+                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: websiteRange)
+                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: websiteRange)
+                                    //mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: websiteRange)
+                                    
+                                }
+                                
+                                
                                 // TODO: Clean this up...
                                 return mutableAttributedString
                             })
-                        }
-                    }
-                }
+                            
+                            eventInfo1.addLink(toTransitInformation: [ "type" : "map", "location":"\(location)","place_id" : ""], with:range)
+                            eventInfo1.addLink(toTransitInformation: [ "type" : "email", "email":"\(email)"], with:emailRange)
+                            eventInfo1.addLink(toTransitInformation: [ "type" : "phone", "phone":"\(phone)"], with:phoneRange)
+                            
+                            /*if website.isEmpty == false{
+                                eventInfo1.addLink(toTransitInformation: [ "type" : "website", "website":"\(website)"], with:websiteRange)
+                            }*/
+                            
+                        }//end if info != ""
+                    }//end if let
+                }//end if event == location
                 
-                let range = (locationInfo as NSString).range(of: NSLocalizedString("\(location)",  comment: ""))
+                
+               // let range = (locationInfo as NSString).range(of: NSLocalizedString("\(location)",  comment: ""))
                 eventInfo1.delegate = self
                 
-                eventInfo1.addLink(toTransitInformation: [ "type" : "map", "location":"\(location)","place_id" : ""], with:range)
+                //eventInfo1.addLink(toTransitInformation: [ "type" : "map", "location":"\(location)","place_id" : ""], with:range)
                 eventInfo1.lineBreakMode = NSLineBreakMode.byWordWrapping
+                eventInfo1.baselineAdjustment = .none
                 
                 eventInfo1.sizeToFit()
                 eventInfo2.sizeToFit()
+                
+                
                 
                 view.layer.masksToBounds = true
                 if event == "starttime"
@@ -4661,6 +4723,56 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             vc.location = components["location"] as! String
             vc.place_id = components["place_id"] as! String
             self.navigationController?.pushViewController(vc, animated: false)
+            
+        case "phone":
+            let number = components["phone"] as? String ?? ""
+            let telURL = URL(string: "tel://\(number)")
+            let smsURL = URL(string: "sms://\(number)")
+           
+            let alertController = UIAlertController(title: "Contact Owner?", message: "You can call or message the event owner.", preferredStyle: .alert)
+            let callAction = UIAlertAction(title: "Call", style: .default, handler: { (UIAlertAction) in
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(telURL!)
+                }else{
+                    UIApplication.shared.openURL(telURL!)
+                }
+            })
+            let smsAction = UIAlertAction(title: "Message", style: .default, handler: { (UIAlertAction) in
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(smsURL!)
+                }else{
+                    UIApplication.shared.openURL(smsURL!)
+                }
+            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alertController.addAction(callAction)
+            alertController.addAction(smsAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true)
+            
+            break
+        case "email":
+            let email = components["email"] as? String ?? ""
+            if let url = URL(string: "mailto:\(email)") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+            break
+        /*case "website":
+            let siteURL = components["website"] as? String ?? ""
+            if let url = URL(string: "\(siteURL)") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+            break*/
             
         default: break
         }

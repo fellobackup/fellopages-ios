@@ -25,12 +25,12 @@ class CustomTabBarController: UITabBarController {
     override var shouldAutorotate : Bool { //allow the subviews accessing the tabBarController to set whether they should rotate or not
         return self.shouldRotate
     }
-    
+
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if self.selectedIndex == 4 {
+        /*if self.selectedIndex == 4 {
             let yourView = self.viewControllers![self.selectedIndex] as! UINavigationController
             yourView .popToRootViewController(animated: false)
-        }
+        }*/
     }
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {

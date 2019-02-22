@@ -703,6 +703,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                 self.navigationItem.leftBarButtonItem = barButtonItem
             }
         }
+
         
     }
     @objc func cancel()

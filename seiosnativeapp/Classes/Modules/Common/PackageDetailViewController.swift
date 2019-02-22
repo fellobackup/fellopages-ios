@@ -316,7 +316,7 @@ class PackageDetailViewController: UIViewController
                 }
                 
             }
-            //print(parameters)
+            print(parameters)
             post(parameters, url: url, method: "POST") { (succeeded, msg) -> () in
                 
                 DispatchQueue.main.async(execute: {

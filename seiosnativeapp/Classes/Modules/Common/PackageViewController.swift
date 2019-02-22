@@ -47,6 +47,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
     
     var extensionUrl = ""
     var extensionParam : NSDictionary!
+    var isFromHome = false
     
     
     override func viewDidLoad()
@@ -111,12 +112,37 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         }
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         
+        
+        //Right bar button items
+        if isFromHome == true{
+            let button = UIButton(type: .custom)
+            let loctionimg = UIImage(named: "event_icon.png")!.maskWithColor(color: textColorPrime)
+            button.setImage(loctionimg , for: UIControlState.normal)
+            button.imageView?.contentMode = .scaleAspectFit
+            button.addTarget(self, action: #selector(PackageViewController.browseEvents), for: UIControlEvents.touchUpInside)
+            let eventButton = UIBarButtonItem()
+        
+        
+            if #available(iOS 11.0, *) {
+                let currWidth = button.widthAnchor.constraint(equalToConstant: 26)
+                let currHeight = button.heightAnchor.constraint(equalToConstant: 26)
+                currWidth.isActive = true
+                currHeight.isActive = true
+            } else {
+                button.frame = CGRect(x: self.view.bounds.width-62, y: 0, width: 26, height: 26)
+            }
+            eventButton.customView = button
+        
+            self.navigationItem.setRightBarButtonItems([eventButton], animated: true)
+            self.isFromHome = false
+        }
+        
         self.navigationItem.leftBarButtonItem = barButtonItem
+        
         
         if conditionalProfileForm == "BrowsePage"
         {
             self.dismiss(animated: true, completion: nil)
-            
         }
         else if conditionalProfileForm == "BrowseStore"
         {
@@ -138,7 +164,6 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
 
         else if conditionalProfileForm == "BrowseMyStore"
         {
-            
             conditionalProfileForm = "BrowseStoreProfile"
             self.dismiss(animated: true, completion: nil)
         }
@@ -157,10 +182,18 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         self.present(nativationController, animated : false, completion : nil)
     }
     
+    @objc func browseEvents(){
+        AdvanceEventObject().redirectToAdvanceEventBrowsePage(self, showOnlyMyContent: false)
+    }
+    
     @objc func cancel()
     {
+        if self.tabBarController != nil{
+            self.navigationController?.popViewController(animated: true)
+        }else{
             self.dismiss(animated: true, completion: nil)
-
+        }
+        
     }
     
     // MARK:  UITableViewDelegate & UITableViewDataSource

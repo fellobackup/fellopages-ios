@@ -79,6 +79,7 @@ var frndTagValue = [String:String]()
 var tabControllersecond = UIViewController()
 var tabControllerthird = UIViewController()
 var tabControllerfourth = UIViewController()
+var tabForEvents = UIViewController()
 var notificationIndex : Int = 0
 var messageIndex : Int = 0
 var friendReqIndex : Int = 0
@@ -3200,15 +3201,21 @@ func getTabController(name : String) -> UIViewController {
     let tabController1 = AdvanceActivityFeedViewController()
     let subController1 = UINavigationController(rootViewController: tabController1)
     subController1.tabBarItem.title = ""
-    subController1.tabBarItem.image = UIImage(named: "home")
+    subController1.tabBarItem.image = UIImage(named: "felloFeed")!.maskWithColor(color: textColorPrime)
     tabControllers.append(subController1)
     
-    tabControllersecond = getTabController(name: secondController)
+    let tabEventController = AdvancedEventViewController()
+    let subEventController = UINavigationController(rootViewController: tabEventController)
+    subEventController.tabBarItem.title = ""
+    subEventController.tabBarItem.image = UIImage(named: "tabEventIcon")!.maskWithColor(color: textColorPrime)
+    tabControllers.append(subEventController)
+    
+    /*tabControllersecond = getTabController(name: secondController)
     let subController2 = UINavigationController(rootViewController: tabControllersecond)
     subController2.tabBarItem.image = UIImage(named: "secondController")
     subController2.tabBarItem.badgeValue = nil
     subController2.tabBarItem.title = ""
-    tabControllers.append(subController2)
+    tabControllers.append(subController2)*/
     
     
     tabControllerthird = getTabController(name: thirdController)
