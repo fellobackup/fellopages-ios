@@ -134,7 +134,7 @@ func postAutoSearch(_ params : Dictionary<String, String>, url : String, method:
 {
     
     var dic = Dictionary<String, String>()
-    
+
     if(logoutUser == false){
         dic["oauth_token"] = oauth_token
         dic["oauth_secret"] = oauth_secret

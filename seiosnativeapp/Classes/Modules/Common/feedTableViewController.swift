@@ -3993,6 +3993,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         dynamicHeight = dynamicHeight  + cell.bodyHashtaglbl.bounds.height + 15
     }
     
+    
     // MARK: - Reaction and comment info work
     func reactionandlikeCommentInfo(row:Int,cell:AAFActivityFeedTableViewCell)
     {
