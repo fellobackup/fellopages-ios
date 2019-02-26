@@ -3583,6 +3583,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     self.datePicker = [[UIDatePicker alloc] init];
     [self.datePicker setBackgroundColor:[UIColor lightGrayColor]];
+    [self.datePicker setMinimumDate:[NSDate date]];
     [self.datePicker addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 }

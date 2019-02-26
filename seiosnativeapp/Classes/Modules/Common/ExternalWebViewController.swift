@@ -151,7 +151,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         }
         let urlNew:String = tempUrl.addingPercentEncoding( withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
-        //print(urlNew)
+        print(urlNew)
         externalWebView.loadRequest(URLRequest(url: URL(string: urlNew)! ))
         
     }
@@ -259,6 +259,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         {
             return
         }
+        print(currentUrlString)
         self.currentUrl = currentUrlString
         
         if (currentUrlString.range(of: "success/payment/finish/state/active") != nil) || (currentUrlString.range(of:  "/success") != nil) //stores/products/success
@@ -277,11 +278,11 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             
             self.view.makeToast(NSLocalizedString("Payment Successful", comment: ""), duration: 5, position: "bottom")
             
-            eventUpdate = true
+           /* eventUpdate = true
             contentFeedUpdate = true
             
             self.popAfterDelay = true
-           self.createTimer(self)
+           self.createTimer(self)*/
         }
         else if ((currentUrlString.range(of:"success/payment/finish/state/failure") != nil) || (currentUrlString.range(of:"/failure") != nil)) //stores/products/failure
         {
@@ -311,7 +312,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             }
             else
             {
-                dismiss(animated: false, completion: nil)
+                self.dismiss(animated: false, completion: nil)
             }
             
             

@@ -1800,7 +1800,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                             }
                             
                         }
-                        
+                        print(dic["urlParams"])
                         // Set Parameters for Feed Filter
                         if let params = dic["urlParams"] as? NSDictionary{
                             for (key, value) in params{
@@ -1813,6 +1813,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                 }
                             }
                         }
+                        print(searchDic)
                         // Make Hard Refresh request for selected Feed Filter & Reset all VAriable
                         feedArray.removeAll(keepingCapacity: false)
                         self.dynamicRowHeight.removeAll(keepingCapacity: false)
@@ -2110,17 +2111,27 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             if packagesEnabled == 1
             {
                 isCreateOrEdit = true
-                let presentedVC = AdvancedEventViewController()
-//                presentedVC.contentType = "advancedevents"
-//                presentedVC.url = "advancedevents/packages"
-//                presentedVC.fromPage = NSLocalizedString("Home", comment: "")
-                presentedVC.fromTab = true
-                self.navigationController?.pushViewController(presentedVC, animated: true)
-//                presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                let presentedVC = PackageViewController()
+                presentedVC.isFromHome = true
+                presentedVC.contentType = "advancedevents"
+                presentedVC.url = "advancedevents/packages"
+                presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
 //                let nativationController = UINavigationController(rootViewController: presentedVC)
 //                self.present(nativationController, animated:false, completion: nil)
+                self.navigationController?.pushViewController(presentedVC, animated: true)
+                
+                /*isCreateOrEdit = true
+                let presentedVC = AdvancedEventViewController()
+                presentedVC.contentType = "advancedevents"
+                presentedVC.url = "advancedevents/packages"
+                presentedVC.fromPage = NSLocalizedString("Home", comment: "")
+                presentedVC.fromTab = true
+                self.navigationController?.pushViewController(presentedVC, animated: true)
+                presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                let nativationController = UINavigationController(rootViewController: presentedVC)
+                self.present(nativationController, animated:false, completion: nil)*/
             }
-            else
+            /*else
             {
                 isCreateOrEdit = true
                 let presentedVC = FormGenerationViewController()
@@ -2132,7 +2143,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 let nativationController = UINavigationController(rootViewController: presentedVC)
                 self.present(nativationController, animated:false, completion: nil)
                 
-            }
+            }*/
             
             
         }
@@ -2208,8 +2219,10 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         {
             if Locationdic != nil
             {
-                if locationOnhome == 1 && isChangeManually == 1
-                {
+                let isLoggedIn = (UserDefaults(suiteName: "\(shareGroupname)")?.string(forKey: "oauth_token")!.isEmpty)!
+                //print("Oauth Token: ", UserDefaults.standard.string(forKey: "oauth_token")!)
+                /*if locationOnhome == 1 && isChangeManually == 1
+                {*/
                     
 //                    let button   = UIButton(type: UIButtonType.system) as UIButton
 //                    button.frame = CGRect(x: self.view.bounds.size.width-100,y: 0,width: 18,height: 18)
@@ -2220,16 +2233,19 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
 //                    let locButton = UIBarButtonItem()
 //                    locButton.customView = button
 //                    self.navigationItem.setRightBarButtonItems([locButton], animated: true)
-                    
+                
+                let searchButton = UIBarButtonItem()
+                
+                if !isLoggedIn {
                     let button2 = UIButton(type: .custom)
-                    let searchIconImage = UIImage(named: "location_icon.png")!.maskWithColor(color: textColorPrime)
+                    let searchIconImage = UIImage(named: "search_icon.png")!.maskWithColor(color: textColorPrime)
                     //button2.setImage(searchIconImage, for: UIControlState.normal)
                     button2.imageView?.contentMode = .scaleAspectFit
                     button2.setBackgroundImage(searchIconImage, for: .normal)
                     button2.contentMode = .scaleAspectFit
                     button2.clipsToBounds = true
-                    button2.addTarget(self, action: #selector(AdvanceActivityFeedViewController.LocationAction), for: UIControlEvents.touchUpInside)
-                    let searchButton = UIBarButtonItem()
+                    button2.addTarget(self, action: #selector(AdvanceActivityFeedViewController.searchItem), for: UIControlEvents.touchUpInside)
+                
                     
                     if #available(iOS 11.0, *) {
                         let currWidth = button2.widthAnchor.constraint(equalToConstant: 26)
@@ -2241,37 +2257,38 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                     }
                     searchButton.customView = button2
                     
-                    let button = UIButton(type: .custom)
-                    //button.backgroundColor = UIColor.green
-                    //button.sizeToFit()
-                    //button.clipsToBounds = true
-                    let loctionimg = UIImage(named: "event_icon.png")!.maskWithColor(color: textColorPrime)
-                    button.setImage(loctionimg , for: UIControlState.normal)
-                    button.imageView?.contentMode = .scaleAspectFit
-                    button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.addNewEvent), for: UIControlEvents.touchUpInside)
-                    let eventButton = UIBarButtonItem()
-                    
-                    
-                    if #available(iOS 11.0, *) {
-                        let currWidth = button.widthAnchor.constraint(equalToConstant: 26)
-                        let currHeight = button.heightAnchor.constraint(equalToConstant: 26)
-                        currWidth.isActive = true
-                        currHeight.isActive = true
-                    } else {
-                        button.frame = CGRect(x: self.view.bounds.width-62, y: 0, width: 26, height: 26)
-                    }
-                    eventButton.customView = button
-                    
-                    let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-                    fixedSpace.width = 7.0
-                    
-                    let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-                    negativeSpace.width = -7.0
-                    
-                    self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace,eventButton], animated: true)
-                    
-                    
                 }
+              /*  let button = UIButton(type: .custom)
+                //button.backgroundColor = UIColor.green
+                //button.sizeToFit()
+                //button.clipsToBounds = true
+                let loctionimg = UIImage(named: "event_icon.png")!.maskWithColor(color: textColorPrime)
+                button.setImage(loctionimg , for: UIControlState.normal)
+                button.imageView?.contentMode = .scaleAspectFit
+                button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.addNewEvent), for: UIControlEvents.touchUpInside)
+                let eventButton = UIBarButtonItem()
+                
+                
+                if #available(iOS 11.0, *) {
+                    let currWidth = button.widthAnchor.constraint(equalToConstant: 26)
+                    let currHeight = button.heightAnchor.constraint(equalToConstant: 26)
+                    currWidth.isActive = true
+                    currHeight.isActive = true
+                } else {
+                    button.frame = CGRect(x: self.view.bounds.width-62, y: 0, width: 26, height: 26)
+                }
+                eventButton.customView = button*/
+                
+                let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+                fixedSpace.width = 7.0
+                
+                let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+                negativeSpace.width = -7.0
+                    
+                self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace], animated: true)
+                    
+                    
+                //}
                 
             }
         else
@@ -2326,6 +2343,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 }
                 searchButton.customView = button2
                 
+                /*
                 let button = UIButton(type: .custom)
                 //button.backgroundColor = UIColor.green
                 //button.sizeToFit()
@@ -2345,7 +2363,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 } else {
                     button.frame = CGRect(x: self.view.bounds.width-62, y: 0, width: 26, height: 26)
                 }
-                eventButton.customView = button
+                eventButton.customView = button*/
                 
                 let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
                 fixedSpace.width = 15.0
@@ -2353,7 +2371,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
                 negativeSpace.width = -7.0
                 
-                self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace,eventButton], animated: true)
+                self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace], animated: true)
                 
             }
         }
