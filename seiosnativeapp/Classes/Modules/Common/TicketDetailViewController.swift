@@ -49,7 +49,7 @@ class TicketDetailViewController: UIViewController, UITableViewDataSource, UITab
     {
         view.backgroundColor = bgColor
         navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.barTintColor = UIColor.white
+//        navigationController?.navigationBar.barTintColor = UIColor.white
         self.title = NSLocalizedString("Ticket Detail", comment: "")
         let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         leftNavView.backgroundColor = UIColor.clear

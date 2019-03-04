@@ -104,6 +104,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     let distance_W_LabelHeader:CGFloat = 100.0 // The distance between the bottom of the Header and the top of the White Label
     
     var contentview : UIView!
+    var likeview : UIView!
     
     var contentDescription : String!
     var deleteContent : Bool!
@@ -179,7 +180,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     var userProfilePicUrl : String!
     var coverValue : Int! = 0
     var profileValue : Int! = 0
-    
+    var likeButton : UIButton!
+    var likeCount : UILabel!
+    var likeID : Int! = 0
     // Initialize Class
     override func viewDidLoad()
     {
@@ -248,7 +251,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         coverImage.isUserInteractionEnabled = true
         mainSubView.addSubview(coverImage)
         
-        contentview = createView(CGRect(x: 0, y: coverImage.bounds.height-45, width: view.bounds.width, height: 115), borderColor: UIColor.clear, shadow: false)
+        contentview = createView(CGRect(x: 0, y: coverImage.bounds.height-80, width: view.bounds.width, height: 115), borderColor: UIColor.clear, shadow: false)
         contentview.backgroundColor = UIColor.clear
         coverImage.addSubview(contentview)
         
@@ -263,6 +266,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         contentName.layer.shadowOffset = shadowOffset
         
         contentview.addSubview(contentName)
+        
+        
         
         if subjectType == "advancedevents"{
             
@@ -311,6 +316,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             hostName.font = UIFont(name: fontName, size: FONTSIZENormal)
             hostName.lineBreakMode = NSLineBreakMode.byTruncatingTail
             topView.addSubview(hostName)
+            
+            
+        
         }
         else
         {
@@ -318,7 +326,6 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             hostName.font = UIFont(name: fontName, size: FONTSIZEMedium)
             hostName.lineBreakMode = NSLineBreakMode.byTruncatingTail
             topView.addSubview(hostName)
-            
         }
         
         imgUser = createImageView(CGRect(x: 10, y: 10, width: 50, height: 50), border: true)
@@ -428,6 +435,23 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         mainSubView.addSubview(memberProfilePhoto)
         memberProfilePhoto.isHidden = true
         
+        
+        //Like Button
+        likeview = createView(CGRect(x: memberProfilePhoto.bounds.width + 15, y: coverImage.bounds.height-40, width: view.bounds.width, height: 30), borderColor: UIColor.clear, shadow: false)
+        likeview.backgroundColor = UIColor.clear
+        likeview.isHidden = true
+        mainSubView.addSubview(likeview)
+        
+        likeButton = createButton(CGRect(x: 0, y: 0, width: 80, height: 30), title: NSLocalizedString(" Like", comment: ""), border: false, bgColor: true, textColor: textColorLight)
+        likeButton.setImage(UIImage(named: "thumbs_up"), for: .normal)
+        likeButton.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
+        likeButton.layer.cornerRadius = 5
+        
+        likeButton.addTarget(self, action: #selector(ContentFeedViewController.likeAction(_:)), for: .touchUpInside)
+        
+        likeview.addSubview(likeButton)
+        
+        
         camIconOnProfile = createLabel(CGRect(x: (memberProfilePhoto.bounds.width/2) - 15, y: memberProfilePhoto.bounds.height - 30, width: 30, height: 30), text: "\(cameraIcon)", alignment: .center, textColor: textColorLight)
         camIconOnProfile.font = UIFont(name: "fontAwesome", size: FONTSIZELarge)
         camIconOnProfile.layer.shadowColor = shadowColor.cgColor
@@ -449,6 +473,57 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         feedObj.tableView.tableFooterView?.isHidden = true
      
     }
+    @objc func likeAction(_ sender:UIButton)
+    {
+        if reachability.connection != .none {
+            var dic = Dictionary<String, String>()
+            let url = "advancedactivity/event-like"
+            let response = self.responsedic["like_info"] as! NSDictionary
+            let eventId = self.responsedic["event_id"] as! Int
+            let feedId = response["like_id"] as! Int
+            dic["resource_id"] = "\(eventId)"
+            dic["like_id"] = "\(feedId)"
+            dic["resource_type"] = "siteevent_event"
+            // Send Server Request to Update Feed Gutter Menu
+            post(dic, url: "\(url)", method: "POST") { (succeeded, msg) -> () in
+                DispatchQueue.main.async(execute: {
+                    
+                    if msg{
+                        if let response = succeeded["body"] as? NSDictionary{
+                            let likeCount = self.responsedic["like_count"] as! Int
+                            if let status = response["status"] as? Bool{
+                                if status == true{
+                                    self.likeButton.setTitle(" Unlike", for: UIControlState())
+                                    if likeCount > 0
+                                    {
+                                        self.likeCount.text = "\(likeCount + 1) likes"
+                                    }
+                                }
+                                else {
+                                    self.likeButton.setTitle(" Like", for: UIControlState())
+                                    if likeCount > 0
+                                    {
+                                        self.likeCount.text = "\(likeCount - 1) likes"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //     activityIndicatorView.stopAnimating()
+                    }
+                    
+                })
+            }
+        }
+        else
+        {
+            UIApplication.shared.keyWindow?.makeToast(network_status_msg, duration: 5, position: "bottom")
+        }
+        
+    }
+    
     
     // Show Post Feed Option Selection (Status, Photos, Checkin)
     @objc func openPostFeed(_ sender:UIButton){
@@ -2945,7 +3020,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                         self.coverImage.addGestureRecognizer(tap1)
                                         let tap2 = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.showProfileCoverImageMenu(_:)))
                                         self.memberProfilePhoto.addGestureRecognizer(tap2)
-                                        
+                                        self.likeview.isHidden = false
                                         if let cover : Int = response["default_cover"] as? Int{
                                             
                                             if (response["cover_image"] as? String) != nil{
@@ -2963,8 +3038,28 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                             }
                                             
                                         }
+                                        if let likeInfo = response["like_info"] as? NSDictionary{
+                                            if let isLike = likeInfo["islike"] as? Bool
+                                            {
+                                                if isLike == true
+                                                {
+                                                    self.likeID = likeInfo["like_id"] as? Int
+                                                    self.likeButton.setTitle(" Unlike", for: UIControlState())
+                                                }
+                                                else
+                                                {
+                                                    self.likeID = 0
+                                                    self.likeButton.setTitle(" Like", for: UIControlState())
+                                                }
+                                            }
+                                        }
                                         
-                                        
+                                        if let count = response["like_count"] as? Int
+                                        {
+                                            self.likeCount = createLabel(CGRect(x: self.likeButton.bounds.width + 10, y: 0, width: 60, height: 30), text: "\(count) likes", alignment: .left, textColor: textColorLight)
+                                            self.likeCount.font = UIFont(name: fontBold, size: FONTSIZEMedium)
+                                            self.likeview.addSubview(self.likeCount)
+                                        }
                                         
                                         self.contentName.text = response["title"] as? String
                                         
@@ -2973,18 +3068,18 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                             self.contentTitle = (response["title"] as? String)!
                                             self.contentName.font = UIFont(name: fontBold, size: 27)
                                             self.contentview.frame.origin.x = self.memberProfilePhoto.bounds.width + 15
-                                            self.contentview.frame.origin.y = self.coverImage.bounds.height-60
+                                            self.contentview.frame.origin.y = self.coverImage.bounds.height-80
                                             self.contentName.frame.size.width = self.view.bounds.width - (self.memberProfilePhoto.bounds.width + 20)
                                             self.contentview.frame.size.width = self.view.bounds.width - (self.memberProfilePhoto.bounds.width + 15)
                                             if self.contentTitle.length > 15{
-                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-70
+                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-90
                                             }
                                             if self.contentTitle.length > 20{
-                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-90
+                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-110
                                             }
                                             if self.contentTitle.length > 42
                                             {
-                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-110
+                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-130
                                             }
                                         }
                                         
@@ -3061,11 +3156,11 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                         {
                                             self.contentTitle = (response["title"] as? String)!
                                             if self.contentTitle.length > 20{
-                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-75
+                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-110
                                             }
                                             if self.contentTitle.length > 45
                                             {
-                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-110
+                                                self.contentview.frame.origin.y = self.coverImage.bounds.height-130
                                             }
                                         }
                                         

@@ -3498,12 +3498,12 @@ var videoDuration : Double = 0.00
                                 {
                                     infoDic["\(keyName)"] = String(receiver)
                                 }
-                                if let receiver = value as? Date
-                                {
-                                    let tempString = String(describing: receiver)
-                                    let tempArray = tempString.components(separatedBy: "+")
-                                    infoDic["\(keyName)"] = tempArray[0] as String
-                                }
+//                                if let receiver = value as? Date
+//                                {
+//                                    let tempString = String(describing: receiver)
+//                                    let tempArray = tempString.components(separatedBy: "+")
+//                                    infoDic["\(keyName)"] = tempArray[0] as String
+//                                }
                                 if let receiver = value as? URL
                                 {
                                     infoDic["\(key)"] = "\(receiver)"
@@ -3525,10 +3525,11 @@ var videoDuration : Double = 0.00
                         }
                         if let receiver = value as? Date {
                             let dateFormatter = DateFormatter()
-                            //dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-                            dateFormatter.dateFormat = "d MMM YYYY h:mm a"
-                            dateFormatter.amSymbol = "AM"
-                            dateFormatter.pmSymbol = "PM"
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+//                            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+//                            dateFormatter.dateFormat = "d MMM YYYY h:mm a"
+//                            dateFormatter.amSymbol = "AM"
+//                            dateFormatter.pmSymbol = "PM"
                             infoDic["\(key)"] = dateFormatter.string(from: receiver)
                         }
                         if let receiver = value as? URL {
@@ -3536,6 +3537,8 @@ var videoDuration : Double = 0.00
                         }
                         
                     }
+                  
+                   
 //
 //                    let conditionArray:[String] = ["forum_id","category_id","auth_invite","approval", "draft","auth_view","auth_comment","album","type","subcategory_id","subsubcategory_id","rotation","timezone","locale","eventrepeat_id","auth_post","auth_topic","auth_photo","auth_video","repeat_week","repeat_mon  th","repeat_interval","recommend","spcreate","svcreate","secreate","sdicreate","sdcreate","splcreate","sncreate","smcreate","main_channel_id","all_post","method"]
 //
