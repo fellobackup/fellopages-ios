@@ -25,7 +25,7 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
     var popAfterDelay : Bool!
     var uploadUrl : String!
     var deleteFileEntry:Bool!
-    
+    var fromEventGutter = false
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -88,8 +88,12 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
     
     @objc func cancel()
     {
-        self.dismiss(animated: true, completion: nil)
-        
+        if self.fromEventGutter == true {
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
+        else {
+              self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat

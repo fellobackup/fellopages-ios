@@ -723,6 +723,7 @@ Come join our community.. Showcase your events, connect and expand your network.
 "Timezone" = "(GMT)";
 "Package" = "Package";
 "Home" = "Home";
+"Skip" = "Skip";
 "Invalid Time" = "You have entered an invalid time.";
 "Enter Phone" = "Please enter phone number.";
 "Enter Email" = "Please enter a valid email address.";

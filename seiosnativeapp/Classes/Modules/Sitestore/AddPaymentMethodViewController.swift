@@ -26,22 +26,37 @@ class AddPaymentMethodViewController : FXFormViewController
     var password : String!
     var url : String!
     var param : NSDictionary!
-    
+    var fromEventGutter = false
+    var contentGutterMenu: NSArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = bgColor
         navigationController?.navigationBar.isHidden = false
         
-        let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        leftNavView.backgroundColor = UIColor.clear
-        let tapView = UITapGestureRecognizer(target: self, action: #selector(AddPaymentMethodViewController.goBack))
-        leftNavView.addGestureRecognizer(tapView)
-        let backIconImageView = createImageView(CGRect(x: 0, y: 12, width: 22, height: 22), border: false)
-        backIconImageView.image = UIImage(named: "back_icon")!.maskWithColor(color: textColorPrime)
-        leftNavView.addSubview(backIconImageView)
-        
-        let barButtonItem = UIBarButtonItem(customView: leftNavView)
-        self.navigationItem.leftBarButtonItem = barButtonItem
+        if fromEventGutter == true {
+            let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(AddPaymentMethodViewController.cancel))
+            self.navigationItem.leftBarButtonItem = cancel
+            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+            cancel.tintColor = textColorPrime
+            
+            let skip = UIBarButtonItem(title: NSLocalizedString("Skip",  comment: ""), style:.plain , target:self , action: #selector(AddPaymentMethodViewController.skip))
+            self.navigationItem.rightBarButtonItem = skip
+            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+            skip.tintColor = textColorPrime
+        }
+        else {
+            let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+            leftNavView.backgroundColor = UIColor.clear
+            let tapView = UITapGestureRecognizer(target: self, action: #selector(AddPaymentMethodViewController.goBack))
+            leftNavView.addGestureRecognizer(tapView)
+            let backIconImageView = createImageView(CGRect(x: 0, y: 12, width: 22, height: 22), border: false)
+            backIconImageView.image = UIImage(named: "back_icon")!.maskWithColor(color: textColorPrime)
+            leftNavView.addSubview(backIconImageView)
+            
+            let barButtonItem = UIBarButtonItem(customView: leftNavView)
+            self.navigationItem.leftBarButtonItem = barButtonItem
+        }
+      
         
         popAfterDelay = false
         self.title = NSLocalizedString("Payment Methods", comment: "")
@@ -56,6 +71,37 @@ class AddPaymentMethodViewController : FXFormViewController
         generateShippingMethodForm()
     }
     
+    @objc func cancel()
+    {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    @objc func skip()
+    {
+        if self.fromEventGutter == true
+        {
+            self.navigateToTicket()
+        }
+    }
+    func navigateToTicket()
+    {
+        for menu in self.contentGutterMenu
+        {
+            if let menuItem = menu as? NSDictionary
+            {
+                if menuItem["name"] as! String == "create_ticket"
+                {
+                    let presentedVC = ManageEventTicketViewController()
+                    presentedVC.url = "advancedeventtickets/tickets/manage"
+                    presentedVC.urlParams = menuItem["urlParams"] as! NSDictionary
+                    presentedVC.fromEventGutter = true
+                    //presentedVC.formTitle = "Create Ticket"
+                    presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                    let navigationController = UINavigationController(rootViewController: presentedVC)
+                    self.present(navigationController, animated: true, completion: nil)
+                }
+            }
+        }
+    }
     override func viewWillAppear(_ animated: Bool)
     {
         Form = backupForm
@@ -113,6 +159,12 @@ class AddPaymentMethodViewController : FXFormViewController
                         
                         if let dic = succeeded["body"] as? NSDictionary
                         {
+                            if self.fromEventGutter == true {
+                                if let paypalEnable = dic["paypalEnable"] as? Int {
+                                    print("proceed to ticket")
+                                    self.navigateToTicket()
+                                }
+                            }
                             
                             if let formvalue = dic["formValues"] as? NSDictionary
                             {
@@ -270,7 +322,7 @@ class AddPaymentMethodViewController : FXFormViewController
                 
                 
                 
-                self.popAfterDelay = true
+//                self.popAfterDelay = true
                 //Set Parameters (Token & Form Values) & path for Adding Shipping method
                 var path = ""
                 path = "advancedeventtickets/order/set-event-gateway-info"
@@ -451,7 +503,9 @@ class AddPaymentMethodViewController : FXFormViewController
             conditionalForm = ""
             conditionForm = ""
             self.dismiss(animated: true, completion: nil)
-            
+        }
+        else {
+             self.navigateToTicket()
         }
     }
     

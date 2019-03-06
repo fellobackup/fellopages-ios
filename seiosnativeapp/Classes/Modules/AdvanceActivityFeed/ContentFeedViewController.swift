@@ -4140,6 +4140,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 confirmationAlert = false
                                 let presentedVC = ExternalWebViewController()
                                 presentedVC.url = menuItem["url"] as! String
+                                presentedVC.fromEventGutter = true
+                                presentedVC.contentGutterMenu = self.contentGutterMenu
                                 conditionForm = "eventpayment"
                                 presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                                 let navigationController = UINavigationController(rootViewController: presentedVC)
@@ -4229,10 +4231,10 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 self.present(navigationController, animated: true, completion: nil)
                             case "payment_method":
                                 isCreateOrEdit = true
-                                print(menuItem)
                                 let presentedVC = AddPaymentMethodViewController()
                                 presentedVC.url = menuItem["url"] as! String
                                 presentedVC.param = menuItem["urlParams"] as! NSDictionary
+                                presentedVC.contentGutterMenu = self.contentGutterMenu
                                 presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                                 let navigationController = UINavigationController(rootViewController: presentedVC)
                                 self.present(navigationController, animated: true, completion: nil)

@@ -3352,6 +3352,9 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
               feedArray.removeAll()
             }
         }
+        if name == "save_feeds" {
+            presentedVC = AdvanceActivityFeedViewController()
+        }
         if name == "core_main_blog"{
             
             BlogObject().redirectToBlogBrowsePage(self, showOnlyMyContent: false)
@@ -3884,8 +3887,9 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         
         dashboardTableView.reloadData()
       //  //print(self.navigationController?.viewControllers)
-        self.navigationController?.pushViewController(presentedVC, animated: true)
-        
+        if presentedVC != nil {
+             self.navigationController?.pushViewController(presentedVC, animated: true)
+        }
     }
     
     func requestReview ()

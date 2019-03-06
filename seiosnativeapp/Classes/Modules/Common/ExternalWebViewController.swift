@@ -28,7 +28,11 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
     var marqueeHeader : MarqueeLabel!
     var popAfterDelay:Bool!
     var leftBarButtonItem : UIBarButtonItem!
-    
+    var fromEventGutter = false
+    var contentGutterMenu: NSArray = []
+    var ticketUrlParams : NSDictionary!
+    var ticketUrl : String!
+    var ticketCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -69,11 +73,11 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         self.navigationController?.navigationBar.tintColor = textColorPrime
         if fromDashboard == false {
             if url1 == "" && url2 == "" && url3 == ""{
-            
-            let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(ExternalWebViewController.cancel))
-            self.navigationItem.leftBarButtonItem = cancel
-            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
-            cancel.tintColor = textColorPrime
+                
+                let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(ExternalWebViewController.cancel))
+                self.navigationItem.leftBarButtonItem = cancel
+                navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+                cancel.tintColor = textColorPrime
             }
         }else{
             let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
@@ -105,6 +109,8 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         externalWebView.contentMode = .scaleAspectFit
         
         view.addSubview(externalWebView)
+        
+       
     }
     
     func menuAction(_ sender:UIButton){
@@ -198,8 +204,6 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
     
     @objc func cancel()
     {
-        
-        
         if conditionForm == "eventpayment" || conditionForm == "advancedevents"
         {
             let alert = UIAlertController(title: "Cancel Payment", message: "Do you want to cancel payment for this event", preferredStyle: .alert)
@@ -239,6 +243,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         self.view.addSubview(activityIndicatorView)
         activityIndicatorView.center = self.view.center
         activityIndicatorView.startAnimating()
+        self.checkAvailableTicket()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -292,8 +297,62 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             
             placeandorder = 0
         }
+       
         //print(currentUrlString)
     }
+    func checkAvailableTicket()
+    {
+        for menu in self.contentGutterMenu
+        {
+            if let menuItem = menu as? NSDictionary
+            {
+                if menuItem["name"] as! String == "create_ticket"
+                {
+                    self.ticketUrlParams = menuItem["urlParams"] as! NSDictionary
+                }
+            }
+        }
+        if reachability.isReachable
+        {
+            var parameters = Dictionary<String, String>()
+            let url = "advancedeventtickets/tickets/manage"
+            if ticketUrlParams != nil
+            {
+                for (key, value) in ticketUrlParams{
+                    if let id = value as? Int
+                    {
+                        parameters["\(key)"] = String(id as Int)
+                    }
+                    if let receiver = value as? NSString
+                    {
+                        parameters["\(key)"] = receiver as String
+                    }
+                }
+            }
+            post(parameters, url: url, method: "GET") { (succeeded, msg) -> () in
+                DispatchQueue.main.async( execute: {
+                    if msg
+                    {
+                        if succeeded["message"] != nil{
+                            self.view.makeToast(succeeded["message"] as! String , duration: 5, position: "bottom")
+                        }
+                        if succeeded["body"] != nil
+                        {
+                            if let body = succeeded["body"] as? NSDictionary
+                            {
+                                if let totalItemCount = body["totalItemCount"] as? Int
+                                {
+                                   self.ticketCount = totalItemCount
+                                }
+                            }
+                        }
+                    }
+                })
+                
+            }
+        }
+    }
+    
     func createTimer(_ target: AnyObject){
         timer = Timer.scheduledTimer(timeInterval: 2, target: target, selector:  #selector(stopTimer), userInfo: nil, repeats: false)
     }
@@ -312,10 +371,34 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             }
             else
             {
-                self.dismiss(animated: false, completion: nil)
+                if self.ticketCount > 0
+                {
+                    self.dismiss(animated: false, completion: nil)
+                }
+                else
+                {
+                    if fromEventGutter == true
+                    {
+                        for menu in self.contentGutterMenu
+                        {
+                            if let menuItem = menu as? NSDictionary
+                            {
+                                if menuItem["name"] as! String == "payment_method"
+                                {
+                                    let presentedVC = AddPaymentMethodViewController()
+                                    presentedVC.url = menuItem["url"] as! String
+                                    presentedVC.param = menuItem["urlParams"] as! NSDictionary
+                                    presentedVC.fromEventGutter = true
+                                    presentedVC.contentGutterMenu = self.contentGutterMenu
+                                    presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                                    let navigationController = UINavigationController(rootViewController: presentedVC)
+                                    self.present(navigationController, animated: true, completion: nil)
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            
-            
         }
     }
     
