@@ -89,7 +89,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func viewDidLoad()
     {
-
+       
        // self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         if iscomingfrom == "store"
         {
@@ -3353,7 +3353,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         if name == "save_feeds" {
-            presentedVC = AdvanceActivityFeedViewController()
+            let presentedVC = AdvanceActivityFeedViewController()
+            presentedVC.fromMenuSaveFeed = true
+            presentedVC.fromMenuSearchDic = searchDic
+            self.navigationController?.pushViewController(presentedVC, animated: true)
+            return
         }
         if name == "core_main_blog"{
             

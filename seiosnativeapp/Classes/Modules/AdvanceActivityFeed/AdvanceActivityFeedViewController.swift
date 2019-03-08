@@ -86,9 +86,13 @@ var removeGreetingsId = [Int]()
 var removeBirthdayId = [Int]()
 var isViewWillAppearCall = 0
 
+
+
 class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentationControllerDelegate, TTTAttributedLabelDelegate, UIGestureRecognizerDelegate,UISearchBarDelegate,UITabBarControllerDelegate,scrollDelegate,CLLocationManagerDelegate, UIWebViewDelegate , CoachMarksControllerDataSource, CoachMarksControllerDelegate, StoryNotUploadedCell{
     var locationManager = CLLocationManager()
     /// Called when native content is received.
+    var fromMenuSaveFeed = false
+    var fromMenuSearchDic = Dictionary<String, String>()
     
     let mainView = UIView()
     var audioPlayer = AVAudioPlayer()
@@ -156,6 +160,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     var feedMenu : NSArray = []
     var currentCell : Int = 0
     var tourCount = 4
+    
     private var popover: Popover!
     fileprivate var popoverOptions: [PopoverOption] = [
         .type(.down),
@@ -204,6 +209,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     var targetCheckValue : Int = 1
   //  var blackScreen: UIView!
    // let skipView = CoachMarkSkipDefaultView()
+  
     
     override func viewDidLoad()
     {
@@ -1535,12 +1541,10 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                     
                     if let dicparam = dic["urlParams"] as? NSDictionary
                     {
-                        if let filtertype = dicparam["filter_type"] as? String
+                        if var filtertype = dicparam["filter_type"] as? String
                         {
                             if i < 4
                             {
-                                
-                                
                                 viewFilter = createView(CGRect(x: xOffset, y: CGFloat(buttonPadding), width: width, height: height), borderColor: UIColor.clear, shadow: false)
                                 viewFilter.tag = i
                                 scrollableCategory.addSubview(viewFilter)
@@ -1554,12 +1558,19 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                 button.layer.cornerRadius =  button.bounds.size.width/2
                                 button.clipsToBounds = true
                                 
+                                
                                 switch filtertype {
                                 case "all":
                                     button.setTitle("\u{f0ac}", for: .normal)
                                     button.backgroundColor = color7
                                     button.titleLabel?.font = UIFont(name: "FontAwesome", size: 18.0)
-                                    button.alpha = 0.8
+                                    if self.fromMenuSaveFeed == true {
+                                        button.alpha = 0.3
+                                    }
+                                    else {
+                                        button.alpha = 0.8
+                                    }
+                                    
                                     break
                                     
                                 case "membership":
@@ -1730,7 +1741,13 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             button.frame = CGRect(x: width/2 - 17, y: 5, width: 35, height: 35)
             button.titleLabel?.font = UIFont(name: "FontAwesome", size: 18.0)
             button.setTitle(optionIcon, for: .normal)
-            button.alpha = 0.3
+            if self.fromMenuSaveFeed == true {
+                button.alpha = 0.8
+            }
+            else {
+                button.alpha = 0.3
+            }
+            
             button.layer.cornerRadius =  button.bounds.size.width/2
             button.clipsToBounds = true
             //  button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
@@ -3261,6 +3278,11 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             if feedFilterFlag == true{
                 parameters.merge(searchDic)
             }
+            else {
+                if self.fromMenuSaveFeed == true {
+                    parameters.merge(self.fromMenuSearchDic)
+                }
+            }
             // Set userinteractionflag for request
             userInteractionOff = false
             
@@ -3369,11 +3391,15 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             }
             // Set userinteractionflag for request
             userInteractionOff = false
-            
+
             // Check for FeedFilter Option in Request
-            if feedFilterFlag == true
-            {
+            if feedFilterFlag == true {
                 parameters.merge(searchDic)
+            }
+            else {
+                if self.fromMenuSaveFeed == true {
+                    parameters.merge(self.fromMenuSearchDic)
+                }
             }
             // Send Server Request for Activity Feed
             post(parameters, url: "advancedactivity/feeds", method: "GET") { (succeeded, msg) -> () in
@@ -3460,6 +3486,11 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                                 
                                                 if let receiver = value as? NSString {
                                                     searchDic["\(key)"] = receiver as String
+                                                }
+                                                if key as? String == "filter_type"  {
+                                                    if self.fromMenuSaveFeed == true {
+                                                        searchDic["filter_type"] = "user_saved"
+                                                    }
                                                 }
                                             }
                                         }

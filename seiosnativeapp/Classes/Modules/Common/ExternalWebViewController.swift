@@ -269,7 +269,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         
         if (currentUrlString.range(of: "success/payment/finish/state/active") != nil) || (currentUrlString.range(of:  "/success") != nil) //stores/products/success
         {
-            let alert = UIAlertController(title: "Success", message: "Payment Successful. Your order has been Placed!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Payment Successful. Your order has been Placed!", message: "To accept payment for your events, setup your payment method", preferredStyle: .alert)
             let action1 = UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
                 
                 eventUpdate = true
@@ -278,6 +278,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
                 self.popAfterDelay = true
                 self.createTimer(self)
             })
+           
             alert.addAction(action1)
             self.present(alert, animated: true, completion: nil)
             
