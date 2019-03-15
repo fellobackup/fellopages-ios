@@ -86,13 +86,13 @@ var removeGreetingsId = [Int]()
 var removeBirthdayId = [Int]()
 var isViewWillAppearCall = 0
 
-
+var fromMenuSaveFeed = false
+var fromMenuSearchDic = Dictionary<String, String>()
 
 class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentationControllerDelegate, TTTAttributedLabelDelegate, UIGestureRecognizerDelegate,UISearchBarDelegate,UITabBarControllerDelegate,scrollDelegate,CLLocationManagerDelegate, UIWebViewDelegate , CoachMarksControllerDataSource, CoachMarksControllerDelegate, StoryNotUploadedCell{
     var locationManager = CLLocationManager()
     /// Called when native content is received.
-    var fromMenuSaveFeed = false
-    var fromMenuSearchDic = Dictionary<String, String>()
+
     
     let mainView = UIView()
     var audioPlayer = AVAudioPlayer()
@@ -100,7 +100,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     var showSpinner = true                      // show spinner flag for pull to refresh
     var refresher:UIRefreshControl!             // Refresher for Pull to Refresh
     var maxid:Int!                              // MaxID for Pagination
-    var minid:Int! = 0                           // MinID for New Feeds
+    var minid:Int! = 0                          // MinID for New Feeds
     var info : UILabel!
     var titleInfo: UILabel!
     var menuLike : UIButton!
@@ -1564,7 +1564,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                     button.setTitle("\u{f0ac}", for: .normal)
                                     button.backgroundColor = color7
                                     button.titleLabel?.font = UIFont(name: "FontAwesome", size: 18.0)
-                                    if self.fromMenuSaveFeed == true {
+                                    if fromMenuSaveFeed == true {
                                         button.alpha = 0.3
                                     }
                                     else {
@@ -1741,7 +1741,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             button.frame = CGRect(x: width/2 - 17, y: 5, width: 35, height: 35)
             button.titleLabel?.font = UIFont(name: "FontAwesome", size: 18.0)
             button.setTitle(optionIcon, for: .normal)
-            if self.fromMenuSaveFeed == true {
+            if fromMenuSaveFeed == true {
                 button.alpha = 0.8
             }
             else {
@@ -1853,7 +1853,12 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 currentButton.isHighlighted = false
                 if currentButton.isHighlighted == false
                 {
-                    currentButton.alpha = 0.4
+                    if fromMenuSaveFeed == true {
+                        currentButton.alpha = 0.8
+                    }
+                    else {
+                          currentButton.alpha = 0.4
+                    }
                 }
                 
             }))
@@ -2565,6 +2570,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 self.viewWillLoadData()
             }
         }
+//        browseFeed()
     }
     
     override func viewDidLayoutSubviews() {
@@ -2575,7 +2581,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     // Stop Timer on Disappear of Activity Feed View
     override func viewWillDisappear(_ animated: Bool)
     {
-        
+        fromMenuSaveFeed = false
         NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
         
         feedObj.tableView.tableFooterView?.isHidden = true
@@ -3270,19 +3276,16 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     {
         // Check Internet Connectivity
         if reachability.connection != .none {
+            print("searchDic \(searchDic)")
             // Set Parameters & Path for Activity Feed Request
             var parameters = [String:String]()
             
             // if subject_id == 0 && subject_type == ""{
             parameters = ["limit": "\(limit)" ,"minid":String(minid),"feed_count_only":"1","getAttachedImageDimention":"0"]
             if feedFilterFlag == true{
-                parameters.merge(searchDic)
+               parameters.merge(searchDic)
             }
-            else {
-                if self.fromMenuSaveFeed == true {
-                    parameters.merge(self.fromMenuSearchDic)
-                }
-            }
+         
             // Set userinteractionflag for request
             userInteractionOff = false
             
@@ -3306,8 +3309,6 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                     //self.feed_filter = 0
                                     self.browseFeed()
                                     self.updateNewFeed = true
-                                    
-                                    
                                 }
                             }
                         }
@@ -3343,6 +3344,11 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     
     @objc func browseFeed()
     {
+        feedArray.removeAll(keepingCapacity: false)
+        self.dynamicRowHeight.removeAll(keepingCapacity: false)
+        self.maxid = 0
+        self.feed_filter = 1
+
         if show_story == 1
         {
           API_getBrowseStories()
@@ -3361,7 +3367,6 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             stopMyTimer()
             if (showSpinner)
             {
-                
                 activityIndicatorView.center = view.center
                 
                 if updateScrollFlag == false
@@ -3392,15 +3397,16 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             // Set userinteractionflag for request
             userInteractionOff = false
 
+            if fromMenuSaveFeed == true {
+//                searchDic = self.fromMenuSearchDic
+                 parameters.merge(fromMenuSearchDic)
+            }
+            
             // Check for FeedFilter Option in Request
             if feedFilterFlag == true {
                 parameters.merge(searchDic)
             }
-            else {
-                if self.fromMenuSaveFeed == true {
-                    parameters.merge(self.fromMenuSearchDic)
-                }
-            }
+          
             // Send Server Request for Activity Feed
             post(parameters, url: "advancedactivity/feeds", method: "GET") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
@@ -3475,7 +3481,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                 
                                 if searchDic.count == 0
                                 {
-                                    if let dic = self.gutterMenu1[0] as? NSDictionary
+                                    if let dic = self.gutterMenu1[8] as? NSDictionary
                                     {
                                         // Set Parameters for Feed Filter
                                         if let params = dic["urlParams"] as? NSDictionary{
@@ -3488,7 +3494,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                                     searchDic["\(key)"] = receiver as String
                                                 }
                                                 if key as? String == "filter_type"  {
-                                                    if self.fromMenuSaveFeed == true {
+                                                    if fromMenuSaveFeed == true {
                                                         searchDic["filter_type"] = "user_saved"
                                                     }
                                                 }

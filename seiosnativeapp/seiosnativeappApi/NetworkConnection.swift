@@ -623,7 +623,7 @@ func postActivityForm(_ params : Dictionary<String, AnyObject>, url : String, fi
     
     var dic = Dictionary<String, AnyObject>()
     
-    if(logoutUser == false){
+    if(logoutUser == false) {
         dic["oauth_token"] = oauth_token as AnyObject?
         dic["oauth_secret"] = oauth_secret as AnyObject?
     }
@@ -632,11 +632,10 @@ func postActivityForm(_ params : Dictionary<String, AnyObject>, url : String, fi
     dic["language"] = "\( (Locale.current as NSLocale).object(forKey: NSLocale.Key.languageCode)!)" as AnyObject?
     if ios_version != nil && ios_version != "" {
         dic["_IOS_VERSION"] = ios_version as AnyObject?
-        
     }
     dic.update(params)
     
-    let request = createActivityRequest(dic, url: url, path: filePath, filePathKey: filePathKey,SinglePhoto: SinglePhoto)
+    let request = createActivityRequest(dic, strUrl: url, path: filePath, filePathKey: filePathKey,SinglePhoto: SinglePhoto)
     print(request)
     createServerRequest(request, postCompleted: { (succeeded, msg) -> () in
         postCompleted(succeeded, msg)
@@ -1307,10 +1306,10 @@ func createRequest (_ param:Dictionary<String, String>, url:String ,path:[String
 }
 
 
-func createActivityRequest (_ param:Dictionary<String, AnyObject>, url:String ,path:[String],filePathKey:String, SinglePhoto:Bool) -> URLRequest {
+func createActivityRequest (_ param:Dictionary<String, AnyObject>, strUrl:String ,path:[String],filePathKey:String, SinglePhoto:Bool) -> URLRequest {
     
     let boundary = generateBoundaryString()
-    let url = URL(string: baseUrl+url)!
+    let url = URL(string: baseUrl+strUrl)!
     print(url)
    // //print(param)
     let request = NSMutableURLRequest(url: url)

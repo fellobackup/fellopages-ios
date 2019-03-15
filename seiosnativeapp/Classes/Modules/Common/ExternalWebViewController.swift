@@ -29,6 +29,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
     var popAfterDelay:Bool!
     var leftBarButtonItem : UIBarButtonItem!
     var fromEventGutter = false
+    var fromCreateEvent = false
     var contentGutterMenu: NSArray = []
     var ticketUrlParams : NSDictionary!
     var ticketUrl : String!
@@ -243,7 +244,6 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         self.view.addSubview(activityIndicatorView)
         activityIndicatorView.center = self.view.center
         activityIndicatorView.startAnimating()
-        self.checkAvailableTicket()
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -275,7 +275,13 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
                 eventUpdate = true
                 contentFeedUpdate = true
                 
-                self.popAfterDelay = true
+                if self.fromCreateEvent == true {
+                     self.popAfterDelay = false
+                }
+                else {
+                     self.popAfterDelay = true
+                }
+               
                 self.createTimer(self)
             })
            
@@ -361,10 +367,10 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
     @objc func stopTimer()
     {
         stop()
+        externalWebView.delegate = nil
+        externalWebView.stopLoading()
         if self.popAfterDelay == true
         {
-            externalWebView.delegate = nil
-            externalWebView.stopLoading()
             if conditionForm == "advancedevents" || conditionForm == "ticketCheckout"
             {
                 conditionalProfileForm = "eventPaymentCancel"
@@ -372,31 +378,24 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             }
             else
             {
-                if self.ticketCount > 0
+                self.dismiss(animated: false, completion: nil)
+            }
+        }
+        else {
+            for menu in self.contentGutterMenu
+            {
+                if let menuItem = menu as? NSDictionary
                 {
-                    self.dismiss(animated: false, completion: nil)
-                }
-                else
-                {
-                    if fromEventGutter == true
+                    if menuItem["name"] as! String == "payment_method"
                     {
-                        for menu in self.contentGutterMenu
-                        {
-                            if let menuItem = menu as? NSDictionary
-                            {
-                                if menuItem["name"] as! String == "payment_method"
-                                {
-                                    let presentedVC = AddPaymentMethodViewController()
-                                    presentedVC.url = menuItem["url"] as! String
-                                    presentedVC.param = menuItem["urlParams"] as! NSDictionary
-                                    presentedVC.fromEventGutter = true
-                                    presentedVC.contentGutterMenu = self.contentGutterMenu
-                                    presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                                    let navigationController = UINavigationController(rootViewController: presentedVC)
-                                    self.present(navigationController, animated: true, completion: nil)
-                                }
-                            }
-                        }
+                        let presentedVC = AddPaymentMethodViewController()
+                        presentedVC.url = menuItem["url"] as! String
+                        presentedVC.param = menuItem["urlParams"] as! NSDictionary
+                        presentedVC.fromCreateEvent = true
+                        presentedVC.contentGutterMenu = self.contentGutterMenu
+                        presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                        let navigationController = UINavigationController(rootViewController: presentedVC)
+                        self.present(navigationController, animated: true, completion: nil)
                     }
                 }
             }

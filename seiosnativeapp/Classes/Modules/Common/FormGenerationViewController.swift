@@ -81,6 +81,7 @@ var videoDuration : Double = 0.00
     var productType : String!
     var productHelpUrl : String!
     var reloadForm = false
+    var eventId : Int!
     
     override func viewDidLoad()
     {
@@ -3074,10 +3075,16 @@ var videoDuration : Double = 0.00
             }
          
             if let email = form.valuesByKey["email"] as? String{
-                if checkValidEmail(email) == false && error == ""{
+                if checkValidEmail(email) == false && error == "" {
                     if self.contentType != nil && contentType == "advancedevents"{
                         error = NSLocalizedString("Enter Email", comment: "")
                     }
+                }
+            }
+            
+            if (form.valuesByKey["currency"]) == nil || (form.valuesByKey["currency"] as! String == "") && error == "" {
+                if self.contentType != nil && contentType == "advancedevents"{
+                    error = NSLocalizedString("Please select currency", comment: "")
                 }
             }
            
@@ -4257,6 +4264,8 @@ var videoDuration : Double = 0.00
                                                                                             {
                                                                                                 let presentedVC = ExternalWebViewController()
                                                                                                 presentedVC.url = paymenturl
+                                                                                                presentedVC.contentGutterMenu = gutterMenu
+                                                                                                presentedVC.fromCreateEvent = true
                                                                                                 presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                                                                                                 let navigationController = UINavigationController(rootViewController: presentedVC)
                                                                                                 self.present(navigationController, animated: true, completion: nil)

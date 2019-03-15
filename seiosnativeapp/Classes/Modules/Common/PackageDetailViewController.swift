@@ -89,6 +89,7 @@ class PackageDetailViewController: UIViewController
                 label2.numberOfLines = 0
                 label2.lineBreakMode = NSLineBreakMode.byWordWrapping
                 let titlevalue = dic["value"]
+               
                 if titlevalue != nil
                 {
                     if title == "Status"
@@ -108,7 +109,6 @@ class PackageDetailViewController: UIViewController
                         {
                             label2?.text = "\(titlevalue!)"
                         }
-                        
                     }
                     else
                     {

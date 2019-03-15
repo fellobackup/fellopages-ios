@@ -23,7 +23,7 @@ let Welcome_SlideShow2_description = ""
 let Welcome_SlideShow3_title = ""
 let Welcome_SlideShow3_description = ""
 let slideShowCount = 3
-let baseUrl = "https://www.fellopages.com/beta1/api/rest/"
+let baseUrl = "https://www.fellopages.com/api/rest/"
 let oauth_consumer_secret = "dlixjfdviokbfk48mv1x0ir2u8v7o9xj"
 let oauth_consumer_key = "tqrqueo5pxnae436nmrgeqhzs6jiud1n"
 

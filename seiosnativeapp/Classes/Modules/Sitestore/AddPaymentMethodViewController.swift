@@ -26,14 +26,16 @@ class AddPaymentMethodViewController : FXFormViewController
     var password : String!
     var url : String!
     var param : NSDictionary!
+    var eventId : Int!
     var fromEventGutter = false
+    var fromCreateEvent = false
     var contentGutterMenu: NSArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = bgColor
         navigationController?.navigationBar.isHidden = false
         
-        if fromEventGutter == true {
+        if fromCreateEvent == true {
             let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(AddPaymentMethodViewController.cancel))
             self.navigationItem.leftBarButtonItem = cancel
             navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
@@ -73,14 +75,12 @@ class AddPaymentMethodViewController : FXFormViewController
     
     @objc func cancel()
     {
+        conditionalProfileForm = "eventPaymentCancel"
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     @objc func skip()
     {
-        if self.fromEventGutter == true
-        {
-            self.navigateToTicket()
-        }
+         self.navigateToTicket()
     }
     func navigateToTicket()
     {
@@ -93,8 +93,7 @@ class AddPaymentMethodViewController : FXFormViewController
                     let presentedVC = ManageEventTicketViewController()
                     presentedVC.url = "advancedeventtickets/tickets/manage"
                     presentedVC.urlParams = menuItem["urlParams"] as! NSDictionary
-                    presentedVC.fromEventGutter = true
-                    //presentedVC.formTitle = "Create Ticket"
+                    presentedVC.fromCreateEvent = true
                     presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                     let navigationController = UINavigationController(rootViewController: presentedVC)
                     self.present(navigationController, animated: true, completion: nil)
@@ -240,13 +239,23 @@ class AddPaymentMethodViewController : FXFormViewController
     
     @objc func submitForm(_ cell: FXFormFieldCellProtocol)
     {
+        // Check the navigation origin
+        if self.fromCreateEvent == true {
+            popAfterDelay = false
+        }
+        else {
+            popAfterDelay = true
+        }
         //self.formController.tableView.setContentOffset(CGPoint.zero, animated:true)
         let form = cell.field.form as! CreateNewForm
         
         // Check for errors
-        
+       
         var error = ""
         var errorTitle = "Error"
+        var isPaypalChecked = 0
+        var isByChequeChecked = 0
+        var isCodChecked = 0
         
         if( (form.valuesByKey["isPaypalChecked"] != nil) && (form.valuesByKey["isPaypalChecked"] as! Int) == 1)
         {
@@ -276,7 +285,19 @@ class AddPaymentMethodViewController : FXFormViewController
             }
         }
         
+        if( form.valuesByKey["isPaypalChecked"] != nil) {
+            isPaypalChecked = form.valuesByKey["isPaypalChecked"] as! Int
+        }
+        if( form.valuesByKey["isByChequeChecked"] != nil) {
+            isByChequeChecked = form.valuesByKey["isByChequeChecked"] as! Int
+        }
+        if( form.valuesByKey["isCodChecked"] != nil) {
+            isCodChecked = form.valuesByKey["isCodChecked"] as! Int
+        }
         
+        if isPaypalChecked == 0 && isByChequeChecked == 0 && isCodChecked == 0 {
+            error = "Please select at least 1 payment method"
+        }
         if error != ""
         {
             let alertController = UIAlertController(title: "\(errorTitle)", message:
@@ -287,10 +308,8 @@ class AddPaymentMethodViewController : FXFormViewController
             
         else
         {
-            
             if reachability.isReachable
             {
-                
                 view.isUserInteractionEnabled = false
                 self.view.addSubview(activityIndicatorView)
                 activityIndicatorView.center = self.view.center
@@ -431,8 +450,6 @@ class AddPaymentMethodViewController : FXFormViewController
         FormforRepeat = Form
         self.formController.form = CreateNewForm()
         self.formController.tableView.reloadData()
-        
-        
     }
     
     @objc func showChequeField(_ cell : FXFormFieldCellProtocol)
@@ -486,14 +503,11 @@ class AddPaymentMethodViewController : FXFormViewController
         FormforRepeat = Form
         self.formController.form = CreateNewForm()
         self.formController.tableView.reloadData()
-        
-        
     }
     
     func createTimer(_ target: AnyObject){
         timer = Timer.scheduledTimer(timeInterval: 2, target: target, selector:  #selector(stopTimer), userInfo: nil, repeats: false)
     }
-    
     
     @objc func stopTimer()
     {

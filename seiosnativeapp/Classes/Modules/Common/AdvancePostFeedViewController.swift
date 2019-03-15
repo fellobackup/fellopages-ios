@@ -1907,8 +1907,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             ProductPrice.font = UIFont(name: "fontAwesome", size: FONTSIZEMedium)
             if Formbackup["price"] != nil && Formbackup["price"] as! String != "" {
                 let currency = Formbackup["currency"] as? String
-                //let sign = getCurrencySymbol(currency!)
-                ProductPrice.text = "\(dollarIcon) \(currency!) \(Formbackup["price"] as! String)"
+                let sign = getCurrencySymbol(currency!)
+              
+                ProductPrice.text = "\(sign) \(Formbackup["price"] as! String)"
             }
             innerY = innerY + Int(ProductPrice.bounds.height)
             
@@ -2946,7 +2947,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             }
             if sellAttachmentMode == true
             {
-                //parameters["post_attach"] = "1" as AnyObject?
+                parameters["post_attach"] = "1" as AnyObject?
                 parameters["type"] = "sell" as AnyObject?
                 Formbackup.removeObject(forKey: "photo")
                 

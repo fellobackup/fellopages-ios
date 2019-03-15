@@ -706,8 +706,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             if  UserDefaults.standard.object(forKey: "showDashboardAppTour") != nil {
                 
                 dashboardTargetCheckValue = name as! Int
-                
-                
             }
             
         }
@@ -3353,11 +3351,13 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         if name == "save_feeds" {
-            let presentedVC = AdvanceActivityFeedViewController()
-            presentedVC.fromMenuSaveFeed = true
-            presentedVC.fromMenuSearchDic = searchDic
-            self.navigationController?.pushViewController(presentedVC, animated: true)
-            return
+            presentedVC = AdvanceActivityFeedViewController()
+            fromMenuSaveFeed = true
+            fromMenuSearchDic = searchDic
+//            presentedVC.fromMenuSaveFeed = true
+//            presentedVC.fromMenuSearchDic = searchDic
+//            self.navigationController?.pushViewController(presentedVC, animated: true)
+//            return
         }
         if name == "core_main_blog"{
             

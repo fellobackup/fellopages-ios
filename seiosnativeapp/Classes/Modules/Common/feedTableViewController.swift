@@ -2756,7 +2756,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                 cell.sellTitle.frame.size.width = cell.cellView.frame.size.width - 20
                                 
                                 cell.sellPrice.frame.origin.y = cell.sellTitle.bounds.size.height + 10 + cell.sellTitle.frame.origin.y
-                                cell.sellPrice.text = "\(dollarIcon) \(currency) \(price)"
+                                let sign = getCurrencySymbol(currency)
+                                cell.sellPrice.text = "\(sign) \(price)"
                                 cell.sellPrice.textColor = UIColor(red: 34/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)//rgb(34,139,34)//UIColor.green
                                 cell.sellPrice.numberOfLines = 0
                                 cell.sellPrice.lineBreakMode = NSLineBreakMode.byTruncatingTail
@@ -5691,6 +5692,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     let presentedVC = ContentFeedViewController()
                     presentedVC.subjectType = "advancedevents"
                     presentedVC.subjectId = objectID
+                    presentedVC.action_id = activityFeed["action_id"] as! Int
                     self.navigationController?.pushViewController(presentedVC, animated: true)
                 }
                 
@@ -6752,7 +6754,6 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         likeCommentContentType = "activity_action"
         presentedVC.action_idd = feed["action_id"] as! Int
         likeCommentContent_id = feed["action_id"] as! Int
-        presentedVC.contentType = "activityFeed"
         presentedVC.contentType = "activityFeed"
         navigationController?.pushViewController(presentedVC, animated: true)
         

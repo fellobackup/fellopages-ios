@@ -1181,11 +1181,12 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         view.endEditing(true)
         var errorMsg = ""
         var parameters = [String:String]()
-        if(contentLabelText.text == "") || (contentLabelText.text == placeHolderText){
-            if iscoming != "sitegroup" && iscoming != "sitevideo" && iscoming != "sitevideoAvoid" {
-            errorMsg = NSLocalizedString("Content can't be empty",  comment: "")
-            }
-        }else if frndTag.count == 0{
+//        if(contentLabelText.text == "") || (contentLabelText.text == placeHolderText){
+//            if iscoming != "sitegroup" && iscoming != "sitevideo" && iscoming != "sitevideoAvoid" {
+//            errorMsg = NSLocalizedString("Content can't be empty",  comment: "")
+//            }
+//        }else
+        if frndTag.count == 0{
             errorMsg = NSLocalizedString("No Recipients",  comment: "")
         }
     

@@ -181,8 +181,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     var coverValue : Int! = 0
     var profileValue : Int! = 0
     var likeButton : UIButton!
-    var likeCount : UILabel!
+    var likeCountLabel : UILabel!
     var likeID : Int! = 0
+    var isLike = false
+    var likeCount : Int! = 0
+    var eventId : Int! = 0
+    var likeId : Int! = 0
     // Initialize Class
     override func viewDidLoad()
     {
@@ -473,39 +477,66 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         feedObj.tableView.tableFooterView?.isHidden = true
      
     }
+    @objc func likeCommentInfo(_ sender:UITapGestureRecognizer){
+        let presentedVC = MembersViewController()
+        likeCommentContentType = "siteevent_event"
+        presentedVC.action_idd = self.isLike ? self.likeId + 0 : 0
+        likeCommentContent_id = self.subjectId
+        presentedVC.contentType = "activityFeed"
+        navigationController?.pushViewController(presentedVC, animated: true)
+        
+    }
     @objc func likeAction(_ sender:UIButton)
     {
         if reachability.connection != .none {
             var dic = Dictionary<String, String>()
             let url = "advancedactivity/event-like"
-            let response = self.responsedic["like_info"] as! NSDictionary
-            let eventId = self.responsedic["event_id"] as! Int
-            let feedId = response["like_id"] as! Int
-            dic["resource_id"] = "\(eventId)"
-            dic["like_id"] = "\(feedId)"
+            self.likeButton.isEnabled = false
+            
+            dic["resource_id"] = "\(self.eventId + 0)"
+            dic["like_id"] = "\(self.isLike ? self.likeId + 0 : 0)"
             dic["resource_type"] = "siteevent_event"
-            // Send Server Request to Update Feed Gutter Menu
+            
+  
+            if self.isLike == true {
+                if self.likeCount > 0
+                {
+                    self.likeCountLabel.text = "\(self.likeCount - 1) likes"
+                    self.likeCount = self.likeCount - 1
+                }
+                self.likeButton.setTitle(" Like", for: UIControlState())
+                self.isLike = false
+            }
+            else {
+                if self.likeCount >= 0
+                {
+                    self.likeCountLabel.text = "\(self.likeCount + 1) likes"
+                    self.likeCount = self.likeCount + 1
+                }
+                self.likeButton.setTitle(" Unlike", for: UIControlState())
+                self.isLike = true
+            }
+//             Send Server Request to Update Feed Gutter Menu
             post(dic, url: "\(url)", method: "POST") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
-                    
+
                     if msg{
                         if let response = succeeded["body"] as? NSDictionary{
-                            let likeCount = self.responsedic["like_count"] as! Int
-                            if let status = response["status"] as? Bool{
-                                if status == true{
-                                    self.likeButton.setTitle(" Unlike", for: UIControlState())
-                                    if likeCount > 0
-                                    {
-                                        self.likeCount.text = "\(likeCount + 1) likes"
-                                    }
-                                }
-                                else {
-                                    self.likeButton.setTitle(" Like", for: UIControlState())
-                                    if likeCount > 0
-                                    {
-                                        self.likeCount.text = "\(likeCount - 1) likes"
-                                    }
-                                }
+          
+                            self.likeButton.isEnabled = true
+                            
+                            let isLike = response["status"] as! Bool
+                            self.isLike = isLike
+
+                            if isLike == true {
+                                self.likeCountLabel.text = "\(response["count_likes"] as! Int) likes"
+                                self.likeButton.setTitle(" Unlike", for: UIControlState())
+                                self.likeId = response["like_id"] as! Int
+                            }
+                            else {
+                                self.likeCountLabel.text = "\(response["count_likes"] as! Int) likes"
+                                self.likeButton.setTitle(" Like", for: UIControlState())
+                                self.likeId = 0
                             }
                         }
                     }
@@ -513,7 +544,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     {
                         //     activityIndicatorView.stopAnimating()
                     }
-                    
+
                 })
             }
         }
@@ -2931,6 +2962,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 
                                 if let response = contentInfo["response"] as? NSDictionary
                                 {
+                                    let response = contentInfo["response"] as! NSDictionary
                                     if let sitevideoPluginEnabled = response["sitevideoPluginEnabled"] as? Int
                                     {
                                         sitevideoPluginEnabled_event = sitevideoPluginEnabled
@@ -2938,6 +2970,15 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     //sitevideoPluginEnabled_event = (response["sitevideoPluginEnabled"] as! Int)
                                     self.contentTitle = response["title"] as? String
                                     self.responsedic = response
+                                    
+                                    let likeInfo = response["like_info"] as! NSDictionary
+                                    self.isLike = likeInfo["islike"] as! Bool
+                                    self.likeId = likeInfo["like_id"] as! Int
+                                    
+                                    self.likeCount = response["like_count"] as! Int
+                                    self.eventId = response["event_id"] as! Int
+                                 
+                                    
                                     if let owner_id = response["user_id"] as? Int{
                                         self.user_id = owner_id
                                     }
@@ -3021,6 +3062,10 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                         let tap2 = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.showProfileCoverImageMenu(_:)))
                                         self.memberProfilePhoto.addGestureRecognizer(tap2)
                                         self.likeview.isHidden = false
+                                        
+//
+                             
+                                        
                                         if let cover : Int = response["default_cover"] as? Int{
                                             
                                             if (response["cover_image"] as? String) != nil{
@@ -3056,9 +3101,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                         
                                         if let count = response["like_count"] as? Int
                                         {
-                                            self.likeCount = createLabel(CGRect(x: self.likeButton.bounds.width + 10, y: 0, width: 60, height: 30), text: "\(count) likes", alignment: .left, textColor: textColorLight)
-                                            self.likeCount.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-                                            self.likeview.addSubview(self.likeCount)
+                                            self.likeCountLabel = createLabel(CGRect(x: self.likeButton.bounds.width + 10, y: 0, width: 60, height: 30), text: "\(count) likes", alignment: .left, textColor: textColorLight)
+                                            self.likeCountLabel.font = UIFont(name: fontBold, size: FONTSIZEMedium)
+                                            self.likeCountLabel.isUserInteractionEnabled = true
+                                            let tapLikeCount = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.likeCommentInfo(_:)))
+                                            self.likeCountLabel.addGestureRecognizer(tapLikeCount)
+                                            self.likeview.addSubview(self.likeCountLabel)
                                         }
                                         
                                         self.contentName.text = response["title"] as? String
@@ -3446,6 +3494,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     }
                                     
                                 }
+                     
                             }
                         }
                     }

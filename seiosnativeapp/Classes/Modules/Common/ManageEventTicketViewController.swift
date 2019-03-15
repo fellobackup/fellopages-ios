@@ -25,7 +25,8 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
     var popAfterDelay : Bool!
     var uploadUrl : String!
     var deleteFileEntry:Bool!
-    var fromEventGutter = false
+//    var fromEventGutter = false
+    var fromCreateEvent = false
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -88,19 +89,18 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
     
     @objc func cancel()
     {
-        if self.fromEventGutter == true {
+        if self.fromCreateEvent == true {
+            conditionalProfileForm = "eventPaymentCancel"
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         else {
-              self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
-        
         return 0.00001
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -119,13 +119,11 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
     // Set No. of Rows in Section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
         return responseArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ManageEventTicketTableCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.backgroundColor = UIColor.clear
