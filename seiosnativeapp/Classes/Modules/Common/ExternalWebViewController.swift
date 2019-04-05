@@ -30,6 +30,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
     var leftBarButtonItem : UIBarButtonItem!
     var fromEventGutter = false
     var fromCreateEvent = false
+    var fromDiscussion = false
     var contentGutterMenu: NSArray = []
     var ticketUrlParams : NSDictionary!
     var ticketUrl : String!
@@ -73,8 +74,19 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
         //        }
         self.navigationController?.navigationBar.tintColor = textColorPrime
         if fromDashboard == false {
-            if url1 == "" && url2 == "" && url3 == ""{
+            if fromDiscussion == true {
+                let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+                leftNavView.backgroundColor = UIColor.clear
+                let tapView = UITapGestureRecognizer(target: self, action: #selector(ExternalWebViewController.goBack))
+                leftNavView.addGestureRecognizer(tapView)
+                let backIconImageView = createImageView(CGRect(x: 0, y: 12, width: 22, height: 22), border: false)
+                backIconImageView.image = UIImage(named: "back_icon")!.maskWithColor(color: textColorPrime)
+                leftNavView.addSubview(backIconImageView)
                 
+                let barButtonItem = UIBarButtonItem(customView: leftNavView)
+                self.navigationItem.leftBarButtonItem = barButtonItem
+            }
+            else if url1 == "" && url2 == "" && url3 == ""{
                 let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(ExternalWebViewController.cancel))
                 self.navigationItem.leftBarButtonItem = cancel
                 navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
@@ -91,7 +103,6 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             
             let barButtonItem = UIBarButtonItem(customView: leftNavView)
             self.navigationItem.leftBarButtonItem = barButtonItem
-            
         }
         
         rightBarButton = UIBarButtonItem(image: UIImage(named: "upload")!.maskWithColor(color: textColorPrime) , style: UIBarButtonItemStyle.plain , target: self, action: #selector(ExternalWebViewController.openBrowserSetting))
@@ -382,22 +393,27 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             }
         }
         else {
-            for menu in self.contentGutterMenu
-            {
-                if let menuItem = menu as? NSDictionary
+            if self.contentGutterMenu != nil {
+                for menu in self.contentGutterMenu
                 {
-                    if menuItem["name"] as! String == "payment_method"
+                    if let menuItem = menu as? NSDictionary
                     {
-                        let presentedVC = AddPaymentMethodViewController()
-                        presentedVC.url = menuItem["url"] as! String
-                        presentedVC.param = menuItem["urlParams"] as! NSDictionary
-                        presentedVC.fromCreateEvent = true
-                        presentedVC.contentGutterMenu = self.contentGutterMenu
-                        presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                        let navigationController = UINavigationController(rootViewController: presentedVC)
-                        self.present(navigationController, animated: true, completion: nil)
+                        if menuItem["name"] as! String == "payment_method"
+                        {
+                            let presentedVC = AddPaymentMethodViewController()
+                            presentedVC.url = menuItem["url"] as! String
+                            presentedVC.param = menuItem["urlParams"] as! NSDictionary
+                            presentedVC.fromCreateEvent = true
+                            presentedVC.contentGutterMenu = self.contentGutterMenu
+                            presentedVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                            let navigationController = UINavigationController(rootViewController: presentedVC)
+                            self.present(navigationController, animated: true, completion: nil)
+                        }
                     }
                 }
+            }
+            else {
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -482,7 +498,10 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             }
             else
             {
-                if conditionForm == "advancedevents"
+                if fromDiscussion == true {
+                     _ = self.navigationController?.popViewController(animated: true)
+                }
+                else if conditionForm == "advancedevents"
                 {
                     conditionalProfileForm = "eventPaymentCancel"
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)

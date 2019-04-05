@@ -410,7 +410,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         createTabs()
         if logoutUser == true
         {
-            baseController.tabBar.items![1].isEnabled = false
+//            baseController.tabBar.items![1].isEnabled = false
             baseController.tabBar.items![2].isEnabled = false
             baseController.tabBar.items![3].isEnabled = false
         }

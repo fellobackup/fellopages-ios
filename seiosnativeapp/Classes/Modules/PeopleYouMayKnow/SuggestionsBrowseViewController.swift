@@ -309,10 +309,13 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
     func addScrollMenu(){
         scrollMenu = UIScrollView(frame: CGRect(x: 0.0, y: TOPPADING, width: self.view.frame.size.width, height: 70))
         scrollMenu.delegate = self
-        let menuArray = [String(format:NSLocalizedString("\n%@\n\nSuggestions\n",  comment: ""),sugetionIcon), String(format:NSLocalizedString("\n%@\n\nSearch\n",  comment: ""),searchIcon), String(format:NSLocalizedString("\n%@\n\nRequests\n",  comment: ""),friendReuestIcon), String(format:NSLocalizedString("\n%@\n\nContacts\n",  comment: ""),contactIcon),
-            String(format:NSLocalizedString("\n%@\n\nFriends\n",  comment: ""),friendIcon),
-            String(format:NSLocalizedString("\n%@\n\nInvite\n",  comment: ""),inviteIcon),
-            String(format:NSLocalizedString("\n%@\n\nOutgoing\n",  comment: ""),outgoingIcon)]
+        let menuArray = [String(format:NSLocalizedString("\n%@\n\nSuggestions\n",  comment: ""),sugetionIcon),
+                         String(format:NSLocalizedString("\n%@\n\nSearch\n",  comment: ""),searchIcon),
+                         String(format:NSLocalizedString("\n%@\n\nRequests\n",  comment: ""),friendReuestIcon),
+                         String(format:NSLocalizedString("\n%@\n\nContacts\n",  comment: ""),contactIcon),
+                         String(format:NSLocalizedString("\n%@\n\nFriends\n",  comment: ""),friendIcon),
+                         String(format:NSLocalizedString("\n%@\n\nInvite\n",  comment: ""),inviteIcon),
+                         String(format:NSLocalizedString("\n%@\n\nOutgoing\n",  comment: ""),outgoingIcon)]
         var i = 0
         var tableTag = 0
         for menu in menuArray{
@@ -1296,7 +1299,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             cell.imgUser.frame = CGRect(x: 5, y: 5, width: 60, height: 60)
             
             // Set Name People who Likes Content
-            cell.labTitle.frame = CGRect(x: cell.imgUser.bounds.width + 10, y: 25,width: (UIScreen.main.bounds.width - 75) , height: 100)
+            cell.labTitle.frame = CGRect(x: cell.imgUser.bounds.width + 10, y: 10,width: (UIScreen.main.bounds.width - 75) , height: 100)
             
             cell.labTitle.text = memberInfo["displayname"] as? String
             cell.labTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -1364,7 +1367,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             cell.imgUser.frame = CGRect(x: 5, y: 5, width: 60, height: 60)
             
             // Set Name People who Likes Content
-            cell.labTitle.frame = CGRect(x: cell.imgUser.bounds.width + 10, y: 25,width: (UIScreen.main.bounds.width - 75) , height: 100)
+            cell.labTitle.frame = CGRect(x: cell.imgUser.bounds.width + 10, y: 10,width: (UIScreen.main.bounds.width - 75) , height: 100)
             
             cell.labTitle.text = memberInfo["displayname"] as? String
             cell.labTitle.lineBreakMode = NSLineBreakMode.byWordWrapping

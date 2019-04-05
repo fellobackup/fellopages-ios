@@ -38,7 +38,7 @@ let extraLargeFontSize:CGFloat = 18.0
 let veryLargeFontSize:CGFloat = 35.0
 let isFooterDashboardMenu = 1
 let textColorPrime = UIColor(red: 255/255.0 , green: 255/255.0 , blue: 255/255.0 , alpha: 1.0)
-let buttonColor = UIColor(red: 41/255.0 , green: 121/255.0 , blue: 255/255.0 , alpha: 1.0)
+let buttonColor = UIColor(red: 16/255.0 , green: 171/255.0 , blue: 254/255.0 , alpha: 1.0)
 
 let cometChatPackageName = ""
 

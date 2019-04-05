@@ -216,7 +216,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         super.viewDidLoad()
         
      
-        NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+    NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
         tableViewFrameType = "AdvanceActivityFeedViewController"
         if UserDefaults.standard.string(forKey: "isAppRated") != nil
         {
@@ -279,7 +279,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         }
         
         // For customize header having searchbar in center
-        getheaderSetting()
+//         getheaderSetting()
         
         contentIcon = createLabel(CGRect(x:0,y:0,width:0,height:0), text: "", alignment: .center, textColor: textColorMedium )
         mainView.addSubview(contentIcon)
@@ -2685,7 +2685,6 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     // Initialize Timer for Check Updates in Feeds
     func startMyTimer(){
         myTimer = Timer.scheduledTimer(timeInterval: 30, target:self, selector:  #selector(AdvanceActivityFeedViewController.newfeedsUpdate), userInfo: nil, repeats: true)
-        
     }
     
     // Stop Timer for Check Updation
@@ -3398,15 +3397,22 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             userInteractionOff = false
 
             if fromMenuSaveFeed == true {
-//                searchDic = self.fromMenuSearchDic
-                 parameters.merge(fromMenuSearchDic)
+                for (key, value) in fromMenuSearchDic{
+                    // Change the filter type when selection
+                    if key as? String == "filter_type"  {
+                        fromMenuSearchDic["filter_type"] = "user_saved"
+                    }
+                }
+                parameters.merge(fromMenuSearchDic)
             }
             
             // Check for FeedFilter Option in Request
             if feedFilterFlag == true {
                 parameters.merge(searchDic)
             }
-          
+            print("searchDic \(searchDic)")
+            print("fromMenuSearchDic \(fromMenuSearchDic)")
+            print("fromMenuSaveFeed \(fromMenuSaveFeed)")
             // Send Server Request for Activity Feed
             post(parameters, url: "advancedactivity/feeds", method: "GET") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
@@ -3481,7 +3487,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                 
                                 if searchDic.count == 0
                                 {
-                                    if let dic = self.gutterMenu1[8] as? NSDictionary
+                                    if let dic = self.gutterMenu1[0] as? NSDictionary
                                     {
                                         // Set Parameters for Feed Filter
                                         if let params = dic["urlParams"] as? NSDictionary{
@@ -3493,11 +3499,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                                                 if let receiver = value as? NSString {
                                                     searchDic["\(key)"] = receiver as String
                                                 }
-                                                if key as? String == "filter_type"  {
-                                                    if fromMenuSaveFeed == true {
-                                                        searchDic["filter_type"] = "user_saved"
-                                                    }
-                                                }
+                                   
                                             }
                                         }
                                     }

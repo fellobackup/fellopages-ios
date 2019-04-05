@@ -193,7 +193,7 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         let tempHeight = ceil(cellView.bounds.width * 0.80)
 
         
-        cntentShareFeedView = createView(CGRect(x: 5,y: getBottomEdgeY(inputView: body)+5,width: cellView.bounds.width , height:tempHeight), borderColor: textColorclear, shadow: false)
+        cntentShareFeedView = createView(CGRect(x: 5,y: getBottomEdgeY(inputView: body)+5,width: cellView.bounds.width - 10 , height:tempHeight), borderColor: textColorclear, shadow: false)
         cntentShareFeedView.layer.shadowColor = shadowColor.cgColor
         cntentShareFeedView.layer.shadowOpacity = shadowOpacity
         cntentShareFeedView.layer.shadowRadius = shadowRadius
@@ -203,7 +203,7 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         cntentShareFeedView.layer.rasterizationScale = UIScreen.main.scale
         cellView.addSubview(cntentShareFeedView)
 
-        contentImageView = createImageView(CGRect(x: 0,y: 0,width: cntentShareFeedView.bounds.width ,height: tempHeight - 60), border: false)
+        contentImageView = createImageView(CGRect(x: -5,y: 0,width: cntentShareFeedView.bounds.width + 10 ,height: tempHeight - 60), border: false)
         contentImageView.backgroundColor = textColorLight
         contentImageView.layer.masksToBounds = true
        // contentImageView.isOpaque = true

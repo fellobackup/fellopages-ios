@@ -3906,7 +3906,9 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     cell.cntentShareFeedView.frame.size.height = tempHeight + 10
                     cell.contentImageView.frame.size.height = tempHeight - 60
                 
-                    cell.contentImageView.contentMode = .scaleToFill
+//                    cell.contentImageView.contentMode = .scaleToFill
+                    cell.contentImageView.contentMode = .scaleAspectFill
+                    cell.contentImageView.backgroundColor = UIColor.black
                     if attachment_type == "sitestoreproduct_product"{
                         cell.contentImageView.contentMode = .scaleAspectFit
                     }
@@ -4335,13 +4337,14 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                         menu = createButton(CGRect(x: 35,y: 0 ,width: menuItemWidth, height: 40), title: " \(title)", border: false,bgColor: false, textColor: iconColor)
                                         menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
                                         menu.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
+                                        
                                     }
                                     else
                                     {
-                                        menu = createButton(CGRect(x: 20, y: 0, width: menuItemWidth,height: 40), title: " \(title)", border: false,bgColor: false, textColor: iconColor)
+                                        menu = createButton(CGRect(x: 20, y: 0, width: menuItemWidth,height: 40), title: " Like", border: false,bgColor: false, textColor: iconColor)
                                         menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
                                         menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
-                                        
+                                        menu.setImage(UIImage(named: "thumbs_up_gray"), for: .normal)
                                         
                                     }
                                     let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(FeedTableViewController.longPressed(sender:)))
@@ -4353,7 +4356,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                     menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
                                     //menu.titleLabel?.adjustsFontSizeToFitWidth = true
                                 }
-                                
+                               
                                 menu.titleLabel?.textColor = iconColor
                                 menu.setTitleColor(textcolor, for: .normal)
                                 menu.tag = row

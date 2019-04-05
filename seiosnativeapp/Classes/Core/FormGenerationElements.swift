@@ -2011,6 +2011,8 @@ func generateFXFormsArrayfromDictionary(_ dictionary : NSArray) ->[AnyObject]
                                     element["default"] = "" as AnyObject?
                                 }
                             }
+                            
+                            element["action"] = "paymentOptionValueChanged:" as AnyObject?
                             element["options"] = options as AnyObject?
                         }
                         formElements.append(element as AnyObject)
@@ -2068,6 +2070,44 @@ func generateFXFormsArrayfromDictionary(_ dictionary : NSArray) ->[AnyObject]
                         }
                         formElements.append(element as AnyObject)
                         
+                    }
+                    else if dic["type"] as! String == "Text"
+                    {
+                        element["key"] = dic["name"] as? String as AnyObject?
+                        element["title"] = dic["label"] as? String as AnyObject?
+                        if let description = dic["description"] as? String
+                        {
+                            element["footer"] = description as AnyObject?
+                        }
+                        if isCreateOrEdit
+                        {
+                            let key = dic["name"] as? String
+                            if (Formbackup[key!] != nil)
+                            {
+                                element["default"] = Formbackup[key!] as AnyObject?
+                            }
+                            else
+                            {
+                                element["default"] = "" as AnyObject?
+                            }
+                        }
+                        if !isCreateOrEdit
+                        {
+                            let key = dic["name"] as? String
+                            if (Formbackup[key!] != nil)
+                            {
+                                element["default"] = Formbackup[key!] as AnyObject?
+                            }
+                            else if (formValue[key!] != nil)
+                            {
+                                element["default"] = formValue[key!] as AnyObject?
+                            }
+                            else
+                            {
+                                element["default"] = "" as AnyObject?
+                            }
+                        }
+                        formElements.append(element as AnyObject)
                     }
                     else if dic["type"] as! String == "Submit"
                     {

@@ -2727,6 +2727,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         coverimageView.backgroundColor = UIColor.red
         if let thumbImage = image{
             coverimageView.image = thumbImage
+            coverimageView.contentMode = .scaleAspectFill
             coverimageView.image = cropToBounds(thumbImage, width: Double((photoViewerFrame?.width)!), height: 300)
             coverimageView.clipsToBounds = true
         }

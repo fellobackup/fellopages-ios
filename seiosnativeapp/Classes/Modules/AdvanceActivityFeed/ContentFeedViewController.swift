@@ -187,6 +187,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     var likeCount : Int! = 0
     var eventId : Int! = 0
     var likeId : Int! = 0
+    var timezoneGMT : String!
     // Initialize Class
     override func viewDidLoad()
     {
@@ -281,7 +282,6 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             cameraBtn.addTarget(self, action: #selector(ContentFeedViewController.changeImageOptions), for: .touchUpInside)
             coverImage.addSubview(cameraBtn)
             cameraBtn.isHidden = true
-            
         }
         
         
@@ -320,9 +320,6 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             hostName.font = UIFont(name: fontName, size: FONTSIZENormal)
             hostName.lineBreakMode = NSLineBreakMode.byTruncatingTail
             topView.addSubview(hostName)
-            
-            
-        
         }
         else
         {
@@ -345,7 +342,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         if(self.subjectType != "group"){
             topView.isHidden = true
         }
-        
+       
         if self.subjectType != "advancedevents"{
             descriptionContent = createTextView(CGRect(x: 0,y: mainSubView.bounds.height+70 , width: topView.bounds.width, height: 100), borderColor: borderColorMedium, corner: false )
             descriptionContent.backgroundColor = bgColor
@@ -382,8 +379,16 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             }
             
         }
-        
-        tabsContainerMenu = UIScrollView(frame: CGRect(x: 0, y: 300,width: view.bounds.width ,height: ButtonHeight ))
+        var tabsContainerY : CGFloat = 430
+        if categoryMember != nil {
+//            tabsContainerY += categoryMember.frame.height + 10
+            print("categoryMember: \(categoryMember.frame.height)")
+        }
+        if groupDescriptionView != nil {
+            print("groupDescriptionView: \(groupDescriptionView.frame.height)")
+        }
+       
+        tabsContainerMenu = UIScrollView(frame: CGRect(x: 0, y: 430,width: view.bounds.width ,height: ButtonHeight ))
         tabsContainerMenu.delegate = self
         tabsContainerMenu.backgroundColor = tableViewBgColor
         tabsContainerMenu.isHidden = true
@@ -1129,7 +1134,15 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         presentedVC.url = tempUrl
                         self.navigationController?.pushViewController(presentedVC, animated: false)
                     }
-                    
+                    if menuItem["name"] as! String == "topic_discussion" {
+                        let presentedVC = ExternalWebViewController()
+                        presentedVC.url = self.responsedic["content_url"] as! String
+                        presentedVC.fromDiscussion = true
+                        self.navigationController?.pushViewController(presentedVC, animated: true)
+//                        presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//                        let navigationController = UINavigationController(rootViewController: presentedVC)
+//                        self.present(navigationController, animated: true, completion: nil)
+                    }
                 }
             }
         }
@@ -1889,6 +1902,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         
         if let strTimezone = response["timezone"] as? String{
             timezone = NSLocalizedString("Timezone", comment: "") + ": " + strTimezone
+            self.timezoneGMT = timezone
         }
         if location1 != "" && location1 != nil{
             for event in eventInfoSequence{
@@ -2971,13 +2985,20 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     self.contentTitle = response["title"] as? String
                                     self.responsedic = response
                                     
-                                    let likeInfo = response["like_info"] as! NSDictionary
-                                    self.isLike = likeInfo["islike"] as! Bool
-                                    self.likeId = likeInfo["like_id"] as! Int
-                                    
-                                    self.likeCount = response["like_count"] as! Int
-                                    self.eventId = response["event_id"] as! Int
-                                 
+                                    if let likeInfo = response["like_info"] as? NSDictionary {
+                                        self.isLike = likeInfo["islike"] as! Bool
+                                        self.likeId = likeInfo["like_id"] as! Int
+                                        
+                                        self.likeCount = response["like_count"] as! Int
+                                        self.eventId = response["event_id"] as! Int
+                                    }
+//                                    if likeInfo != nil {
+//                                        self.isLike = likeInfo["islike"] as! Bool
+//                                        self.likeId = likeInfo["like_id"] as! Int
+//
+//                                        self.likeCount = response["like_count"] as! Int
+//                                        self.eventId = response["event_id"] as! Int
+//                                    }
                                     
                                     if let owner_id = response["user_id"] as? Int{
                                         self.user_id = owner_id
@@ -3990,7 +4011,18 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                             switch(condition){
                             case "dashboard":
                                 if let url = URL(string: self.contentUrl){
-                                    UIApplication.shared.open(url, options: [:])
+                                    let popUpAlert = UIAlertController(title: "Please go to website to manage your dashboard", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                                    popUpAlert.addAction(UIKit.UIAlertAction(title: "Go to website", style: .default, handler:{ _ in
+                                         UIApplication.shared.open(url, options: [:])
+                                    }))
+                                    popUpAlert.addAction(UIKit.UIAlertAction(title: "Later", style: .default, handler:nil))
+                                    self.present(popUpAlert, animated:true, completion: nil)
+                                }
+                            case "copy_link":
+                                let url = menuItem["url"] as? String
+                                if url != nil {
+                                    UIPasteboard.general.string = url
+                                    self.view.makeToast("Event link has been copied.", duration: 5, position: "bottom")
                                 }
                             case "edit":
                                 confirmationAlert = false
@@ -4415,6 +4447,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             presentedVC.enddatetitle = datet1
             presentedVC.status = self.responsedic["status"] as! String
             presentedVC.eventid = self.responsedic["event_id"] as! Int
+            presentedVC.timezoneGMT = self.timezoneGMT
             self.navigationController?.pushViewController(presentedVC, animated: false)
             
 //            for menu in contentGutterMenu

@@ -452,6 +452,7 @@ class AddPaymentMethodViewController : FXFormViewController
         self.formController.tableView.reloadData()
     }
     
+    
     @objc func showChequeField(_ cell : FXFormFieldCellProtocol)
     {
         let form = cell.field.form as! CreateNewForm

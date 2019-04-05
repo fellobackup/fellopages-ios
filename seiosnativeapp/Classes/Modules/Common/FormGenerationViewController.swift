@@ -452,6 +452,8 @@ var videoDuration : Double = 0.00
                                                                         {
                                                                             let presentedVC = ExternalWebViewController()
                                                                             presentedVC.url = paymenturl
+                                                                            presentedVC.fromCreateEvent = true
+                                                                            presentedVC.contentGutterMenu = gutterMenu
                                                                             presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                                                                             let navigationController = UINavigationController(rootViewController: presentedVC)
                                                                             self.present(navigationController, animated: true, completion: nil)
@@ -4085,6 +4087,7 @@ var videoDuration : Double = 0.00
                                                 {
                                                     let presentedVC = ExternalWebViewController()
                                                     presentedVC.url = weburl
+                                                    presentedVC.fromCreateEvent = true
                                                     presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                                                     let navigationController = UINavigationController(rootViewController: presentedVC)
                                                     self.present(navigationController, animated: true, completion: nil)

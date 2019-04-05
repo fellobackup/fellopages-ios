@@ -31,14 +31,20 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.fellopages.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb268976283635558</string>
+				<string>fellopages</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.fellopages.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>App-Prefs</string>
@@ -46,7 +52,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.4.8</string>
+	<string>2.5.0</string>
 	<key>FacebookAppID</key>
 	<string>268976283635558</string>
 	<key>FacebookDisplayName</key>

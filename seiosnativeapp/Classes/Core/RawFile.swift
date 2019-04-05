@@ -3210,12 +3210,12 @@ func getTabController(name : String) -> UIViewController {
     subEventController.tabBarItem.image = UIImage(named: "tabEventIcon")!.maskWithColor(color: textColorPrime)
     tabControllers.append(subEventController)
     
-    /*tabControllersecond = getTabController(name: secondController)
-    let subController2 = UINavigationController(rootViewController: tabControllersecond)
-    subController2.tabBarItem.image = UIImage(named: "secondController")
-    subController2.tabBarItem.badgeValue = nil
-    subController2.tabBarItem.title = ""
-    tabControllers.append(subController2)*/
+//    tabControllersecond = getTabController(name: secondController)
+//    let subController2 = UINavigationController(rootViewController: tabControllersecond)
+//    subController2.tabBarItem.image = UIImage(named: "secondController")
+//    subController2.tabBarItem.badgeValue = nil
+//    subController2.tabBarItem.title = ""
+//    tabControllers.append(subController2)
     
     
     tabControllerthird = getTabController(name: thirdController)

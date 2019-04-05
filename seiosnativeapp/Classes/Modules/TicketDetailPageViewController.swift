@@ -16,6 +16,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
     var enddatetitle : String = ""
     var eventid : Int = 0
     var status : String = ""
+    var timezoneGMT : String!
     
     var scrollView = UIScrollView()
     var view1 = UIView() // Event information view with labels
@@ -197,7 +198,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         scrollView.isScrollEnabled = true
         view.addSubview(scrollView)
         
-        view1 = UIView(frame:CGRect(x:0,y:0, width:view.bounds.width, height: 90))
+        view1 = UIView(frame:CGRect(x:0,y:0, width:view.bounds.width, height: 110))
         view1.backgroundColor = UIColor.white
         scrollView.addSubview(view1)
         
@@ -211,7 +212,15 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         label2.numberOfLines = 0
         label2.lineBreakMode = NSLineBreakMode.byTruncatingTail
         label2.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-        view1.addSubview(label2)
+        if self.locationtitle != "" {
+            view1.addSubview(label2)
+        }
+        
+        let timezoneLabel = createLabel(CGRect(x:Padding, y:getBottomEdgeY(inputView: label2) + spacePadding,width:(view.bounds.width - 20) , height:20), text: timezoneGMT, alignment: .left, textColor: textColorMedium)
+        timezoneLabel.numberOfLines = 0
+        timezoneLabel.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        timezoneLabel.font = UIFont(name: fontBold, size: FONTSIZEMedium)
+        view1.addSubview(timezoneLabel)
         
         var tempInfo = ""
         let postedDate = startdatetitle
@@ -248,7 +257,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
             tempInfo1 += " at \(newTimeTo)"
         }
         
-        label3 = createLabel(CGRect(x:Padding, y:getBottomEdgeY(inputView: label2) + spacePadding,width:(view.bounds.width - 20) , height:20), text: "\(tempInfo) - \(tempInfo1)", alignment: .left, textColor: textColorMedium)
+        label3 = createLabel(CGRect(x:Padding, y:getBottomEdgeY(inputView: timezoneLabel) + spacePadding,width:(view.bounds.width - 20) , height:20), text: "\(tempInfo) - \(tempInfo1)", alignment: .left, textColor: textColorMedium)
         label3.numberOfLines = 0
         label3.lineBreakMode = NSLineBreakMode.byTruncatingTail
         label3.font = UIFont(name: fontName, size: FONTSIZEMedium)
@@ -402,6 +411,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         view4.addSubview(tab3)
         
         var dynheight:CGFloat = getBottomEdgeY(inputView: tab1)
+        let currency = orderResponse["currency"] as! String
         if let data = orderResponse["tickets"] as? NSArray
         {
             for i in stride(from: 0, to: data.count, by: 1){
@@ -425,7 +435,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                     view4.addSubview(info)
                     
                     //                    let price = Stirng(dic["price"] as? CGFloat)
-                    let tab2 = createLabel(CGRect(x:getRightEdgeX(inputView: tab1), y:dynheight + 2 ,width:(view4.bounds.width - 20)/3, height:40 + height1), text: "$\(dic["price"]!)", alignment: .center, textColor: textColorMedium)
+                    let tab2 = createLabel(CGRect(x:getRightEdgeX(inputView: tab1), y:dynheight + 2 ,width:(view4.bounds.width - 20)/3, height:40 + height1), text: "\(currency) \(dic["price"]!)", alignment: .center, textColor: textColorMedium)
                     if let price = dic["price"] as? String
                     {
                         tab2.text = price
@@ -482,11 +492,12 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         {
             info = (orderResponse["info"] as? String)!
         }
+        let currency = orderResponse["currency"] as! String
         
         if orderResponse["subTotal"] != nil
         {
             subtotal = (orderResponse["subTotal"] as? CGFloat)!
-            label28.text = String(format:":  $%.2f", subtotal)
+            label28.text = String(format:":  \(currency) %.2f", subtotal)
             //label28.text = ":  $\(( orderResponse["subTotal"] as? CGFloat)!)0"
         }
         
@@ -498,7 +509,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         if orderResponse["discountPrice"] != nil
         {
             let discountPrice = orderResponse["discountPrice"] as? CGFloat ?? 0.0
-            label29.text = String(format:":  $%.2f",discountPrice)
+            label29.text = String(format:":  \(currency) %.2f",discountPrice)
             //label29.text = ":  $\(( orderResponse["discountPrice"] as? CGFloat)!)"
         }
         
@@ -513,14 +524,14 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         if orderResponse["tax"] != nil
         {
             let taxx = orderResponse["tax"] as? CGFloat ?? 0.0
-            label30.text = String(format:":  $%.2f",taxx)
+            label30.text = String(format:":  \(currency) %.2f",taxx)
             //label30.text = ":  $\(( orderResponse["tax"] as? CGFloat)!)"
         }
         
         if orderResponse["grandTotal"] != nil
         {
             let grandTotal = orderResponse["grandTotal"] as? CGFloat ?? 0.0
-            label31.text = String(format:":  $%.2f",grandTotal)
+            label31.text = String(format:":  \(currency) %.2f",grandTotal)
             //label31.text = ":  $\(( orderResponse["grandTotal"] as? CGFloat)!)"
         }
         
@@ -774,6 +785,13 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                         
                         if let response = succeeded["body"] as? NSDictionary
                         {
+                            
+                            if let couponCode = response["coupon_code"] as? Int{
+                                self.coupontextfield.text = String(couponCode)
+                            }
+                            else if let couponCode = response["coupon_code"] as? String{
+                                self.coupontextfield.text = couponCode
+                            }
                             self.orderResponse = response
                             
                             if let occurance = self.orderResponse["occurence"] as? NSArray
@@ -868,6 +886,16 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                         if let data = dic["coupon_code"] as? String
                         {
                             if data == coupontextfield.text
+                            {
+                                k = 1
+                                parameters["coupon_code"] = coupontextfield.text
+                                break
+                            }
+                        }
+                        else if let data = dic["coupon_code"] as? Int
+                        {
+                            let inputValue = Int(coupontextfield.text!)
+                            if data == inputValue
                             {
                                 k = 1
                                 parameters["coupon_code"] = coupontextfield.text

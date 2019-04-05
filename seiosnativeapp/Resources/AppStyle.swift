@@ -101,11 +101,12 @@ let dashboardCategoryBgColor = UIColor(red: 247/255.0, green: 247/255.0, blue: 2
 let tabbedDashboardBgColor = UIColor.white
 
 // Navigation Style
-let navColor = UIColor(red: 41/255 , green: 121/255 , blue: 255/255 , alpha: 0.98)
+//let navColor = UIColor(red: 41/255 , green: 121/255 , blue: 255/255 , alpha: 0.98)
+let navColor = UIColor(red: 16/255 , green: 171/255 , blue: 254/255 , alpha: 0.98)
 
 
-
-let linkColor = UIColor(red: 41/255 , green: 121/255 , blue: 255/255, alpha: 1.0)
+//let linkColor = UIColor(red: 41/255 , green: 121/255 , blue: 255/255, alpha: 1.0)
+let linkColor = UIColor(red: 16/255 , green: 171/255 , blue: 254/255 , alpha: 0.98)
 
 // App BgColor
 let bgColor = UIColor(red: 247/255.0, green: 247/255.0, blue: 247/255.0, alpha: 1.0)

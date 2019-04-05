@@ -2032,6 +2032,22 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                                                 self.coverImageView.image =  imageWithImage( UIImage(named: "user_profile_image.png")!, scaletoWidth: self.coverImageView.bounds.width)
                                                 self.userCoverPicUrl = ""
                                             }
+                                            
+                                            // Alert user to upload a profile photo
+                                            let alert = UIAlertController(title: "Upload your profile picture", message: "It makes your account legit and professional.", preferredStyle: .alert)
+                                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {_ in
+                                                NSLog("Ok is click")
+                                                let presentedVC = EditProfilePhotoViewController()
+                                                presentedVC.currentImageUrl = self.userProfilePicUrl
+                                                presentedVC.url = "user/profilepage/upload-cover-photo/user_id/" + String(self.subjectId) + "/special/profile"
+                                                presentedVC.pageTitle = NSLocalizedString("Edit Profile Photo", comment: "")
+                                                presentedVC.showCameraButton = true
+                                                self.navigationController?.pushViewController(presentedVC, animated: false)
+                                            }))
+                                            alert.addAction(UIAlertAction(title: "Not Now", style: .default, handler: {_ in
+                                                NSLog("Not Now is click")
+                                            }))
+                                            self.present(alert,animated:true, completion:nil)
                                         }
                                     }
                                     

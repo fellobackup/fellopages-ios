@@ -3061,6 +3061,9 @@
 							com.apple.Push = {
 								enabled = 0;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -3084,6 +3087,9 @@
 							};
 							com.apple.Push = {
 								enabled = 0;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 0;
