@@ -938,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
-            timestampString = "576064715.718569"
+            timestampString = "576397791.392579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "865"
@@ -2234,7 +2234,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-                  timestampString = "576139619.4380749"
+                  timestampString = "576384950.307369"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "6270"
@@ -2249,7 +2249,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvancedEventViewController.swift"
-                  timestampString = "576139619.441296"
+                  timestampString = "576384950.309863"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "6271"
@@ -2810,7 +2810,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-                  timestampString = "576139619.8615119"
+                  timestampString = "576384950.513577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "2177"
@@ -2825,7 +2825,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentFeedViewController.swift"
-                  timestampString = "576139619.8639359"
+                  timestampString = "576384950.516872"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "2150"
@@ -3066,7 +3066,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "576139619.953913"
+                  timestampString = "576384950.5471621"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "7121"
@@ -3081,7 +3081,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
-                  timestampString = "576139619.95611"
+                  timestampString = "576384950.5498509"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "7121"
@@ -4202,7 +4202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
-            timestampString = "576064715.721027"
+            timestampString = "576397791.397372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2973"
@@ -4218,7 +4218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
-            timestampString = "576064715.721112"
+            timestampString = "576397791.397513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2942"
@@ -5290,7 +5290,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
-            timestampString = "576064715.721849"
+            timestampString = "576397791.3990639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2990"
@@ -5418,7 +5418,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/CoreAdvancedSearchViewController.swift"
-                  timestampString = "576139620.96587"
+                  timestampString = "576384951.1918451"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "985"
@@ -5433,7 +5433,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/Common/CoreAdvancedSearchViewController.swift"
-                  timestampString = "576139620.969864"
+                  timestampString = "576384951.194677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "988"
@@ -6362,7 +6362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentActivityFeedViewController.swift"
-            timestampString = "575459908.420415"
+            timestampString = "576397791.40039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1947"
@@ -6378,7 +6378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentActivityFeedViewController.swift"
-            timestampString = "575459908.4204561"
+            timestampString = "576397791.401885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1991"
@@ -6394,11 +6394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentActivityFeedViewController.swift"
-            timestampString = "575459908.4204921"
+            timestampString = "576397791.402458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3511"
-            endingLineNumber = "3511"
+            startingLineNumber = "3507"
+            endingLineNumber = "3507"
             landmarkName = "onImageViewTap(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6906,7 +6906,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/PeopleYouMayKnow/SuggestionsBrowseViewController.swift"
-                  timestampString = "576139625.468178"
+                  timestampString = "576384952.221619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "734"
@@ -6921,7 +6921,7 @@
                   moduleName = "seiosnativeapp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hpo-office/Documents/workspace/mobile_projects/fellopages-ios/seiosnativeapp/Classes/Modules/PeopleYouMayKnow/SuggestionsBrowseViewController.swift"
-                  timestampString = "576139625.4704061"
+                  timestampString = "576384952.224777"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "734"
@@ -7254,15 +7254,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
             timestampString = "576049644.302516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3797"
-            endingLineNumber = "3797"
+            startingLineNumber = "3798"
+            endingLineNumber = "3798"
             landmarkName = "shareattachmentFeed(cell:activityFeed:imageUrl:attchmentcount:imgHeight:imgWidth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7286,7 +7286,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
@@ -7350,7 +7350,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
@@ -7382,11 +7382,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Core/RawFile.swift"
-            timestampString = "576064715.723326"
+            timestampString = "576397791.40407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1154"
@@ -7398,7 +7398,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "seiosnativeapp/Classes/Modules/Common/feedTableViewController.swift"
@@ -7408,6 +7408,38 @@
             startingLineNumber = "3828"
             endingLineNumber = "3828"
             landmarkName = "shareattachmentFeed(cell:activityFeed:imageUrl:attchmentcount:imgHeight:imgWidth:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentActivityFeedViewController.swift"
+            timestampString = "576397791.404173"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seiosnativeapp/Classes/Modules/AdvanceActivityFeed/ContentActivityFeedViewController.swift"
+            timestampString = "576397791.404776"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2062"
+            endingLineNumber = "2062"
+            landmarkName = "exploreContent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

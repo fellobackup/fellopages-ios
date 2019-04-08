@@ -2058,8 +2058,8 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                                     
                                     
                                     if self.isCoverEnabled{
+                                        self.coverImageView.contentMode = .scaleAspectFill
                                         if (response["cover"] as? String) != nil{
-                                            
                                             if let url =  URL(string: response["cover"] as! String){
                                                 self.userCoverPicUrl = response["cover"] as! String
 
@@ -2070,17 +2070,13 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                                                     {
                                                         let tempCoverWidth = Double(self.coverImageView.bounds.width)
                                                         let tempCoverHeight = Double(self.coverImageView.bounds.height)
-                                                    
+                                                       
                                                         self.coverImageView.image = cropToBounds(img, width: tempCoverWidth, height: tempCoverHeight)
-                                                    
                                                     }
                                                 })
-                                                
-                                                
                                             }
-                                            
-                                            
                                         }else{
+                                            
                                             self.coverImageView.image =  imageWithImage( UIImage(named: "user_profile_image.png")!, scaletoWidth: self.coverImageView.bounds.width)
                                             self.userCoverPicUrl = ""
                                             
