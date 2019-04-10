@@ -3248,15 +3248,11 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             }
             
             
-            
-            
             let actionId  = newDictionary["action_id"] as! Int
             
             if !existingFeedIntegerArray.contains(actionId){
-                
                 feedArray.append(newDictionary)
             }
-            
             
         }
         existingFeedIntegerArray.removeAll(keepingCapacity: true)
@@ -3343,10 +3339,10 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     
     @objc func browseFeed()
     {
-        feedArray.removeAll(keepingCapacity: false)
-        self.dynamicRowHeight.removeAll(keepingCapacity: false)
-        self.maxid = 0
-        self.feed_filter = 1
+//        feedArray.removeAll(keepingCapacity: false)
+//        self.dynamicRowHeight.removeAll(keepingCapacity: false)
+//        self.maxid = 0
+//        self.feed_filter = 1
 
         if show_story == 1
         {
