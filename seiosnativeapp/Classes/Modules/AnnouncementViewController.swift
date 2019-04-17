@@ -32,7 +32,7 @@ class AnnouncementViewController: UIViewController,TTTAttributedLabelDelegate,UI
     var dynamicHeight:CGFloat = 70
     var mytitle: String!
     var leftBarButtonItem :UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,7 +93,7 @@ class AnnouncementViewController: UIViewController,TTTAttributedLabelDelegate,UI
             activityIndicatorView.startAnimating()
             }
             // Send Server Request to Explore Blog Contents with Blog_ID
-            post([ "menu": "1","page":"\(pageNumber)" , "limit": "\(limit)"], url: "advancedevents/announcement/\(subjectId)", method: "GET") { (succeeded, msg) -> () in
+            post([ "menu": "1","page":"\(pageNumber)" , "limit": "\(limit)"], url: "advancedevents/announcement/\(subjectId ?? 0)", method: "GET") { (succeeded, msg) -> () in
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -110,22 +110,18 @@ class AnnouncementViewController: UIViewController,TTTAttributedLabelDelegate,UI
                             self.view.makeToast(succeeded["message"] as! String, duration: 5, position: "bottom")
                         }
                         
-                        
-                        
                         if let blog = succeeded["body"] as? NSDictionary {
                             
                             
                             if let response = blog["announcements"] as? NSArray {
                                 
                                 self.ancmntResponse = self.ancmntResponse + (response as [AnyObject])
-                                
-                                
-                                
+
                             }
                             if blog["itemCount"] != nil{
                                 self.totalItem = blog["itemCount"] as! Int
                             }
-                            self.title = "Announcements(\(self.totalItem)):\(self.mytitle)"
+                            self.title = "Announcements(\(self.totalItem)):\(self.mytitle ?? "")"
                             
                         }
                         

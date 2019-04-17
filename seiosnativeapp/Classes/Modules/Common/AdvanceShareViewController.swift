@@ -25,6 +25,7 @@ class AdvanceShareViewController: UIViewController,UITextViewDelegate {
     var descriptionLabel : UILabel!
     var imageView : UIImageView!
     var param: NSDictionary = [:]
+
     var url : String!
     var Sharetitle:String! = ""
     var ShareDescription :String! = ""

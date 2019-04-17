@@ -419,11 +419,13 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         feedObj.tableView.addSubview(refresher)
         
         // Cover Photo and Profile Photo
-        
         camIconOnCover = createLabel(CGRect(x: coverImage.bounds.width - 30, y: coverImage.bounds.height - 30, width: 20, height: 20), text: "\(cameraIcon)", alignment: .center, textColor: textColorLight)
         camIconOnCover.font = UIFont(name: "fontAwesome", size: FONTSIZELarge)
-        camIconOnCover.isHidden = true
+        camIconOnCover.tag = 123
+        camIconOnCover.isUserInteractionEnabled = true
         coverImage.addSubview(camIconOnCover)
+        camIconOnCover.isHidden = true
+        
         
         if(UIDevice.current.userInterfaceIdiom == .pad){
             memberProfilePhoto = createImageView(CGRect(x: 20, y: coverImage.bounds.height - (2 * contentPADING) - 100, width: 100, height: 100 ), border: true)
@@ -459,6 +461,14 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         likeButton.addTarget(self, action: #selector(ContentFeedViewController.likeAction(_:)), for: .touchUpInside)
         
         likeview.addSubview(likeButton)
+        
+        likeCountLabel = createLabel(CGRect(x: self.likeButton.bounds.width + 10, y: 0, width: 60, height: 30), text: "", alignment: .left, textColor: textColorLight)
+        likeCountLabel.font = UIFont(name: fontBold, size: FONTSIZEMedium)
+        likeCountLabel.isUserInteractionEnabled = true
+        let tapLikeCount = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.likeCommentInfo(_:)))
+        likeCountLabel.addGestureRecognizer(tapLikeCount)
+        likeCountLabel.isHidden = true
+        likeview.addSubview(likeCountLabel)
         
         
         camIconOnProfile = createLabel(CGRect(x: (memberProfilePhoto.bounds.width/2) - 15, y: memberProfilePhoto.bounds.height - 30, width: 30, height: 30), text: "\(cameraIcon)", alignment: .center, textColor: textColorLight)
@@ -859,6 +869,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             //   updateAfterAlert = false
             feed_filter = 1
             browseFeed()
+            exploreContent()
         }else{
             // No Internet Connection Message
             refresher.endRefreshing()
@@ -1562,6 +1573,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     if let coverPhotoMenu = coverData["coverPhotoMenu"] as? NSArray{
                                         self.coverPhotoMenu = coverPhotoMenu
                                         self.camIconOnCover.isHidden = false
+                                        
+                                       
+                                       
                                     }
                                     if let mainPhotoMenu = coverData["profilePhotoMenu"] as? NSArray{
                                         
@@ -1591,7 +1605,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             
         }
     }
-    
+   
     @objc func showProfileCoverImageMenu(_ sender: UITapGestureRecognizer){
         
         var isProfileOrCover = true
@@ -3080,6 +3094,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                         
                                         let tap1 = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.showProfileCoverImageMenu(_:)))
                                         self.coverImage.addGestureRecognizer(tap1)
+                                        
+                                        
+                                        
                                         let tap2 = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.showProfileCoverImageMenu(_:)))
                                         self.memberProfilePhoto.addGestureRecognizer(tap2)
                                         self.likeview.isHidden = false
@@ -3122,12 +3139,14 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                         
                                         if let count = response["like_count"] as? Int
                                         {
-                                            self.likeCountLabel = createLabel(CGRect(x: self.likeButton.bounds.width + 10, y: 0, width: 60, height: 30), text: "\(count) likes", alignment: .left, textColor: textColorLight)
-                                            self.likeCountLabel.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-                                            self.likeCountLabel.isUserInteractionEnabled = true
-                                            let tapLikeCount = UITapGestureRecognizer(target: self, action: #selector(ContentFeedViewController.likeCommentInfo(_:)))
-                                            self.likeCountLabel.addGestureRecognizer(tapLikeCount)
-                                            self.likeview.addSubview(self.likeCountLabel)
+                                            self.likeCountLabel.isHidden = false
+                                            if count <= 1 {
+                                                self.likeCountLabel.text = "\(count) like"
+                                            }
+                                            else {
+                                                self.likeCountLabel.text = "\(count) likes"
+                                            }
+                                            
                                         }
                                         
                                         self.contentName.text = response["title"] as? String

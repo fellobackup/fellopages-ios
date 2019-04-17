@@ -2847,9 +2847,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                 bodyStatus = Emoticonizer.emoticonizeString(bodyStatus as NSString) as String
             }
             if !(isEditFeed) {
-            if feedTextView.text == NSLocalizedString("What's on your mind?",  comment: "") {
-                bodyStatus = ""
-            }
+                if feedTextView.text == NSLocalizedString("What's on your mind?",  comment: "") {
+                    bodyStatus = ""
+                }
             }
             
             if sellAttachmentMode == true
@@ -2875,7 +2875,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             }
             
             parameters = ["body": "\(bodyStatus)" as AnyObject,"auth_view": "\(checkBoxValue)" as AnyObject]
-            parameters = ["auth_view": "\(checkBoxValue)" as AnyObject]
+//            parameters = ["auth_view": "\(checkBoxValue)" as AnyObject]
             parameters.update(TargetDictionary)
             parameters.update(ScheduleDisctionary)
             

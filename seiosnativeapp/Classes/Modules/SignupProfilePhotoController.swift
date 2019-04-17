@@ -49,12 +49,14 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
         multiplePhotoSelection = false
         view.backgroundColor = bgColor
         navigationController?.navigationBar.isHidden = false
-        imageView  = UIImageView(frame:CGRect(x: view.bounds.width/2.0 - 150, y: TOPPADING + 40, width: 300, height: 300));
+//        imageView  = UIImageView(frame:CGRect(x: view.bounds.width/2.0 - 150, y: TOPPADING + 40, width: 300, height: 300));
+        imageView  = UIImageView(frame:CGRect(x: 0, y: TOPPADING + 40, width: view.bounds.width, height: 300));
         
         //        self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 2;
-        //        self.imageView.clipsToBounds = true;
+        self.imageView.clipsToBounds = true;
         self.imageView.layer.borderWidth = 3.0;
         self.imageView.layer.borderColor = UIColor.white.cgColor
+        self.imageView.contentMode = .scaleAspectFill
         
         
         view.addSubview(imageView)
@@ -461,7 +463,7 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
             {
                 message = "\(validationMessage)"
             }
-            let alertController = UIAlertController(title: "Message", message:
+            let alertController = UIAlertController(title: "Verify Your Email", message:
                 "\(message)", preferredStyle: UIAlertControllerStyle.alert)
             
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in

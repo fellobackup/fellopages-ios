@@ -6951,6 +6951,66 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                     
                                 }
                             }
+                            else {
+                                if let attachment = feed["attachment"] as? NSArray{
+                                    if (attachment[0] as! NSDictionary)["attachment_type"] as! String != "album_photo"{
+                                        let presentedVC = AdvanceShareViewController()
+                                        presentedVC.param = (share["urlParams"] as! NSDictionary) as! [AnyHashable : Any] as NSDictionary
+                                        presentedVC.url = share["url"] as! String
+                                        let photoDictionary = (attachment[0] as! NSDictionary)
+                                        if let photoMainDictionary = photoDictionary["image_main"] as? NSDictionary {
+                                            if let url =  photoMainDictionary["src"] as? String
+                                            {
+                                                presentedVC.imageString = url
+                                            }
+                                        }
+                                        if let attachment_title = photoDictionary["title"] as? String{
+                                            presentedVC.Sharetitle = attachment_title
+                                        }
+                                        if let attachment_description = photoDictionary["body"] as? String{
+                                            presentedVC.ShareDescription = attachment_description
+                                        }
+                                        presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                                        let nativationController = UINavigationController(rootViewController: presentedVC)
+                                        self.present(nativationController, animated:true, completion: nil)
+                                    }
+                                    else{
+                                        let presentedVC = AdvanceShareViewController()
+                                        presentedVC.param = (share["urlParams"] as! NSDictionary) as! [AnyHashable : Any] as NSDictionary
+                                        presentedVC.url = share["url"] as! String
+                                        let photoDictionary = (attachment[0] as! NSDictionary)
+                                        if let photoMainDictionary = photoDictionary["image_main"] as? NSDictionary
+                                        {
+                                            if let url =  photoMainDictionary["src"] as? String
+                                            {
+                                                presentedVC.imageString = url
+                                            }
+                                            
+                                        }
+                                        
+                                        if let attachment_title = photoDictionary["title"] as? String{
+                                            presentedVC.Sharetitle = attachment_title
+                                        }
+                                        if let attachment_description = photoDictionary["body"] as? String{
+                                            presentedVC.ShareDescription = attachment_description
+                                        }
+                                        presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                                        let nativationController = UINavigationController(rootViewController: presentedVC)
+                                        self.present(nativationController, animated:true, completion: nil)
+                                    }
+                                }
+                                else{
+                                    let presentedVC = AdvanceShareViewController()
+                                    presentedVC.param = share["urlParams"] as! NSDictionary
+                                    presentedVC.url = share["url"] as! String
+                                    presentedVC.Sharetitle = feed["feed_title"] as? String
+                                    presentedVC.ShareDescription = feed["body"] as? String
+                                    presentedVC.imageString = ""
+                                    presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                                    let nativationController = UINavigationController(rootViewController: presentedVC)
+                                    self.present(nativationController, animated:true, completion: nil)
+                                }
+                            }
                         }
                         else
                         {
@@ -6963,10 +7023,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                             let nativationController = UINavigationController(rootViewController: presentedVC)
                             self.present(nativationController, animated:true, completion: nil)
-                            
                         }
-                        
-                        
                     }else{
                         let presentedVC = AdvanceShareViewController()
                         presentedVC.param = share["urlParams"] as! NSDictionary
@@ -6977,7 +7034,6 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         presentedVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                         let nativationController = UINavigationController(rootViewController: presentedVC)
                         self.present(nativationController, animated:true, completion: nil)
-                        
                     }
                 })
                 
