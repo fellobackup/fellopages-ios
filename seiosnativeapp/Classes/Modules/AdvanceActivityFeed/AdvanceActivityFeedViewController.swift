@@ -279,7 +279,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         }
         
         // For customize header having searchbar in center
-//         getheaderSetting()
+         getheaderSetting()
         
         contentIcon = createLabel(CGRect(x:0,y:0,width:0,height:0), text: "", alignment: .center, textColor: textColorMedium )
         mainView.addSubview(contentIcon)
@@ -2210,30 +2210,42 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     }
     func getheaderSetting()
     {
-        if isshow_app_name == 0
-        {
-            let searchBar = UISearchBar()
-            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-                textfield.textColor = UIColor.blue
-                textfield.textAlignment = .center
-                if let backgroundview = textfield.subviews.first {
-                    
-                    // Rounded corner
-                    backgroundview.layer.cornerRadius = 15
-                    backgroundview.clipsToBounds = true
-                    backgroundview.backgroundColor = UIColor.clear
-                    
-                }
-            }
-            _ = SearchBarContainerView(self, customSearchBar:searchBar, isKeyboardAppear:false)
-            searchBar.setPlaceholderWithColor(NSLocalizedString("Search",  comment: ""))
-            searchBar.delegate = self
-            
-            
-            setNavigationImage(controller: self)
-            
-        }
+//        if isshow_app_name == 0
+//        {
+//            let searchBar = UISearchBar()
+//            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+//                textfield.textColor = UIColor.blue
+//                textfield.textAlignment = .center
+//                if let backgroundview = textfield.subviews.first {
+//
+//                    // Rounded corner
+//                    backgroundview.layer.cornerRadius = 15
+//                    backgroundview.clipsToBounds = true
+//                    backgroundview.backgroundColor = UIColor.clear
+//
+//                }
+//            }
+//            _ = SearchBarContainerView(self, customSearchBar:searchBar, isKeyboardAppear:false)
+//            searchBar.setPlaceholderWithColor(NSLocalizedString("Search",  comment: ""))
+//            searchBar.delegate = self
+//
+//
+//            setNavigationImage(controller: self)
+//
+//        }
+//        let friendsListIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
+        let friendsListIcon = UIBarButtonItem(image: UIImage(named: "secondController"), style: .plain, target: self, action: #selector(AdvanceActivityFeedViewController.friedslistTapped))
+        
+        self.navigationItem.leftBarButtonItem = friendsListIcon
     }
+    
+    @objc func friedslistTapped(){
+        var presentedVC = UIViewController()
+        presentedVC = SuggestionsBrowseViewController()
+        (presentedVC as! SuggestionsBrowseViewController).activeTableView = 5
+        self.navigationController?.pushViewController(presentedVC,animated:true)
+    }
+    
     func getLocationdata()
     {
         
