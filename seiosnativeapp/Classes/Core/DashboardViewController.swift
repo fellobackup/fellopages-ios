@@ -147,6 +147,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2;
         profileImageView.layer.masksToBounds = true
+        profileImageView.contentMode = .scaleAspectFill
         profileImageView.image = UIImage(named: "Splash")
         profileView.addSubview(profileImageView)
         topView.addSubview(profileView)
