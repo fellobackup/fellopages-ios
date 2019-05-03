@@ -164,6 +164,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
     var targetSeeAllValue : Int = 1
     var fromPage: String!
     
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

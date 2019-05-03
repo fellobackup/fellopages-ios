@@ -104,6 +104,8 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     var info : UILabel!
     var titleInfo: UILabel!
     var menuLike : UIButton!
+    var badgeCountLabel : UILabel!
+    var badgeLabelView : UIView!
     //    var activityFeedTableView:UITableView!      // activityFeedTable to display Activity Feeds
     var feedObj = FeedTableViewController()
     var dynamicHeight:CGFloat = 44              // Defalut Dynamic Height for each Row
@@ -147,6 +149,8 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     var footerView = UIView()
     var defaultFeedCount : Int = 0
     var hidingNavBarManager: HidingNavigationBarManager?
+    var friendRequestBadgeCount: Int = 0
+    
     let subscriptionNoticeLinkAttributes = [
         NSAttributedStringKey.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
@@ -216,7 +220,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         super.viewDidLoad()
         
      
-    NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
         tableViewFrameType = "AdvanceActivityFeedViewController"
         if UserDefaults.standard.string(forKey: "isAppRated") != nil
         {
@@ -279,7 +283,9 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         }
         
         // For customize header having searchbar in center
-         getheaderSetting()
+//         getheaderSetting()
+        
+        
         
         contentIcon = createLabel(CGRect(x:0,y:0,width:0,height:0), text: "", alignment: .center, textColor: textColorMedium )
         mainView.addSubview(contentIcon)
@@ -309,6 +315,16 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         
     }
     
+    @objc func updateFriendRequestBadge(_notification: Notification){
+        if let data = _notification.userInfo as? [String: Int]{
+            if let count = data["count"] as? Int, count > 0 {
+                print("\(count)")
+                badgeLabelView.isHidden = false
+                badgeCountLabel.text = "\(count)"
+            }
+        }
+
+    }
     func viewMethodCalled()
     {
         feedObj.feedShowingFrom = "ActivityFeed"
@@ -1998,24 +2014,57 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     {
         
         self.navigationItem.title = app_title
-        setNavigationImage(controller: self)
+        let imageView = UIImageView(frame: CGRect(x:0, y:0, width: 60, height: 20))
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "secondController")
+        imageView.image = image
+        
+//        self.navigationItem.titleView = imageView
+        
+//        setNavigationImage(controller: self)
+//        let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+//        leftNavView.backgroundColor = UIColor.clear
+//        let tapView = UITapGestureRecognizer(target: self, action: #selector(AdvanceActivityFeedViewController.openSlideMenu))
+//        leftNavView.addGestureRecognizer(tapView)
+//
+//        if (logoutUser == false && (totalNotificationCount !=  nil) && (totalNotificationCount > 0))
+//        {
+//            let countLabel = createLabel(CGRect(x:17,y:3,width:17,height:17), text: String(totalNotificationCount), alignment: .center, textColor: textColorLight)
+//            countLabel.backgroundColor = UIColor.red
+//            countLabel.layer.cornerRadius = countLabel.frame.size.width / 2;
+//            countLabel.layer.masksToBounds = true
+//            countLabel.font = UIFont(name: "fontAwesome", size: FONTSIZENormal)
+//            leftNavView.addSubview(countLabel)
+//        }
+//
+//        // self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+//        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        // Friends icon in navigation bar
         let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         leftNavView.backgroundColor = UIColor.clear
-        let tapView = UITapGestureRecognizer(target: self, action: #selector(AdvanceActivityFeedViewController.openSlideMenu))
+        let tapView = UITapGestureRecognizer(target: self, action: #selector(AdvanceActivityFeedViewController.friendsRequestTapped))
         leftNavView.addGestureRecognizer(tapView)
+        let backIconImageView = createImageView(CGRect(x: 0, y: 12, width: 22, height: 22), border: false)
+        backIconImageView.image = UIImage(named: "secondController")!.maskWithColor(color: textColorPrime)
+        leftNavView.addSubview(backIconImageView)
+
+        badgeLabelView = UIView(frame: CGRect(x: backIconImageView.bounds.width - 5, y: 0, width: 20, height: 20))
+        badgeLabelView.backgroundColor = UIColor.red
+        badgeLabelView.layer.cornerRadius = 10
+        badgeLabelView.isHidden = true
+        leftNavView.addSubview(badgeLabelView)
+
+        badgeCountLabel = createLabel(CGRect(x: 5,y: 5, width:10, height:10), text: "\(friendRequestBadgeCount)", alignment: .center, textColor: textColorPrime)
+        badgeCountLabel.font = badgeCountLabel.font.withSize(14)
+
+        badgeLabelView.addSubview(badgeCountLabel)
+
+        let barButtonItem = UIBarButtonItem(customView: leftNavView)
+        self.navigationItem.leftBarButtonItem = barButtonItem
         
-        if (logoutUser == false && (totalNotificationCount !=  nil) && (totalNotificationCount > 0))
-        {
-            let countLabel = createLabel(CGRect(x:17,y:3,width:17,height:17), text: String(totalNotificationCount), alignment: .center, textColor: textColorLight)
-            countLabel.backgroundColor = UIColor.red
-            countLabel.layer.cornerRadius = countLabel.frame.size.width / 2;
-            countLabel.layer.masksToBounds = true
-            countLabel.font = UIFont(name: "fontAwesome", size: FONTSIZENormal)
-            leftNavView.addSubview(countLabel)
-        }
-        
-        // self.navigationController!.interactivePopGestureRecognizer!.delegate = self
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        NotificationCenter.default.addObserver(self, selector: #selector(AdvanceActivityFeedViewController.updateFriendRequestBadge(_notification:)), name: Notification.Name("badgeCount"), object: nil)
         
     }
     
@@ -2210,45 +2259,38 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     }
     func getheaderSetting()
     {
-//        if isshow_app_name == 0
-//        {
-//            let searchBar = UISearchBar()
-//            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-//                textfield.textColor = UIColor.blue
-//                textfield.textAlignment = .center
-//                if let backgroundview = textfield.subviews.first {
-//
-//                    // Rounded corner
-//                    backgroundview.layer.cornerRadius = 15
-//                    backgroundview.clipsToBounds = true
-//                    backgroundview.backgroundColor = UIColor.clear
-//
-//                }
-//            }
-//            _ = SearchBarContainerView(self, customSearchBar:searchBar, isKeyboardAppear:false)
-//            searchBar.setPlaceholderWithColor(NSLocalizedString("Search",  comment: ""))
-//            searchBar.delegate = self
-//
-//
-//            setNavigationImage(controller: self)
-//
-//        }
-//        let friendsListIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
-        let friendsListIcon = UIBarButtonItem(image: UIImage(named: "secondController"), style: .plain, target: self, action: #selector(AdvanceActivityFeedViewController.friedslistTapped))
-        
-        self.navigationItem.leftBarButtonItem = friendsListIcon
+        if isshow_app_name == 0
+        {
+            let searchBar = UISearchBar()
+            if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+                textfield.textColor = UIColor.blue
+                textfield.textAlignment = .center
+                if let backgroundview = textfield.subviews.first {
+
+                    // Rounded corner
+                    backgroundview.layer.cornerRadius = 15
+                    backgroundview.clipsToBounds = true
+                    backgroundview.backgroundColor = UIColor.clear
+
+                }
+            }
+            _ = SearchBarContainerView(self, customSearchBar:searchBar, isKeyboardAppear:false)
+            searchBar.setPlaceholderWithColor(NSLocalizedString("Search",  comment: ""))
+            searchBar.delegate = self
+
+            setNavigationImage(controller: self)
+        }
     }
-    
-    @objc func friedslistTapped(){
-        var presentedVC = UIViewController()
-        presentedVC = SuggestionsBrowseViewController()
-        (presentedVC as! SuggestionsBrowseViewController).activeTableView = 5
+
+    @objc func friendsRequestTapped(){
+        badgeLabelView.isHidden = true
+        var presentedVC = FriendRequestViewController()
+        (presentedVC as! FriendRequestViewController).contentType = "friendmembers"
         self.navigationController?.pushViewController(presentedVC,animated:true)
     }
     
     func getLocationdata()
     {
-        
         if isshow_app_name == 0
         {
             if Locationdic != nil
@@ -2320,10 +2362,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 negativeSpace.width = -7.0
                     
                 self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace], animated: true)
-                    
-                    
                 //}
-                
             }
         else
         {

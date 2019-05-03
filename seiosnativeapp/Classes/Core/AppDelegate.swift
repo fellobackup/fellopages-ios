@@ -317,9 +317,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             deviceTokenString = ( deviceToken.description as NSString ).trimmingCharacters( in: characterSet ).replacingOccurrences( of: " ", with: "" ) as String
         }
+        print("DEVICE TOKEN: " + deviceTokenString)
         device_token_id = deviceTokenString
         device_uuid = UIDevice.current.identifierForVendor?.uuidString
-        
+       
 //        do {
 //            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 //        } catch _ {
@@ -335,11 +336,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     func application( _ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error ) {
         
-        //print( error.localizedDescription )
+        print( "didFailToRegisterForRemoteNotificationsWithError:" + error.localizedDescription )
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        //print(userInfo)
+        print("didReceiveRemoteNotification:",userInfo)
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -483,6 +484,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
         if application.applicationState != UIApplicationState.background{
             if baseController != nil{
                 baseController.selectedIndex = 0

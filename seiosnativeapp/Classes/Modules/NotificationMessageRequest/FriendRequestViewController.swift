@@ -73,7 +73,17 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
             openMenu = false
             view.backgroundColor = bgColor
             navigationController?.navigationBar.isHidden = false
-            self.navigationItem.hidesBackButton = true
+//            self.navigationItem.hidesBackButton = false
+            
+            let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+            leftNavView.backgroundColor = UIColor.clear
+            let tapView = UITapGestureRecognizer(target: self, action: #selector(FriendRequestViewController.cancel))
+            leftNavView.addGestureRecognizer(tapView)
+            let backIconImageView = createImageView(CGRect(x: 0, y: 12, width: 22, height: 22), border: false)
+            backIconImageView.image = UIImage(named: "back_icon")!.maskWithColor(color: textColorPrime)
+            leftNavView.addSubview(backIconImageView)
+            let barButtonItem = UIBarButtonItem(customView: leftNavView)
+            self.navigationItem.leftBarButtonItem = barButtonItem
             
             mainView.frame = view.frame
             mainView.backgroundColor = bgColor
@@ -135,7 +145,9 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
         findAllMembers()
         
     }
-    
+    @objc func cancel(){
+        _ = self.navigationController?.popViewController(animated: false)
+    }
     override func viewWillAppear(_ animated: Bool) {
         removeNavigationViews(controller: self)
     }

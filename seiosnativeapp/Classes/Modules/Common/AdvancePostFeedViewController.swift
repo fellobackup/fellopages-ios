@@ -2235,7 +2235,8 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         let manager = PHImageManager.default()
         let requestOptions = PHImageRequestOptions()
         requestOptions.resizeMode = PHImageRequestOptionsResizeMode.exact
-        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+//        highQualityFormat
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.fastFormat
         requestOptions.isSynchronous = true
         for dic in info
         {
@@ -2265,8 +2266,6 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                         else{
                             allPhotos.append(image)
                         }
-                        
-                        
                     }
                 }
                 else if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypeVideo {
@@ -2385,9 +2384,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         for i in 0 ..< allPhotos.count
         {
             imageView = AAFMultipleImageViewWithGradient(frame: CGRect(x: 0, y: originY, width: view.bounds.width, height: 300))
-//            imageView.image = cropToBounds(allPhotos[i], width: Double(view.bounds.width - 10), height: 300)
+            imageView.image = cropToBounds(allPhotos[i], width: Double(view.bounds.width - 10), height: 300)
            // let resizeimage = imageWithImage1(allPhotos[i], newHeight: 300, newwidth: view.bounds.width - 10)
-            imageView.image = allPhotos[i]
+//            imageView.image = allPhotos[i]
             imageView.contentMode = .scaleAspectFill
             imageView.layer.masksToBounds = true
             imageView.clipsToBounds = true
@@ -2434,16 +2433,14 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                     }
                 }
             }
-
         }
-        
     }
     
     func openGallery() {
         
         let imagePicker = ELCImagePickerController(imagePicker: ())
         imagePicker?.maximumImagesCount = 10
-        imagePicker?.returnsOriginalImage = true
+        imagePicker?.returnsOriginalImage = false
         imagePicker?.returnsImage = true
         imagePicker?.onOrder = true
         imagePicker?.imagePickerDelegate = self
@@ -2508,7 +2505,6 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             self.present(alertController, animated: true, completion: nil)
         }else{
             
-
             if bannerImageView.image != nil || bannerImageView.tag == 100{
             }
             else{
@@ -3071,6 +3067,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                         }else{
                             // Handle Server Side Error
                             if succeeded["message"] != nil{
+                                print(succeeded["message"] as! String)
                                 self.view.alpha = 1.0
                                 self.postButton.isEnabled = true
                                 self.view.isUserInteractionEnabled = true

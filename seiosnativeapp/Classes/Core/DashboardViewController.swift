@@ -4133,6 +4133,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                                     }
                                     
                                     if friendRequestCount > 0 {
+                                         NotificationCenter.default.post(name: Notification.Name("badgeCount"), object: nil, userInfo: ["count":friendRequestCount])
                                         if friendReqIndex > 0 {
                                             baseController?.tabBar.items?[friendReqIndex].badgeValue = "\(friendRequestCount)"
                                         }
