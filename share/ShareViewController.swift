@@ -72,8 +72,8 @@ class ShareViewController: SLComposeServiceViewController{
         if oauth_token1 == "" && oauth_secret1 == ""{
             //print("logout user")
             let alertController = UIAlertController(title: "Message", message:
-                "You are not signed in, please sign in first.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: { (UIAlertAction) -> Void in
+                "You are not signed in, please sign in first.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: { (UIAlertAction) -> Void in
                 
                 self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             }))

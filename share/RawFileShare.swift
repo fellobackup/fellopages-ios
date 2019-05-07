@@ -318,8 +318,9 @@ func saveFileInDocumentDirectory(_ images :[AnyObject]) ->([String]){
         
         var imageData: Data!
        
-            imageData =  UIImageJPEGRepresentation(image as! UIImage, 0.7)
-         fileManager.createFile(atPath: filePathToWrite, contents: imageData, attributes: nil)
+//        imageData =  UIImageJPEGRepresentation(image as! UIImage, 0.7)
+        imageData =  (image as! UIImage).jpegData(compressionQuality:0.7)
+        fileManager.createFile(atPath: filePathToWrite, contents: imageData, attributes: nil)
         getImagePath.append(paths.stringByAppendingPathComponent1("\(filename)"))
         
     }
@@ -464,7 +465,7 @@ func mimeTypeForPath(_ path: String) -> String {
 
 func fixOrientation(img:UIImage) -> UIImage {
     
-    if (img.imageOrientation == UIImageOrientation.up) {
+    if (img.imageOrientation == UIImage.Orientation.up) {
         return img;
     }
     UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale);
