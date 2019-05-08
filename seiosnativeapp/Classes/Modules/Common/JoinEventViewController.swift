@@ -43,7 +43,7 @@ class JoinEventViewController: UIViewController, UITableViewDataSource, UITableV
     
     let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(JoinEventViewController.cancel))
     self.navigationItem.leftBarButtonItem = cancel
-    navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+    navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControl.State())
         cancel.tintColor = textColorPrime
     
     mainView.frame = view.frame
@@ -62,7 +62,7 @@ class JoinEventViewController: UIViewController, UITableViewDataSource, UITableV
     privacyTableView.dataSource = self
     privacyTableView.delegate = self
     privacyTableView.estimatedRowHeight = 40.0
-    privacyTableView.rowHeight = UITableViewAutomaticDimension
+    privacyTableView.rowHeight = UITableView.automaticDimension
     privacyTableView.backgroundColor = tableViewBgColor
     privacyTableView.separatorColor = TVSeparatorColor
     mainView.addSubview(privacyTableView)
@@ -144,7 +144,7 @@ class JoinEventViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     
     {
-    let cell = UITableViewCell(style: UITableViewCellStyle.subtitle , reuseIdentifier: "Cell")
+    let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle , reuseIdentifier: "Cell")
         
     let joinEventInfo:NSDictionary
     joinEventInfo = joinEventOptions[(indexPath as NSIndexPath).row] as! NSDictionary
@@ -154,11 +154,11 @@ class JoinEventViewController: UIViewController, UITableViewDataSource, UITableV
         for (key,_) in joinEventInfo {
             let labelString =  key as! String
             let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\(FontIconLabelString)  ")
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome" , size: 15.0)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor , value: navColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome" , size: 15.0)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor , value: navColor, range: NSMakeRange(0, attrString.length))
             
             let descString: NSMutableAttributedString = NSMutableAttributedString(string: labelString)
-            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: 16.0)!, range: NSMakeRange(0, descString.length))
+            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: 16.0)!, range: NSMakeRange(0, descString.length))
             
             attrString.append(descString);
             cell.textLabel?.attributedText = attrString

@@ -25,7 +25,7 @@ class FileListTableViewCell: UITableViewCell
         
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         cellView = createView(CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 230), borderColor: borderColorMedium, shadow: false)
@@ -71,7 +71,7 @@ class FileListTableViewCell: UITableViewCell
         cellView.addSubview(statusTtile)
         
         btnMenu = createButton(CGRect(x: cellView.frame.size.width/2-20, y: 180, width: 40, height: 40), title: "", border: false, bgColor: false, textColor: textColorMedium)
-        btnMenu.setImage(UIImage(named: "blackoption"), for: UIControlState())
+        btnMenu.setImage(UIImage(named: "blackoption"), for: UIControl.State())
         btnMenu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZESmall)
         cellView.addSubview(btnMenu)
         

@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
        
         
@@ -140,13 +140,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         
         let barAppearace = UIBarButtonItem.appearance()
-        barAppearace.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -80), for:UIBarMetrics.default)
+        barAppearace.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80), for:UIBarMetrics.default)
         
         UINavigationBar.appearance().barStyle = UIBarStyle.default
         
         UINavigationBar.appearance().barTintColor = buttonColor
         UINavigationBar.appearance().tintColor = textColorPrime
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : textColorPrime, NSAttributedStringKey.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : textColorPrime, NSAttributedString.Key.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
         FirebaseApp.configure()
         Fabric.sharedSDK().debug = true
         
@@ -168,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if #available(iOS 9.0, *) {
             //UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = navColor
             UINavigationBar.appearance(whenContainedInInstancesOf: [MFMessageComposeViewController.self]).barTintColor = navColor
-            UINavigationBar.appearance(whenContainedInInstancesOf: [MFMessageComposeViewController.self]).titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
+            UINavigationBar.appearance(whenContainedInInstancesOf: [MFMessageComposeViewController.self]).titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
         } else {
             // Fallback on earlier versions
         }
@@ -322,7 +322,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         device_uuid = UIDevice.current.identifierForVendor?.uuidString
        
 //        do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 //        } catch _ {
 //        }
 //        do {
@@ -485,7 +485,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
-        if application.applicationState != UIApplicationState.background{
+        if application.applicationState != UIApplication.State.background{
             if baseController != nil{
                 baseController.selectedIndex = 0
             }

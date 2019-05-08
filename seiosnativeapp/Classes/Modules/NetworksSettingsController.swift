@@ -115,7 +115,7 @@ class NetworksSettingsController: UIViewController , UITableViewDataSource, UITa
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(NetworksSettingsController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(NetworksSettingsController.refresh), for: UIControl.Event.valueChanged)
         networkTableView.addSubview(refresher)
         
         let footerView = UIView(frame: frameActivityIndicator)
@@ -418,7 +418,7 @@ class NetworksSettingsController: UIViewController , UITableViewDataSource, UITa
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(NetworksSettingsController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(NetworksSettingsController.browseEntries), for: UIControl.Event.touchUpInside)
 
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
@@ -485,7 +485,7 @@ class NetworksSettingsController: UIViewController , UITableViewDataSource, UITa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         var networkInfo:NSDictionary
         
         networkInfo = networkResponse[(indexPath as NSIndexPath).row] as! NSDictionary

@@ -122,12 +122,12 @@ class CategoryDetailGridViewController: UIViewController, UITableViewDelegate, U
         // Set pull to referseh for listingtableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(CategoryDetailGridViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(CategoryDetailGridViewController.refresh), for: UIControl.Event.valueChanged)
         listingTableView.addSubview(refresher)
         
         refresher1 = UIRefreshControl()
         refresher1.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher1.addTarget(self, action: #selector(CategoryDetailGridViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher1.addTarget(self, action: #selector(CategoryDetailGridViewController.refresh), for: UIControl.Event.valueChanged)
         pageTableView.addSubview(refresher1)
         
 
@@ -413,7 +413,7 @@ class CategoryDetailGridViewController: UIViewController, UITableViewDelegate, U
             pageTableView.isHidden = false
             
             let cell = pageTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! GroupTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = bgColor
             
             
@@ -664,7 +664,7 @@ class CategoryDetailGridViewController: UIViewController, UITableViewDelegate, U
 
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "MLTGridTypeCell", for: indexPath) as! MLTGridTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             //SET CONTENT IMAGE BOUNDS
             cell.contentImage.frame = CGRect(x: 0, y: 0, width: cell.cellView.bounds.width, height: cell.cellView.bounds.height - cell.cellView.bounds.height/4)
@@ -1060,7 +1060,7 @@ class CategoryDetailGridViewController: UIViewController, UITableViewDelegate, U
                 let subcat = subCategoryArr[buttonIndex-1] as! NSDictionary
                 subcatid = subcat["sub_cat_id"] as! Int
                 rootCategoryBar.setTitle("", for: .normal)
-                rootCategoryBar.setTitle(subcat["sub_cat_name"] as? String, for: UIControlState())
+                rootCategoryBar.setTitle(subcat["sub_cat_name"] as? String, for: UIControl.State())
                 subcategory = subcat["sub_cat_name"] as? String
                 subsubcatid = nil
                 subsubcategory = ""
@@ -1072,7 +1072,7 @@ class CategoryDetailGridViewController: UIViewController, UITableViewDelegate, U
             {
                 let subcat = subSubCategoryArr[buttonIndex-1] as! NSDictionary
                 subsubcatid = subcat["tree_sub_cat_id"] as! Int
-                childCategoryBar.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControlState())
+                childCategoryBar.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControl.State())
                 subsubcategory = subcat["tree_sub_cat_name"] as? String
                 self.showSpinner = true
                 browseEntries()
@@ -1446,7 +1446,7 @@ class CategoryDetailGridViewController: UIViewController, UITableViewDelegate, U
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailGridViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailGridViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.mainView.addSubview(self.refreshButton)

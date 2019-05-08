@@ -31,7 +31,7 @@ var allStickersDic = Dictionary<String, AnyObject>() // Stickers in ordered that
 var sticterArray : NSMutableArray = [] // Stickers that present in our app
 var isRefresh = false
 let subscriptionTagLinkAttributes = [
-    NSAttributedStringKey.foregroundColor: textColorDark,
+    NSAttributedString.Key.foregroundColor: textColorDark,
     // NSUnderlineStyleAttributeName: NSNumber(bool:true),
 ]
 class CommentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, TTTAttributedLabelDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UISearchBarDelegate,ELCImagePickerControllerDelegate, UIImagePickerControllerDelegate,refresh {
@@ -151,12 +151,12 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         //Notification for showing/Hiding keyboard
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CommentsViewController.keyboardWasShown),
-                                               name: .UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CommentsViewController.keyboardWillHide),
-                                               name: .UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
         // Showing no comment message
@@ -351,7 +351,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             scrollingComment.isHidden = true
             feedObj.tableView.bounces = false
             feedObj.tableView.isScrollEnabled = false
-            self.addChildViewController(feedObj)
+            self.addChild(feedObj)
             self.browseFeed()
 
             
@@ -362,11 +362,11 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         //commentTabelHeight = feedObj.tableView.contentSize.height + 10
-        commenttableView = UITableView(frame: CGRect(x: 0, y: commentTabelHeight, width: view.bounds.width, height: 0), style: UITableViewStyle.grouped)
+        commenttableView = UITableView(frame: CGRect(x: 0, y: commentTabelHeight, width: view.bounds.width, height: 0), style: UITableView.Style.grouped)
         commenttableView.dataSource = self
         commenttableView.delegate = self
         commenttableView.bounces = false
-        commenttableView.rowHeight = UITableViewAutomaticDimension
+        commenttableView.rowHeight = UITableView.automaticDimension
         commenttableView.estimatedRowHeight = 44
         commenttableView.backgroundColor = textColorLight
         commenttableView.separatorColor = TVSeparatorColor
@@ -380,7 +380,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         // Showing user for taging
-        showUserTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height - keyBoardHeight - 50 - TOPPADING - 50), style: UITableViewStyle.grouped)
+        showUserTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height - keyBoardHeight - 50 - TOPPADING - 50), style: UITableView.Style.grouped)
         showUserTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         showUserTableView.dataSource = self
         showUserTableView.delegate = self
@@ -422,8 +422,8 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             likes.backgroundColor = textColorLight
             likes.isHidden = true
             likes.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZENormal)
-            likes.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-            likes.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+            likes.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+            likes.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
             likes.addTarget(self, action: #selector(CommentsViewController.showLikes), for: .touchUpInside)
             view.addSubview(likes)
             let bottomBorder = UIView(frame: CGRect(x: 0, y: likes.frame.size.height - 0.5, width: likes.frame.size.width , height: 0.5))
@@ -447,7 +447,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @objc func keyboardWasShown(notification: NSNotification) {
         let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         self.commenttableView.layoutIfNeeded()
         keyBoardHeight1 = keyboardFrame.size.height
         // Animation On TextView Begin Editing
@@ -480,7 +480,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 if self.allComments.count > 0
                 {
                     let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                    self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                    self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
                 }
 
             }
@@ -572,12 +572,12 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //When click on Camera Icon
     @objc func photoOptions(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Camera",comment: ""), style: .default) { action -> Void in
             self.openCamera()
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Gallery",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Gallery",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             self.openGallery()
         })
         
@@ -628,11 +628,11 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //Open Camera
     func openCamera(){
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
         {
             let image = UIImagePickerController()
             image.delegate = self
-            image.sourceType = UIImagePickerControllerSourceType.camera
+            image.sourceType = UIImagePickerController.SourceType.camera
             image.allowsEditing = true
             self.present(image, animated: true, completion: nil)
         }
@@ -674,9 +674,9 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         for dic in info{
             if let photoDic = dic as? NSDictionary{
-                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
-                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
+                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
                         allPhotos.append(image)
                     }
                 }
@@ -688,15 +688,15 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         adjustPhoto()
     }
     // MARK:  UIImagePickerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey  : Any]) {
         self.dismiss(animated: true, completion: nil)
 //        for dic in info{
 //            if let photoDic = dic as? NSDictionary{
 //
-//                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
+//                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
 //
-//                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-//                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+//                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+//                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
 //                        adjustCameraPhoto(image)
 //                        allPhotos.append(image)
 //                        let imageArray = [image as UIImage]
@@ -708,7 +708,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
 //
 //        }
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         adjustCameraPhoto(image)
         allPhotos.append(image)
         let imageArray = [image as UIImage]
@@ -735,7 +735,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             stickers.isHidden = true
         }
         self.commentPost.isEnabled = true
-        self.commentPost.setTitleColor(buttonColor, for: UIControlState())
+        self.commentPost.setTitleColor(buttonColor, for: UIControl.State())
         let originY:CGFloat = view.bounds.height - (commentTextView.frame.size.height + commentTextViewHeight)
         sampleImage = AAFMultipleImageViewWithGradient(frame: CGRect(x: 5, y: originY, width: 40 , height: 40))
         sampleImage.isUserInteractionEnabled = true
@@ -743,7 +743,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         view.addSubview(sampleImage)
         sampleImage.image = image
         let cross =  createButton(CGRect(x: sampleImage.frame.size.width - 15, y: 0, width: 15, height: 15), title: "", border: false,bgColor: false, textColor: textColorLight)
-        cross.setImage(UIImage(named: "cross_icon"), for: UIControlState())
+        cross.setImage(UIImage(named: "cross_icon"), for: UIControl.State())
         cross.titleLabel?.font =  UIFont(name: fontBold, size:FONTSIZEExtraLarge)
         cross.addTarget(self, action: #selector(CommentsViewController.cancelCameraImage), for: .touchUpInside)
         sampleImage.addSubview(cross)
@@ -763,7 +763,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 stickers.isHidden = true
             }
             self.commentPost.isEnabled = true
-            self.commentPost.setTitleColor(buttonColor, for: UIControlState())
+            self.commentPost.setTitleColor(buttonColor, for: UIControl.State())
             let originY:CGFloat = view.bounds.height - (commentTextView.frame.size.height + commentTextViewHeight)
             sampleImage = AAFMultipleImageViewWithGradient(frame: CGRect(x: 5, y: originY, width: 40 , height: 40))
             sampleImage.isUserInteractionEnabled = true
@@ -771,7 +771,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             view.addSubview(sampleImage)
             sampleImage.image = allPhotos[0]
             let cross =  createButton(CGRect(x: sampleImage.frame.size.width - 15, y: 0, width: 15, height: 15), title: "", border: false,bgColor: false, textColor: textColorLight)
-            cross.setImage(UIImage(named: "cross_icon"), for: UIControlState())
+            cross.setImage(UIImage(named: "cross_icon"), for: UIControl.State())
             cross.titleLabel?.font =  UIFont(name: fontBold, size:FONTSIZEExtraLarge)
             cross.addTarget(self, action: #selector(CommentsViewController.cancelCameraImage), for: .touchUpInside)
             sampleImage.addSubview(cross)
@@ -792,7 +792,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         if commentTextView.textColor == textColorMedium{
             self.commentPost.isEnabled = false
-            self.commentPost.setTitleColor(UIColor.lightGray, for: UIControlState())
+            self.commentPost.setTitleColor(UIColor.lightGray, for: UIControl.State())
         }
     }
     
@@ -812,7 +812,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 removeFileFromDocumentDirectoryAtPath(filePathToWrite)
             }
             var imageData: Data!
-            imageData =  UIImageJPEGRepresentation(image as! UIImage, 0.7)
+            imageData = (image as! UIImage).jpegData(compressionQuality: 0.7)
             fileManager.createFile(atPath: filePathToWrite, contents: imageData, attributes: nil)
             getImagePath.append(paths.stringByAppendingPathComponent("\(filename)"))
         }
@@ -1433,8 +1433,8 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                             }
                                             
                                             let emoji = createButton(CGRect(x: origin_x + 2 ,y: 8, width: self.view.bounds.width - origin_x,height: 20), title: "", border: false, bgColor: false, textColor: textColorMedium)
-                                            emoji.setTitle("\(total_Likes)", for: UIControlState.normal)
-                                            emoji.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                                            emoji.setTitle("\(total_Likes)", for: UIControl.State.normal)
+                                            emoji.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                                             emoji.titleLabel?.font = UIFont(name: fontName, size: 14.0)
                                             emoji.addTarget(self, action: #selector(CommentsViewController.showLikes), for: .touchUpInside)
                                             self.reactionsInfo.addSubview(emoji)
@@ -1463,10 +1463,10 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                                 let range1 = (main_string as NSString).range(of: main_string)
                                                 var myMutableString = NSMutableAttributedString()
                                                 myMutableString = NSMutableAttributedString(
-                                                    string: main_string,attributes: [NSAttributedStringKey.font:UIFont(name: "FontAwesome", size: FONTSIZENormal)!] )
-                                                myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold,
+                                                    string: main_string,attributes: [NSAttributedString.Key.font:UIFont(name: "FontAwesome", size: FONTSIZENormal)!] )
+                                                myMutableString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold,
                                                                                                                 size: FONTSIZENormal)!,range: range)
-                                                myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorMedium,range: range1)
+                                                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorMedium,range: range1)
                                                 self.likes.setAttributedTitle(myMutableString, for: .normal)
                                             }
                                             else{
@@ -1477,10 +1477,10 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                                 let range1 = (main_string as NSString).range(of: main_string)
                                                 var myMutableString = NSMutableAttributedString()
                                                 myMutableString = NSMutableAttributedString(
-                                                    string: main_string,attributes: [NSAttributedStringKey.font:UIFont(name: "FontAwesome", size: FONTSIZENormal)!])
-                                                myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold,
+                                                    string: main_string,attributes: [NSAttributedString.Key.font:UIFont(name: "FontAwesome", size: FONTSIZENormal)!])
+                                                myMutableString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold,
                                                                                                                 size: FONTSIZENormal)!,range: range)
-                                                myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorMedium,range: range1)
+                                                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorMedium,range: range1)
                                                 self.likes.setAttributedTitle(myMutableString, for: .normal)
                                             }
                                             
@@ -1564,7 +1564,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                         if self.allComments.count == total_Comments && self.allComments.count > 0
                                         {
                                             let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                            self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                                            self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
                                             
                                             if (self.canComment == true) && self.openCommentTextView == 1
                                             {
@@ -1575,7 +1575,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                         {
                                             self.pageNumber += 1
                                             let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                            self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                                            self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
                                             self.findAllComments()
                                         }
                                         
@@ -1627,7 +1627,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                     if self.allComments.count == total_Comments && total_Comments != 0 && self.allComments.count > 0
                                     {
                                         let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                        self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                                        self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
                                         
                                         if (self.canComment == true) && self.openCommentTextView == 1
                                         {
@@ -1638,7 +1638,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                     {
                                         self.pageNumber += 1
                                         let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                        self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                                        self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
                                         self.findAllComments()
                                     }
                                     
@@ -2183,14 +2183,14 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             // Set Color for Search Bar and For Search Icon
             let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
             textFieldInsideSearchBar?.textColor = UIColor.red
-            let placeholderAttributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.lightGray, NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont.systemFont(ofSize: UIFont.systemFontSize)]
+            let placeholderAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.lightGray, NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont.systemFont(ofSize: UIFont.systemFontSize)]
             let attributedPlaceholder: NSAttributedString = NSAttributedString(string: NSLocalizedString("Search Stickers",  comment: ""), attributes: placeholderAttributes)
             textFieldInsideSearchBar?.attributedPlaceholder = attributedPlaceholder
             let imageV = textFieldInsideSearchBar?.leftView as! UIImageView
-            imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            imageV.image = imageV.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             imageV.tintColor = UIColor.lightGray
             
-            searchBar.searchBarStyle = UISearchBarStyle.minimal
+            searchBar.searchBarStyle = UISearchBar.Style.minimal
             searchBar.layer.borderWidth = 0;
             searchBar.layer.shadowOpacity = 0;
             searchBar.setTextColor(UIColor.lightGray)
@@ -2214,7 +2214,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                         let  singleSticker =    createButton(CGRect(x: 5,y: origin_labelheight_y ,width: view.bounds.width/2 - 10 ,height: 40), title: "", border: false,bgColor: false, textColor: textColorLight)
                         singleSticker.layer.cornerRadius = 10.0
                         singleSticker.tag = i - 1
-                        singleSticker.addTarget(self, action: #selector(CommentsViewController.searchParticularSticker(_:)), for: UIControlEvents.touchUpInside)
+                        singleSticker.addTarget(self, action: #selector(CommentsViewController.searchParticularSticker(_:)), for: UIControl.Event.touchUpInside)
                         stickerScrollView.addSubview(singleSticker)
                         if dic["background_color"] != nil{
                             let color = dic["background_color"]
@@ -2249,7 +2249,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                         let  singleSticker1 =    createButton(CGRect(x: view.bounds.width/2 + 5,y: origin_labelheight_y2 ,width: view.bounds.width/2 - 10 ,height: 40), title: "", border: false,bgColor: false, textColor: textColorMedium)
                         singleSticker1.tag = i - 1
                         singleSticker1.layer.cornerRadius = 10.0
-                        singleSticker1.addTarget(self, action: #selector(CommentsViewController.searchParticularSticker), for: UIControlEvents.touchUpInside)
+                        singleSticker1.addTarget(self, action: #selector(CommentsViewController.searchParticularSticker), for: UIControl.Event.touchUpInside)
                         if dic["background_color"] != nil{
                             let color = dic["background_color"]
                             let realColor = hexStringToUIColor(hex: color as! String)
@@ -2344,7 +2344,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                             if dic["sticker_id"] != nil{
                                 let stickerId = dic["sticker_id"] as? Int
                                 imageViewClick.tag = stickerId!
-                                imageViewClick.addTarget(self, action: #selector(CommentsViewController.postStickers(_:)), for: UIControlEvents.touchUpInside)
+                                imageViewClick.addTarget(self, action: #selector(CommentsViewController.postStickers(_:)), for: UIControl.Event.touchUpInside)
                             }
                         }
                         scrollViewParticularSticker.addSubview(imageViewClick)
@@ -2462,7 +2462,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         singleSticker.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
         singleSticker.tag = 0
         singleSticker.backgroundColor = aafBgColor
-        singleSticker.addTarget(self, action: #selector(CommentsViewController.viewParticularSticker(_:)), for: UIControlEvents.touchUpInside)
+        singleSticker.addTarget(self, action: #selector(CommentsViewController.viewParticularSticker(_:)), for: UIControl.Event.touchUpInside)
         stickerScrollView.addSubview(singleSticker)
         origin_x += menuWidth
         }
@@ -2479,7 +2479,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                  else{
                     singleSticker.tag = i
                 }
-                singleSticker.addTarget(self, action: #selector(CommentsViewController.viewParticularSticker(_:)), for: UIControlEvents.touchUpInside)
+                singleSticker.addTarget(self, action: #selector(CommentsViewController.viewParticularSticker(_:)), for: UIControl.Event.touchUpInside)
                 singleSticker.backgroundColor = UIColor.clear
                 singleSticker.kf.setImage(with: url as URL?, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                     
@@ -2510,7 +2510,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 break
             }
         }
-        addSticker.addTarget(self, action: #selector(CommentsViewController.addRemoveStickers), for: UIControlEvents.touchUpInside)
+        addSticker.addTarget(self, action: #selector(CommentsViewController.addRemoveStickers), for: UIControl.Event.touchUpInside)
         view.addSubview(addSticker)
     }
     
@@ -2608,7 +2608,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                         if dic["sticker_id"] != nil{
                             let stickerId = dic["sticker_id"] as? Int
                             imageViewClick.tag = stickerId!
-                            imageViewClick.addTarget(self, action: #selector(CommentsViewController.postStickersUsingSearchedStickers(_:)), for: UIControlEvents.touchUpInside)
+                            imageViewClick.addTarget(self, action: #selector(CommentsViewController.postStickersUsingSearchedStickers(_:)), for: UIControl.Event.touchUpInside)
                         }
                         
                     }
@@ -2812,7 +2812,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         
-        self.commentPost.setTitleColor(UIColor.lightGray, for: UIControlState())
+        self.commentPost.setTitleColor(UIColor.lightGray, for: UIControl.State())
         self.commentPost.isEnabled = false
         if allPhotos.count>0{
             imagePost = true
@@ -2951,7 +2951,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                     if self.allComments.count > 0
                     {
                         let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                        self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+                        self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
                     }
                 }
                 
@@ -3030,7 +3030,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                             {
                                 
                                 let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+                                self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
                                 
                                 
                             }
@@ -3224,7 +3224,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                 {
                                     if self.fromSingleFeed == false{
                                         let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                        self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+                                        self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
                                     }
                                 }
                             }
@@ -3294,7 +3294,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                     {
                                         if self.fromSingleFeed == false{
                                             let indexPath = IndexPath(row: self.allComments.count - 1, section: 0)
-                                            self.commenttableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+                                            self.commenttableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
                                         }
                                     }
                                     
@@ -3385,7 +3385,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         if tableView.tag == 22
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             
             
@@ -3419,9 +3419,9 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 if let id = response["id"] as? Int{
                     if frndTag[id] != nil{
-                        cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                     }else{
-                        cell.accessoryType = UITableViewCellAccessoryType.none
+                        cell.accessoryType = UITableViewCell.AccessoryType.none
                     }
                 }
                 
@@ -3436,7 +3436,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             commenttableView.register(CommentTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CommentTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             let comment = allComments[(indexPath as NSIndexPath).row]
             cell.author_title.frame = CGRect(x: cell.author_photo.bounds.width+10, y: 5, width: self.view.bounds.width-(cell.author_photo.bounds.width+15), height: 100)
@@ -3460,7 +3460,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.author_title.sizeToFit()
             
             if(comment.user_id != nil){
-                cell.imageButton.addTarget(self, action: #selector(CommentsViewController.showProfile(_:)), for: UIControlEvents.touchUpInside)
+                cell.imageButton.addTarget(self, action: #selector(CommentsViewController.showProfile(_:)), for: UIControl.Event.touchUpInside)
                 cell.imageButton.tag = userId
             }
             
@@ -3530,8 +3530,8 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                                 {
                                     range = (commentBody as NSString).range(of:tag, options: NSString.CompareOptions(), range: range)
                                     if(range.location != NSNotFound) {
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                         range = NSMakeRange(range.location + range.length, length - (range.location + range.length));
                                         
                                     }
@@ -3546,12 +3546,12 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 
                 let range1 = (commentBody as NSString).range(of: NSLocalizedString(" ... less",  comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                 
                 let range2 = (commentBody as NSString).range(of: NSLocalizedString("... more",  comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
                 
                 
                 // TODO: Clean this up..
@@ -3675,7 +3675,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.delete.addTarget(self, action:#selector(CommentsViewController.deleteComment(_:)), for: .touchUpInside)
                 if let name = canDelete["label"] as? String{
                     
-                    cell.delete.setTitle("\(name)", for: UIControlState())
+                    cell.delete.setTitle("\(name)", for: UIControl.State())
                     cell.delete.sizeToFit()
                     cell.deleteDot.sizeToFit()
                     //                cell.delete.frame.origin.y = nxtLabelHeight
@@ -3700,7 +3700,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                     cell.likeDot.frame.origin.y = nxtLabelHeight + 2
                     cell.likeDot.frame.origin.x = getRightEdgeX(inputView: cell.comment_date) + 5
                     cell.likeDot.frame.origin.y = commentDateVerticalCenter - (cell.likeDot.frame.height)/2
-                    cell.like.setTitle(NSLocalizedString(String(name),  comment: ""), for: UIControlState())
+                    cell.like.setTitle(NSLocalizedString(String(name),  comment: ""), for: UIControl.State())
                     cell.like.sizeToFit()
                     //                cell.like.frame.origin.y = nxtLabelHeight
                     cell.like.frame.origin.y = commentDateVerticalCenter - (cell.like.frame.height)/2
@@ -3717,7 +3717,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                         
                         cell.unlike.isHidden = false
                         let tempLikeCountString = ("\(likeIcon) " + String(likeTotalCount)).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                        cell.unlike.setTitle(tempLikeCountString, for: UIControlState())
+                        cell.unlike.setTitle(tempLikeCountString, for: UIControl.State())
                         cell.unlike.sizeToFit()
                         //                    cell.unlike.frame.origin.y = nxtLabelHeight
                         cell.unlike.frame.origin.y = commentDateVerticalCenter - (cell.unlike.frame.height)/2
@@ -3836,8 +3836,8 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZEMedium, nil)
                 range = (attrStr.string as NSString).range(of: selectArray[i], options: [], range: range)
                 if (range.location != NSNotFound) {
-                    attrStr.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: NSRange(location: range.location, length: selectArray[i].length))
-                    attrStr.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorDark, range: NSRange(location: range.location, length: selectArray[i].length))
+                    attrStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: NSRange(location: range.location, length: selectArray[i].length))
+                    attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorDark, range: NSRange(location: range.location, length: selectArray[i].length))
                     range = NSRange(location: range.location + range.length, length: inputLength - (range.location + range.length))
                     commentTextView.attributedText = attrStr
                 }
@@ -3864,8 +3864,8 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 range = (attrStr.string as NSString).range(of: selectArray[i], options: [], range: range)
                 if (range.location != NSNotFound) {
                     let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZEMedium, nil)
-                    attrStr.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: NSRange(location: range.location, length: selectArray[i].length))
-                    attrStr.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorDark, range: NSRange(location: range.location, length: selectArray[i].length))
+                    attrStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: NSRange(location: range.location, length: selectArray[i].length))
+                    attrStr.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorDark, range: NSRange(location: range.location, length: selectArray[i].length))
                     range = NSRange(location: range.location + range.length, length: inputLength - (range.location + range.length))
                     commentTextView.attributedText = attrStr
                 }
@@ -3969,9 +3969,9 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         if let commentDelete = comment.delete
         {
             let alertController = UIAlertController(title: "Delete Comment", message:
-                "Are you sure that you want to delete this comment?", preferredStyle: UIAlertControllerStyle.alert)
+                "Are you sure that you want to delete this comment?", preferredStyle: UIAlertController.Style.alert)
             
-            alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive,handler: { action -> Void in
+            alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive,handler: { action -> Void in
                 if self.fromActivityFeed == true{
                     
                     // Set Updated Label Info
@@ -4124,7 +4124,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             ))
             
-            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel,handler: nil))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
             
@@ -4358,12 +4358,12 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             textView.textColor = textColorMedium
             if addedPhotos == true{
-                self.commentPost.setTitleColor(buttonColor, for: UIControlState())
+                self.commentPost.setTitleColor(buttonColor, for: UIControl.State())
                 self.commentPost.isEnabled = true
             }
             else{
                 
-                self.commentPost.setTitleColor(UIColor.lightGray, for: UIControlState())
+                self.commentPost.setTitleColor(UIColor.lightGray, for: UIControl.State())
                 self.commentPost.isEnabled = false
             }
         }else{
@@ -4372,8 +4372,8 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
          //   addFriendTagText()
             
-            self.commentPost.setTitleColor(buttonColor, for: UIControlState())
-            self.commentPost.setTitleColor(buttonColor, for: UIControlState())
+            self.commentPost.setTitleColor(buttonColor, for: UIControl.State())
+            self.commentPost.setTitleColor(buttonColor, for: UIControl.State())
             self.commentPost.isEnabled = true
             
         }

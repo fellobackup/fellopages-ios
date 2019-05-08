@@ -217,13 +217,13 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
             //print("There are no products.")
             if freeProductsArray.count == 0{
                 let alertController = UIAlertController(title: "Message", message:
-                    "You have signed up successfully, but there are no subscriptions available. \nPlease contact your site administrator to sign in to this app.", preferredStyle: UIAlertControllerStyle.alert)
+                    "You have signed up successfully, but there are no subscriptions available. \nPlease contact your site administrator to sign in to this app.", preferredStyle: UIAlertController.Style.alert)
                 
                 if loginOrSignup{
                     alertController.message = "There are no subscriptions available. \nPlease contact your site administrator to sign in to this app."
                 }
                 
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                     self.goBack()
                 }))
                 
@@ -243,9 +243,9 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
         
         
         if selectedProductIndex > (productsArray.count-1){
-            let actionSheetController = UIAlertController(title: "User Subscriptions", message: "This is a free subscription. Do you want to continue with selected subscription?", preferredStyle: UIAlertControllerStyle.actionSheet)
+            let actionSheetController = UIAlertController(title: "User Subscriptions", message: "This is a free subscription. Do you want to continue with selected subscription?", preferredStyle: UIAlertController.Style.actionSheet)
             
-            let buyAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.default) { (action) -> Void in
+            let buyAction = UIAlertAction(title: "Continue", style: UIAlertAction.Style.default) { (action) -> Void in
                 self.view.addSubview(activityIndicatorView)
                 activityIndicatorView.center = self.view.center
                 activityIndicatorView.startAnimating()
@@ -265,7 +265,7 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
                 self.setSubscription(subscriptionDic)
                 
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) -> Void in
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) -> Void in
                 
             }
             
@@ -280,9 +280,9 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
 
             present(actionSheetController, animated: true, completion: nil)
         }else{
-            let actionSheetController = UIAlertController(title: "User Subscriptions", message: "Do you want to buy selected subscription?", preferredStyle: UIAlertControllerStyle.actionSheet)
+            let actionSheetController = UIAlertController(title: "User Subscriptions", message: "Do you want to buy selected subscription?", preferredStyle: UIAlertController.Style.actionSheet)
             
-            let buyAction = UIAlertAction(title: "Buy", style: UIAlertActionStyle.default) { (action) -> Void in
+            let buyAction = UIAlertAction(title: "Buy", style: UIAlertAction.Style.default) { (action) -> Void in
                 let payment = SKPayment(product: self.productsArray[self.selectedProductIndex]! as SKProduct)
                 SKPaymentQueue.default().add(payment)
                 self.transactionInProgress = true
@@ -291,7 +291,7 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
                 activityIndicatorView.center = self.view.center
                 activityIndicatorView.startAnimating()
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) -> Void in
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (action) -> Void in
                 
             }            
             actionSheetController.addAction(buyAction)
@@ -405,12 +405,12 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
                                 
                                 let packageLabelString = "The plan you are currently subscribed to is: "
                                 let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\(packageLabelString)")
-                                attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                                attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
                                 
                                 let labelString = packageTitle
                                 let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("     \(labelString)"))
-                                descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                                descString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorDark, range: NSMakeRange(0, descString.length))
+                                descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                                descString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorDark, range: NSMakeRange(0, descString.length))
                                 
                                 attrString.append(descString)
                                 self.selectedPackageName = attrString
@@ -521,7 +521,7 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
 //                    alertTest.show()
                         
                         let alertController = UIAlertController(title: "Message", message:
-                            "", preferredStyle: UIAlertControllerStyle.alert)
+                            "", preferredStyle: UIAlertController.Style.alert)
                         
                         if self.isFromSettings{
                             alertController.message = "Subscription selected successfully."
@@ -533,7 +533,7 @@ class SignupUserSubscriptionViewController: UIViewController, UITableViewDelegat
                             }
                         }
                         
-                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                             if facebook_uid != nil{
                                 self.facebookLoginAfterSignup()
                             }else if self.isFromSettings{

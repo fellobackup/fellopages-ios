@@ -55,10 +55,10 @@ class CommentTableViewCell: UITableViewCell {
     }
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        //self.selectionStyle = UITableViewCellSelectionStyle.Blue
+        //self.selectionStyle = UITableViewCell.SelectionStyle.Blue
         
         
         if  (UIDevice.current.userInterfaceIdiom == .phone){

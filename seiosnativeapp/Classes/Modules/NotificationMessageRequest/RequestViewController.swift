@@ -93,7 +93,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
         requestTableView.dataSource = self
         requestTableView.delegate = self
         requestTableView.estimatedRowHeight = 50.0
-        requestTableView.rowHeight = UITableViewAutomaticDimension
+        requestTableView.rowHeight = UITableView.automaticDimension
         requestTableView.backgroundColor = tableViewBgColor
         requestTableView.separatorColor = TVSeparatorColor
         if #available(iOS 11.0, *) {
@@ -107,7 +107,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(RequestViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(RequestViewController.refresh), for: UIControl.Event.valueChanged)
         requestTableView.addSubview(refresher)
    
         
@@ -396,7 +396,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
 
-                            self.refreshButton.addTarget(self, action: #selector(RequestViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(RequestViewController.browseEntries), for: UIControl.Event.touchUpInside)
 
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
@@ -472,7 +472,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NotificationTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         var blogInfo:NSDictionary
         blogInfo = blogResponse[(indexPath as NSIndexPath).row] as! NSDictionary
@@ -522,15 +522,15 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
                     let boldFont = CTFontCreateWithName( (fontName as CFString?)! , FONTSIZENormal, nil)
                     
                     let range = (labMsg as NSString).range(of: ownerName)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value: textColorDark, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value: textColorDark, range: range)
 
                     
                     let range1 = (labMsg as NSString).range(of: iconType)
                     
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
                     
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size:FONTSIZENormal)!, range: range1)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size:FONTSIZENormal)!, range: range1)
                     // TODO: Clean this up..
                     return mutableAttributedString
                 })
@@ -681,7 +681,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
         blogInfo = blogResponse[sender.tag] as! NSDictionary
         let event_id = blogInfo["object_id"] as! Int
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Attending",comment: ""), style: .default) { action -> Void in
@@ -695,7 +695,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
         })
         
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore",comment: ""), style: UIAlertActionStyle.destructive) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore",comment: ""), style: UIAlertAction.Style.destructive) { action -> Void in
             let url = "events/member/ignore"
             self.updateOptions(url as String, id: event_id as Int)
         })
@@ -718,7 +718,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
         blogInfo = blogResponse[sender.tag] as! NSDictionary
         
         let group_id = blogInfo["object_id"] as! Int
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Join Group",comment: ""), style: .default) { action -> Void in
@@ -726,7 +726,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
             self.updateOptions(url as String, id: group_id as Int)
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore Group",comment: ""), style: UIAlertActionStyle.destructive) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore Group",comment: ""), style: UIAlertAction.Style.destructive) { action -> Void in
             
             let url = "groups/member/ignore"
             self.updateOptions(url as String, id: group_id as Int)
@@ -754,7 +754,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
 
         let subject_id = blogInfo["subject_id"] as! Int
 
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Accept",comment: ""), style: .default) { action -> Void in
@@ -762,7 +762,7 @@ class RequestViewController: UIViewController , UITableViewDataSource, UITableVi
             self.selectFriend(url as String, id : subject_id as Int)
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Reject",comment: ""), style: UIAlertActionStyle.destructive) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Reject",comment: ""), style: UIAlertAction.Style.destructive) { action -> Void in
             
             let url = "user/cancel"
             self.selectFriend(url as String, id: subject_id as Int)

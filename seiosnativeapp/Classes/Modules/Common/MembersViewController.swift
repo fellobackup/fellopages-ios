@@ -296,7 +296,7 @@ class MembersViewController: UIViewController ,UITableViewDataSource, UITableVie
             
             let ImageView = createButton(CGRect(x: pageOption.frame.size.width/2 - 15,y: 0,width: 15,height: 20), title: "", border: false, bgColor: false, textColor: textColorDark)
             if i == 0{
-                ImageView.setTitle(NSLocalizedString("All", comment: ""), for: UIControlState())
+                ImageView.setTitle(NSLocalizedString("All", comment: ""), for: UIControl.State())
                 ImageView.titleLabel!.font =  UIFont(name: fontName, size: 13)
             }
             else{
@@ -586,7 +586,7 @@ class MembersViewController: UIViewController ,UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         var memberInfo:NSDictionary
         memberInfo = allMembers[(indexPath as NSIndexPath).row] as! NSDictionary

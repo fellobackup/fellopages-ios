@@ -88,8 +88,8 @@ class MLTSearchMatrixViewController: UIViewController, UITableViewDataSource, UI
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(MLTSearchMatrixViewController.filter))
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(MLTSearchMatrixViewController.filter))
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         self.navigationItem.rightBarButtonItem = filter
         
         automaticallyAdjustsScrollViewInsets = false
@@ -118,7 +118,7 @@ class MLTSearchMatrixViewController: UIViewController, UITableViewDataSource, UI
         listingsTableView.dataSource = self
         listingsTableView.delegate = self
         listingsTableView.estimatedRowHeight = 160.0
-        listingsTableView.rowHeight = UITableViewAutomaticDimension
+        listingsTableView.rowHeight = UITableView.automaticDimension
         listingsTableView.backgroundColor = tableViewBgColor
         listingsTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -142,7 +142,7 @@ class MLTSearchMatrixViewController: UIViewController, UITableViewDataSource, UI
         listingsTableView.tableFooterView = footerView
         listingsTableView.tableFooterView?.isHidden = true
         
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -322,7 +322,7 @@ class MLTSearchMatrixViewController: UIViewController, UITableViewDataSource, UI
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(MLTSearchMatrixViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(MLTSearchMatrixViewController.browseEntries), for: UIControl.Event.touchUpInside)
 
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
@@ -452,7 +452,7 @@ class MLTSearchMatrixViewController: UIViewController, UITableViewDataSource, UI
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ClassifiedTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         var index:Int!
         index = (indexPath as NSIndexPath).row * 2
@@ -944,7 +944,7 @@ class MLTSearchMatrixViewController: UIViewController, UITableViewDataSource, UI
         listingsTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

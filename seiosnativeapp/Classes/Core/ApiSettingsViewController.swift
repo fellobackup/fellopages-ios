@@ -34,8 +34,8 @@ class ApiSettingsViewController: UIViewController, UITextFieldDelegate {
         mainView.frame = view.frame
         mainView.backgroundColor = bgColor
         view.addSubview(mainView)
-        let menu = UIBarButtonItem(title:dashboardIcon, style: UIBarButtonItemStyle.plain , target:self , action: #selector(ApiSettingsViewController.openSlideMenu))
-        menu.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControlState())
+        let menu = UIBarButtonItem(title:dashboardIcon, style: UIBarButtonItem.Style.plain , target:self , action: #selector(ApiSettingsViewController.openSlideMenu))
+        menu.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControl.State())
         self.navigationItem.leftBarButtonItem = menu
         
         

@@ -68,9 +68,9 @@ class MusicSearchViewController: UIViewController , UITableViewDataSource, UITab
         searchBar.setPlaceholderWithColor(NSLocalizedString("Search Music",  comment: ""))
         searchBar.delegate = self
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(MusicSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(MusicSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         automaticallyAdjustsScrollViewInsets = false
@@ -104,7 +104,7 @@ class MusicSearchViewController: UIViewController , UITableViewDataSource, UITab
         musicTableView.dataSource = self
         musicTableView.delegate = self
         musicTableView.estimatedRowHeight = 165.0
-        musicTableView.rowHeight = UITableViewAutomaticDimension
+        musicTableView.rowHeight = UITableView.automaticDimension
         musicTableView.backgroundColor = UIColor.clear
         musicTableView.separatorColor = UIColor.clear
         // For ios 11 spacing issue below the navigation controller
@@ -126,7 +126,7 @@ class MusicSearchViewController: UIViewController , UITableViewDataSource, UITab
         musicTableView.tableFooterView = footerView
         musicTableView.tableFooterView?.isHidden = true
         
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -347,7 +347,7 @@ class MusicSearchViewController: UIViewController , UITableViewDataSource, UITab
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(MusicSearchViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(MusicSearchViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.view.addSubview(self.refreshButton)
@@ -478,7 +478,7 @@ class MusicSearchViewController: UIViewController , UITableViewDataSource, UITab
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MusicTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         
         var index:Int!
@@ -678,13 +678,13 @@ class MusicSearchViewController: UIViewController , UITableViewDataSource, UITab
         editPlaylistID = musicInfo["playlist_id"] as! Int
         
         let menuOption = musicInfo["menu"] as! NSArray
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         for menu in menuOption{
             if let menuItem = menu as? NSDictionary{
                 let titleString = menuItem["name"] as! String
                 
                 if titleString.range(of: "delete") != nil{
-                    alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                    alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                         let condition = menuItem["name"] as! String
                         switch(condition){
                             

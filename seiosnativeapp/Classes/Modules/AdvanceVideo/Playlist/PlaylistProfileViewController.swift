@@ -124,7 +124,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
         
         tableframeY = topView.frame.size.height + topView.frame.origin.y
         self.view.addSubview(videoListObj.view)
-        self.addChildViewController(videoListObj)
+        self.addChild(videoListObj)
         videoListObj.iscomingFrom = "AdvPlaylist"
         videoListObj.isplaylist = isplaylist
         //headerViewHeight = topView.frame.origin.y + topView.frame.size.height + 10
@@ -327,12 +327,12 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(PlaylistProfileViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(PlaylistProfileViewController.showGutterMenu), for: .touchUpInside)
                                   //  rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -446,7 +446,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
     // Present Feed Gutter Menus
     @objc func showGutterMenu(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         for menu in gutterMenu{
             if let dic = menu as? NSDictionary{
@@ -455,7 +455,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil {
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             if  dic["name"] as! String ==  "delete"{
                                 
                                 // Confirmation Alert
@@ -508,7 +508,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
     }
     @objc func shareItem()
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let pv = AdvanceShareViewController()
             pv.url = self.shareUrl
@@ -524,7 +524,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -538,7 +538,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -671,7 +671,7 @@ class PlaylistProfileViewController: UIViewController,UIWebViewDelegate,TTTAttri
         refreshButton.backgroundColor = bgColor
         refreshButton.layer.borderColor = navColor.cgColor
         refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        refreshButton.addTarget(self, action: #selector(PlaylistProfileViewController.browsePlaylist), for: UIControlEvents.touchUpInside)
+        refreshButton.addTarget(self, action: #selector(PlaylistProfileViewController.browsePlaylist), for: UIControl.Event.touchUpInside)
         
         refreshButton.layer.cornerRadius = 5.0
         refreshButton.layer.masksToBounds = true

@@ -28,7 +28,7 @@ class MyOrderTableViewCell: UITableViewCell {
         super.setSelected(isSelected, animated: animated)
         
     }
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Title
@@ -49,7 +49,7 @@ class MyOrderTableViewCell: UITableViewCell {
         self.contentView.addSubview(labPrice)
         
         btnView = createButton(CGRect(x:UIScreen.main.bounds.width-80,y:labPrice.frame.origin.y+labPrice.frame.size.height, width:70, height:30), title: "-", border: false, bgColor: false, textColor: textColorPrime)
-        btnView.setTitle("View", for: UIControlState.normal)
+        btnView.setTitle("View", for: UIControl.State.normal)
         
         btnView.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         btnView.titleLabel?.textColor = textColorPrime

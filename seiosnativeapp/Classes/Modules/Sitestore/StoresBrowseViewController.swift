@@ -189,7 +189,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         storesTableView.isOpaque = false
         storesTableView.backgroundColor = tableViewBgColor
         storesTableView.separatorColor = TVSeparatorColorClear
-        storesTableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
+        storesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         mainView.addSubview(storesTableView)
         
         
@@ -201,7 +201,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         categoryTableView.isOpaque = false
         categoryTableView.isHidden = true
         categoryTableView.estimatedRowHeight = 165.0
-        categoryTableView.rowHeight = UITableViewAutomaticDimension
+        categoryTableView.rowHeight = UITableView.automaticDimension
         categoryTableView.backgroundColor = bgColor
         categoryTableView.separatorColor = UIColor.clear
         // For ios 11 spacing issue below the navigation controller
@@ -238,13 +238,13 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         // Set pull to refresh for content table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(StoresBrowseViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(StoresBrowseViewController.refresh), for: UIControl.Event.valueChanged)
         storesTableView.addSubview(refresher)
         
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(StoresBrowseViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(StoresBrowseViewController.refresh), for: UIControl.Event.valueChanged)
         categoryTableView.addSubview(refresher2)
         
         
@@ -451,11 +451,11 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         if self.showOnlyMyContent == false
         {
             // Below is search link created
-            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(StoresBrowseViewController.searchItem))
-            let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(StoresBrowseViewController.addStoreItem))
+            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(StoresBrowseViewController.searchItem))
+            let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(StoresBrowseViewController.addStoreItem))
             
-            addItem.imageInsets = UIEdgeInsetsMake(0, 10, 0, 0)
-            searchItem.imageInsets = UIEdgeInsetsMake(0, 30, 0, 0)
+            addItem.imageInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+            searchItem.imageInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
             
            // self.navigationItem.setRightBarButtonItems([addItem, searchItem, self.cartButton], animated: true)
             if logoutUser == false
@@ -478,7 +478,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         }
         else
         {
-            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(StoresBrowseViewController.searchItem))
+            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(StoresBrowseViewController.searchItem))
             self.navigationItem.setRightBarButtonItems([self.cartButton, searchItem], animated: true)
         }
         
@@ -681,7 +681,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -705,7 +705,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -858,13 +858,13 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
             }
         }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -1053,7 +1053,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         adCallToActionButton = UIButton(frame:CGRect(x:self.fbView.bounds.width-80, y: adImageView.bounds.height + 10 + adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState.normal)
+            nativeAd.callToAction, for: UIControl.State.normal)
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -1140,7 +1140,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1213,7 +1213,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1363,7 +1363,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         if storeBrowseType == 2
         {
             let cell = categoryTableView.dequeueReusableCell(withIdentifier: "Cellone") as! CategoryTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell.DiaryName.isHidden = false
             cell.DiaryName1.isHidden = false
             cell.classifiedImageView.frame.size.height = 155
@@ -1467,7 +1467,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
             {  // or 9 == if you don't want the first cell to be an ad!
                 storesTableView.register(NativeMltGridCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = storesTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath as IndexPath) as! NativeMltGridCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_stores-1)
@@ -1682,7 +1682,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                 }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath as IndexPath) as! MLTGridTableViewCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 
                 //SET CONTENT IMAGE BOUNDS
                 //cell.contentImage.frame = CGRect(x:0, 0, cell.cellView.bounds.width, cell.cellView.bounds.height - cell.cellView.bounds.height/4)
@@ -1693,7 +1693,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                 cell.ownerImage.layer.borderWidth = 2.5
                 cell.ownerImage.layer.cornerRadius = cell.ownerImage.frame.size.width / 2
                 cell.ownerImage.backgroundColor = placeholderColor
-                cell.ownerImage.contentMode = UIViewContentMode.scaleAspectFill
+                cell.ownerImage.contentMode = UIView.ContentMode.scaleAspectFill
                 cell.ownerImage.layer.masksToBounds = true
                 cell.ownerImage.image = UIImage(named: "user_profile_image.png")
                 cell.ownerImage.tag = 321
@@ -1912,7 +1912,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                     cell.ownerImage2.layer.borderWidth = 2.5
                     cell.ownerImage2.layer.cornerRadius = cell.ownerImage2.frame.size.width / 2
                     cell.ownerImage2.backgroundColor = placeholderColor
-                    cell.ownerImage2.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.ownerImage2.contentMode = UIView.ContentMode.scaleAspectFill
                     cell.ownerImage2.layer.masksToBounds = true
                     cell.ownerImage2.image = UIImage(named: "user_profile_image.png")
                     cell.ownerImage2.tag = 321
@@ -2737,7 +2737,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(StoresBrowseViewController.browseStores), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(StoresBrowseViewController.browseStores), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.refreshButton.isHidden = false
@@ -2789,7 +2789,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
         editStoreID = storeInfo["store_id"] as! Int
         
         let menuOption = storeInfo["menu"] as! NSArray
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for menu in menuOption{
             
@@ -2803,7 +2803,7 @@ class StoresBrowseViewController: UIViewController, UITableViewDataSource, UITab
                 
                 if titleString.range(of: "delete") != nil{
                     
-                    alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                    alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                         let condition = menuItem["name"] as! String
                         
                         switch(condition){

@@ -91,18 +91,18 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         
         if iscoming == "sitegroup" || iscoming == "sitevideoAvoid" {
         toLabelText = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Start typing the name of the member",  comment: ""), corner: true)
-        toLabelText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Start typing the name of the member",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        toLabelText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Start typing the name of the member",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         }
         else{
             toLabelText = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Send To",  comment: ""), corner: true)
-            toLabelText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Send To ",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+            toLabelText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Send To ",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         }
         toLabelText.becomeFirstResponder()
         // Event For Auto Suggest
         if fromProfile == false
         {
             
-            toLabelText.addTarget(self, action: #selector(MessageCreateController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+            toLabelText.addTarget(self, action: #selector(MessageCreateController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
         }
         else
@@ -119,7 +119,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         
 
         
-        searchResultTableView = UITableView(frame: CGRect(x: PADING, y: TOPPADING + 40, width: view.bounds.width - PADING, height: view.bounds.height-120), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: PADING, y: TOPPADING + 40, width: view.bounds.width - PADING, height: view.bounds.height-120), style: UITableView.Style.grouped)
         searchResultTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -131,7 +131,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         self.automaticallyAdjustsScrollViewInsets = false;
         
         subjectLabelText = createTextField(CGRect(x: PADING, y: TOPPADING+40, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText:  NSLocalizedString("Subject",  comment: ""), corner: true)
-        subjectLabelText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Subject",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        subjectLabelText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Subject",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         subjectLabelText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         subjectLabelText.delegate = self
         subjectLabelText.backgroundColor = bgColor
@@ -266,7 +266,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
     //MARK: Start  Show Attachments Option like Link,Video,Image
     func attachment()
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Attach Image",comment: ""), style: .default, handler:{ (UIAlertAction) -> Void in
             // In case of Image Attachment
             let imagePicker = ELCImagePickerController(imagePicker: ())
@@ -347,7 +347,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         done.backgroundColor =  navColor
         done.layer.borderColor = navColor.cgColor
         done.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        done.setTitleColor(textColorLight, for: UIControlState())
+        done.setTitleColor(textColorLight, for: UIControl.State())
         subView.addSubview(done)
         let cancel = createButton(CGRect(x: (4 * contentPADING) + 110 , y: originY + 3 * contentPADING, width: 110, height: ButtonHeight - 5),  title: NSLocalizedString("Cancel",comment: ""), border: true,bgColor: false , textColor: navColor)
         cancel.addTarget(self , action:#selector(MessageCreateController.hideImageAttachedView) , for: .touchUpInside)
@@ -391,9 +391,9 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         
         for dic in info{
             if let photoDic = dic as? NSDictionary{
-                if photoDic.object(forKey: UIImagePickerControllerMediaType) as? String == ALAssetTypePhoto {
-                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as? String == ALAssetTypePhoto {
+                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
                         attachImage.append(image)
                     }
                 }
@@ -435,9 +435,9 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
     
     //MARK: Start Work for link attachment
     func attachmentLink(){
-        let alert = UIAlertController(title: NSLocalizedString("Attach Link",comment: ""), message: NSLocalizedString("Enter url:",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertActionStyle.default, handler: showAlertToAddLink))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Attach Link",comment: ""), message: NSLocalizedString("Enter url:",comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertAction.Style.default, handler: showAlertToAddLink))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         alert.addTextField(configurationHandler: {(textField: UITextField) in
             textField.placeholder = NSLocalizedString("Enter Url",comment: "")
             textField.isSecureTextEntry = false
@@ -460,8 +460,8 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         }
         if error != ""{
             let alertController = UIAlertController(title: "Error", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
         else{
@@ -567,7 +567,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         done.isUserInteractionEnabled = true
         done.backgroundColor =  navColor
         done.layer.borderColor = navColor.cgColor
-        done.setTitleColor(textColorLight, for: UIControlState())
+        done.setTitleColor(textColorLight, for: UIControl.State())
         subView1.addSubview(done)
         let cancel = createButton(CGRect(x: (4 * contentPADING) + 110 , y: originY + 3 * contentPADING, width: 110, height: ButtonHeight - 5),  title: NSLocalizedString("Cancel",comment: ""), border: true,bgColor: false , textColor: navColor)
         cancel.addTarget(self , action:#selector(MessageCreateController.hideViewForAttachLink) , for: .touchUpInside)
@@ -625,7 +625,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         let videoOption = createButton(CGRect(x: 5, y: 35, width: subViewVideo.bounds.width - 10, height: 40),title: NSLocalizedString("Choose Source",  comment: "") , border: true,bgColor: false, textColor: textColorDark)
         videoOption.titleLabel?.font = UIFont(name: fontName , size: FONTSIZESmall)
         videoOption.contentHorizontalAlignment = .left
-        videoOption.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        videoOption.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         videoOption.addTarget(self, action: #selector(MessageCreateController.videoOptionList(_:)), for: .touchUpInside)
         subViewVideo.addSubview(videoOption)
         self.linkTextField =  createTextField(CGRect(x: 5, y: 80, width: subViewVideo.bounds.width - 10, height: 40), borderColor: borderColorDark, placeHolderText: NSLocalizedString("Link",  comment: "" ),corner: false )
@@ -662,10 +662,10 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         videoDictionary["1"] = "YouTube"
         videoDictionary["2"] = "Vimeo"
         if videoDictionary.count > 0 {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for (key,value) in videoDictionary {
                 alertController.addAction(UIAlertAction(title:  NSLocalizedString("\(value)",comment: ""), style: .default) { action -> Void in
-                    sender.setTitle(videoDictionary["\(key)"], for: UIControlState())
+                    sender.setTitle(videoDictionary["\(key)"], for: UIControl.State())
                     if key != "0"{
                         self.subViewVideo.frame.size.height = self.cancelAttachFile.frame.origin.y + self.cancelAttachFile.frame.size.height + 10
                         self.subViewVideo.center = self.transparentViewVideo.center
@@ -826,7 +826,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
         done.isUserInteractionEnabled = true
         done.backgroundColor =  navColor
         done.layer.borderColor = navColor.cgColor
-        done.setTitleColor(textColorLight, for: UIControlState())
+        done.setTitleColor(textColorLight, for: UIControl.State())
         subView1.addSubview(done)
         let cancel = createButton(CGRect(x: (4 * contentPADING) + 110 , y: originY + 3 * contentPADING, width: 110, height: ButtonHeight - 5),  title: NSLocalizedString("Cancel",comment: ""), border: true,bgColor: false , textColor: navColor)
         cancel.layer.cornerRadius = 5.0
@@ -861,8 +861,8 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         if(conversationVar == true){
             _ = self.navigationController?.popViewController(animated: false)
         }
@@ -872,7 +872,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         {
             let tableFrame = self.searchResultTableView.frame.origin.y
             let keyboardHeight = keyboardSize.height
@@ -1088,7 +1088,7 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         
         if let response = suggestedFrnd[(indexPath as NSIndexPath).row] as? NSDictionary {
@@ -1121,9 +1121,9 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
             
             if let id = response["id"] as? Int{
                 if frndTag[id] != nil{
-                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }else{
-                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
                 }
             }
             
@@ -1376,8 +1376,8 @@ class MessageCreateController: UIViewController, UITableViewDataSource,UITableVi
             }
         }else{
             let alertController = UIAlertController(title: "Error", message:
-                errorMsg, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                errorMsg, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }

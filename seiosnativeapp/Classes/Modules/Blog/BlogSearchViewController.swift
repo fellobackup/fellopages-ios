@@ -65,9 +65,9 @@ class BlogSearchViewController: UIViewController , UITableViewDataSource, UITabl
         self.navigationItem.leftBarButtonItem = barButtonItem
 
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(BlogSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(BlogSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -99,7 +99,7 @@ class BlogSearchViewController: UIViewController , UITableViewDataSource, UITabl
         blogTableView.tableFooterView = footerView
         blogTableView.tableFooterView?.isHidden = true
   
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -383,7 +383,7 @@ class BlogSearchViewController: UIViewController , UITableViewDataSource, UITabl
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         cell.backgroundColor = tableViewBgColor
         
         var blogInfo:NSDictionary
@@ -666,7 +666,7 @@ class BlogSearchViewController: UIViewController , UITableViewDataSource, UITabl
             blogTableView.tableFooterView?.isHidden = true
             searchDic.removeAll(keepingCapacity: false)
             self.navigationController?.navigationBar.isTranslucent = true
-            if (self.isMovingFromParentViewController){
+            if (self.isMovingFromParent){
                 if fromGlobSearch{
                     conditionalForm = ""
                     loadFilter("search")

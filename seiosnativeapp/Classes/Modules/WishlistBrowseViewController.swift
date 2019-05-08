@@ -104,7 +104,7 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         // Set pull to referseh for wishlisttableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(WishlistBrowseViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(WishlistBrowseViewController.refresh), for: UIControl.Event.valueChanged)
         
         
         if logoutUser == true || showOnlyMyContent == true
@@ -173,7 +173,7 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         WishlistTableView.isHidden = true
         WishlistTableView.backgroundColor = tableViewBgColor
         WishlistTableView.showsVerticalScrollIndicator = false
-        WishlistTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        WishlistTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         // For ios 11 spacing issue below the navigation controller
         if #available(iOS 11.0, *) {
             WishlistTableView.estimatedSectionHeaderHeight = 0
@@ -209,7 +209,7 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         self.refreshButton.backgroundColor = bgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(WishlistBrowseViewController.browseEntries), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(WishlistBrowseViewController.browseEntries), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.mainView.addSubview(self.refreshButton)
@@ -726,7 +726,7 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = WishlistTableView.dequeueReusableCell(withIdentifier: "WishlistCell", for: indexPath) as! WishlistTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         let listingInfo = listingResponse[(indexPath as NSIndexPath).row]
         cell.coverSelection.tag = (indexPath as NSIndexPath).row
@@ -737,9 +737,9 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         
         cell.moreOptions.addTarget(self, action: #selector(WishlistBrowseViewController.moreOptions(_:)), for: .touchUpInside)
         if listingInfo.isLike  == 0 as Int{
-            cell.moreOptions.setTitleColor(textColorLight, for: UIControlState())
+            cell.moreOptions.setTitleColor(textColorLight, for: UIControl.State())
         }else{
-            cell.moreOptions.setTitleColor(navColor, for: UIControlState())
+            cell.moreOptions.setTitleColor(navColor, for: UIControl.State())
         }
         
         let name = listingInfo.title
@@ -830,8 +830,8 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
                 cell.coverImage4.isHidden = false
                 cell.coverImage5.isHidden = false
                 
-                cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-                cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+                cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                 
                 
                 imageArr.removeAll()
@@ -847,19 +847,19 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
 
                     }
                 }else{
-                    cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                    cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                 }
                 if imagedic2 != ""{
                     let url2 = URL(string: imagedic2! as String)
                     if url2 != nil {
-                        cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                        cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                         cell.coverImage5.kf.setImage(with: url2, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                             
                         })
 
                     }
                 }else{
-                    cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                    cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                 }
                 
             }
@@ -1051,14 +1051,14 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         let currentWishList = listingResponse[sender.tag]
         
         if currentWishList.isLike! as Int == 1{
-            sender.setTitleColor(textColorLight, for: UIControlState())
+            sender.setTitleColor(textColorLight, for: UIControl.State())
             sender.tintColor = textColorLight
             animationEffectOnButton(sender)
             currentWishList.isLike = 0
             self.likeFollowWishList(sender.tag,likeOrUnlike : 0,sender : sender)
         }
         else{
-            sender.setTitleColor(navColor, for: UIControlState())
+            sender.setTitleColor(navColor, for: UIControl.State())
             sender.tintColor = navColor
             animationEffectOnButton(sender)
             currentWishList.isLike = 1
@@ -1292,16 +1292,16 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
                                     if (response["canCreate"] as! Int == 1)
                                     {
                                         if self.wishlistType == "diary"{
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(WishlistBrowseViewController.searchItem))
-                                        searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(WishlistBrowseViewController.addNewEvent))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(WishlistBrowseViewController.searchItem))
+                                            searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(WishlistBrowseViewController.addNewEvent))
                                         self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
-                                        addBlog.imageInsets = UIEdgeInsetsMake(0,0, 0, 0)
+                                            addBlog.imageInsets = UIEdgeInsets(top: 0,left: 0, bottom: 0, right: 0)
                                         searchItem.tintColor = textColorPrime
                                         addBlog.tintColor = textColorPrime
                                             self.showAppTour()
                                         }else{
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(WishlistBrowseViewController.searchItem))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(WishlistBrowseViewController.searchItem))
                                             self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
                                             self.showSearchAppTour()
@@ -1310,7 +1310,7 @@ class WishlistBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
                                     }
                                     else
                                     {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(WishlistBrowseViewController.searchItem))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(WishlistBrowseViewController.searchItem))
                                         self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
                                         self.showSearchAppTour()

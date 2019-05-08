@@ -60,7 +60,7 @@ class GoogleMapViewController: UIViewController,GMUClusterManagerDelegate, GMSMa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,selector:#selector(GoogleMapViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(GoogleMapViewController.applicationWillEnterForeground),name: UIApplication.willEnterForegroundNotification,object: nil)
         
         self.navigationItem.hidesBackButton = true
         searchDic.removeAll(keepingCapacity: false)
@@ -108,7 +108,7 @@ class GoogleMapViewController: UIViewController,GMUClusterManagerDelegate, GMSMa
         self.btnFloaty.layer.borderWidth = 1
         self.btnFloaty.layer.borderColor = buttonColor.cgColor
         self.btnFloaty.layer.cornerRadius = self.btnFloaty.frame.height/2
-        self.btnFloaty.setTitle("\u{f279}", for: UIControlState.normal)
+        self.btnFloaty.setTitle("\u{f279}", for: UIControl.State.normal)
         let anotherViewBrowseType = sitereviewMenuDictionary["anotherViewBrowseType"] as? Int ?? 0
         if anotherViewBrowseType != 0 {
             var browseType = sitereviewMenuDictionary["viewBrowseType"] as? Int ?? 0
@@ -120,25 +120,25 @@ class GoogleMapViewController: UIViewController,GMUClusterManagerDelegate, GMSMa
             
             if browseType == 1
             {
-                self.btnFloaty.setTitle("\u{f0ca}", for: UIControlState.normal)
+                self.btnFloaty.setTitle("\u{f0ca}", for: UIControl.State.normal)
             }
             else if browseType == 2
             {
-                self.btnFloaty.setTitle("\u{f00a}", for: UIControlState.normal)
+                self.btnFloaty.setTitle("\u{f00a}", for: UIControl.State.normal)
             }
             else if browseType == 3
             {
-                self.btnFloaty.setTitle("\u{f0db}", for: UIControlState.normal)
+                self.btnFloaty.setTitle("\u{f0db}", for: UIControl.State.normal)
             }
             else
             {
-                self.btnFloaty.setTitle("\u{f279}", for: UIControlState.normal)
+                self.btnFloaty.setTitle("\u{f279}", for: UIControl.State.normal)
             }
         }
         self.btnFloaty.titleLabel?.font = UIFont(name: "FontAwesome", size:FONTSIZELarge)
         self.btnFloaty.backgroundColor = buttonColor
         self.btnFloaty.clipsToBounds = true
-        self.btnFloaty.addTarget(self, action: #selector(GoogleMapViewController.toggleView), for: UIControlEvents.touchUpInside)
+        self.btnFloaty.addTarget(self, action: #selector(GoogleMapViewController.toggleView), for: UIControl.Event.touchUpInside)
         if fromCategory == false{
             self.view.addSubview(self.btnFloaty)
         }
@@ -507,15 +507,15 @@ class GoogleMapViewController: UIViewController,GMUClusterManagerDelegate, GMSMa
             
             let iconFont = CTFontCreateWithName(("FontAwesome" as CFString?)!, FONTSIZENormal, nil)
             let textFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
-            let iconPart = NSMutableAttributedString(string: "\(locationIcon)  ", attributes: [NSAttributedStringKey.font:iconFont ,  NSAttributedStringKey.foregroundColor : textColorLight])
+            let iconPart = NSMutableAttributedString(string: "\(locationIcon)  ", attributes: [NSAttributedString.Key.font:iconFont ,  NSAttributedString.Key.foregroundColor : textColorLight])
             let paragraphStyle = NSMutableParagraphStyle()
             
             // *** set LineSpacing property in points ***
             paragraphStyle.lineSpacing = 1.5 // Whatever line spacing you want in points
             
-            let textPart = NSMutableAttributedString(string: "  \(address)", attributes: [NSAttributedStringKey.font:textFont , NSAttributedStringKey.foregroundColor : textColorLight])
+            let textPart = NSMutableAttributedString(string: "  \(address)", attributes: [NSAttributedString.Key.font:textFont , NSAttributedString.Key.foregroundColor : textColorLight])
             
-//            textPart.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (textPart.length)))
+//            textPart.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (textPart.length)))
             iconPart.append(textPart)
             
 //            self.privacyButton.setAttributedTitle(iconPart, for: .normal)
@@ -735,17 +735,17 @@ class GoogleMapViewController: UIViewController,GMUClusterManagerDelegate, GMSMa
                             
                             if let canCreate = body["canCreate"] as? Bool{
                                 if canCreate == true {
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(GoogleMapViewController.searchItem))
-                                    searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(GoogleMapViewController.addNewListing))
-                                    addBlog.imageInsets = UIEdgeInsetsMake(0,0, 0, 0)
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(GoogleMapViewController.searchItem))
+                                    searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(GoogleMapViewController.addNewListing))
+                                    addBlog.imageInsets = UIEdgeInsets(top: 0,left: 0, bottom: 0, right: 0)
                                     searchItem.tintColor = textColorPrime
                                     addBlog.tintColor = textColorPrime
                                     self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
                                 }
                                 else
                                 {
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(GoogleMapViewController.searchItem))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(GoogleMapViewController.searchItem))
                                     self.navigationItem.rightBarButtonItem = searchItem
                                     searchItem.tintColor = textColorPrime
                                 }
@@ -809,7 +809,7 @@ class GoogleMapViewController: UIViewController,GMUClusterManagerDelegate, GMSMa
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     //Set Location

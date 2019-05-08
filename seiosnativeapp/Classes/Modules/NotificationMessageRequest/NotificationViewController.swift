@@ -105,7 +105,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         notificationTableView.dataSource = self
         notificationTableView.delegate = self
         notificationTableView.estimatedRowHeight = 70
-        notificationTableView.rowHeight = UITableViewAutomaticDimension
+        notificationTableView.rowHeight = UITableView.automaticDimension
         notificationTableView.backgroundColor = tableViewBgColor
         notificationTableView.separatorColor = TVSeparatorColor
         if #available(iOS 11.0, *) {
@@ -118,7 +118,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(NotificationViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(NotificationViewController.refresh), for: UIControl.Event.valueChanged)
         notificationTableView.addSubview(refresher)
         
         // Initialize Blog Table
@@ -127,7 +127,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         requestTableView.dataSource = self
         requestTableView.delegate = self
         requestTableView.estimatedRowHeight = 50.0
-        requestTableView.rowHeight = UITableViewAutomaticDimension
+        requestTableView.rowHeight = UITableView.automaticDimension
         requestTableView.backgroundColor = tableViewBgColor
         requestTableView.separatorColor = TVSeparatorColor
         if #available(iOS 11.0, *) {
@@ -139,7 +139,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         
         requestRefresher = UIRefreshControl()
         requestRefresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        requestRefresher.addTarget(self, action: #selector(NotificationViewController.refresh), for: UIControlEvents.valueChanged)
+        requestRefresher.addTarget(self, action: #selector(NotificationViewController.refresh), for: UIControl.Event.valueChanged)
         requestTableView.addSubview(requestRefresher)
         
         
@@ -426,7 +426,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                                 self.refreshbutton.backgroundColor = bgColor
                                 self.refreshbutton.layer.borderColor = navColor.cgColor
                                 self.refreshbutton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                                self.refreshbutton.addTarget(self, action: #selector(NotificationViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                                self.refreshbutton.addTarget(self, action: #selector(NotificationViewController.browseEntries), for: UIControl.Event.touchUpInside)
                                 self.refreshbutton.layer.cornerRadius = 5.0
                                 self.refreshbutton.layer.masksToBounds = true
                                 self.refreshbutton.tag = 1000
@@ -459,7 +459,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                                 self.refreshbutton.layer.borderColor = navColor.cgColor
                                 self.refreshbutton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
                                 self.refreshbutton.tag = 1000
-                                self.refreshbutton.addTarget(self, action: #selector(NotificationViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                                self.refreshbutton.addTarget(self, action: #selector(NotificationViewController.browseEntries), for: UIControl.Event.touchUpInside)
                                 self.refreshbutton.layer.cornerRadius = 5.0
                                 self.refreshbutton.layer.masksToBounds = true
                                 self.mainView.addSubview(self.refreshbutton)
@@ -620,7 +620,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             }
         }
         if browseNotificationRequest == 1 && requestsResponse.count > 0{
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             
             var requestInfo:NSDictionary
             requestInfo = requestsResponse[indexPath.row] as! NSDictionary
@@ -727,16 +727,16 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                                 let boldFont = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZEMedium, nil)
                                 
                                 let range = (labMsg as NSString).range(of:NSLocalizedString(search,  comment: ""))
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             }
                         }
                         // finish work for bold title
                         
                         let range1 = (labMsg as NSString).range(of: postedOn)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size:FONTSIZESmall)!, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size:FONTSIZESmall)!, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
 
                         // TODO: Clean this up..
                         return mutableAttributedString
@@ -790,7 +790,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             }
             
         }else if browseNotificationRequest == 0 && notificationsResponse.count > 0{
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.tag = indexPath.row
             
             
@@ -902,17 +902,17 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                                 let boldFont = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZEMedium, nil)
                                 
                                 let range = (labMsg as NSString).range(of:NSLocalizedString(search,  comment: ""))
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             }
                         }
                         // finish work for bold title
                         //
                         //
                         let range1 = (labMsg as NSString).range(of: postedOn)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size:FONTSIZESmall)!, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size:FONTSIZESmall)!, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                         // TODO: Clean this up..
                         return mutableAttributedString!
                     })
@@ -1421,7 +1421,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         if tableView.isEditing {
             
             
-            let markAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Mark" , handler: {
+            let markAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: "Mark" , handler: {
                 
                 (action:UITableViewRowAction, indexPath:IndexPath) -> Void in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NotificationTableViewCell
@@ -1450,7 +1450,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
     
@@ -1670,7 +1670,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         requestInfo = requestsResponse[sender.tag] as! NSDictionary
         let event_id = requestInfo["object_id"] as! Int
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Attending",comment: ""), style: .default) { action -> Void in
@@ -1684,7 +1684,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         })
         
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore",comment: ""), style: UIAlertActionStyle.destructive) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore",comment: ""), style: UIAlertAction.Style.destructive) { action -> Void in
             let url = "events/member/ignore"
             self.updateOptions(url: url as String, id: event_id as Int)
         })
@@ -1708,7 +1708,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         requestInfo = requestsResponse[sender.tag] as! NSDictionary
         
         let group_id = requestInfo["object_id"] as! Int
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Join Group",comment: ""), style: .default) { action -> Void in
@@ -1716,7 +1716,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             self.updateOptions(url: url as String, id: group_id as Int)
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore Group",comment: ""), style: UIAlertActionStyle.destructive) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Ignore Group",comment: ""), style: UIAlertAction.Style.destructive) { action -> Void in
             
             let url = "groups/member/ignore"
             self.updateOptions(url: url as String, id: group_id as Int)
@@ -1740,7 +1740,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         var requestInfo:NSDictionary
         requestInfo = requestsResponse[sender.tag] as! NSDictionary
         let subject_id = requestInfo["subject_id"] as! Int
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Accept",comment: ""), style: .default) { action -> Void in
@@ -1748,7 +1748,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             self.selectFriend(url:url as String, id : subject_id as Int)
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Reject",comment: ""), style: UIAlertActionStyle.destructive) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Reject",comment: ""), style: UIAlertAction.Style.destructive) { action -> Void in
             
             let url = "user/cancel"
             self.selectFriend(url:url as String, id: subject_id as Int)

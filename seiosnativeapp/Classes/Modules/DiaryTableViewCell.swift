@@ -63,7 +63,7 @@ class DiaryTableViewCell: UITableViewCell
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -120,10 +120,10 @@ class DiaryTableViewCell: UITableViewCell
         coverImage4.layer.masksToBounds = true
         coverImage4.backgroundColor = UIColor.clear//navColor
         coverImage4.isHidden = true
-        coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-        coverImage4.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        coverImage4.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-        coverImage4.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+        coverImage4.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        coverImage4.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+        coverImage4.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         cellView.addSubview(coverImage4)
         
         
@@ -133,10 +133,10 @@ class DiaryTableViewCell: UITableViewCell
         coverImage5.layer.masksToBounds = true
         coverImage5.backgroundColor = UIColor.clear//navColor
         coverImage5.isHidden = true
-        coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-        coverImage5.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        coverImage5.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-        coverImage5.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+        coverImage5.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        coverImage5.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+        coverImage5.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         
         cellView.addSubview(coverImage5)
         
@@ -217,10 +217,10 @@ class DiaryTableViewCell: UITableViewCell
             coverImage10.layer.masksToBounds = true
             coverImage10.backgroundColor = UIColor.clear//navColor
             coverImage10.isHidden = true
-            coverImage10.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-            coverImage10.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-            coverImage10.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-            coverImage10.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+            coverImage10.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+            coverImage10.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+            coverImage10.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+            coverImage10.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
             cellView2.addSubview(coverImage10)
             
             
@@ -230,10 +230,10 @@ class DiaryTableViewCell: UITableViewCell
             coverImage11.layer.masksToBounds = true
             coverImage11.backgroundColor = UIColor.clear//navColor
             coverImage11.isHidden = true
-            coverImage11.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-            coverImage11.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-            coverImage11.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-            coverImage11.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+            coverImage11.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+            coverImage11.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+            coverImage11.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+            coverImage11.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
             coverImage11.layer.shadowColor = UIColor.black.cgColor
             coverImage11.layer.shadowOffset = CGSize(width: 20, height: 20)
             coverImage11.layer.shadowRadius = 20

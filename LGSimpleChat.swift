@@ -163,9 +163,9 @@ class LGChatMessageCell : UITableViewCell {
     
     fileprivate lazy var photoImageView: UIImageView = {
         
-        //  photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+        //  photoImageView.contentMode = UIView.ContentMode.scaleAspectFit
         let photoImageView = UIImageView()
-       // photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+       // photoImageView.contentMode = UIView.ContentMode.scaleAspectFit
         photoImageView.backgroundColor = UIColor.clear
         photoImageView.image = nil
         photoImageView.layer.cornerRadius = 5.0
@@ -291,7 +291,7 @@ class LGChatMessageCell : UITableViewCell {
                     photoImageView.frame.origin.x = 5.0
                     photoImageView.frame.origin.y = 10.0
                     
-                    photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+                    photoImageView.contentMode = UIView.ContentMode.scaleAspectFit
                     if let img = imageCacheShow[message.attachment["image"] as! String]
                     {
                         self.photoImageView.image = img
@@ -337,7 +337,7 @@ class LGChatMessageCell : UITableViewCell {
                     photoImageView.frame.origin.x = 5.0
                     photoImageView.frame.origin.y = 10.0
                     
-                    photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+                    photoImageView.contentMode = UIView.ContentMode.scaleAspectFit
                     photoImageView.clipsToBounds = true
                     if let img = imageCacheShow[message.attachment["image"] as! String]
                     {
@@ -378,8 +378,8 @@ class LGChatMessageCell : UITableViewCell {
                     linkDescription.setText(messagelinkDescription, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                         let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
                         let range1 = (messagelinkDescription as NSString).range(of: message.attachment["title"] as! String)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                         
                         return mutableAttributedString!
                     })
@@ -414,7 +414,7 @@ class LGChatMessageCell : UITableViewCell {
                     
                     if var a =  message.attachment["imageAttachment"]! as? [UIImage]{
                         
-                        photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+                        photoImageView.contentMode = UIView.ContentMode.scaleAspectFit
                         if (message.attachment["imageAttachment"]! as AnyObject).count > 0{
                             a = message.attachment["imageAttachment"]! as! [UIImage]
                             self.photoImageView.image = a[0]
@@ -448,7 +448,7 @@ class LGChatMessageCell : UITableViewCell {
                     photoImageView.frame.origin.x = 5.0
                     photoImageView.frame.origin.y = 10.0
                     
-                    photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+                    photoImageView.contentMode = UIView.ContentMode.scaleAspectFit
                     photoImageView.clipsToBounds = true
                     if let img = imageCacheShow[message.attachment["imageAttachment"] as! String]
                     {
@@ -485,8 +485,8 @@ class LGChatMessageCell : UITableViewCell {
                     linkDescription.setText(messagelinkDescription, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                         let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                         let range1 = (messagelinkDescription as NSString).range(of: message.attachment["title"] as! String)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                         
                         return mutableAttributedString
                     })
@@ -797,7 +797,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     func attachment()
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Attach Image",  comment: ""), style: .default, handler:{ (UIAlertAction) -> Void in
             let imagePicker = ELCImagePickerController(imagePicker: ())
@@ -885,7 +885,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         let videoOption = createButton(CGRect(x: 5, y: 35, width: subViewVideo.bounds.width - 10, height: 40),title: NSLocalizedString("Choose Source",  comment: "") , border: true,bgColor: false, textColor: textColorDark)
         videoOption.titleLabel?.font = UIFont(name: fontName , size: FONTSIZESmall)
         videoOption.contentHorizontalAlignment = .left
-        videoOption.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        videoOption.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         videoOption.addTarget(self, action: #selector(LGChatController.videoOptionList(_:)), for: .touchUpInside)
         subViewVideo.addSubview(videoOption)
         
@@ -932,13 +932,13 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         videoDictionary["2"] = "Vimeo"
         if videoDictionary.count > 0 {
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             for (key,value) in videoDictionary {
                 
                 alertController.addAction(UIAlertAction(title:  NSLocalizedString("\(value)",comment: ""), style: .default) { action -> Void in
                     
-                    sender.setTitle(videoDictionary["\(key)"], for: UIControlState())
+                    sender.setTitle(videoDictionary["\(key)"], for: UIControl.State())
                     if key != "0"{
                         self.subViewVideo.frame.size.height = self.cancelAttachFile.frame.origin.y + self.cancelAttachFile.frame.size.height + 10
                         self.subViewVideo.center = self.transparentViewVideo.center
@@ -1107,7 +1107,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         done.backgroundColor =  navColor
         done.layer.borderColor = navColor.cgColor
         done.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        done.setTitleColor(textColorLight, for: UIControlState())
+        done.setTitleColor(textColorLight, for: UIControl.State())
         subView.addSubview(done)
         
         let cancel = createButton(CGRect(x: (4 * contentPADING) + 110 , y: originY + 3 * contentPADING, width: 110, height: ButtonHeight - 5),  title: NSLocalizedString("Cancel",comment: ""), border: true,bgColor: false , textColor: navColor)
@@ -1153,9 +1153,9 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         
         for dic in info{
             if let photoDic = dic as? NSDictionary{
-                if photoDic.object(forKey: UIImagePickerControllerMediaType) as? String == ALAssetTypePhoto {
-                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as? String == ALAssetTypePhoto {
+                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
                         attachPhotoImage.append(image)
                     }
                 }
@@ -1190,9 +1190,9 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func attachmentLink(){
-        let alert = UIAlertController(title: NSLocalizedString("Attach Link",comment: ""), message: NSLocalizedString("Enter url:",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertActionStyle.default, handler: attachmentLinks))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Attach Link",comment: ""), message: NSLocalizedString("Enter url:",comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertAction.Style.default, handler: attachmentLinks))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         alert.addTextField(configurationHandler: {(textField: UITextField) in
             textField.placeholder = NSLocalizedString("Enter Url",comment: "")
             textField.isSecureTextEntry = false
@@ -1216,8 +1216,8 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         
         if error != ""{
             let alertController = UIAlertController(title: "Error", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
         else{
@@ -1348,7 +1348,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         done.isUserInteractionEnabled = true
         done.backgroundColor =  navColor
         done.layer.borderColor = navColor.cgColor
-        done.setTitleColor(textColorLight, for: UIControlState())
+        done.setTitleColor(textColorLight, for: UIControl.State())
         subView1.addSubview(done)
         
         let cancel = createButton(CGRect(x: (4 * contentPADING) + 110 , y: originY + 3 * contentPADING, width: 110, height: ButtonHeight - 5),  title: NSLocalizedString("Cancel",comment: ""), border: true,bgColor: false , textColor: navColor)
@@ -1416,7 +1416,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         done.layer.cornerRadius = 5.0
         done.backgroundColor =  navColor
         done.layer.borderColor = navColor.cgColor
-        done.setTitleColor(textColorLight, for: UIControlState())
+        done.setTitleColor(textColorLight, for: UIControl.State())
         subView1.addSubview(done)
         let cancel = createButton(CGRect(x: (4 * contentPADING) + 110 , y: originY + 3 * contentPADING, width: 110, height: ButtonHeight - 5),  title: NSLocalizedString("Cancel",comment: ""), border: true,bgColor: false , textColor: navColor)
         cancel.layer.cornerRadius = 5.0
@@ -1548,7 +1548,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     fileprivate func listenForKeyboardChanges() {
         let defaultCenter = NotificationCenter.default
-        defaultCenter.addObserver(self, selector: #selector(LGChatController.keyboardWillChangeFrame(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(LGChatController.keyboardWillChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     fileprivate func unregisterKeyboardObservers() {
@@ -1563,8 +1563,8 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     @objc func delete(){
         deleteMessage = true
         let alertController = UIAlertController(title: "Delete", message:
-            "Do you want to delete your conversation ?", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive ,handler: { (action) in
+            "Do you want to delete your conversation ?", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive ,handler: { (action) in
             var parameters = [String:String]()
             parameters = ["conversation_ids": String(self.conversation_id) ]
             post(parameters, url: "messages/delete", method: "DELETE")
@@ -1578,7 +1578,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
                 })
             }
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
         
     }
@@ -1588,28 +1588,28 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
     
     @objc func keyboardWillChangeFrame(_ note: Foundation.Notification) {
         let keyboardAnimationDetail = (note as NSNotification).userInfo!
-        let duration = keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        var keyboardFrame = (keyboardAnimationDetail[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let duration = keyboardAnimationDetail[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        var keyboardFrame = (keyboardAnimationDetail[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         if let window = self.view.window {
             keyboardFrame = window.convert(keyboardFrame, to: self.view)
         }
-        let animationCurve = keyboardAnimationDetail[UIKeyboardAnimationCurveUserInfoKey] as! UInt
+        let animationCurve = keyboardAnimationDetail[UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
         
         self.tableView.isScrollEnabled = false
-        self.tableView.decelerationRate = UIScrollViewDecelerationRateFast
+        self.tableView.decelerationRate = UIScrollView.DecelerationRate.fast
         self.view.layoutIfNeeded()
         var chatInputOffset = -((self.view.bounds.height - self.bottomLayoutGuide.length) - keyboardFrame.minY)
         if chatInputOffset > 0 {
             chatInputOffset = 0
         }
         self.bottomChatInputConstraint.constant = chatInputOffset
-        UIView.animate(withDuration: duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: animationCurve), animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: 0.0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.scrollToBottom()
             
         }, completion: {(finished) -> () in
             self.tableView.isScrollEnabled = true
-            self.tableView.decelerationRate = UIScrollViewDecelerationRateNormal
+            self.tableView.decelerationRate = UIScrollView.DecelerationRate.normal
             
         })
     }
@@ -1618,7 +1618,7 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
         coordinator.animate(alongsideTransition: { (_) in
             self.tableView.reloadData()
         }) { (_) in
-            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: { () -> Void in
                 self.scrollToBottom()
             }, completion: nil)
         }
@@ -1746,10 +1746,10 @@ class LGChatController : UIViewController, UITableViewDelegate, UITableViewDataS
           //  cell.opponentImageView.sd_setImage(with: url1 as URL!, completed: { (image, error, Imagechachetype, Imageurl) in
          //       DispatchQueue.main.async {
                     
-                    cell.opponentImageViewButton.addTarget(self, action: #selector(LGChatController.userprofile(_:)), for: UIControlEvents.touchUpInside)
+                    cell.opponentImageViewButton.addTarget(self, action: #selector(LGChatController.userprofile(_:)), for: UIControl.Event.touchUpInside)
                     cell.opponentImageViewButton.tag = user_id
                     cell.photoViewButton.tag = (indexPath as NSIndexPath).row
-                    cell.photoViewButton.addTarget(self, action: #selector(LGChatController.actionafterClick(_:)), for: UIControlEvents.touchUpInside)
+                    cell.photoViewButton.addTarget(self, action: #selector(LGChatController.actionafterClick(_:)), for: UIControl.Event.touchUpInside)
         //        }
         //    })
         }
@@ -1846,7 +1846,8 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     }
     
     func setupTextView() {
-        textView.bounds = UIEdgeInsetsInsetRect(self.bounds, self.textViewInsets)
+//        textView.bounds = UIEdgeInsetsInsetRect(self.bounds, self.textViewInsets)
+        textView.bounds = self.bounds.inset(by: self.textViewInsets)
         textView.stretchyTextViewDelegate = self
         textView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         self.styleTextView()
@@ -1863,7 +1864,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     
     func setupSendButton() {
         self.sendButton.isEnabled = false
-        self.sendButton.setTitle("Send", for: UIControlState())
+        self.sendButton.setTitle("Send", for: UIControl.State())
         self.sendButton.addTarget(self, action: #selector(LGChatInput.sendButtonPressed(_:)), for: .touchUpInside)
         self.sendButton.bounds = CGRect(x: 0, y: 0, width: 40, height: 1)
         self.addSubview(sendButton)
@@ -1893,7 +1894,7 @@ class LGChatInput : UIView, LGStretchyTextViewDelegate {
     
     func setupBlurredBackgroundView() {
         self.addSubview(self.blurredBackgroundView)
-        self.sendSubview(toBack: self.blurredBackgroundView)
+        self.sendSubviewToBack(self.blurredBackgroundView)
     }
     
     func setupBlurredBackgroundViewConstraints() {
@@ -1969,7 +1970,7 @@ class LGStretchyTextView : UITextView, UITextViewDelegate {
     var maxHeightLandScape: CGFloat = 60
     var maxHeight: CGFloat {
         get {
-            return UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) ? maxHeightPortrait : maxHeightLandScape
+            return (UIApplication.shared.statusBarOrientation == UIInterfaceOrientation.portrait) ? maxHeightPortrait : maxHeightLandScape
         }
     }
     // MARK: Private Properties

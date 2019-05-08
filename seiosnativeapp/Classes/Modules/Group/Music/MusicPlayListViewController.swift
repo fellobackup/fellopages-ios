@@ -216,7 +216,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
         navBarTitle.isHidden = true
         
         coverImage = CoverImageViewWithGradient(frame: CGRect(x: 0, y: 0, width: mainSubView.bounds.width, height: mainSubView.bounds.height))
-        //coverImage.contentMode = UIViewContentMode.Top
+        //coverImage.contentMode = UIView.ContentMode.Top
         coverImage.layer.masksToBounds = true
         coverImage.isUserInteractionEnabled = true
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(MusicPlayListViewController.onImageViewTap))
@@ -239,10 +239,10 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
         contentSelection.layer.borderWidth = 2.5
         contentSelection.layer.cornerRadius = contentSelection.frame.size.width / 2;
         contentSelection.backgroundColor = placeholderColor
-        contentSelection.contentMode = UIViewContentMode.scaleAspectFill
+        contentSelection.contentMode = UIView.ContentMode.scaleAspectFill
         contentSelection.layer.masksToBounds = true
         
-        contentSelection.addTarget(self, action: #selector(MusicPlayListViewController.openOwnersProfile(_:)), for: UIControlEvents.touchUpInside)
+        contentSelection.addTarget(self, action: #selector(MusicPlayListViewController.openOwnersProfile(_:)), for: UIControl.Event.touchUpInside)
         
         mainSubView.addSubview(contentSelection)
         mainSubView.layer.borderColor = UIColor.clear.cgColor
@@ -311,7 +311,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(MusicPlayListViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(MusicPlayListViewController.refresh), for: UIControl.Event.valueChanged)
         playlistTableView.addSubview(refresher)
         
         
@@ -528,12 +528,12 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(MusicPlayListViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(MusicPlayListViewController.showMenu), for: .touchUpInside)
                                     rightNavView.addSubview(optionButton)
                                     
@@ -590,7 +590,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
                                 })
                             }else{
 
-                                self.contentSelection.setImage(UIImage(named: "nophoto_group_thumb_profile.png")!, for: UIControlState())
+                                self.contentSelection.setImage(UIImage(named: "nophoto_group_thumb_profile.png")!, for: UIControl.State())
                                 
                             }
                             if let str = response["image"] as? NSString
@@ -769,7 +769,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
             {
                 musicInfo = playlistResponse[(indexPath as NSIndexPath).row] as! NSDictionary
                 
-                let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
+                let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
                 if descriptionResult != nil{
                     if descriptionResult == ""{
                         cell.frame.origin.y = 200
@@ -826,7 +826,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc func showMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in gutterMenu{
@@ -834,7 +834,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
                 let titleString = dic["name"] as! String
                 
                 if titleString.range(of: "delete") != nil{
-                    alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                    alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                         // Write For Edit Album Entry
                         let condition = dic["name"] as! String
                         
@@ -947,13 +947,13 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
         musicInfo = playlistResponse[sender.tag] as! NSDictionary
         let menuOption = ["Delete"]
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for menu in menuOption{
             let titleString = menu
             if titleString.range(of: "Delete") != nil{
                 
-                alertController.addAction(UIAlertAction(title: (titleString ), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                alertController.addAction(UIAlertAction(title: (titleString ), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                     
                     let condition = titleString
                     
@@ -1012,7 +1012,7 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
                 }
                 
                 let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-                activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
                 if  (UIDevice.current.userInterfaceIdiom == .phone){
                     
                     if(activityViewController.popoverPresentationController != nil) {
@@ -1145,15 +1145,15 @@ class MusicPlayListViewController: UIViewController, UITableViewDataSource, UITa
                 
                 let range2 = (tempInfo as NSString).range(of: NSLocalizedString(">> see more",  comment: ""))
                 
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range2)
                 
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range2)
                 
                 let range1 = (tempInfo as NSString).range(of: NSLocalizedString("less",  comment: ""))
                 
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range1)
                 
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range1)
                 
                 // TODO: Clean this up...
                 

@@ -257,14 +257,14 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate,UITabB
             musicPlaying = false
             player.pause()
             pausingRemain = "pause"
-            self.playPauseButton.setTitle("\u{f04b}", for: UIControlState())
+            self.playPauseButton.setTitle("\u{f04b}", for: UIControl.State())
         }else{
             playOrPause = true
             musicPlaying = true
             player.play()
             pausingRemain = ""
             
-            self.playPauseButton.setTitle("\u{f04c}", for: UIControlState())
+            self.playPauseButton.setTitle("\u{f04c}", for: UIControl.State())
         }
         
     }
@@ -293,7 +293,7 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate,UITabB
                 self.updatePlayCount()
                 
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                 } catch _ {
                 }
                 do {
@@ -496,7 +496,7 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate,UITabB
     @objc func sliderValueDidChange(_ sender:UISlider){
         
         let seconds = Float64(playSlider.value)
-        let targetTime = CMTimeMakeWithSeconds(seconds, 1)
+        let targetTime = CMTimeMakeWithSeconds(seconds, preferredTimescale: 1)
         
         player.seek(to: targetTime)
         player.play()

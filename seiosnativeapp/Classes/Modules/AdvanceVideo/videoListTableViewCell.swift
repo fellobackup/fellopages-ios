@@ -28,7 +28,7 @@ class videoListTableViewCell: UITableViewCell {
         
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -44,12 +44,12 @@ class videoListTableViewCell: UITableViewCell {
         contentImage = createImageView(CGRect(x: 5, y: 3, width: UIScreen.main.bounds.width*0.4, height: 70), border: false)
         contentImage.layer.cornerRadius = cornerRadiusSmall
         contentImage.layer.masksToBounds = true
-        contentImage.contentMode = UIViewContentMode.scaleAspectFill
+        contentImage.contentMode = UIView.ContentMode.scaleAspectFill
         contentImage.image = UIImage(named: "user_profile_image.png")
         cellView.addSubview(contentImage)
         
         contentSelection = createButton(CGRect(x: 5, y: 3, width: UIScreen.main.bounds.width*0.4, height: 70), title: "", border: false,bgColor: false, textColor: textColorLight)
-        contentSelection.setBackgroundColor(textColorclear, forUIControlState: .normal)
+        contentSelection.setBackgroundColor(textColorclear, for: UIControl.State.selected, state: .normal)
         cellView.addSubview(contentSelection)
         
         

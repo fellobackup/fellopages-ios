@@ -96,9 +96,9 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationItem.leftBarButtonItem = barButtonItem
         
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(WishlistSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(WishlistSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -111,7 +111,7 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
         wishlistTableView.dataSource = self
         wishlistTableView.delegate = self
         wishlistTableView.estimatedRowHeight = 50.0
-        wishlistTableView.rowHeight = UITableViewAutomaticDimension
+        wishlistTableView.rowHeight = UITableView.automaticDimension
         wishlistTableView.backgroundColor = tableViewBgColor
         wishlistTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -131,7 +131,7 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
         wishlistTableView.tableFooterView = footerView
         wishlistTableView.tableFooterView?.isHidden = true
 
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -301,7 +301,7 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
         else
         {
         let cell = wishlistTableView.dequeueReusableCell(withIdentifier: "WishlistCell", for: indexPath) as! WishlistTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
       //  var listingInfo:NSDictionary!
       var listingInfo = wishlistResponse[(indexPath as NSIndexPath).row]
@@ -361,8 +361,8 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
                     cell.coverImage4.isHidden = false
                     cell.coverImage5.isHidden = false
                     
-                    cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-                    cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                    cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+                    cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                     
                     
                     imageArr.removeAll()
@@ -378,19 +378,19 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
                             
                         }
                     }else{
-                        cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                        cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                     }
                     if imagedic2 != ""{
                         let url2 = URL(string: imagedic2! as String)
                         if url2 != nil {
-                            cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                            cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                             cell.coverImage5.kf.setImage(with: url2, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                                 
                             })
                             
                         }
                     }else{
-                        cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                        cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                     }
                     
                 }
@@ -518,7 +518,7 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
                 let url1 = URL(string: imagedic1["image"] as! NSString as String)
                 if url1 != nil {
                     cell.coverImage4.kf.setImage(with: url1, for: .normal)
-                   // cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                   // cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
 //                    cell.coverImage4.kf.setImage(with: url1, for: .normal, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
 //
 //                    })
@@ -528,7 +528,7 @@ class WishlistSearchViewController: UIViewController, UITableViewDataSource, UIT
                 let url2 = URL(string: imagedic2["image"] as! NSString as String)
                 if url2 != nil {
                      cell.coverImage5.kf.setImage(with: url2, for: .normal)
-                   // cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                   // cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
 //                    cell.coverImage5.kf.setImage(with: url2, for: .normal, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
 //
 //                    })

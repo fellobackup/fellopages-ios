@@ -117,7 +117,7 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
         
         let items = ["Inbox", "Sent Messages"]
         customSegmentControl = UISegmentedControl(items: items)
-        customSegmentControl.addTarget(self, action: #selector(MessageViewController.indexChanged(_:)), for: UIControlEvents.valueChanged)
+        customSegmentControl.addTarget(self, action: #selector(MessageViewController.indexChanged(_:)), for: UIControl.Event.valueChanged)
         customSegmentControl.frame = CGRect(x: 0,y: 0, width: view.bounds.width, height: ButtonHeight)
         customSegmentControl.selectedSegmentIndex = 0
         
@@ -135,7 +135,7 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
         blogTableView.dataSource = self
         blogTableView.delegate = self
         blogTableView.estimatedRowHeight = 80
-        blogTableView.rowHeight = UITableViewAutomaticDimension
+        blogTableView.rowHeight = UITableView.automaticDimension
         blogTableView.backgroundColor = tableViewBgColor
         blogTableView.separatorColor = TVSeparatorColor
         if #available(iOS 11.0, *) {
@@ -149,7 +149,7 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
         
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(MessageViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(MessageViewController.refresh), for: UIControl.Event.valueChanged)
         blogTableView.addSubview(refresher)
         
         
@@ -608,7 +608,7 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
                                 self.totalItems = response["getTotalItemCount"] as! Int
                             }
                             
-                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(MessageViewController.composeMessage))
+                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(MessageViewController.composeMessage))
                             self.navigationItem.setRightBarButtonItems([addBlog], animated: true)
                             addBlog.tintColor = textColorPrime
                             
@@ -640,7 +640,7 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(MessageViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(MessageViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.refreshButton.tag = 1000
@@ -710,7 +710,7 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.tag = (indexPath as NSIndexPath).row
         let blogInfo = blogResponse[(indexPath as NSIndexPath).row]
         
@@ -783,8 +783,8 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
             cell.labMessage.setText(labMsg, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString:NSMutableAttributedString?) -> NSMutableAttributedString? in
                 let boldFont = CTFontCreateWithName( (fontName as CFString?)!, FONTSIZESmall, nil)
                 let range = (labMsg as NSString).range(of: title as String)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value: textColorMedium, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value: textColorMedium, range: range)
                 
                 // TODO: Clean this up..
                 return mutableAttributedString
@@ -960,14 +960,14 @@ class MessageViewController: UIViewController , UITableViewDataSource, UITableVi
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         
         let blogInfo = blogResponse[(indexPath as NSIndexPath).row]
         let message = blogInfo.message as NSDictionary
         
         let conversation_id = message["conversation_id"] as! Int
-        if editingStyle == UITableViewCellEditingStyle.delete {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             //            blogResponse.remove(at:indexPath.row)
             
             //            self.myTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)

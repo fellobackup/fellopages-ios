@@ -96,7 +96,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
             singleSticker.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
             singleSticker.tag = 0
             singleSticker.backgroundColor = aafBgColor
-            singleSticker.addTarget(self, action: #selector(StickerView.viewParticularSticker(_:)), for: UIControlEvents.touchUpInside)
+            singleSticker.addTarget(self, action: #selector(StickerView.viewParticularSticker(_:)), for: UIControl.Event.touchUpInside)
             stickerScrollView.addSubview(singleSticker)
             origin_x += menuWidth
         }
@@ -113,7 +113,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
                 else{
                     singleSticker.tag = i
                 }
-                singleSticker.addTarget(self, action: #selector(StickerView.viewParticularSticker(_:)), for: UIControlEvents.touchUpInside)
+                singleSticker.addTarget(self, action: #selector(StickerView.viewParticularSticker(_:)), for: UIControl.Event.touchUpInside)
                 singleSticker.backgroundColor = UIColor.clear
                 singleSticker.kf.setImage(with: url as URL?, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                     
@@ -143,7 +143,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
                 break
             }
         }
-        addSticker.addTarget(self, action: #selector(StickerView.addRemoveStickers), for: UIControlEvents.touchUpInside)
+        addSticker.addTarget(self, action: #selector(StickerView.addRemoveStickers), for: UIControl.Event.touchUpInside)
         self.addSubview(addSticker)
         
         
@@ -283,14 +283,14 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
             // Set Color for Search Bar and For Search Icon
             let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
             textFieldInsideSearchBar?.textColor = UIColor.red
-            let placeholderAttributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.lightGray, NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont.systemFont(ofSize: UIFont.systemFontSize)]
+            let placeholderAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.lightGray, NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont.systemFont(ofSize: UIFont.systemFontSize)]
             let attributedPlaceholder: NSAttributedString = NSAttributedString(string: NSLocalizedString("Search Stickers",  comment: ""), attributes: placeholderAttributes)
             textFieldInsideSearchBar?.attributedPlaceholder = attributedPlaceholder
             let imageV = textFieldInsideSearchBar?.leftView as! UIImageView
-            imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            imageV.image = imageV.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             imageV.tintColor = UIColor.lightGray
             
-            searchBar.searchBarStyle = UISearchBarStyle.minimal
+            searchBar.searchBarStyle = UISearchBar.Style.minimal
             searchBar.layer.borderWidth = 0;
             searchBar.layer.shadowOpacity = 0;
             searchBar.setTextColor(UIColor.lightGray)
@@ -322,7 +322,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
                         let  singleSticker =    createButton(CGRect(x: 5,y: origin_labelheight_y ,width: self.bounds.width/2 - 10 ,height: 40), title: "", border: false,bgColor: false, textColor: textColorLight)
                         singleSticker.layer.cornerRadius = 10.0
                         singleSticker.tag = i - 1
-                        singleSticker.addTarget(self, action: #selector(StickerView.searchParticularSticker(_:)), for: UIControlEvents.touchUpInside)
+                        singleSticker.addTarget(self, action: #selector(StickerView.searchParticularSticker(_:)), for: UIControl.Event.touchUpInside)
                         stickerScrollView.addSubview(singleSticker)
                         if dic["background_color"] != nil{
                             let color = dic["background_color"]
@@ -357,7 +357,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
                         let  singleSticker1 =    createButton(CGRect(x: self.bounds.width/2 + 5,y: origin_labelheight_y2 ,width: self.bounds.width/2 - 10 ,height: 40), title: "", border: false,bgColor: false, textColor: textColorMedium)
                         singleSticker1.tag = i - 1
                         singleSticker1.layer.cornerRadius = 10.0
-                        singleSticker1.addTarget(self, action: #selector(StickerView.searchParticularSticker), for: UIControlEvents.touchUpInside)
+                        singleSticker1.addTarget(self, action: #selector(StickerView.searchParticularSticker), for: UIControl.Event.touchUpInside)
                         if dic["background_color"] != nil{
                             let color = dic["background_color"]
                             let realColor = hexStringToUIColor(hex: color as! String)
@@ -460,7 +460,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
                             if dic["sticker_id"] != nil{
                                 let stickerId = dic["sticker_id"] as? Int
                                 imageViewClick.tag = stickerId!
-                                imageViewClick.addTarget(self, action: #selector(StickerView.postStickers(_:)), for: UIControlEvents.touchUpInside)
+                                imageViewClick.addTarget(self, action: #selector(StickerView.postStickers(_:)), for: UIControl.Event.touchUpInside)
                             }
                         }
                         scrollViewParticularSticker.addSubview(imageViewClick)
@@ -662,7 +662,7 @@ class StickerView: UIView , UIScrollViewDelegate,UISearchBarDelegate{
                         if dic["sticker_id"] != nil{
                             let stickerId = dic["sticker_id"] as? Int
                             imageViewClick.tag = stickerId!
-                            imageViewClick.addTarget(self, action: #selector(StickerView.postStickersUsingSearchedStickers(_:)), for: UIControlEvents.touchUpInside)
+                            imageViewClick.addTarget(self, action: #selector(StickerView.postStickersUsingSearchedStickers(_:)), for: UIControl.Event.touchUpInside)
                         }
                     }
                     searchedStickersView.addSubview(imageViewClick)

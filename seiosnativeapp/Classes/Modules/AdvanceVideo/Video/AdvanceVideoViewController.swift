@@ -456,7 +456,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         self.view.addSubview(advVideoTableView)
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(AdvanceVideoViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(AdvanceVideoViewController.refresh), for: UIControl.Event.valueChanged)
         advVideoTableView.addSubview(refresher)
         
         // Featured carausal
@@ -511,7 +511,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         self.view.addSubview(myAdvVideoTableView)
         refresher1 = UIRefreshControl()
         refresher1.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher1.addTarget(self, action: #selector(AdvanceVideoViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher1.addTarget(self, action: #selector(AdvanceVideoViewController.refresh), for: UIControl.Event.valueChanged)
         myAdvVideoTableView.addSubview(refresher1)
         
         // Category view
@@ -529,7 +529,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(AdvanceVideoViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(AdvanceVideoViewController.refresh), for: UIControl.Event.valueChanged)
         categoryTableView.addSubview(refresher2)
         
         
@@ -1352,7 +1352,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
     {
         if tableView.tag == 11 {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             cell.textLabel?.text = videoCreateOption[(indexPath as NSIndexPath).row]
             cell.textLabel?.font = UIFont(name: fontName, size: FONTSIZENormal)
@@ -1370,7 +1370,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 {  // or 9 == if you don't want the first cell to be an ad!
                     advVideoTableView.register(NativeVideoCellTableViewCell.self, forCellReuseIdentifier: "Cell1")
                     let cell = advVideoTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeVideoCellTableViewCell
-                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     cell.backgroundColor = tableViewBgColor
                     var Adcount: Int = 0
                     Adcount = row/(kFrequencyAdsInCells_advancedvideo-1)
@@ -1502,8 +1502,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                         cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                             let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                             let range = (tempInfo as NSString).range(of: value2)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             
                             
                             return mutableAttributedString
@@ -1547,7 +1547,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                         row = row - (row / kFrequencyAdsInCells_advancedvideo)
                     }
                     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCellThree
-                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     cell.backgroundColor = tableViewBgColor
                     var videosInfo:NSDictionary!
                     if(UIDevice.current.userInterfaceIdiom == .pad)
@@ -1663,8 +1663,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                     cell.createdBy.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                         let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                         let range = (tempInfo as NSString).range(of: value)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                         
                         // TODO: Clean this up...
                         
@@ -1830,8 +1830,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                         cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                             let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                             let range = (tempInfo as NSString).range(of: value2)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             
                             
                             return mutableAttributedString
@@ -1876,7 +1876,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 {  // or 9 == if you don't want the first cell to be an ad!
                     myAdvVideoTableView.register(NativeVideoCellTableViewCell.self, forCellReuseIdentifier: "Cell1")
                     let cell = myAdvVideoTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeVideoCellTableViewCell
-                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     cell.backgroundColor = tableViewBgColor
                     var Adcount: Int = 0
                     Adcount = row/(kFrequencyAdsInCells_advancedvideo-1)
@@ -2006,8 +2006,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                         cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                             let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                             let range = (tempInfo as NSString).range(of: value2)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             
                             
                             return mutableAttributedString
@@ -2050,7 +2050,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                         row = row - (row / kFrequencyAdsInCells_advancedvideo)
                     }
                     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCellThree
-                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     cell.backgroundColor = tableViewBgColor
                     var videosInfo:NSDictionary!
                     if(UIDevice.current.userInterfaceIdiom == .pad)
@@ -2167,8 +2167,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                     cell.createdBy.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                         let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                         let range = (tempInfo as NSString).range(of: value)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                         
                         // TODO: Clean this up...
                         
@@ -2346,8 +2346,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                         cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                             let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                             let range = (tempInfo as NSString).range(of: value2)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             
                             
                             return mutableAttributedString
@@ -2388,7 +2388,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
             {
                 
                 let cell = categoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.blue
+                cell.selectionStyle = UITableViewCell.SelectionStyle.blue
                 cell.DiaryName.isHidden = false
                 cell.DiaryName1.isHidden = false
                 cell.classifiedImageView.frame.size.height = 155
@@ -2667,7 +2667,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         refreshButton.backgroundColor = bgColor
         refreshButton.layer.borderColor = navColor.cgColor
         refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        refreshButton.addTarget(self, action: #selector(AdvanceVideoViewController.browseVideo), for: UIControlEvents.touchUpInside)
+        refreshButton.addTarget(self, action: #selector(AdvanceVideoViewController.browseVideo), for: UIControl.Event.touchUpInside)
         
         refreshButton.layer.cornerRadius = 5.0
         refreshButton.layer.masksToBounds = true
@@ -2783,7 +2783,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -2807,7 +2807,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -2962,7 +2962,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
                 if ob.tag == 1005
                 {
@@ -2974,7 +2974,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -3133,7 +3133,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: adImageView.bounds.height + 10 + adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -3224,7 +3224,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
     //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: adImageView.bounds.height + 10 + adImageView.frame.origin.y, width: 70, height: 30))
     //
     //        adCallToActionButton.setTitle(
-    //            nativeAd.callToAction, for: UIControlState())
+    //            nativeAd.callToAction, for: UIControl.State())
     //
     //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
     //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -3330,7 +3330,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -3402,7 +3402,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -3570,7 +3570,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
         videoInfo = myvideosResponse[sender.tag] as! NSDictionary
         if (videoInfo["menu"] != nil){
             let menuOption = videoInfo["menu"] as! NSArray
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     
@@ -3578,7 +3578,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                     
                     if titleString.range(of: "delete") != nil{
                         
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             let condition = menuItem["name"] as! String
                             
                             switch(condition){
@@ -3659,7 +3659,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 
             }
         }
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         filterDic.removeAll(keepingCapacity: false)
         for (key,menu) in gutterMenu
         {
@@ -3705,7 +3705,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 
             }
         }
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         filterDic2.removeAll(keepingCapacity: false)
         for (key,menu) in gutterMenu1
         {
@@ -4015,10 +4015,10 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                                         
                                         if (response["canCreate"] as? Int == 1)
                                         {
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceVideoViewController.searchItem))
-                                            searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
-                                            addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvanceVideoViewController.searchItem))
+                                            searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20.0)
+                                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
+                                            addBlog.imageInsets = UIEdgeInsets(top: 0,left: -20, bottom: 0, right: 0)
                                             self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
                                             
                                             searchItem.tintColor = textColorPrime
@@ -4038,7 +4038,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                                     if self.videoTypeCheck == "listings"{
                                         if (response["canCreate"] as? Bool == true){
                                             
-                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
+                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
                                             self.navigationItem.rightBarButtonItem = addVideo
                                             
                                         }
@@ -4052,8 +4052,8 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                                             if (response["canCreate"] as? Bool == true)
                                             {
                                                 
-                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceVideoViewController.searchItem))
-                                                let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
+                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvanceVideoViewController.searchItem))
+                                                let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
                                                 self.navigationItem.setRightBarButtonItems([addVideo,searchItem], animated: true)
                                                 searchItem.tintColor = textColorPrime
                                                 addVideo.tintColor = textColorPrime
@@ -4063,7 +4063,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                                             }
                                             else
                                             {
-                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceVideoViewController.searchItem))
+                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvanceVideoViewController.searchItem))
                                                 
                                                 self.navigationItem.rightBarButtonItem = searchItem
                                                 searchItem.tintColor = textColorPrime
@@ -4100,7 +4100,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                                     if self.videoTypeCheck == "listings"{
                                         if (response["canCreate"] as! Bool == true){
                                             
-                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
+                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvanceVideoViewController.addNewVideo))
                                             self.navigationItem.rightBarButtonItem = addVideo
                                             
                                         }
@@ -4421,7 +4421,7 @@ class AdvanceVideoViewController: UIViewController,UIScrollViewDelegate,GADNativ
                 }
                 
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch let error as NSError {
                     //print(error)

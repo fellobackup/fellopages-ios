@@ -63,8 +63,8 @@ class ProductSuggestViewController: UIViewController, UIGestureRecognizerDelegat
         
         
         productLabel = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Type a product name",  comment: ""), corner: true)
-        productLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type a product name",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        productLabel.addTarget(self, action: #selector(ProductSuggestViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        productLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type a product name",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+        productLabel.addTarget(self, action: #selector(ProductSuggestViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         productLabel.font =  UIFont(name: fontName, size: FONTSIZELarge)
         productLabel.backgroundColor = bgColor
         productLabel.delegate = self
@@ -91,10 +91,10 @@ class ProductSuggestViewController: UIViewController, UIGestureRecognizerDelegat
         productContainerView.backgroundColor = UIColor.white
         self.view.addSubview(productContainerView)
         
-        productTable = UITableView(frame: (CGRect(x: productLabel.bounds.origin.x,y: productContainerView.frame.origin.y+productContainerView.frame.size.height+1, width: productLabel.bounds.size.width, height: view.bounds.height-(productLabel.bounds.origin.x + productLabel.frame.size.height+5 + tabBarHeight) )), style: UITableViewStyle.grouped)
+        productTable = UITableView(frame: (CGRect(x: productLabel.bounds.origin.x,y: productContainerView.frame.origin.y+productContainerView.frame.size.height+1, width: productLabel.bounds.size.width, height: view.bounds.height-(productLabel.bounds.origin.x + productLabel.frame.size.height+5 + tabBarHeight) )), style: UITableView.Style.grouped)
         productTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        productTable.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        productTable.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         productTable.rowHeight = 35
         productTable.isHidden = true
         productTable.isOpaque = false
@@ -333,7 +333,7 @@ class ProductSuggestViewController: UIViewController, UIGestureRecognizerDelegat
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         let dic = productArray.object(at: (indexPath as NSIndexPath).row) as! NSDictionary
         cell.textLabel?.text = dic["label"] as? String
         

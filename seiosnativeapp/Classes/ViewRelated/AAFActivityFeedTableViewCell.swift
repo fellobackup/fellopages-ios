@@ -104,12 +104,12 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
 
 
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = aafBgColor
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
         
         cellView = createView(CGRect(x: 0, y: 5,width: UIScreen.main.bounds.width ,height: 110), borderColor: textColorclear, shadow: false)
         cellView.isOpaque = true
@@ -159,13 +159,13 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         sideMenu = createButton(CGRect(x: cellView.bounds.width - 35, y: 5, width: 30, height: 25), title: "", border: false, bgColor: false, textColor: textColorMedium)
         sideMenu.isHidden = true
         sideMenu.titleLabel?.font =  UIFont(name: fontName, size:FONTSIZENormal)
-        sideMenu.setImage(UIImage(named: "more.png")!.maskWithColor(color: textColorMedium), for: UIControlState.normal)
+        sideMenu.setImage(UIImage(named: "more.png")!.maskWithColor(color: textColorMedium), for: UIControl.State.normal)
         cellView.addSubview(sideMenu)
         
         pinMenu = createButton(CGRect(x: cellView.bounds.width - 60, y: 5, width: 20, height: 25), title: "\(pinicon)", border: false, bgColor: false, textColor: navColor)
         pinMenu.isHidden = true
         pinMenu.titleLabel?.font =  UIFont(name: "fontAwesome", size:FONTSIZELarge)
-        //pinMenu.setImage(UIImage(named: "pinpost")!.maskWithColor(color: navColor), for: UIControlState.normal)
+        //pinMenu.setImage(UIImage(named: "pinpost")!.maskWithColor(color: navColor), for: UIControl.State.normal)
         cellView.addSubview(pinMenu)
         
         body = TTTAttributedLabel(frame:CGRect(x: 10 , y: subject_photo.bounds.height + 5 + subject_photo.frame.origin.y, width: cellView.bounds.width-15, height: 300))
@@ -219,7 +219,7 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
         //For showing Video icon
         imgVideo = createButton(CGRect(x: (UIScreen.main.bounds.width/2) - 20, y: (contentImageView.bounds.height/2) - 30, width: 50, height: 50), title: "", border: false, bgColor: false, textColor: textColorMedium)
-        imgVideo.setImage(UIImage(named: "VideoImage-white.png")!.maskWithColor(color: textColorLight), for: UIControlState.normal)
+        imgVideo.setImage(UIImage(named: "VideoImage-white.png")!.maskWithColor(color: textColorLight), for: UIControl.State.normal)
         imgVideo.isHidden = true
         imgVideo.isUserInteractionEnabled = true
         contentImageView.addSubview(imgVideo)
@@ -309,9 +309,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         let tempWidth = ceil((cellView.bounds.width-5) / 2)
         imageButton2 = createButton(CGRect(x: 0,y: 5,width: tempWidth , height:tempHeight2) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton2.backgroundColor = placeholderColor
-        imageButton2.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton2.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton2.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton2.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton2.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton2.isHidden = true
         imageButton2.layer.masksToBounds = true
         imageButton2.layer.isOpaque = true
@@ -334,9 +334,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
         imageButton3 = createButton(CGRect(x:tempWidth + 5,y: 5,width: tempWidth, height:tempHeight2) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton3.backgroundColor = placeholderColor
-        imageButton3.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton3.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton3.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton3.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton3.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton3.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton3.isHidden = true
         imageButton3.layer.masksToBounds = true
         imageButton3.layer.isOpaque = true
@@ -364,9 +364,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         let tempWidth2 = cellView.bounds.width - tempWidth1
         imageButton4 = createButton(CGRect(x: 0,y: 5,width: tempWidth1 ,height: tempHeight) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton4.backgroundColor = placeholderColor
-        imageButton4.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton4.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton4.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton4.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton4.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton4.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton4.isHidden = true
         imageButton4.layer.masksToBounds = true
         imageButton4.layer.isOpaque = true
@@ -389,9 +389,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
         imageButton5 = createButton(CGRect(x: tempWidth1 + 5 ,y: 5,width: tempWidth2-5, height:tempHeightRightImage) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton5.backgroundColor = placeholderColor
-        imageButton5.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton5.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton5.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton5.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton5.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton5.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton5.isHidden = true
         imageButton5.layer.masksToBounds = true
         imageButton5.layer.isOpaque = true
@@ -414,9 +414,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
         imageButton6 = createButton(CGRect(x: tempWidth1 + 5,y: 10+tempHeightRightImage,width: tempWidth2 - 5  ,height: tempHeightRightImage) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton6.backgroundColor = placeholderColor
-        imageButton6.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton6.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton6.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton6.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton6.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton6.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton6.isHidden = true
         imageButton6.layer.masksToBounds = true
         imageButton6.layer.isOpaque = true
@@ -441,9 +441,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         // Showing 4 images start
         imageButton7 = createButton(CGRect(x: 0,y: 5,width: tempWidth ,height: tempHeightRightImage) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton7.backgroundColor = placeholderColor
-        imageButton7.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton7.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton7.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton7.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton7.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton7.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton7.layer.masksToBounds = true
         imageButton7.layer.isOpaque = true
         
@@ -458,9 +458,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
         imageButton8 = createButton(CGRect(x:5 + tempWidth ,y: 5,width: tempWidth, height:tempHeightRightImage) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton8.backgroundColor = placeholderColor
-        imageButton8.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton8.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton8.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton8.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton8.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton8.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton8.layer.masksToBounds = true
         imageButton8.layer.isOpaque = true
         
@@ -475,9 +475,9 @@ class AAFActivityFeedTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
         imageButton9 = createButton(CGRect(x: 0,y: 10+tempHeightRightImage,width: tempWidth , height: tempHeightRightImage) , title: "", border: false, bgColor: false, textColor: textColorLight)
         imageButton9.backgroundColor = placeholderColor
-        imageButton9.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        imageButton9.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        imageButton9.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        imageButton9.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imageButton9.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        imageButton9.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
         imageButton9.layer.masksToBounds = true
         imageButton9.layer.isOpaque = true
        

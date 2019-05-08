@@ -49,7 +49,7 @@ class NativeMltGridCell: UITableViewCell {
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -113,7 +113,7 @@ class NativeMltGridCell: UITableViewCell {
             contentImage2.layer.shadowColor = shadowColor.cgColor
             contentImage2.layer.shadowOffset = CGSize(width: 0,height: 5);
             contentImage2.layer.shadowOpacity = 0.5;
-            contentImage2.contentMode = UIViewContentMode.scaleAspectFill
+            contentImage2.contentMode = UIView.ContentMode.scaleAspectFill
             cellView2.addSubview(contentImage2)
             
             

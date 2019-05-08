@@ -92,7 +92,7 @@ class TaggingViewController: UIViewController , UISearchBarDelegate ,UITableView
         }
         
         
-        searchResultTableView = UITableView(frame: CGRect(x: 0, y: getBottomEdgeY(inputView: searchBar), width: view.bounds.width, height: view.bounds.height-(getBottomEdgeY(inputView: searchBar))), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: 0, y: getBottomEdgeY(inputView: searchBar), width: view.bounds.width, height: view.bounds.height-(getBottomEdgeY(inputView: searchBar))), style: UITableView.Style.grouped)
         searchResultTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -116,8 +116,8 @@ class TaggingViewController: UIViewController , UISearchBarDelegate ,UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         if contentType != "album_photo"{
             addFriendTag()
@@ -125,7 +125,7 @@ class TaggingViewController: UIViewController , UISearchBarDelegate ,UITableView
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         {
             let tableFrame = self.searchResultTableView.frame.origin.y
             let keyboardHeight = keyboardSize.height
@@ -335,7 +335,7 @@ class TaggingViewController: UIViewController , UISearchBarDelegate ,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         
         if let response = suggestedFrnd[(indexPath as NSIndexPath).row] as? NSDictionary {
@@ -369,9 +369,9 @@ class TaggingViewController: UIViewController , UISearchBarDelegate ,UITableView
             
             if let id = response["id"] as? Int{
                 if frndTag[id] != nil{
-                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }else{
-                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
                 }
             }
             

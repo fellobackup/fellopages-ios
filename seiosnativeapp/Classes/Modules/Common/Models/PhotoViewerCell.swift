@@ -31,7 +31,7 @@ class PhotoViewerCell: UICollectionViewCell,UIScrollViewDelegate {
         innerscrollview.addGestureRecognizer(doubleTap);
         
         imageView.frame = CGRect(x: 0, y: 0, width: innerscrollview.bounds.width, height: innerscrollview.bounds.height)
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: "album-default.png")
         innerscrollview.addSubview(imageView)

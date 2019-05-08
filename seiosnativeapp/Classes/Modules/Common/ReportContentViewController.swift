@@ -58,7 +58,7 @@ class ReportContentViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = barButtonItem
 
         
-        rightButton = UIBarButtonItem(title: "Report", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ReportContentViewController.report))
+        rightButton = UIBarButtonItem(title: "Report", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ReportContentViewController.report))
         self.navigationItem.rightBarButtonItem = rightButton
         rightButton.isEnabled = false
         
@@ -156,11 +156,11 @@ class ReportContentViewController: UIViewController {
     // Create Popup For Report Types
     @objc func reportTypeAction(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         for (_,value) in reportTypeDictionary{
             //print(key)
             alertController.addAction(UIAlertAction(title: (value as! String), style: .default, handler:{ (UIAlertAction) -> Void in
-                self.reportType.setTitle((value as! String), for: UIControlState())
+                self.reportType.setTitle((value as! String), for: UIControl.State())
             }))
         }
         if  (UIDevice.current.userInterfaceIdiom == .phone){
@@ -232,7 +232,7 @@ class ReportContentViewController: UIViewController {
                                             if value as! String == "Submit"{
                                                 
                                                 self.rightButton.isEnabled = true
-                                                self.submit.setTitle(dic["label"] as? String, for: UIControlState())
+                                                self.submit.setTitle(dic["label"] as? String, for: UIControl.State())
                                             }
                                             if value as! String == "Select"{
                                                 
@@ -240,7 +240,7 @@ class ReportContentViewController: UIViewController {
                                                     self.reportTypeDictionary = menu
                                                     self.type.isHidden = false
                                                     self.type.text = dic["label"] as? String
-                                                    self.reportType.setTitle(menu[""] as? String, for: UIControlState())
+                                                    self.reportType.setTitle(menu[""] as? String, for: UIControl.State())
                                                     self.reportType.isHidden = false
                                                 }
                                                 

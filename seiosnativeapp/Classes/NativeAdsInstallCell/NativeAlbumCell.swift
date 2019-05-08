@@ -41,7 +41,7 @@ class NativeAlbumCell: UITableViewCell {
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -54,7 +54,7 @@ class NativeAlbumCell: UITableViewCell {
         
          //Middle
         albumCoverImage1 = ContentImageViewWithGradient(frame: CGRect(x: size  , y: 0, width: size, height: 250))
-        albumCoverImage1.contentMode = UIViewContentMode.scaleAspectFill
+        albumCoverImage1.contentMode = UIView.ContentMode.scaleAspectFill
         albumCoverImage1.layer.masksToBounds = true
         albumCoverImage1.isUserInteractionEnabled = true
         albumCoverImage1.backgroundColor = placeholderColor
@@ -112,7 +112,7 @@ class NativeAlbumCell: UITableViewCell {
         
         //RHS
         albumCoverImage2 = ContentImageViewWithGradient(frame: CGRect(x: ( 2 * size)  , y: 0, width: size, height: 250))
-        albumCoverImage2.contentMode = UIViewContentMode.scaleAspectFill
+        albumCoverImage2.contentMode = UIView.ContentMode.scaleAspectFill
         albumCoverImage2.layer.masksToBounds = true
         albumCoverImage2.isUserInteractionEnabled = true
         albumCoverImage2.backgroundColor = placeholderColor

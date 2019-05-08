@@ -80,7 +80,7 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
         forumTopicTableView.dataSource = self
         forumTopicTableView.delegate = self
         forumTopicTableView.estimatedRowHeight = 160.0
-        forumTopicTableView.rowHeight = UITableViewAutomaticDimension
+        forumTopicTableView.rowHeight = UITableView.automaticDimension
         forumTopicTableView.backgroundColor = tableViewBgColor
         forumTopicTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -92,7 +92,7 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(ForumTopicViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ForumTopicViewController.refresh), for: UIControl.Event.valueChanged)
         forumTopicTableView.addSubview(refresher)
         self.automaticallyAdjustsScrollViewInsets = false;
         
@@ -163,12 +163,12 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
         if let feed_menu = topic["menu"] as? NSArray{
             
             // Generate Feed Filter Gutter Menu for Feed Come From Server as! Alert Popover
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menuItem in feed_menu{
                 if let dic = menuItem as? NSDictionary {
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             let condition = dic["name"] as! String
                             switch(condition){
                             case "delete":
@@ -245,7 +245,7 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func showGutterMenu(){
-        let alertController1 = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController1 = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         for menu in gutterMenu{
             if let dic = menu as? NSDictionary
@@ -453,8 +453,8 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
                             self.myDictionary = response
                             if let menu = response["gutterMenu"] as? NSArray{
                                 self.gutterMenu = menu
-                                let menu = UIBarButtonItem(title:optionIcon, style: UIBarButtonItemStyle.plain , target:self , action: #selector(ForumTopicViewController.showGutterMenu))
-                                menu.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControlState())
+                                let menu = UIBarButtonItem(title:optionIcon, style: UIBarButtonItem.Style.plain , target:self , action: #selector(ForumTopicViewController.showGutterMenu))
+                                menu.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControl.State())
                                 menu.tintColor = textColorPrime
                                 self.navigationItem.rightBarButtonItem = menu
                             }
@@ -561,7 +561,7 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
         forumTopicTableView.register(ForumTopicTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ForumTopicTableViewCell
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.editDetail.isHidden = true
         
 
@@ -642,8 +642,8 @@ class ForumTopicViewController: UIViewController, UITableViewDataSource, UITable
                 let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, 13, nil)
                 
                 let range = (tempOwnerInfo as NSString).range(of: postedBy)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value: textColorDark, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value: textColorDark, range: range)
                 
                 // TODO: Clean this up..
                 return mutableAttributedString

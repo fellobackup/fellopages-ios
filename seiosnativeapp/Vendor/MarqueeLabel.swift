@@ -67,7 +67,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
      
      Defaults to `UIViewAnimationOptionCurveEaseInOut`.
      */
-    open var animationCurve: UIViewAnimationCurve = .linear
+    open var animationCurve: UIView.AnimationCurve = .linear
     
     /**
      A boolean property that sets whether the `MarqueeLabel` should behave like a normal `UILabel`.
@@ -933,7 +933,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
             let colorAnimation = GradientAnimation(keyPath: "colors")
             colorAnimation.fromValue = gradientMask.colors
             colorAnimation.toValue = adjustedColors
-            colorAnimation.fillMode = kCAFillModeForwards
+            colorAnimation.fillMode = CAMediaTimingFillMode.forwards
             colorAnimation.isRemovedOnCompletion = false
             colorAnimation.delegate = self
             gradientMask.add(colorAnimation, forKey: "setupFade")
@@ -1124,21 +1124,21 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         return animation
     }
     
-    fileprivate func timingFunctionForAnimationCurve(_ curve: UIViewAnimationCurve) -> CAMediaTimingFunction {
+    fileprivate func timingFunctionForAnimationCurve(_ curve: UIView.AnimationCurve) -> CAMediaTimingFunction {
         let timingFunction: String?
         
         switch curve {
         case .easeIn:
-            timingFunction = kCAMediaTimingFunctionEaseIn
+            timingFunction = CAMediaTimingFunctionName.easeIn.rawValue
         case .easeInOut:
-            timingFunction = kCAMediaTimingFunctionEaseInEaseOut
+            timingFunction = CAMediaTimingFunctionName.easeInEaseOut.rawValue
         case .easeOut:
-            timingFunction = kCAMediaTimingFunctionEaseOut
+            timingFunction = CAMediaTimingFunctionName.easeOut.rawValue
         default:
-            timingFunction = kCAMediaTimingFunctionLinear
+            timingFunction = CAMediaTimingFunctionName.linear.rawValue
         }
         
-        return CAMediaTimingFunction(name: timingFunction!)
+        return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: timingFunction!))
     }
     
     fileprivate func transactionDurationType(_ labelType: Type, interval: CGFloat, delay: CGFloat) -> TimeInterval {

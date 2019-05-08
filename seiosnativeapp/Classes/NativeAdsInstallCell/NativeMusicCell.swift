@@ -30,7 +30,7 @@ class NativeMusicCell: UITableViewCell {
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -46,7 +46,7 @@ class NativeMusicCell: UITableViewCell {
          
         
         classifiedImageView1 = Content1ImageViewWithGradient(frame: CGRect(x: (2 * PADING) + size  , y: contentPADING, width: size - 2*PADING , height: 160-5))
-        classifiedImageView1.contentMode = UIViewContentMode.scaleAspectFill
+        classifiedImageView1.contentMode = UIView.ContentMode.scaleAspectFill
         classifiedImageView1.layer.masksToBounds = true
         classifiedImageView1.isUserInteractionEnabled = true
         classifiedImageView1.backgroundColor = placeholderColor
@@ -55,7 +55,7 @@ class NativeMusicCell: UITableViewCell {
         self.addSubview(classifiedImageView1)
         
         //        bottomImageView1 = createImageView(CGRect(x:(2*PADING) + size  , 150, size, 50), true)
-        //        bottomImageView1.contentMode = UIViewContentMode.ScaleAspectFill
+        //        bottomImageView1.contentMode = UIView.ContentMode.ScaleAspectFill
         //        bottomImageView1.layer.masksToBounds = true
         //        bottomImageView1.backgroundColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         //        self.addSubview(bottomImageView1)

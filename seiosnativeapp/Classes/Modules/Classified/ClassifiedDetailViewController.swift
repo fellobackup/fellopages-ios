@@ -174,7 +174,7 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
         
         
         detailWebView.frame = CGRect(x: 0, y: 0, width: view.bounds.width,height: 50)
-        self.detailWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 0.0, 0.0, 0.0);
+        self.detailWebView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 0.0, right: 0.0);
         self.detailWebView.scrollView.delegate = self
         detailWebView.backgroundColor = UIColor.clear
         detailWebView.isOpaque = false
@@ -293,7 +293,7 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
     // Handle Menu Action
     @objc func showMenu(){
         // Generate classified Menu Come From Server as! Alert Popover
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         _ = ""
@@ -488,14 +488,14 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(ClassifiedDetailViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
 
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(ClassifiedDetailViewController.showMenu), for: .touchUpInside)
                                     rightNavView.addSubview(optionButton)
 
@@ -589,7 +589,7 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
                                 //  profileFieldLabel.delegate = self
                                 
                                 self.profileFieldLabel.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true as Bool)]
-                                self.profileFieldLabel.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                self.profileFieldLabel.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                 self.profileFieldLabel.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                 self.profileFieldLabel.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                 self.profileFieldLabel.isUserInteractionEnabled = true
@@ -601,15 +601,15 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
                                     let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                     
                                     let range1 = (profileFieldString as NSString).range(of: descriptionText)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                     
                                     let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
 
                                     
                                     let range = (profileFieldString as NSString).range(of: self.descriptionShareContent)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                     
 
                                     
@@ -647,8 +647,8 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
                                         self.categoryName.setText(category, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                                             let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZEMedium, nil)
                                             let range = (category as NSString).range(of: category_title)
-                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                             return mutableAttributedString
                                         })
                                         
@@ -836,7 +836,7 @@ class ClassifiedDetailViewController: UIViewController, TTTAttributedLabelDelega
         removeNavigationImage(controller: self)
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         let urlString = request.url!.absoluteString
         // Restrict WebView to Open URLs
         
@@ -1036,7 +1036,7 @@ extension ClassifiedDetailViewController: UITableViewDelegate {
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){

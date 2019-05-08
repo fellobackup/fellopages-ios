@@ -23,7 +23,7 @@ class BottomSheetCell: UITableViewCell {
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         

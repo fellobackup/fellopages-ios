@@ -39,11 +39,11 @@ class FriendRequestTableViewCell: UITableViewCell {
     var rejectButton : UIButton!
     
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = UITableViewCellSelectionStyle.blue
+        self.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         imgUser = createImageView(CGRect(x: 10, y: 10, width: 70, height: 70), border: true)
         imgUser.image = UIImage(named: "user_profile_image.png")
@@ -59,7 +59,7 @@ class FriendRequestTableViewCell: UITableViewCell {
         
         acceptButton = createButton(CGRect(x: imgUser.bounds.width + 20 , y: title.bounds.height + 18, width: 100, height: 30), title: NSLocalizedString("Accept",  comment: ""), border: false, bgColor: false, textColor: textColorLight)
         acceptButton.layer.backgroundColor = navColor.cgColor
-        acceptButton.setTitleColor(textColorPrime, for: UIControlState())
+        acceptButton.setTitleColor(textColorPrime, for: UIControl.State())
         acceptButton.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZESmall)
         acceptButton.layer.cornerRadius = 3.0
         self.addSubview(acceptButton)
@@ -70,7 +70,7 @@ class FriendRequestTableViewCell: UITableViewCell {
         //rejectButton.layer.backgroundColor = textColorMedium.CGColor
         rejectButton.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZESmall)
         rejectButton.layer.cornerRadius = 3.0
-        rejectButton.setTitleColor(textColorDark, for: UIControlState())
+        rejectButton.setTitleColor(textColorDark, for: UIControl.State())
         self.addSubview(rejectButton)
         
     }

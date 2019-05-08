@@ -39,7 +39,7 @@ class CouponDetailView: UIView {
         couponImage.layer.borderWidth = 2.5
         //couponImage.layer.cornerRadius = couponImage.frame.size.width / 2
         couponImage.backgroundColor = placeholderColor
-        couponImage.contentMode = UIViewContentMode.scaleAspectFill
+        couponImage.contentMode = UIView.ContentMode.scaleAspectFill
         couponImage.layer.masksToBounds = true
         couponImage.image = UIImage(named: "user_profile_image.png")
         couponImage.tag = 321
@@ -95,7 +95,7 @@ class CouponDetailView: UIView {
         
         
         doneButton = createButton(CGRect(x:self.bounds.width - 20, y:5, width:15, height:15), title: "", border: false, bgColor: false, textColor: textColorDark)
-        doneButton.setImage(UIImage(named:"cross.png"), for: UIControlState.normal)
+        doneButton.setImage(UIImage(named:"cross.png"), for: UIControl.State.normal)
         self.addSubview(doneButton)
         
     }

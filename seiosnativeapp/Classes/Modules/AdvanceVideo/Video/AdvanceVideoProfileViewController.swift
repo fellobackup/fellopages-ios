@@ -211,7 +211,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
             
             do
             {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                 try AVAudioSession.sharedInstance().setActive(true)
             }
             catch _ as NSError {
@@ -244,7 +244,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
                 }
                 videoWebView.loadRequest(request)
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch _ as NSError {
                     //print(error)
@@ -352,7 +352,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
         videoListObj.delegateVideoChange = self
         videoListObj.isAdvanceVideoProfileParent = true
         self.view.addSubview(videoListObj.view)
-        self.addChildViewController(videoListObj)
+        self.addChild(videoListObj)
         
     }
     // MARK: - Back action
@@ -394,7 +394,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
 
     
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in gutterMenu{
@@ -410,7 +410,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
                 {
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Video Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -1205,7 +1205,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
         for i in stride(from: 1, through: 5, by: 1){
             let rate = createButton(CGRect(x: origin_x, y: 0, width: 12, height: 12), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "star.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "star.png"), for: UIControl.State() )
             
             if rated == false{
                 rate.tag = i
@@ -1214,7 +1214,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
             else
             {
                 if i <= rating{
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 rate.addTarget(self, action: #selector(AdvanceVideoProfileViewController.cannotRateAction(_:)), for: .touchUpInside)
             }
@@ -1460,12 +1460,12 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
                 rightNavView.backgroundColor = UIColor.clear
                 
                 let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                 shareButton.addTarget(self, action: #selector(AdvanceVideoProfileViewController.shareItem), for: .touchUpInside)
                 rightNavView.addSubview(shareButton)
                 
                 let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                 optionButton.addTarget(self, action: #selector(AdvanceVideoProfileViewController.showGutterMenu), for: .touchUpInside)
                // rightNavView.addSubview(optionButton)
                 if isCancel == false
@@ -1540,14 +1540,14 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
                 
                 if categoryTitle != nil{
                     let range = (videoInfo as NSString).range(of: categoryTitle!)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                 }
                 boldFont =  CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                 
                 let range2 = (videoInfo as NSString).range(of: self.videoTitleString)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: largeBoldFont, range: range2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: largeBoldFont, range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
                 
                 // TODO: Clean this up...
                 
@@ -1632,7 +1632,7 @@ class AdvanceVideoProfileViewController: UIViewController, TTTAttributedLabelDel
             let linkColor = UIColor.blue
             let linkActiveColor = UIColor.blue
             self.descriptionLabel.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true as Bool)]
-            self.descriptionLabel.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+            self.descriptionLabel.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
             self.descriptionLabel.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
             self.descriptionLabel.enabledTextCheckingTypes = NSTextCheckingAllTypes
             self.descriptionLabel.isUserInteractionEnabled = true
@@ -1697,7 +1697,7 @@ extension AdvanceVideoProfileViewController: UITableViewDelegate {
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
                 if(activityViewController.popoverPresentationController != nil) {

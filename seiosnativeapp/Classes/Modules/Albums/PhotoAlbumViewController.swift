@@ -141,7 +141,7 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
         }
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(PhotoAlbumViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(PhotoAlbumViewController.refresh), for: UIControl.Event.valueChanged)
         albumPhotoTableView.addSubview(refresher)
   
         let footerView = UIView(frame: frameActivityIndicator)
@@ -155,12 +155,12 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
         
 
         if (self.canCreate == true){
-            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PhotoAlbumViewController.searchItem))
-            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PhotoAlbumViewController.addNewAlbum))
+            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PhotoAlbumViewController.searchItem))
+            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PhotoAlbumViewController.addNewAlbum))
             self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
             self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
         }else{
-            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PhotoAlbumViewController.searchItem))
+            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PhotoAlbumViewController.searchItem))
             self.navigationItem.rightBarButtonItem = searchItem
         }
 
@@ -297,7 +297,7 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
     {
         if tableView.tag == 11 {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             cell.textLabel?.text = albumOption[(indexPath as NSIndexPath).row]
             //            cell.backgroundColor = UIColor.red
@@ -305,7 +305,7 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
             
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             
             var index:Int!
@@ -336,7 +336,7 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
                         })
                         cell.image1.tag = index
                         cell.image1.addTarget(self, action: #selector(PhotoAlbumViewController.openImage(_:)), for: .touchUpInside)
-                        cell.image1.contentMode = UIViewContentMode.scaleAspectFill
+                        cell.image1.contentMode = UIView.ContentMode.scaleAspectFill
       
                 }
                 
@@ -387,7 +387,7 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
                         })
                         cell.image2.tag = index+1
                         cell.image2.addTarget(self, action: #selector(PhotoAlbumViewController.openImage(_:)), for: .touchUpInside)
-                        cell.image2.contentMode = UIViewContentMode.scaleAspectFill
+                        cell.image2.contentMode = UIView.ContentMode.scaleAspectFill
           
                 }
                 
@@ -521,7 +521,7 @@ class PhotoAlbumViewController: UIViewController, UITableViewDataSource, UITable
                                 self.formResponse = self.formResponse + (response as [AnyObject])
                                 activityIndicatorView.stopAnimating()
                             }
-                            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+                            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
                             // Shows the album Options on which we can add photos
                             for key in self.formResponse{
                                 if let dic = (key as? NSDictionary){

@@ -89,7 +89,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             else if url1 == "" && url2 == "" && url3 == ""{
                 let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(ExternalWebViewController.cancel))
                 self.navigationItem.leftBarButtonItem = cancel
-                navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+                navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControl.State())
                 cancel.tintColor = textColorPrime
             }
         }else{
@@ -105,7 +105,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
             self.navigationItem.leftBarButtonItem = barButtonItem
         }
         
-        rightBarButton = UIBarButtonItem(image: UIImage(named: "upload")!.maskWithColor(color: textColorPrime) , style: UIBarButtonItemStyle.plain , target: self, action: #selector(ExternalWebViewController.openBrowserSetting))
+        rightBarButton = UIBarButtonItem(image: UIImage(named: "upload")!.maskWithColor(color: textColorPrime) , style: UIBarButtonItem.Style.plain , target: self, action: #selector(ExternalWebViewController.openBrowserSetting))
         rightBarButton.isEnabled = true
         self.navigationItem.rightBarButtonItem = rightBarButton
         
@@ -432,7 +432,7 @@ class ExternalWebViewController: UIViewController , UIWebViewDelegate , UITabBar
     }
     
     @objc func openBrowserSetting(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Open in Safari", comment: ""), style: .default, handler: { (UIAlertAction) -> Void in
             self.openInSafari()
         }))

@@ -136,7 +136,7 @@ class SpreadTheWordViewController: UIViewController {
                                                     
                                                     let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
                                                     
-                                                    activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                                                    activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
                                                     activityViewController.setValue(trackSubject, forKey: "subject")
                                                     
                                                     if  (UIDevice.current.userInterfaceIdiom == .phone){
@@ -215,7 +215,7 @@ class SpreadTheWordViewController: UIViewController {
                 if sharingItems.count != 0{
                     
                     let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-                    activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                    activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
                     activityViewController.setValue(trackSubject, forKey: "subject")
                     if  (UIDevice.current.userInterfaceIdiom == .phone)
                     {
@@ -288,7 +288,7 @@ extension MFMailComposeViewController {
         navigationBar.isOpaque = false
         //navigationBar.barTintColor = UIColor.white
         navigationBar.tintColor = UIColor.white
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
     }
 }
 
@@ -306,6 +306,6 @@ extension MFMessageComposeViewController
         navigationBar.isOpaque = false
         //navigationBar.barTintColor = UIColor.black
         navigationBar.tintColor = UIColor.white
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font: UIFont(name: fontName, size: FONTSIZELarge + 3.0)!]
     }
 }

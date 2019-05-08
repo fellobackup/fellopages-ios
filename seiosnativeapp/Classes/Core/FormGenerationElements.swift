@@ -76,7 +76,7 @@ func createTextField(_ frame:CGRect, borderColor: UIColor, placeHolderText: Stri
     textField.layer.borderColor = borderColor.cgColor
     textField.layer.borderWidth = borderWidth
     textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 20))
-    textField.leftViewMode  = UITextFieldViewMode.always
+    textField.leftViewMode  = UITextField.ViewMode.always
     if corner{
         textField.layer.cornerRadius = cornerRadiusSmall
     }
@@ -132,8 +132,8 @@ func createTextViewVerticleContent(_ frame:CGRect, borderColor: UIColor, corner:
 // Creation Of Button
 func createButton(_ frame:CGRect, title:String, border:Bool, bgColor: Bool ,textColor: UIColor)->UIButton{
     let button = UIButton(frame:frame )
-    button.setTitle(title, for: UIControlState())
-    button.setTitleColor(textColor, for: UIControlState())
+    button.setTitle(title, for: UIControl.State())
+    button.setTitleColor(textColor, for: UIControl.State())
     if (bgColor){
         button.backgroundColor = buttonBgColor
     }
@@ -149,12 +149,12 @@ func createButton(_ frame:CGRect, title:String, border:Bool, bgColor: Bool ,text
 // Creation Of Navigation Button
 func createNavigationButton(_ frame:CGRect, title:String, border:Bool, selected:Bool)->UIButton{
     let button = UIButton(frame:frame )
-    button.setTitle(title, for: UIControlState())
-    button.setTitleColor(textColorMedium, for: UIControlState())
+    button.setTitle(title, for: UIControl.State())
+    button.setTitleColor(textColorMedium, for: UIControl.State())
     button.backgroundColor = tableViewBgColor
     if selected == true
     {//buttonColor
-        button.setTitleColor(buttonColor, for: UIControlState())
+        button.setTitleColor(buttonColor, for: UIControl.State())
         let bottomBorder = UIView(frame: CGRect(x: 0, y: button.frame.size.height - 2.0, width: button.frame.size.width , height: 2))
         bottomBorder.backgroundColor = buttonColor
         bottomBorder.tag = 1000

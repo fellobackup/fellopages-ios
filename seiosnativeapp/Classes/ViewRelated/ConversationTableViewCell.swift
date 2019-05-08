@@ -46,11 +46,11 @@ class ConversationTableViewCell: UITableViewCell {
     var msgTextView : UITextView!
     
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = UITableViewCellSelectionStyle.blue
+        self.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         
         messageView = createView(CGRect(x: 0, y: 0 ,width: (UIScreen.main.bounds.width - 60) , height: 100), borderColor: textColorMedium, shadow: true)

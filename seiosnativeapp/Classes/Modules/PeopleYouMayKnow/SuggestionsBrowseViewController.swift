@@ -99,7 +99,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         addScrollMenu()
         
         
-        suggestionsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu) - tabBarHeight), style: UITableViewStyle.plain)
+        suggestionsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu) - tabBarHeight), style: UITableView.Style.plain)
         suggestionsTableView.tag = 001
         suggestionsTableView.backgroundColor = bgColor
         suggestionsTableView.delegate = self
@@ -124,7 +124,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         
         
         
-        searchResultsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableViewStyle.plain)
+        searchResultsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableView.Style.plain)
         searchResultsTableView.tag = 002
         searchResultsTableView.backgroundColor = bgColor
         searchResultsTableView.delegate = self
@@ -149,7 +149,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         
         
         
-        requestsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableViewStyle.plain)
+        requestsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableView.Style.plain)
         requestsTableView.tag = 003
         requestsTableView.backgroundColor = bgColor
         requestsTableView.delegate = self
@@ -174,7 +174,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         
         
         
-        contactsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableViewStyle.plain)
+        contactsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableView.Style.plain)
         contactsTableView.tag = 004
         contactsTableView.backgroundColor = bgColor
         contactsTableView.delegate = self
@@ -197,7 +197,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         noContactsMessage.isHidden = true
         contactsTableView.addSubview(noContactsMessage)
         
-        invitationsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableViewStyle.plain)
+        invitationsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableView.Style.plain)
         invitationsTableView.tag = 005
         invitationsTableView.backgroundColor = bgColor
         invitationsTableView.delegate = self
@@ -220,7 +220,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         noInvitationSuggestionMessage.isHidden = true
         invitationsTableView.addSubview(noInvitationSuggestionMessage)
         
-        friendsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableViewStyle.plain)
+        friendsTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableView.Style.plain)
         friendsTableView.tag = 006
         friendsTableView.backgroundColor = bgColor
         friendsTableView.delegate = self
@@ -243,7 +243,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         noFriendsMessage.isHidden = true
         friendsTableView.addSubview(noFriendsMessage)
         
-        outgoingTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableViewStyle.plain)
+        outgoingTableView = UITableView(frame: CGRect(x: 0.0, y: getBottomEdgeY(inputView: scrollMenu), width: view.frame.size.width, height: view.frame.size.height - getBottomEdgeY(inputView: scrollMenu)), style: UITableView.Style.plain)
         outgoingTableView.tag = 007
         outgoingTableView.backgroundColor = bgColor
         outgoingTableView.delegate = self
@@ -321,12 +321,12 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         for menu in menuArray{
             itemView = createButton(CGRect(x: (i * (83 + 2)) + 4, y: 0, width: 83, height: 70), title: "\(menu)", border: false, bgColor: true, textColor: textColorDark)
             if (activeTableView == 5 && tableTag == 4) || activeTableView == 1 && tableTag == 0{
-                itemView.setTitleColor(navColor, for: UIControlState.normal)
+                itemView.setTitleColor(navColor, for: UIControl.State.normal)
             }
             itemView.tag = 101 + tableTag
             itemView.titleLabel?.font = UIFont(name: "FontAwesome", size:FONTSIZEMedium)
             itemView.titleLabel?.textAlignment = .center
-            itemView.addTarget(self, action: #selector(SuggestionsBrowseViewController.switchTableView(_:)), for: UIControlEvents.touchUpInside)
+            itemView.addTarget(self, action: #selector(SuggestionsBrowseViewController.switchTableView(_:)), for: UIControl.Event.touchUpInside)
             itemView.backgroundColor = UIColor.white
             itemView.layer.borderColor = textColorMedium.cgColor
             itemView.titleLabel?.lineBreakMode = .byWordWrapping
@@ -358,11 +358,11 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             if ob.tag == sender.tag && ob is UIButton {
                 let button = ob as! UIButton
                 if button.isHighlighted{
-                    button.setTitleColor(navColor, for: UIControlState.normal)
+                    button.setTitleColor(navColor, for: UIControl.State.normal)
                 }
             }else if ob is UIButton{
                 let button = ob as! UIButton
-                button.setTitleColor(textColorDark, for: UIControlState.normal)
+                button.setTitleColor(textColorDark, for: UIControl.State.normal)
             }
         }
         
@@ -735,7 +735,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
         case 001:
             //MARK: Suggestion Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "suggestionsCell", for: indexPath) as! FriendRequestTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             let memberInfo = self.userSuggestions[indexPath.row] as! [String: AnyObject]
             
             // Set Name People who Likes Content
@@ -761,21 +761,21 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                 }
             }
             
-            cell.acceptButton.setTitle(NSLocalizedString("Add Friend",  comment: ""), for: UIControlState.normal)
+            cell.acceptButton.setTitle(NSLocalizedString("Add Friend",  comment: ""), for: UIControl.State.normal)
             if memberInfo["friendship_type"] != nil && memberInfo["friendship_type"] as! String == "cancel_request"{
-                cell.acceptButton.setTitle("Undo", for: UIControlState.normal)
+                cell.acceptButton.setTitle("Undo", for: UIControl.State.normal)
             }
             cell.acceptButton.tag =  120 + (indexPath as NSIndexPath).row
             cell.acceptButton.addTarget(self, action: #selector(SuggestionsBrowseViewController.acceptSuggestion(_:)), for: .touchUpInside)
             
-            cell.rejectButton.setTitle(NSLocalizedString("Remove",  comment: ""), for: UIControlState.normal)
+            cell.rejectButton.setTitle(NSLocalizedString("Remove",  comment: ""), for: UIControl.State.normal)
             cell.rejectButton.tag = 130 + (indexPath as NSIndexPath).row
             cell.rejectButton.addTarget(self, action: #selector(SuggestionsBrowseViewController.removeSuggestionFromList(_:)), for: .touchUpInside)
             return cell
         case 002:
             // MARK: Search Results Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.labMessage.isHidden = true
             
             let memberInfo = self.searchResults[indexPath.row] as! NSDictionary
@@ -994,7 +994,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             
             //MARK: Requests Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "requestsCell", for: indexPath) as! FriendRequestTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             let memberInfo = self.friendRequests[indexPath.row]
             
             // Set Name People who Likes Content
@@ -1029,7 +1029,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             
             // MARK: Contacts Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "contactsCell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.labMessage.isHidden = true
             
             let memberInfo = self.contactsList[indexPath.row] as! NSDictionary
@@ -1239,7 +1239,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             
             //MARK: Invite Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "inviteCell", for: indexPath) as! InviteMemberTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = aafBgColor
             cell.mainView.frame.size.height = cell.frame.size.height-5
             var i = 0
@@ -1268,13 +1268,13 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                         if value is String{
                             contactDetail = value as! String
                             cell.inviteButton.tag = 510 + indexPath.row
-                            cell.inviteButton.addTarget(self, action: #selector(SuggestionsBrowseViewController.sendInviteMail(_:)), for: UIControlEvents.touchUpInside)
+                            cell.inviteButton.addTarget(self, action: #selector(SuggestionsBrowseViewController.sendInviteMail(_:)), for: UIControl.Event.touchUpInside)
                             
                             
                         }else if value is NSNumber{
                             contactDetail = String(describing: value)
                             cell.inviteButton.tag = 610 + indexPath.row
-                            cell.inviteButton.addTarget(self, action: #selector(SuggestionsBrowseViewController.sendInviteMobile(_:)), for: UIControlEvents.touchUpInside)
+                            cell.inviteButton.addTarget(self, action: #selector(SuggestionsBrowseViewController.sendInviteMobile(_:)), for: UIControl.Event.touchUpInside)
                         }
                     }
                     
@@ -1291,7 +1291,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             
             //MARK: Friends Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             var memberInfo:NSDictionary
             memberInfo = self.friendsList[indexPath.row] as! NSDictionary
@@ -1359,7 +1359,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             self.noOutgoingRequestsIcon.isHidden = true
             self.noOutgoingRequestsMessage.isHidden = true
             let cell = tableView.dequeueReusableCell(withIdentifier: "sentRequestCell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             var memberInfo:NSDictionary
             memberInfo = self.requestsSentList[indexPath.row] as! NSDictionary
@@ -1429,7 +1429,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
             
         default:
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             cell.textLabel?.text = "cell1" + String(indexPath.row)
             cell.textLabel?.font = UIFont(name: fontName, size: FONTSIZENormal)
@@ -1502,7 +1502,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                 i+=1
             }
             self.invitationsTableView.beginUpdates()
-            self.invitationsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.invitationsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             self.invitationsTableView.endUpdates()
             
         }
@@ -2184,43 +2184,43 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                         case 001:
                             self.suggestionsTableView.beginUpdates()
                             self.userSuggestions[suggestionIndex] = memberInfo
-                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.suggestionsTableView.endUpdates()
                         case 002:
                             memberInfo = self.searchResults[suggestionIndex]
                             self.searchResultsTableView.beginUpdates()
                             self.searchResults[suggestionIndex] = memberInfo
-                            self.searchResultsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.searchResultsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.searchResultsTableView.endUpdates()
                         case 003:
                             memberInfo = self.friendRequests[suggestionIndex]
                             self.requestsTableView.beginUpdates()
                             self.friendRequests[suggestionIndex] = memberInfo as! FriendRequestModel
-                            self.requestsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.requestsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.requestsTableView.endUpdates()
                         case 004:
                             memberInfo = self.contactsList[suggestionIndex]
                             self.contactsTableView.beginUpdates()
                             self.contactsList[suggestionIndex] = memberInfo
-                            self.contactsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.contactsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.contactsTableView.endUpdates()
                         case 006:
                             memberInfo = self.friendsList[suggestionIndex] as AnyObject
                             self.friendsTableView.beginUpdates()
                             self.friendsList[suggestionIndex] = memberInfo
-                            self.friendsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.friendsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.friendsTableView.endUpdates()
                         case 007:
                             memberInfo = self.requestsSentList[suggestionIndex] as AnyObject
                             self.outgoingTableView.beginUpdates()
                             self.requestsSentList[suggestionIndex] = memberInfo
-                            self.outgoingTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.outgoingTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.outgoingTableView.endUpdates()
                         default:
                             memberInfo = self.userSuggestions[suggestionIndex]
                             self.suggestionsTableView.beginUpdates()
                             self.userSuggestions[suggestionIndex] = memberInfo
-                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.suggestionsTableView.endUpdates()
                         }
                     }
@@ -2263,7 +2263,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                         let indexPath = IndexPath(row: suggestionIndex, section: 0)
                         self.suggestionsTableView.beginUpdates()
                         self.userSuggestions.remove(at: suggestionIndex)
-                        self.suggestionsTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                        self.suggestionsTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                         self.suggestionsTableView.endUpdates()
                         self.suggestionsTableView.reloadData()
                         
@@ -2333,35 +2333,35 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                             
                             self.suggestionsTableView.beginUpdates()
                             self.userSuggestions[suggestionIndex] = memberInfo
-                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.suggestionsTableView.endUpdates()
                             
                         case 002:
                             memberInfo = self.searchResults[suggestionIndex]
                             self.searchResultsTableView.beginUpdates()
                             self.searchResults[suggestionIndex] = memberInfo
-                            self.searchResultsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.searchResultsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.searchResultsTableView.endUpdates()
                             
                         case 003:
                             memberInfo = self.friendRequests[suggestionIndex]
                             self.requestsTableView.beginUpdates()
                             self.friendRequests[suggestionIndex] = memberInfo as! FriendRequestModel
-                            self.requestsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.requestsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.requestsTableView.endUpdates()
                             
                         case 004:
                             memberInfo = self.contactsList[suggestionIndex]
                             self.contactsTableView.beginUpdates()
                             self.contactsList[suggestionIndex] = memberInfo
-                            self.contactsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.contactsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.contactsTableView.endUpdates()
                             
                         case 006:
                             memberInfo = self.friendsList[suggestionIndex] as AnyObject
                             self.friendsTableView.beginUpdates()
                             self.friendsList[suggestionIndex] = memberInfo
-                            self.friendsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.friendsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.friendsTableView.endUpdates()
                             
                         case 007:
@@ -2369,14 +2369,14 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                             memberInfo = self.requestsSentList[suggestionIndex] as AnyObject
                             self.outgoingTableView.beginUpdates()
                             self.requestsSentList[suggestionIndex] = memberInfo
-                            self.outgoingTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.outgoingTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.outgoingTableView.endUpdates()
                             
                         default:
                             memberInfo = self.userSuggestions[suggestionIndex]
                             self.suggestionsTableView.beginUpdates()
                             self.userSuggestions[suggestionIndex] = memberInfo
-                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                            self.suggestionsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                             self.suggestionsTableView.endUpdates()
                         }
                         
@@ -2412,7 +2412,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                         let indexPath = IndexPath(row: suggestionIndex, section: 0)
                         self.requestsTableView.beginUpdates()
                         self.friendRequests.remove(at: suggestionIndex)
-                        self.requestsTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                        self.requestsTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                         self.requestsTableView.endUpdates()
                         self.requestsTableView.reloadData()
                         
@@ -2453,7 +2453,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                         let indexPath = IndexPath(row: suggestionIndex, section: 0)
                         self.requestsTableView.beginUpdates()
                         self.friendRequests.remove(at: suggestionIndex)
-                        self.requestsTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                        self.requestsTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                         self.requestsTableView.endUpdates()
                         self.requestsTableView.reloadData()
                     }
@@ -2550,7 +2550,7 @@ class SuggestionsBrowseViewController: UIViewController, UIScrollViewDelegate, U
                                 }
                                 i+=1
                             }
-                            self.invitationsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                            self.invitationsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                             self.invitationsTableView.endUpdates()
                             self.invitationsTableView.reloadData()
                             if self.friendRequests.count < 1 {

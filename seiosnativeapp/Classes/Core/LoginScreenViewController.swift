@@ -65,7 +65,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         
         //self.title = NSLocalizedString("Sign In",comment: "")
         let deviceIdiom = UIScreen.main.traitCollection.userInterfaceIdiom
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.alpha = 0.01
         //always fill the view
@@ -141,7 +141,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         
         email = createSkyTextField(CGRect(x: 45 , y: 2 ,width: view.bounds.width-90 , height: 50), borderColor: borderColorClear,placeHolderText: String(format: NSLocalizedString("%@ Email", comment: ""), messageIcon)  , corner: true)
         
-        email.attributedPlaceholder = NSAttributedString (string: String(format:  NSLocalizedString("Email Address",  comment: ""), messageIcon), attributes: [NSAttributedStringKey.foregroundColor: textColorPrime])
+        email.attributedPlaceholder = NSAttributedString (string: String(format:  NSLocalizedString("Email Address",  comment: ""), messageIcon), attributes: [NSAttributedString.Key.foregroundColor: textColorPrime])
         email.autocapitalizationType = .none
         
         email.textColor = textColorPrime
@@ -177,7 +177,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         let pwdIcon = "\u{F023}"
         pass = createSkyTextField(CGRect(x: 45 , y: 63 ,width: view.bounds.width-90 , height: 50),borderColor: borderColorClear,placeHolderText: String(format: NSLocalizedString("%@ Password", comment: ""), pwdIcon) , corner: true)  //"\u{F023} Password"
         pass.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
-        pass.attributedPlaceholder = NSAttributedString(string: String(format:  NSLocalizedString("Password",  comment: ""), pwdIcon), attributes: [NSAttributedStringKey.foregroundColor: textColorPrime])
+        pass.attributedPlaceholder = NSAttributedString(string: String(format:  NSLocalizedString("Password",  comment: ""), pwdIcon), attributes: [NSAttributedString.Key.foregroundColor: textColorPrime])
         pass.backgroundColor = UIColor.clear
         pass.tag = 22
         pass.tintColor = textColorPrime
@@ -627,8 +627,8 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         
         if error != ""{
             let alertController = UIAlertController(title: NSLocalizedString("Error",comment: ""), message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",comment: ""), style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",comment: ""), style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
         else
@@ -639,7 +639,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
                 
                 view.isUserInteractionEnabled = false
                 loginCustomView.alpha = 0.7
-                signIn.setTitle(NSLocalizedString("Signing...",comment: ""), for: UIControlState())
+                signIn.setTitle(NSLocalizedString("Signing...",comment: ""), for: UIControl.State())
                 // Send Server Request for Sign In
                 
                 var loginParams = ["email":"\(email.text!)","password":"\(pass.text!)","ip":"127.0.0.1" , "subscriptionForm": "1"]
@@ -653,7 +653,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
                 post(loginParams, url: "login", method: "POST") { (succeeded, msg) -> () in
                     
                     DispatchQueue.main.async(execute: {
-                        self.signIn.setTitle("Sign In", for: UIControlState())
+                        self.signIn.setTitle("Sign In", for: UIControl.State())
                         self.view.isUserInteractionEnabled = true
                         self.loginCustomView.alpha = 1.0
                         // On Success save authentication_token in Core Data
@@ -778,9 +778,9 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     @objc func forgotPasswords(){
-        let alert = UIAlertController(title: NSLocalizedString("Forgot Password",comment: ""), message: NSLocalizedString("Enter your email address",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertActionStyle.default, handler: forgotPasswordHandler))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Forgot Password",comment: ""), message: NSLocalizedString("Enter your email address",comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertAction.Style.default, handler: forgotPasswordHandler))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
         alert.addTextField(configurationHandler: {(textField: UITextField) in
             textField.placeholder = NSLocalizedString("Enter Email",comment: "")
             textField.isSecureTextEntry = false
@@ -805,8 +805,8 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate, UIGestur
         }
         if error != ""{
             let alertController = UIAlertController(title: "Error", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }else{
             

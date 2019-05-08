@@ -93,7 +93,7 @@ class ContentDetailViewController: UIViewController,UITableViewDelegate,UITableV
     {
         
         let cell = trackOrderTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)as! ContentDetailTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.white
         
         let dic = trackArr[indexPath.row] as! NSDictionary

@@ -35,8 +35,8 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
         TicketListTableview = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .grouped)
         TicketListTableview.register(ManageEventTicketTableCell.self, forCellReuseIdentifier: "Cell")
         TicketListTableview.estimatedRowHeight = 60.0
-        TicketListTableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        TicketListTableview.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        TicketListTableview.separatorStyle = UITableViewCell.SeparatorStyle.none
+        TicketListTableview.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         TicketListTableview.backgroundColor = tableViewBgColor
         self.TicketListTableview.isOpaque = false
         self.view.addSubview(TicketListTableview)
@@ -125,7 +125,7 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ManageEventTicketTableCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         let dic = responseArr.object(at: (indexPath as NSIndexPath).row)
         let fileResponseDic = dic as! NSDictionary
@@ -162,7 +162,7 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
         if let guttermenu2 = fileInfo["menu"] as? NSArray
         {
             self.contentGutterMenu = guttermenu2 as NSArray
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in contentGutterMenu
             {
                 if let menuItem = menu as? NSDictionary
@@ -172,7 +172,7 @@ class ManageEventTicketViewController: UIViewController, UITableViewDataSource, 
                     let titleString = menuItem["name"] as! String
                     if titleString.range(of: "delete") != nil
                     {
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             
                             let condition = menuItem["name"] as! String
                             switch(condition)

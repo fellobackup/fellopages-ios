@@ -140,7 +140,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(PageReviewViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(PageReviewViewController.refresh), for: UIControl.Event.valueChanged)
         ReviewTableview.addSubview(refresher)
  
 
@@ -511,7 +511,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
 
             let rate = createButton(CGRect(x: origin_x, y: 10, width: 15, height: 15), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -523,7 +523,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
             {
                 if i <= rating
                 {
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }
@@ -545,7 +545,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
 
             let rate = createButton(CGRect(x: origin_x, y: 10, width: 13, height: 13), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -558,7 +558,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
                 if i <= rating
                 {
 
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }
@@ -633,7 +633,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
     {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! UserReviewTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         for ob in cell.subviews{
             if ob .isKind(of: UILabel.self){
                 
@@ -733,8 +733,8 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
                     boldFont =  CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
                     
                     let range1 = (labMsg as NSString).range(of: ownerName)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                     
                     return mutableAttributedString!
                 })
@@ -974,14 +974,14 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
             {
                 like_unlikecount = helpfulcount
                 
-                cell.btnhelpful.setTitleColor(textColorMedium, for: UIControlState())
+                cell.btnhelpful.setTitleColor(textColorMedium, for: UIControl.State())
                 if helpfulcount == 1
                 {
-                 cell.btnhelpful.setTitle("\(helpfulcount) Like", for: UIControlState())
+                 cell.btnhelpful.setTitle("\(helpfulcount) Like", for: UIControl.State())
                 }
                 else
                 {
-                 cell.btnhelpful.setTitle("\(helpfulcount) Likes", for: UIControlState())
+                 cell.btnhelpful.setTitle("\(helpfulcount) Likes", for: UIControl.State())
                 }
                 
 
@@ -994,14 +994,14 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
             {
                 like_unlikecount = helpfulcount
                 
-                cell.btnhelpful.setTitleColor(navColor, for: UIControlState())
+                cell.btnhelpful.setTitleColor(navColor, for: UIControl.State())
                 if helpfulcount == 1
                 {
-                    cell.btnhelpful.setTitle("\(helpfulcount) Like", for: UIControlState())
+                    cell.btnhelpful.setTitle("\(helpfulcount) Like", for: UIControl.State())
                 }
                 else
                 {
-                    cell.btnhelpful.setTitle("\(helpfulcount) Likes", for: UIControlState())
+                    cell.btnhelpful.setTitle("\(helpfulcount) Likes", for: UIControl.State())
                 }
                 
 
@@ -1038,7 +1038,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
 
             let rate = createButton(CGRect(x: origin_x, y: 10, width: 20, height: 20), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -1049,7 +1049,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
             {
                 if i <= rating
                 {
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }
@@ -1243,7 +1243,7 @@ class PageReviewViewController: UIViewController, UITableViewDataSource, UITable
         
         if let menuOption = reviewInfo["guttermenu"] as? NSArray {
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     

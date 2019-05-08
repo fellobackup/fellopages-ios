@@ -34,10 +34,10 @@ import UIKit
         baseController?.tabBar.items?[self.tabBarController!.selectedIndex].title = ""
         self.navigationItem.setHidesBackButton(true, animated: false)
         
-        sendButton = UIBarButtonItem(title: NSLocalizedString("Send", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(ContactViewController.send))
+        sendButton = UIBarButtonItem(title: NSLocalizedString("Send", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(ContactViewController.send))
         self.navigationItem.rightBarButtonItem = sendButton
         sendButton.tintColor = textColorPrime
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: fontName, size: FONTSIZELarge)!],for: UIControlState())
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: fontName, size: FONTSIZELarge)!],for: UIControl.State())
         
         
         let contactUsText = createLabel(CGRect(x: 10, y: 15, width: view.bounds.width - 20, height: 20), text: NSLocalizedString("Have a question? Need help?", comment: ""), alignment: NSTextAlignment.center, textColor: textColorDark)
@@ -55,7 +55,7 @@ import UIKit
         view.addSubview(dropMessage)
 
         nameLabel = createTextField(CGRect(x: PADING, y: contactUsText.bounds.height + 110 , width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Name",  comment: ""), corner: true)
-        nameLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Name",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: textColorMedium])
+        nameLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Name",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: textColorMedium])
         nameLabel.font =  UIFont(name: fontName, size: FONTSIZELarge)
         nameLabel.backgroundColor = bgColor
         
@@ -63,7 +63,7 @@ import UIKit
         view.addSubview(nameLabel)
         
         emailLabel = createTextField(CGRect(x: PADING, y: contactUsText.bounds.height + 150, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText:  NSLocalizedString("Email Address",  comment: ""), corner: true)
-        emailLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email Address",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: textColorMedium])
+        emailLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email Address",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: textColorMedium])
         emailLabel.font =  UIFont(name: fontName, size: FONTSIZELarge)
         emailLabel.backgroundColor = bgColor
         view.addSubview(emailLabel)

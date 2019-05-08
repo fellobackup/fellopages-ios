@@ -97,8 +97,8 @@ class MemberSearchViewController: UIViewController, UITableViewDataSource, UITab
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(MemberSearchViewController.filter))
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(MemberSearchViewController.filter))
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -113,7 +113,7 @@ class MemberSearchViewController: UIViewController, UITableViewDataSource, UITab
         membersTableView.dataSource = self
         membersTableView.delegate = self
         membersTableView.estimatedRowHeight = 90.0
-        membersTableView.rowHeight = UITableViewAutomaticDimension
+        membersTableView.rowHeight = UITableView.automaticDimension
         membersTableView.backgroundColor = tableViewBgColor
         membersTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -160,7 +160,7 @@ class MemberSearchViewController: UIViewController, UITableViewDataSource, UITab
         titleLabelField.isHidden = true
         buttonView.addSubview(titleLabelField)
         
-        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -688,7 +688,7 @@ class MemberSearchViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: - Server Connection For All Likes
     @objc func menuAction(_ sender:UIButton){
         // Generate Feed Filter Gutter Menu for Feed Come From Server as! Alert Popover
-        // let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        // let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         // var memberInfo:NSDictionary
         if (sender.tag > -1){
             let memberInfo = allMembers[sender.tag]
@@ -1318,7 +1318,7 @@ class MemberSearchViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         let memberInfo = allMembers[(indexPath as NSIndexPath).row]
         cell.tag = (indexPath as NSIndexPath).row

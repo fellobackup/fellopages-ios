@@ -54,7 +54,7 @@ class NativeEventCell: UITableViewCell {
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -179,7 +179,7 @@ class NativeEventCell: UITableViewCell {
             contentImage2.layer.shadowColor = shadowColor.cgColor
             contentImage2.layer.shadowOffset = CGSize(width: 0,height: 5);
             contentImage2.layer.shadowOpacity = 0.5;
-            contentImage2.contentMode = UIViewContentMode.scaleAspectFill
+            contentImage2.contentMode = UIView.ContentMode.scaleAspectFill
             cellView2.addSubview(contentImage2)
             
             featuredLabel2 = createLabel(CGRect(x: 0, y: 0, width: 75, height: 20), text: "Featured", alignment: .center, textColor: textColorLight)
@@ -202,7 +202,7 @@ class NativeEventCell: UITableViewCell {
             
             
             gutterMenu2  = createButton(CGRect(x: contentSelection2.bounds.width-40,y: contentSelection2.frame.origin.y, width: 45, height: 45), title: "", border: false,bgColor: false,textColor: UIColor.clear)
-            gutterMenu2.setImage(UIImage(named: "option"), for: UIControlState())
+            gutterMenu2.setImage(UIImage(named: "option"), for: UIControl.State())
             contentSelection2.addSubview(gutterMenu2)
             gutterMenu2.isHidden = true
             //gutterMenu2.backgroundColor = UIColor.redColor()

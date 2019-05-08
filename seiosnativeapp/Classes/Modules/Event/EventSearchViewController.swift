@@ -53,9 +53,9 @@ class EventSearchViewController: UIViewController , UITableViewDataSource, UITab
         searchBar.setPlaceholderWithColor(NSLocalizedString("Search Events",  comment: ""))
         searchBar.delegate = self
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(EventSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(EventSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -99,7 +99,7 @@ class EventSearchViewController: UIViewController , UITableViewDataSource, UITab
         eventTableView.tableFooterView = footerView
         eventTableView.tableFooterView?.isHidden = true
         
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -386,7 +386,7 @@ class EventSearchViewController: UIViewController , UITableViewDataSource, UITab
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! EventViewTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.lineView.isHidden = false
         cell.dateView.frame.size.height = 70
         cell.dateView.backgroundColor = navColor
@@ -929,7 +929,7 @@ class EventSearchViewController: UIViewController , UITableViewDataSource, UITab
         eventTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

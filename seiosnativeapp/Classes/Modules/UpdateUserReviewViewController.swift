@@ -58,8 +58,8 @@ class UpdateUserReviewViewController: UIViewController, UIGestureRecognizerDeleg
         navigationController?.navigationBar.barTintColor = UIColor.white
         self.title = NSLocalizedString("Update User Review",  comment: "")
         
-        btnCreate = UIBarButtonItem(title: "\(sendReviewIcon)", style: UIBarButtonItemStyle.done , target:self , action: #selector(UpdateUserReviewViewController.send))
-        btnCreate.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControlState())
+        btnCreate = UIBarButtonItem(title: "\(sendReviewIcon)", style: UIBarButtonItem.Style.done , target:self , action: #selector(UpdateUserReviewViewController.send))
+        btnCreate.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControl.State())
         btnCreate.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = btnCreate
         
@@ -235,7 +235,7 @@ class UpdateUserReviewViewController: UIViewController, UIGestureRecognizerDeleg
                                         // Optional params
                                         self.OverallRatingView.delegate = self
                                         self.OverallRatingView.tag = 1
-                                        self.OverallRatingView.contentMode = UIViewContentMode.scaleAspectFit
+                                        self.OverallRatingView.contentMode = UIView.ContentMode.scaleAspectFit
                                         self.OverallRatingView.maxRating = 5
                                         self.OverallRatingView.minRating = 0
                                         //self.floatRatingView.rating = 2.5
@@ -258,7 +258,7 @@ class UpdateUserReviewViewController: UIViewController, UIGestureRecognizerDeleg
                                         // Optional params
                                         self.AmbienceRatingView.delegate = self
                                         self.AmbienceRatingView.tag = 2
-                                        self.AmbienceRatingView.contentMode = UIViewContentMode.scaleAspectFit
+                                        self.AmbienceRatingView.contentMode = UIView.ContentMode.scaleAspectFit
                                         self.AmbienceRatingView.maxRating = 5
                                         self.AmbienceRatingView.minRating = 0
                                         //self.floatRatingView.rating = 2.5
@@ -281,7 +281,7 @@ class UpdateUserReviewViewController: UIViewController, UIGestureRecognizerDeleg
                                         // Optional params
                                         self.OrganizationRatingView.delegate = self
                                         self.OrganizationRatingView.tag = 3
-                                        self.OrganizationRatingView.contentMode = UIViewContentMode.scaleAspectFit
+                                        self.OrganizationRatingView.contentMode = UIView.ContentMode.scaleAspectFit
                                         self.OrganizationRatingView.maxRating = 5
                                         self.OrganizationRatingView.minRating = 0
                                         //self.floatRatingView.rating = 2.5

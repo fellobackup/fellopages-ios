@@ -57,7 +57,7 @@ class ForumHomePageController: UIViewController,UITableViewDataSource, UITableVi
         self.navigationItem.setHidesBackButton(true, animated: false)
 
        
-        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ForumHomePageController.searchItem))
+        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ForumHomePageController.searchItem))
         self.navigationItem.rightBarButtonItem = searchItem
         searchItem.tintColor = textColorPrime
         
@@ -67,7 +67,7 @@ class ForumHomePageController: UIViewController,UITableViewDataSource, UITableVi
         forumTableView.dataSource = self
         forumTableView.delegate = self
         forumTableView.estimatedRowHeight = 70  //50.0
-        forumTableView.rowHeight = UITableViewAutomaticDimension
+        forumTableView.rowHeight = UITableView.automaticDimension
         forumTableView.backgroundColor = tableViewBgColor
         forumTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -79,7 +79,7 @@ class ForumHomePageController: UIViewController,UITableViewDataSource, UITableVi
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(ForumHomePageController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ForumHomePageController.refresh), for: UIControl.Event.valueChanged)
         forumTableView.addSubview(refresher)
     
         let footerView = UIView(frame: frameActivityIndicator)
@@ -392,7 +392,7 @@ class ForumHomePageController: UIViewController,UITableViewDataSource, UITableVi
         
         // dequeue a cell for the given indexPath
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         // set the cell's text with the new string formatting
         if let forumCategory = forumsResponse[(indexPath as NSIndexPath).section] as? NSDictionary{

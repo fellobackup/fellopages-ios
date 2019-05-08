@@ -60,22 +60,22 @@ class AdvanceShareViewController: UIViewController,UITextViewDelegate {
         view.addSubview(shareMessage)
         
         
-//        shareItem = UIBarButtonItem(title: "\(shareIcon)", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AdvanceShareViewController.shareContent))
-//        shareItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+//        shareItem = UIBarButtonItem(title: "\(shareIcon)", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AdvanceShareViewController.shareContent))
+//        shareItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
 //        self.navigationItem.rightBarButtonItem = shareItem
         
         
         let button = createButton(CGRect(x: self.view.bounds.size.width-100,y: 0,width: 30,height: 30), title: shareIcon, border: false, bgColor: false, textColor: textColorPrime)
         button.backgroundColor = UIColor.clear
         button.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)
-        button.addTarget(self, action: #selector(AdvanceShareViewController.shareContent), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(AdvanceShareViewController.shareContent), for: UIControl.Event.touchUpInside)
         let locButton = UIBarButtonItem()
         locButton.customView = button
         self.navigationItem.setRightBarButtonItems([locButton], animated: true)
         
         let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(AdvanceShareViewController.goBack))
         self.navigationItem.leftBarButtonItem = cancel
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControl.State())
         cancel.tintColor = textColorPrime
 
         
@@ -114,7 +114,7 @@ class AdvanceShareViewController: UIViewController,UITextViewDelegate {
         //print(self.Sharetitle)
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(swipeDown)
      
     }
@@ -467,14 +467,14 @@ class AdvanceShareViewController: UIViewController,UITextViewDelegate {
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 //        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
 //            switch swipeGesture.direction {
-//            case UISwipeGestureRecognizerDirection.right:
+//            case UISwipeGestureRecognizer.Direction.right:
 //                //print("Swiped right")
-//            case UISwipeGestureRecognizerDirection.down:
+//            case UISwipeGestureRecognizer.Direction.down:
 //                //print("Swiped down")
 //                self.view.endEditing(false)
-//            case UISwipeGestureRecognizerDirection.left:
+//            case UISwipeGestureRecognizer.Direction.left:
 //                //print("Swiped left")
-//            case UISwipeGestureRecognizerDirection.up:
+//            case UISwipeGestureRecognizer.Direction.up:
 //                //print("Swiped up")
 //            default:
 //                break

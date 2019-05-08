@@ -78,7 +78,7 @@ class CotactDetailViewController: UIViewController {
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
         if isowner == true{
-            let addContact = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(CotactDetailViewController.addNewContact))
+            let addContact = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(CotactDetailViewController.addNewContact))
             self.navigationItem.setRightBarButtonItems([addContact], animated: true)
             
         }
@@ -145,8 +145,8 @@ class CotactDetailViewController: UIViewController {
                         let mutableString = NSMutableAttributedString(string: myString)
                         let length = labelKey.length
                         let length2 = labelDesc.length
-                        mutableString.addAttribute( kCTForegroundColorAttributeName as NSAttributedStringKey, value: UIColor.blue, range: NSRange( location:length+3, length:length2))
-                        mutableString.addAttribute(kCTUnderlineStyleAttributeName as NSAttributedStringKey, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(length+3, length2))
+                        mutableString.addAttribute( kCTForegroundColorAttributeName as NSAttributedString.Key, value: UIColor.blue, range: NSRange( location:length+3, length:length2))
+                        mutableString.addAttribute(kCTUnderlineStyleAttributeName as NSAttributedString.Key, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(length+3, length2))
                         self.label3.attributedText = mutableString
                         self.label3.numberOfLines = 0
                         self.label3.lineBreakMode = NSLineBreakMode.byWordWrapping

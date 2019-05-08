@@ -156,11 +156,11 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
     var rightBarButtonItem : UIBarButtonItem!
     var leftBarButtonItem : UIBarButtonItem!
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     
@@ -208,9 +208,9 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
         mainView.removeGestureRecognizer(tapGesture)
         
         // Initial table to show Activity Feeds
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         self.view.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         
         
         navBarTitle = createLabel(CGRect(x: 0,y: 0,width: view.bounds.width,height: TOPPADING), text: "", alignment: .center, textColor: textColorLight)
@@ -238,7 +238,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
         mainSubView.backgroundColor = tableViewBgColor //UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)//aafBgColor//placeholderColor
         feedObj.tableView.addSubview(mainSubView)
         
-        coverImage.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage.contentMode = UIView.ContentMode.scaleAspectFill
         coverImage.layer.masksToBounds = true
         coverImage.backgroundColor = placeholderColor
         coverImage.tag = 123
@@ -391,7 +391,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(MLTClassifiedAdvancedTypeViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(MLTClassifiedAdvancedTypeViewController.refresh), for: UIControl.Event.valueChanged)
         feedObj.tableView.addSubview(refresher)
         
         // Cover Photo and Profile Photo
@@ -411,7 +411,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
         memberProfilePhoto.layer.borderWidth = 2.5
         memberProfilePhoto.layer.cornerRadius = memberProfilePhoto.frame.size.width / 2
         memberProfilePhoto.backgroundColor = placeholderColor
-        memberProfilePhoto.contentMode = UIViewContentMode.scaleAspectFill
+        memberProfilePhoto.contentMode = UIView.ContentMode.scaleAspectFill
         memberProfilePhoto.layer.masksToBounds = true
         memberProfilePhoto.image = UIImage(named: "user_profile_image.png")
         memberProfilePhoto.tag = 321
@@ -549,7 +549,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
     
     @objc func shareItem(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let presentedVC = AdvanceShareViewController()
@@ -568,7 +568,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
         })
         
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -583,7 +583,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -637,14 +637,14 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
     @objc func showFeedFilterOption(_ sender: UIButton){
         // Generate Feed Filter Options Gutter Menu from Server as! Alert Popover
         //      if logoutUser != true {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in filterGutterMenu{
             if let dic = menu as? NSDictionary{
                 alertController.addAction(UIAlertAction(title: (dic["tab_title"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in
                     // Set Feed Filter Option Title
-                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControlState())
+                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControl.State())
                     self.feedFilterFlag = true
                     
                     // Set Parameters for Feed Filter
@@ -798,12 +798,12 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(MLTClassifiedAdvancedTypeViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(MLTClassifiedAdvancedTypeViewController.showGutterMenu), for: .touchUpInside)
                                    // rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -1193,7 +1193,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                                     //  profileFieldLabel.delegate = self
                                                     
                                                     self.label1.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true as Bool)]
-                                                    self.label1.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                    self.label1.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                     self.label1.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                     self.label1.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                     self.label1.isUserInteractionEnabled = true
@@ -1204,8 +1204,8 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                                         let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                         
                                                         let range1 = (profileFieldString as NSString).range(of: labelDesc as String)
-                                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                         
                                                         return mutableAttributedString
                                                     })
@@ -1262,7 +1262,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                                     
                                                     
                                                     self.label3.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true as Bool)]
-                                                    self.label3.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                    self.label3.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                     self.label3.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                     self.label3.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                     self.label3.isUserInteractionEnabled = true
@@ -1274,8 +1274,8 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                                         let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                         
                                                         let range1 = (profileFieldString2 as NSString).range(of: labelDesc2 as String)
-                                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                         
                                                         return mutableAttributedString
                                                     })
@@ -1408,7 +1408,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                                 self.flag = true
                                                 
                                                 let writeReview = createButton(CGRect(x: wishListPading, y: self.headerHeight + 8, width: self.mainSubView.bounds.width - 2 * wishListPading, height: ButtonHeight-PADING), title: "", border: false,bgColor: false, textColor: textColorPrime)
-                                                writeReview.setTitle("Write a Review", for: UIControlState())
+                                                writeReview.setTitle("Write a Review", for: UIControl.State())
                                                 writeReview.backgroundColor = navColor
                                                 writeReview.layer.cornerRadius = 5.0
                                                 writeReview.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
@@ -1423,7 +1423,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                             {
                                                 self.flag = true
                                                 let writeReview = createButton(CGRect(x: wishListPading, y: self.headerHeight + 8, width: self.mainSubView.bounds.width - 2 * wishListPading, height: ButtonHeight-PADING), title: "", border: false,bgColor: false, textColor: textColorPrime)
-                                                writeReview.setTitle("Update Review", for: UIControlState())
+                                                writeReview.setTitle("Update Review", for: UIControl.State())
                                                 writeReview.backgroundColor = navColor
                                                 writeReview.layer.cornerRadius = 5.0
                                                 writeReview.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
@@ -1441,7 +1441,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                                 
                                                 self.addWishList.frame = CGRect(x: wishListPading, y: self.headerHeight + 8, width: self.mainSubView.bounds.width - 2 * wishListPading, height: ButtonHeight-PADING)
 
-                                                self.addWishList.setTitle("Add to Wishlist", for: UIControlState())
+                                                self.addWishList.setTitle("Add to Wishlist", for: UIControl.State())
                                                 self.addWishList.isHidden = false
                                                 self.addWishList.backgroundColor = navColor
                                                 self.addWishList.layer.cornerRadius = 5.0
@@ -1456,7 +1456,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                                             if (tempDic["name"] as! String == "wishlist") && self.flag == false{
                                                 
                                                 self.addWishList.frame = CGRect(x: wishListPading, y: self.headerHeight + 8, width: self.mainSubView.bounds.width -  2 * wishListPading, height: ButtonHeight-PADING)
-                                                self.addWishList.setTitle("Add to Wishlist", for: UIControlState())
+                                                self.addWishList.setTitle("Add to Wishlist", for: UIControl.State())
                                                 self.addWishList.isHidden = false
                                                 
                                                 self.addWishList.backgroundColor = navColor
@@ -1588,7 +1588,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
         }
         
         if imageMenus.count > 0{
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             for menu in imageMenus{
                 if let dic = menu as? NSDictionary{
@@ -1596,7 +1596,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                     
                     if dic["name"] as! String == "remove_photo" || dic["name"] as! String == "remove_cover_photo"{
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             // Delete Activity Feed Entry
                             if dic["name"] as! String == "remove_photo"{
                                 
@@ -1628,7 +1628,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                         }))
                         
                     }else{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -2427,10 +2427,10 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                 origin_x += width
                 
                 if button_title == "Updates"{
-                    menu.setTitleColor(textColorDark, for: UIControlState())
+                    menu.setTitleColor(textColorDark, for: UIControl.State())
                 }
                 else{
-                    menu.setTitleColor(textColorMedium, for: UIControlState())
+                    menu.setTitleColor(textColorMedium, for: UIControl.State())
                 }
                 
             }
@@ -2616,7 +2616,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
     
     // Show Gutter Menus of listing
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         deleteContent = false
@@ -2639,7 +2639,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                 if dic["name"] as! String != "share"{
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -2658,7 +2658,7 @@ class MLTClassifiedAdvancedTypeViewController: UIViewController , TTTAttributedL
                             }
                         }))
                     }else{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){

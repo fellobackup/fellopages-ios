@@ -36,7 +36,7 @@ class RepeatEventTableViewCell: UITableViewCell
         
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -97,7 +97,7 @@ class RepeatEventTableViewCell: UITableViewCell
         
         
         btnmenu = createButton(CGRect(x: cellView.frame.size.width-50,y: DateView.frame.origin.y,width: 30,height: 30), title: "", border: false,bgColor: false, textColor: textColorDark)
-        btnmenu.setImage(UIImage(named: "blackoption"), for: UIControlState())
+        btnmenu.setImage(UIImage(named: "blackoption"), for: UIControl.State())
         btnmenu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZESmall)
         //btnmenu.backgroundColor = UIColor.red
         cellView.addSubview(btnmenu)

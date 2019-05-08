@@ -39,8 +39,8 @@ public class LayerPersistentHelper {
 private extension LayerPersistentHelper {
     func addNotificationObservers() {
         let center = NotificationCenter.default
-        let enterForeground = NSNotification.Name.UIApplicationWillEnterForeground
-        let enterBackground = NSNotification.Name.UIApplicationDidEnterBackground
+        let enterForeground = UIApplication.willEnterForegroundNotification
+        let enterBackground = UIApplication.didEnterBackgroundNotification
         center.addObserver(self, selector: #selector(didBecomeActive), name: enterForeground, object: nil)
         center.addObserver(self, selector: #selector(willResignActive), name: enterBackground, object: nil)
     }

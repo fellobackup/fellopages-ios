@@ -207,7 +207,7 @@ class ProductsViewPage: UIViewController, UITableViewDataSource, UITableViewDele
         filter.tag = 12
         filter.setTitleColor(textColorDark, for: .highlighted)
         filter.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
-        filter.addTarget(self, action: #selector(ProductsViewPage.filters), for: UIControlEvents.touchUpInside)
+        filter.addTarget(self, action: #selector(ProductsViewPage.filters), for: UIControl.Event.touchUpInside)
         filter.backgroundColor =  navColor //bgColor
         filter.isHidden = true
         mainView.addSubview(filter)
@@ -238,7 +238,7 @@ class ProductsViewPage: UIViewController, UITableViewDataSource, UITableViewDele
         categoryTableView.isOpaque = false
         categoryTableView.isHidden = true
         categoryTableView.estimatedRowHeight = 165.0
-        categoryTableView.rowHeight = UITableViewAutomaticDimension
+        categoryTableView.rowHeight = UITableView.automaticDimension
         categoryTableView.backgroundColor = bgColor
         categoryTableView.separatorColor = UIColor.clear
         // For ios 11 spacing issue below the navigation controller
@@ -252,13 +252,13 @@ class ProductsViewPage: UIViewController, UITableViewDataSource, UITableViewDele
         
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(ProductsViewPage.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ProductsViewPage.refresh), for: UIControl.Event.valueChanged)
         productTableView.addSubview(refresher)
         
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(ProductsViewPage.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(ProductsViewPage.refresh), for: UIControl.Event.valueChanged)
         categoryTableView.addSubview(refresher2)
         
         
@@ -279,7 +279,7 @@ class ProductsViewPage: UIViewController, UITableViewDataSource, UITableViewDele
         self.refreshButton.backgroundColor = bgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(ProductsViewPage.browseEntries), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(ProductsViewPage.browseEntries), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.mainView.addSubview(self.refreshButton)
@@ -621,7 +621,7 @@ productTableView.tableFooterView?.isHidden = true
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -645,7 +645,7 @@ productTableView.tableFooterView?.isHidden = true
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -799,13 +799,13 @@ productTableView.tableFooterView?.isHidden = true
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
             }
         }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -988,7 +988,7 @@ productTableView.tableFooterView?.isHidden = true
         adCallToActionButton = UIButton(frame:CGRect(x:self.fbView.bounds.width-80, y: adImageView.bounds.height + 10 + adImageView.frame.origin.y,width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState.normal)
+            nativeAd.callToAction, for: UIControl.State.normal)
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -1070,7 +1070,7 @@ productTableView.tableFooterView?.isHidden = true
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1143,7 +1143,7 @@ productTableView.tableFooterView?.isHidden = true
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1565,7 +1565,7 @@ productTableView.tableFooterView?.isHidden = true
                                     }
                                     if self.showOnlyMyContent == false
                                     {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ProductsViewPage.searchItem))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ProductsViewPage.searchItem))
                                         
                                         self.cartButton.customView = cartButtonView(functionOf: self)
                                         self.navigationItem.setRightBarButtonItems([searchItem, self.cartButton], animated: true)
@@ -1741,7 +1741,7 @@ productTableView.tableFooterView?.isHidden = true
             {  // or 9 == if you don't want the first cell to be an ad!
                 productTableView.register(NativeProductsCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = productTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath as IndexPath) as! NativeProductsCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = bgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_product-1)
@@ -2022,7 +2022,7 @@ productTableView.tableFooterView?.isHidden = true
                 
                 let cell = productTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProductTableViewCell
                 
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = bgColor //UIColor.red
                 
                 var index:Int!
@@ -2615,7 +2615,7 @@ productTableView.tableFooterView?.isHidden = true
         else {
             
             let cell = categoryTableView.dequeueReusableCell(withIdentifier: "Cellone") as! CategoryTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell.DiaryName.isHidden = false
             cell.DiaryName1.isHidden = false
             cell.classifiedImageView.frame.size.height = 155
@@ -2948,10 +2948,10 @@ productTableView.tableFooterView?.isHidden = true
     // Sort the products according to options coming
     @objc func sorting()
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         for (k,v) in sortingDictionary{
             if v as! String != ""{
-                alertController.addAction(UIAlertAction(title: (v as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                alertController.addAction(UIAlertAction(title: (v as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                     self.sortingString = k as! String
                     self.pageNumber = 1
                     self.showSpinner = true

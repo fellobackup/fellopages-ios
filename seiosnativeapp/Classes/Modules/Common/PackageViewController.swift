@@ -60,8 +60,8 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         PackageTableview = UITableView(frame: CGRect(x: 0,y: 0, width: view.bounds.width, height: view.bounds.height), style: .grouped)
         PackageTableview.register(PackageTableViewCell.self, forCellReuseIdentifier: "Cell")
         PackageTableview.estimatedRowHeight = 60.0
-        PackageTableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        PackageTableview.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        PackageTableview.separatorStyle = UITableViewCell.SeparatorStyle.none
+        PackageTableview.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         PackageTableview.backgroundColor = tableViewBgColor
         self.PackageTableview.isOpaque = false
         self.view.addSubview(PackageTableview)
@@ -117,9 +117,9 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         if isFromHome == true{
             let button = UIButton(type: .custom)
             let loctionimg = UIImage(named: "event_icon.png")!.maskWithColor(color: textColorPrime)
-            button.setImage(loctionimg , for: UIControlState.normal)
+            button.setImage(loctionimg , for: UIControl.State.normal)
             button.imageView?.contentMode = .scaleAspectFit
-            button.addTarget(self, action: #selector(PackageViewController.browseEvents), for: UIControlEvents.touchUpInside)
+            button.addTarget(self, action: #selector(PackageViewController.browseEvents), for: UIControl.Event.touchUpInside)
             let eventButton = UIBarButtonItem()
         
         
@@ -294,7 +294,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PackageTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         let dic = responseArr.object(at: (indexPath as NSIndexPath).row)
         let packageResponseDic = dic as! NSDictionary
@@ -353,7 +353,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         {
             self.contentGutterMenu = guttermenu2 as NSArray
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in contentGutterMenu
             {
                 if let menuItem = menu as? NSDictionary
@@ -364,7 +364,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                     if titleString.range(of: "delete") != nil
                      {
                         
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                      
                             let condition = menuItem["name"] as! String
                             switch(condition){
@@ -441,7 +441,7 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
         {
             self.contentGutterMenu = guttermenu as NSArray
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in contentGutterMenu
             {
                 if let menuItem = menu as? NSDictionary
@@ -708,12 +708,12 @@ class PackageViewController: UIViewController,UITableViewDataSource,UITableViewD
                                         
                                         let packageLabelString = "The plan you are currently subscribed to is: \n"
                                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\(packageLabelString)")
-                                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
                                         
                                         let labelString = packageTitle
                                         let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("     \(labelString)"))
-                                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                                        descString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorDark, range: NSMakeRange(0, descString.length))
+                                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                                        descString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorDark, range: NSMakeRange(0, descString.length))
                                         
                                         attrString.append(descString)
                                         self.selectedPackageName = attrString

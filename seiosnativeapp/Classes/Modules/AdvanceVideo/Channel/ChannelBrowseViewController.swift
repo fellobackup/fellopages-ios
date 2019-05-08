@@ -443,7 +443,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         self.view.addSubview(ChannelTableView)
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(ChannelViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ChannelViewController.refresh), for: UIControl.Event.valueChanged)
         ChannelTableView.addSubview(refresher)
         
         // Featured carausal
@@ -486,7 +486,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         self.view.addSubview(myChannelTableView)
         refresher1 = UIRefreshControl()
         refresher1.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher1.addTarget(self, action: #selector(ChannelViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher1.addTarget(self, action: #selector(ChannelViewController.refresh), for: UIControl.Event.valueChanged)
         myChannelTableView.addSubview(refresher1)
         
         // Category view
@@ -510,7 +510,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(ChannelViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(ChannelViewController.refresh), for: UIControl.Event.valueChanged)
         categoryTableView.addSubview(refresher2)
         
         
@@ -1114,7 +1114,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
             {  // or 9 == if you don't want the first cell to be an ad!
                 ChannelTableView.register(NativeVideoCellTableViewCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = ChannelTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeVideoCellTableViewCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_channel - 1)
@@ -1239,8 +1239,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                         let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                         
                         let range = (tempInfo as NSString).range(of: value2)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                         
                         
                         return mutableAttributedString
@@ -1277,7 +1277,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                     row = row - (row /  kFrequencyAdsInCells_channel )
                 }
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCellThree
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var videosInfo:NSDictionary!
                 if(UIDevice.current.userInterfaceIdiom == .pad)
@@ -1397,8 +1397,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 cell.createdBy.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                     let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                     let range = (tempInfo as NSString).range(of: value)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                     
                     
                     return mutableAttributedString
@@ -1559,8 +1559,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                         let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                         
                         let range = (tempInfo as NSString).range(of: value2)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                         
                         
                         return mutableAttributedString
@@ -1598,7 +1598,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
             {  // or 9 == if you don't want the first cell to be an ad!
                 myChannelTableView.register(NativeVideoCellTableViewCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = myChannelTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeVideoCellTableViewCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_channel - 1)
@@ -1729,8 +1729,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                     cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                         let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                         let range = (tempInfo as NSString).range(of: value2)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                         
                         
                         return mutableAttributedString
@@ -1773,7 +1773,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                     row = row - (row /  kFrequencyAdsInCells_channel )
                 }
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCellThree
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var videosInfo:NSDictionary!
                 if(UIDevice.current.userInterfaceIdiom == .pad)
@@ -1900,8 +1900,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 cell.createdBy.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                     let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                     let range = (tempInfo as NSString).range(of: value)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                     
                     
                     return mutableAttributedString
@@ -2072,8 +2072,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                     cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                         let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                         let range = (tempInfo as NSString).range(of: value2)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                         
                         
                         return mutableAttributedString
@@ -2112,7 +2112,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         {
             
             let cell = categoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell2") as! CategoryTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell.DiaryName.isHidden = false
             cell.DiaryName1.isHidden = false
             cell.classifiedImageView.frame.size.height = 155
@@ -2444,7 +2444,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -2468,7 +2468,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -2621,13 +2621,13 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
             }
         }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -2789,7 +2789,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: adImageView.bounds.height + 10 + adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -2879,7 +2879,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
     //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: adImageView.bounds.height + 10 + adImageView.frame.origin.y, width: 70, height: 30))
     //
     //        adCallToActionButton.setTitle(
-    //            nativeAd.callToAction, for: UIControlState())
+    //            nativeAd.callToAction, for: UIControl.State())
     //
     //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
     //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -2985,7 +2985,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -3057,7 +3057,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -3131,7 +3131,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         videoInfo = myChannelResponse[sender.tag] as! NSDictionary
         if (videoInfo["menu"] != nil){
             let menuOption = videoInfo["menu"] as! NSArray
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     
@@ -3139,7 +3139,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                     
                     if titleString.range(of: "delete") != nil{
                         
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             let condition = menuItem["name"] as! String
                             
                             switch(condition){
@@ -3262,7 +3262,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 
             }
         }
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         filterDic.removeAll(keepingCapacity: false)
         for (key,menu) in  gutterMenu
         {
@@ -3311,7 +3311,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 
             }
         }
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         filterDic2.removeAll(keepingCapacity: false)
         for (key,menu) in  gutterMenu1
         {
@@ -3571,10 +3571,10 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                                         
                                         if (response["canCreate"] as! Int == 1)
                                         {
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ChannelViewController.searchItem))
-                                            searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
-                                            addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ChannelViewController.searchItem))
+                                            searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20.0)
+                                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
+                                            addBlog.imageInsets = UIEdgeInsets(top: 0,left: -20, bottom: 0, right: 0)
                                             self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
                                             
                                             searchItem.tintColor = textColorPrime
@@ -3594,7 +3594,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                                     if self.videoTypeCheck == "listings"{
                                         if (response["canCreate"] as! Bool == true){
                                             
-                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
+                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
                                             self.navigationItem.rightBarButtonItem = addVideo
                                             
                                         }
@@ -3608,8 +3608,8 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                                             if (response["canCreate"] as! Bool == true)
                                             {
                                                 
-                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ChannelViewController.searchItem))
-                                                let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
+                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ChannelViewController.searchItem))
+                                                let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
                                                 self.navigationItem.setRightBarButtonItems([addVideo,searchItem], animated: true)
                                                 searchItem.tintColor = textColorPrime
                                                 addVideo.tintColor = textColorPrime
@@ -3617,7 +3617,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                                             }
                                             else
                                             {
-                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ChannelViewController.searchItem))
+                                                let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ChannelViewController.searchItem))
                                                 
                                                 self.navigationItem.rightBarButtonItem = searchItem
                                                 searchItem.tintColor = textColorPrime
@@ -3656,7 +3656,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                                     if self.videoTypeCheck == "listings"{
                                         if (response["canCreate"] as! Bool == true){
                                             
-                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
+                                            let addVideo = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ChannelViewController.addNewChannel))
                                             self.navigationItem.rightBarButtonItem = addVideo
                                             
                                         }
@@ -3820,7 +3820,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
         refreshButton.backgroundColor = bgColor
         refreshButton.layer.borderColor = navColor.cgColor
         refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        refreshButton.addTarget(self, action: #selector(ChannelViewController.browseChannel), for: UIControlEvents.touchUpInside)
+        refreshButton.addTarget(self, action: #selector(ChannelViewController.browseChannel), for: UIControl.Event.touchUpInside)
         
         refreshButton.layer.cornerRadius = 5.0
         refreshButton.layer.masksToBounds = true
@@ -3959,7 +3959,7 @@ class ChannelViewController: UIViewController ,UIScrollViewDelegate,GADNativeApp
                 }
                 
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch _ as NSError {
                     //print(error)

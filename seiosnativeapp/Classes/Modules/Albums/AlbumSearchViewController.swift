@@ -85,9 +85,9 @@ class AlbumSearchViewController: UIViewController , UITableViewDataSource, UITab
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
 
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(AlbumSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(AlbumSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -102,7 +102,7 @@ class AlbumSearchViewController: UIViewController , UITableViewDataSource, UITab
         albumTableView.dataSource = self
         albumTableView.delegate = self
         albumTableView.estimatedRowHeight = 253.0
-        albumTableView.rowHeight = UITableViewAutomaticDimension
+        albumTableView.rowHeight = UITableView.automaticDimension
         albumTableView.backgroundColor = tableViewBgColor
         albumTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -120,7 +120,7 @@ class AlbumSearchViewController: UIViewController , UITableViewDataSource, UITab
         albumTableView.tableFooterView = footerView
         albumTableView.tableFooterView?.isHidden = true
         
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -398,7 +398,7 @@ class AlbumSearchViewController: UIViewController , UITableViewDataSource, UITab
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AlbumTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         
@@ -805,7 +805,7 @@ class AlbumSearchViewController: UIViewController , UITableViewDataSource, UITab
          albumTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

@@ -114,7 +114,7 @@ class ShowSplashViewController: UIViewController {
             let gifImage = UIImage(gifName: spalshName, levelOfIntegrity:0.8)
             let gifmanager = SwiftyGifManager(memoryLimit:20)
             imageForSplash.setGifImage(gifImage, manager: gifmanager, loopCount: 1)
-            imageForSplash.contentMode = UIViewContentMode.scaleAspectFill
+            imageForSplash.contentMode = UIView.ContentMode.scaleAspectFill
             // Do any additional setup after loading the view.
             DispatchQueue.main.asyncAfter(deadline: .now() + splashAnimationTime) {
                 // do stuff 3 seconds later
@@ -125,7 +125,7 @@ class ShowSplashViewController: UIViewController {
         else
         {
 
-            imageForSplash.contentMode = UIViewContentMode.scaleAspectFill
+            imageForSplash.contentMode = UIView.ContentMode.scaleAspectFill
             imageForSplash.image = UIImage(named:spalshName)
             DispatchQueue.main.asyncAfter(deadline: .now() + splashAnimationTime) {
                 // do stuff 3 seconds later

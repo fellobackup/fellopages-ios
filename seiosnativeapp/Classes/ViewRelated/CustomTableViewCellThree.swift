@@ -55,7 +55,7 @@ class CustomTableViewCellThree: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -73,7 +73,7 @@ class CustomTableViewCellThree: UITableViewCell {
         contentImage = createImageView(CGRect(x: 0, y: 0, width: cellView.bounds.width, height: 190), border: false)
         contentImage.layer.cornerRadius = cornerRadiusSmall
         contentImage.layer.masksToBounds = true
-        contentImage.contentMode = UIViewContentMode.scaleAspectFill
+        contentImage.contentMode = UIView.ContentMode.scaleAspectFill
         cellView.addSubview(contentImage)
         
         
@@ -126,7 +126,7 @@ class CustomTableViewCellThree: UITableViewCell {
         self.addSubview(contentSelection)
         imgVideo = createButton(CGRect(x: (UIScreen.main.bounds.width/2) - 20, y: (contentSelection.bounds.height/2) - 30, width: 50, height: 50), title: "", border: false, bgColor: false, textColor: textColorMedium)
         imgVideo.center = contentImage.center
-        imgVideo.setImage(UIImage(named: "VideoImage-white.png")!.maskWithColor(color: textColorLight), for: UIControlState.normal)
+        imgVideo.setImage(UIImage(named: "VideoImage-white.png")!.maskWithColor(color: textColorLight), for: UIControl.State.normal)
         contentSelection.addSubview(imgVideo)
         
 
@@ -139,7 +139,7 @@ class CustomTableViewCellThree: UITableViewCell {
 
             contentImage2 = createImageView(CGRect(x: 0, y: 0, width: cellView.bounds.width, height: 190), border: true)
             contentImage2.layer.masksToBounds = true
-            contentImage2.contentMode = UIViewContentMode.scaleAspectFill //UIViewContentMode.ScaleAspectFill
+            contentImage2.contentMode = UIView.ContentMode.scaleAspectFill //UIView.ContentMode.ScaleAspectFill
             cellView2.addSubview(contentImage2)
             
             
@@ -189,7 +189,7 @@ class CustomTableViewCellThree: UITableViewCell {
             self.addSubview(contentSelection2)
             imgVideo2 = createButton(CGRect(x: (UIScreen.main.bounds.width/2) - 20, y: (contentSelection2.bounds.height/2) - 30, width: 50, height: 50), title: "", border: false, bgColor: false, textColor: textColorMedium)
             imgVideo2.center = contentImage2.center
-            imgVideo2.setImage(UIImage(named: "VideoImage-white.png")!.maskWithColor(color: textColorLight), for: UIControlState.normal)
+            imgVideo2.setImage(UIImage(named: "VideoImage-white.png")!.maskWithColor(color: textColorLight), for: UIControl.State.normal)
             contentSelection2.addSubview(imgVideo2)
         }
     }

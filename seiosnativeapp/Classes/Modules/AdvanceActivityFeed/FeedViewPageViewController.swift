@@ -43,11 +43,11 @@ class FeedViewPageViewController: UIViewController, UITableViewDelegate, UITextF
     var navView = UIView()
     var feedObj = FeedTableViewController()
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     
@@ -85,9 +85,9 @@ class FeedViewPageViewController: UIViewController, UITableViewDelegate, UITextF
         
         
         // Initial table to show Activity Feeds
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         self.view.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         feedArray1.removeAll(keepingCapacity: false)
    
         browseFeed()

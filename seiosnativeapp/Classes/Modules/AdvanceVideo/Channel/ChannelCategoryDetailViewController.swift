@@ -95,7 +95,7 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
         // Set pull to referseh for channelTableView
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(ChannelCategoryDetailViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ChannelCategoryDetailViewController.refresh), for: UIControl.Event.valueChanged)
         channelTableView.addSubview(refresher)
         
         
@@ -244,7 +244,7 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
     {
         let row = (indexPath as NSIndexPath).row as Int
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCellThree
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         var videosInfo:NSDictionary!
         if(UIDevice.current.userInterfaceIdiom == .pad)
@@ -346,8 +346,8 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
                 let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                 
                 let range = (tempInfo as NSString).range(of: value)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                 
                 // TODO: Clean this up...
                 
@@ -493,8 +493,8 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
                 cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                     let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                     let range = (tempInfo as NSString).range(of: value2)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                     
                     
                     return mutableAttributedString
@@ -581,7 +581,7 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
                 
                 let subcat = Subcategoryarr[buttonIndex-1] as! NSDictionary
                 subcatid = subcat["sub_cat_id"] as! Int
-                feedFilter.setTitle(subcat["sub_cat_name"] as? String, for: UIControlState())
+                feedFilter.setTitle(subcat["sub_cat_name"] as? String, for: UIControl.State())
                 subcategory = subcat["sub_cat_name"] as? String
                 subsubcategory = ""
                 subsubcatid = nil
@@ -597,7 +597,7 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
             {
                 let subcat = SubSubcategoryarr[buttonIndex-1] as! NSDictionary
                 subsubcatid = subcat["tree_sub_cat_id"] as! Int
-                feedFilter2.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControlState())
+                feedFilter2.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControl.State())
                 subsubcategory = subcat["tree_sub_cat_name"] as? String
                 self.showSpinner = true
                 browseEntries()
@@ -930,7 +930,7 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.view.addSubview(self.refreshButton)
@@ -1105,7 +1105,7 @@ class ChannelCategoryDetailViewController: UIViewController,UITableViewDataSourc
                 }
                 
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch _ as NSError {
                     //print(error)

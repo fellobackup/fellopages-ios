@@ -168,15 +168,15 @@ class PackageDetailViewController: UIViewController
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
 
-        let button   = UIButton(type: UIButtonType.system) as UIButton
+        let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.frame = CGRect(x: self.view.bounds.size.width-100, y: 0, width: 20, height: 20)
         button.backgroundColor = UIColor.clear
-        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControlState())
+        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControl.State())
         
         if isUpgradePackageScreen{
-            button.addTarget(self, action: #selector(PackageDetailViewController.updatePackage), for: UIControlEvents.touchUpInside)
+            button.addTarget(self, action: #selector(PackageDetailViewController.updatePackage), for: UIControl.Event.touchUpInside)
         }else{
-            button.addTarget(self, action: #selector(PackageDetailViewController.send), for: UIControlEvents.touchUpInside)
+            button.addTarget(self, action: #selector(PackageDetailViewController.send), for: UIControl.Event.touchUpInside)
         }
         if self.contentType == "shippingMethod"
         {

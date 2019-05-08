@@ -25,7 +25,7 @@ class UserInfoTableViewCell: UITableViewCell {
     var cellView: UIView!
     var label1 : UILabel!
     var label2 : TTTAttributedLabel!
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

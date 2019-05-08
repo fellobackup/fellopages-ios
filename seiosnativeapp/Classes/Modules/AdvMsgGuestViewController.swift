@@ -110,8 +110,8 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
         
         
         toLabelText = createTextField(CGRect(x: PADING, y: reportType.frame.origin.y + reportType.frame.size.height+10, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Send To", corner: true)
-        toLabelText.attributedPlaceholder = NSAttributedString(string: "Send To ", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        toLabelText.addTarget(self, action: #selector(AdvMsgGuestViewController.toLabelTextChange(_:)), for: UIControlEvents.editingChanged)
+        toLabelText.attributedPlaceholder = NSAttributedString(string: "Send To ", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+        toLabelText.addTarget(self, action: #selector(AdvMsgGuestViewController.toLabelTextChange(_:)), for: UIControl.Event.editingChanged)
 
         toLabelText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         toLabelText.backgroundColor = bgColor
@@ -131,7 +131,7 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
         }
         
         
-        searchResultTableView = UITableView(frame: CGRect(x: PADING, y: toLabelText.frame.origin.y + toLabelText.frame.size.height, width: view.bounds.width - PADING, height: view.bounds.height-120), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: PADING, y: toLabelText.frame.origin.y + toLabelText.frame.size.height, width: view.bounds.width - PADING, height: view.bounds.height-120), style: UITableView.Style.grouped)
         searchResultTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -147,7 +147,7 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
         //        CGRectGetHeight(subjectLabelText.bounds) + subjectLabelText.frame.origin.y
         
         subjectLabelText = createTextField(CGRect(x: PADING, y: reportType.frame.origin.y+reportType.frame.size.height+40, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Subject", corner: true)
-        subjectLabelText.attributedPlaceholder = NSAttributedString(string: "Subject", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        subjectLabelText.attributedPlaceholder = NSAttributedString(string: "Subject", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         subjectLabelText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         subjectLabelText.delegate = self
         subjectLabelText.backgroundColor = bgColor
@@ -181,10 +181,10 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
         contentLabelText.layer.addSublayer(border4)
         view.addSubview(contentLabelText)
         
-        sendMsg = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItemStyle.done , target:self , action: #selector(AdvMsgGuestViewController.send))
+        sendMsg = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItem.Style.done , target:self , action: #selector(AdvMsgGuestViewController.send))
         
         
-        sendMsg.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControlState())
+        sendMsg.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControl.State())
         self.navigationItem.rightBarButtonItem = sendMsg
         
         
@@ -209,13 +209,13 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
     
     @objc func reportTypeAction(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
 
         for (_,value) in reportTypeDictionary{
 
             
             alertController.addAction(UIAlertAction(title: (value as! String), style: .default, handler:{ (UIAlertAction) -> Void in
-                self.reportType.setTitle((value as! String), for: UIControlState())
+                self.reportType.setTitle((value as! String), for: UIControl.State())
                 
                 if value as! String == self.guestSelect{
                     self.frameChange()
@@ -244,12 +244,12 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
     
     @objc func eventOccurrenceAction(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         for (_,value) in eventOccurrenceDictionary{
 
             
             alertController.addAction(UIAlertAction(title: (value as! String), style: .default, handler:{ (UIAlertAction) -> Void in
-                self.eventOccurrence.setTitle((value as! String), for: UIControlState())
+                self.eventOccurrence.setTitle((value as! String), for: UIControl.State())
                 
             }))
         }
@@ -322,7 +322,7 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
                                                     {
                                                         self.reportTypeDictionary = menu
                                                         
-                                                        self.reportType.setTitle(menu["3"] as? String, for: UIControlState())
+                                                        self.reportType.setTitle(menu["3"] as? String, for: UIControl.State())
                                                         self.guestSelect = (menu["4"] as? String)!
                                                         self.reportType.isHidden = false
 
@@ -370,7 +370,7 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
                                                         
                                                         self.eventOccurrenceDictionary = menu
                                                         
-                                                        self.eventOccurrence.setTitle(menu["all"] as? String, for: UIControlState())
+                                                        self.eventOccurrence.setTitle(menu["all"] as? String, for: UIControl.State())
                                                         self.eventOccurrence.isHidden = false
                                                         //self.frameChange()
                                                     }
@@ -615,7 +615,7 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         
         if let response = suggestedFrnd[(indexPath as NSIndexPath).row] as? NSDictionary {
@@ -648,9 +648,9 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
 
             if let id = response["id"] as? Int{
                 if frndTag[id] != nil{
-                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }else{
-                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
                 }
             }
             
@@ -819,8 +819,8 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
         }
         else{
             let alertController = UIAlertController(title: NSLocalizedString("Error",  comment: ""), message:
-                errorMsg, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",  comment: ""), style: UIAlertActionStyle.default,handler: nil))
+                errorMsg, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",  comment: ""), style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -896,8 +896,8 @@ class AdvMsgGuestViewController: UIViewController , UISearchBarDelegate ,UITable
         
         
         toLabelText = createTextField(CGRect(x: PADING, y: reportType.frame.origin.y + reportType.frame.size.height+10, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Send To", corner: true)
-        toLabelText.attributedPlaceholder = NSAttributedString(string: "Send To ", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        toLabelText.addTarget(self, action: #selector(AdvMsgGuestViewController.toLabelTextChange(_:)), for: UIControlEvents.editingChanged)
+        toLabelText.attributedPlaceholder = NSAttributedString(string: "Send To ", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+        toLabelText.addTarget(self, action: #selector(AdvMsgGuestViewController.toLabelTextChange(_:)), for: UIControl.Event.editingChanged)
 
         toLabelText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         toLabelText.backgroundColor = bgColor

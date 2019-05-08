@@ -48,7 +48,7 @@ class DescriptionViewController: UIViewController, UIWebViewDelegate , TTTAttrib
 
         // WebView for Blog Detail
         detailWebView.frame = CGRect(x: 0, y: 10, width: view.bounds.width, height: view.bounds.height)
-        self.detailWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 0.0, 0.0, 0.0);
+        self.detailWebView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 0.0, right: 0.0);
         //self.detailWebView.scrollView.delegate = self
         detailWebView.backgroundColor = bgColor
         detailWebView.isOpaque = false

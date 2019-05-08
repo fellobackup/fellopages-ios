@@ -55,7 +55,7 @@ class CategoryTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -71,7 +71,7 @@ class CategoryTableViewCell: UITableViewCell {
         
         //classifiedImageView = createImageView(CGRect(x:2*PADING , 0, size - 2*PADING, 160 - 5), border: true)
         classifiedImageView = categoryImageViewWithGradientadvanced(frame: CGRect(x: 2*PADING , y: 0, width: size - 2*PADING, height: 160 - 5))
-        classifiedImageView.contentMode = UIViewContentMode.scaleAspectFill
+        classifiedImageView.contentMode = UIView.ContentMode.scaleAspectFill
         classifiedImageView.layer.masksToBounds = true
         classifiedImageView.isUserInteractionEnabled = true
         classifiedImageView.backgroundColor = UIColor.lightGray//navColor
@@ -102,7 +102,7 @@ class CategoryTableViewCell: UITableViewCell {
 
         classifiedImageView1 = categoryImageViewWithGradientadvanced(frame: CGRect(x: (2 * PADING) + size  , y: 0, width: size - 2*PADING , height: 160-5))
         //classifiedImageView1 = createImageView(CGRect(x:(2 * PADING) + size  , 0, size - 2*PADING , 160-5), border: true)
-        classifiedImageView1.contentMode = UIViewContentMode.scaleAspectFill
+        classifiedImageView1.contentMode = UIView.ContentMode.scaleAspectFill
         classifiedImageView1.layer.masksToBounds = true
         classifiedImageView1.isUserInteractionEnabled = true
         classifiedImageView1.backgroundColor = UIColor.lightGray//navColor

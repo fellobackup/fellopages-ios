@@ -62,11 +62,11 @@ class LocationAutoSuggestInForm: UIViewController, UIGestureRecognizerDelegate, 
             
         }
         
-        button   = UIButton(type: UIButtonType.system) as UIButton
+        button   = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.frame = CGRect(x: self.view.bounds.size.width-100, y: 0, width: 20, height: 20)
         button.backgroundColor = UIColor.clear
-        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControlState())
-        button.addTarget(self, action: #selector(LocationAutoSuggestInForm.send), for: UIControlEvents.touchUpInside)
+        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControl.State())
+        button.addTarget(self, action: #selector(LocationAutoSuggestInForm.send), for: UIControl.Event.touchUpInside)
         //        button.isHidden = true
         let sendButton = UIBarButtonItem()
         
@@ -81,8 +81,8 @@ class LocationAutoSuggestInForm: UIViewController, UIGestureRecognizerDelegate, 
         
         
         locLabel = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Type location",  comment: ""), corner: true)
-        locLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type location",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        locLabel.addTarget(self, action: #selector(LocationAutoSuggestInForm.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        locLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type location",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+        locLabel.addTarget(self, action: #selector(LocationAutoSuggestInForm.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         locLabel.font =  UIFont(name: fontName, size: FONTSIZELarge)
         locLabel.backgroundColor = bgColor
         locLabel.delegate = self
@@ -106,10 +106,10 @@ class LocationAutoSuggestInForm: UIViewController, UIGestureRecognizerDelegate, 
         self.view.addSubview(lineView1)
         
         
-        locationTable = UITableView(frame: (CGRect(x: locLabel.bounds.origin.x,y: locLabel.frame.origin.y+locLabel.frame.size.height+1, width: locLabel.bounds.size.width, height: view.bounds.height-(locLabel.bounds.origin.x + locLabel.frame.size.height+5 + tabBarHeight) )), style: UITableViewStyle.grouped)
+        locationTable = UITableView(frame: (CGRect(x: locLabel.bounds.origin.x,y: locLabel.frame.origin.y+locLabel.frame.size.height+1, width: locLabel.bounds.size.width, height: view.bounds.height-(locLabel.bounds.origin.x + locLabel.frame.size.height+5 + tabBarHeight) )), style: UITableView.Style.grouped)
         locationTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        locationTable.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        locationTable.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         locationTable.rowHeight = 35
         locationTable.isHidden = true
         locationTable.isOpaque = false
@@ -313,7 +313,7 @@ class LocationAutoSuggestInForm: UIViewController, UIGestureRecognizerDelegate, 
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         let dic = locationArray.object(at: (indexPath as NSIndexPath).row) as! NSDictionary
         cell.textLabel?.text = dic["label"] as? String
         

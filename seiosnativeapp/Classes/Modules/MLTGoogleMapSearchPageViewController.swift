@@ -62,8 +62,8 @@ class MLTGoogleMapSearchPageViewController: UIViewController,UISearchBarDelegate
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(MLTGoogleMapSearchPageViewController.filter))
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(MLTGoogleMapSearchPageViewController.filter))
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         self.navigationItem.rightBarButtonItem = filter
         
         automaticallyAdjustsScrollViewInsets = false
@@ -482,7 +482,7 @@ class MLTGoogleMapSearchPageViewController: UIViewController,UISearchBarDelegate
     override func viewWillDisappear(_ animated: Bool) {
         searchBar.resignFirstResponder()
         
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 loadFilter("search")
                 globSearchString = searchBar.text!

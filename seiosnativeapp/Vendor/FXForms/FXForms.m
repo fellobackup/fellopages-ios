@@ -3683,7 +3683,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                        action:@selector(changeDateFromButton:)
              forControlEvents:UIControlEventTouchUpInside];
             [button setTitle:@"DONE" forState:UIControlStateNormal];
-            [button setBackgroundColor:[UIColor clearColor] forUIControlState:UIControlStateNormal];
+            [button setBackgroundColor:[UIColor clearColor] for:UIControlStateNormal state:UIControlStateNormal];
             [button setTitleColor:[UIColor colorWithRed:41/255.0 green:121/255.0 blue:255/255.0 alpha:1] forState:UIControlStateNormal];
             button.frame = CGRectMake(self.frame.size.width-70, self.datePicker.frame.origin.y, 60, 40.0);
             button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -4095,7 +4095,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
              forControlEvents:UIControlEventTouchUpInside];
             [button setTitle:@"DONE" forState:UIControlStateNormal];
             [button setTitleColor:[UIColor colorWithRed:41/255.0 green:121/255.0 blue:255/255.0 alpha:1] forState:UIControlStateNormal];
-            [button setBackgroundColor:[UIColor clearColor] forUIControlState:UIControlStateNormal];
+            [button setBackgroundColor:[UIColor clearColor] for:UIControlStateNormal state:UIControlStateNormal];
             button.frame = CGRectMake(self.frame.size.width-70, self.pickerView.frame.origin.y, 60, 40.0);
             button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
             [doneView addSubview:button];

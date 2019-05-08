@@ -156,8 +156,8 @@ class StickersDetailsViewController: UIViewController,TTTAttributedLabelDelegate
         self.stickerDescription.setText(textWithTitleDescription , afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
             let boldFont1 = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZELarge, nil)
             let range1 = (textWithTitleDescription as NSString).range(of: titleOfSticker as String)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
             return mutableAttributedString!
         })
         self.stickerDescription.sizeToFit()
@@ -190,7 +190,7 @@ class StickersDetailsViewController: UIViewController,TTTAttributedLabelDelegate
                 }
             }
         }
-        AddOrRemove.addTarget(self, action: #selector(StickersDetailsViewController.addOrRemoveSticker), for: UIControlEvents.touchUpInside)
+        AddOrRemove.addTarget(self, action: #selector(StickersDetailsViewController.addOrRemoveSticker), for: UIControl.Event.touchUpInside)
         scrollView.addSubview(AddOrRemove)
         
         

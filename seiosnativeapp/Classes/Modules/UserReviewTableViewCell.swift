@@ -71,7 +71,7 @@ class UserReviewTableViewCell: UITableViewCell
     }
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -221,7 +221,7 @@ class UserReviewTableViewCell: UITableViewCell
         
         btnhelpful = createButton(CGRect(x: lblhelpfulstar.frame.origin.x+lblhelpfulstar.frame.size.width+5,y: 13,width: 20,height: 20), title: "", border: false,bgColor: false, textColor: textColorMedium)
         
-        btnhelpful.setTitleColor(textColorMedium, for: UIControlState())
+        btnhelpful.setTitleColor(textColorMedium, for: UIControl.State())
         btnhelpful.setTitleColor(navColor, for: .selected)
         
         btnhelpful.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
@@ -241,7 +241,7 @@ class UserReviewTableViewCell: UITableViewCell
         
         btnNothelpful = createButton(CGRect(x: lblhelpfulcount.frame.origin.x+lblhelpfulcount.frame.size.width+20,y: 15,width: 20,height: 20), title: "\u{f165}", border: false,bgColor: false, textColor: textColorMedium )
         
-        btnNothelpful.setTitleColor(textColorMedium, for: UIControlState())
+        btnNothelpful.setTitleColor(textColorMedium, for: UIControl.State())
         btnNothelpful.setTitleColor(navColor, for: .selected)
         
         btnNothelpful.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
@@ -270,7 +270,7 @@ class UserReviewTableViewCell: UITableViewCell
             
             let rate = createButton(CGRect(x: origin_x, y: 10, width: 15, height: 15), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -282,7 +282,7 @@ class UserReviewTableViewCell: UITableViewCell
             {
                 if i <= rating
                 {
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }

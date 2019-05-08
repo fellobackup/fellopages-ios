@@ -84,7 +84,7 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
         PostFeedListObj.dataSource = self
         PostFeedListObj.delegate = self
         PostFeedListObj.estimatedRowHeight = 50
-        PostFeedListObj.rowHeight = UITableViewAutomaticDimension
+        PostFeedListObj.rowHeight = UITableView.automaticDimension
         PostFeedListObj.backgroundColor = textColorLight
         PostFeedListObj.separatorColor =  backgroundLightColor
         view.addSubview(PostFeedListObj)
@@ -105,27 +105,27 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
         for i in 0 ..< arrayOfpostFeedOptions.count - 1{
             if tagPostOptions[i] == 0{
                 let attrString: NSMutableAttributedString = NSMutableAttributedString(string: String(format: NSLocalizedString("%@  ", comment:""),(arrayOfpostFeedOptions[i] as? String)!))
-                attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: tagIconColor, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: tagIconColor, range: NSMakeRange(0, attrString.length))
                 titleString.append(attrString)
                 
             }
             else if tagPostOptions[i] == 1{
                 let attrString: NSMutableAttributedString = NSMutableAttributedString(string: String(format: NSLocalizedString("%@  ", comment:""),(arrayOfpostFeedOptions[i] as? String)!))
-                attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: CheckInIconColor, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: CheckInIconColor, range: NSMakeRange(0, attrString.length))
                 titleString.append(attrString)
             }
             else if tagPostOptions[i] == 2{
                 let attrString: NSMutableAttributedString = NSMutableAttributedString(string: String(format: NSLocalizedString("%@  ", comment:""),(arrayOfpostFeedOptions[i] as? String)!))
-                attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: PhotoIconColor, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: PhotoIconColor, range: NSMakeRange(0, attrString.length))
                 titleString.append(attrString)
             }
             else if tagPostOptions[i] == 5{
                 let attrString: NSMutableAttributedString = NSMutableAttributedString(string: String(format: NSLocalizedString("%@  ", comment:""),(arrayOfpostFeedOptions[i] as? String)!))
-                attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: videoIconColor, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: videoIconColor, range: NSMakeRange(0, attrString.length))
                 titleString.append(attrString)
 
             }
@@ -196,7 +196,7 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
 //        let gesture = (gestureRecognizer as! UIPanGestureRecognizer)
 //        let direction = gesture.velocity(in: view).y
 //        let indexPath = IndexPath(row: 0, section: 0)
-//        PostFeedListObj.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: false)
+//        PostFeedListObj.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: false)
 //        let y = view.frame.minY
 //        if (y == fullView && PostFeedListObj.contentOffset.y == 0 && direction > 0) || (y == partialView) {
 //            PostFeedListObj.isScrollEnabled = true // changed
@@ -312,7 +312,7 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BottomSheetCell
         cell.backgroundColor = textColorLight
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.separatorInset.left = 10.0
         cell.separatorInset.right = 10.0
         
@@ -320,40 +320,40 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
         switch(tagPostOptions[indexPath.row]){
         case 0:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: tagIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: tagIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
             case 1:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: CheckInIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: CheckInIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
         case 2:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: PhotoIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: PhotoIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
             
         case 5:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: videoIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: videoIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
             
         case 6:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: linkIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: linkIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
         case 7:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: videoIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: videoIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
 //        case 8:
@@ -364,8 +364,8 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
             
         case 9:
             let attrString = NSMutableAttributedString(string: (arrayOfpostFeedOptions[indexPath.row] as? String)!)
-            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
-            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: linkIconColor, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!, range: NSMakeRange(0, attrString.length))
+            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: linkIconColor, range: NSMakeRange(0, attrString.length))
             cell.imageview.attributedText = attrString
             
         default:
@@ -373,8 +373,8 @@ class BottomSheetForPostViewController: UIViewController, UITableViewDataSource,
         }
         
         let descString: NSMutableAttributedString = NSMutableAttributedString(string: String(format: NSLocalizedString("%@", comment:""),(arrayOfpostOptionsName[indexPath.row] as? String)!))
-        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-        descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+        descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
         
         cell.imagetitle.attributedText = descString
         return cell

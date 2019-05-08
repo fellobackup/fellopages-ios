@@ -543,7 +543,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                 welcomeImageView.isUserInteractionEnabled = true
                                                 
                                                 if let url = NSURL(string: dic["image"] as! String){
-                                                    welcomeImageView.contentMode =  UIViewContentMode.scaleAspectFit
+                                                    welcomeImageView.contentMode =  UIView.ContentMode.scaleAspectFit
                                                     welcomeImageView.kf.indicatorType = .activity
                                                     (welcomeImageView.kf.indicator?.view as? UIActivityIndicatorView)?.color = buttonColor
                                                     welcomeImageView.kf.setImage(with: url as URL?, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
@@ -562,7 +562,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                     let frame1 = CGRect(x: self.view.bounds.width - 80 , y:200-(TOPPADING-64), width:30, height:30)
                                                     let shareButton = createButton(frame1, title: "", border: false, bgColor: false, textColor: textColorLight)
                                                     let image = UIImage(named: "upload") as UIImage?
-                                                    shareButton.setImage(image, for: UIControlState.normal)
+                                                    shareButton.setImage(image, for: UIControl.State.normal)
                                                     shareButton.setTitleColor(textColorDark, for: .highlighted)
                                                     shareButton.titleLabel?.font =  UIFont(name: fontName, size:10.0)
                                                     shareButton.addTarget(self, action: #selector(ProductProfilePage.shareItem), for: .touchUpInside)
@@ -614,8 +614,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                     self.productName.setText(productTitle, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                                         let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZELarge, nil)
                                         let range = (productTitle as NSString).range(of: productTitle)
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                         return mutableAttributedString!
                                         
                                         
@@ -735,8 +735,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                             let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZESmall, nil)
                                                             
                                                             let range1 = (profileFieldString as NSString).range(of: labelDesc as String)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                             
                                                             
                                                             return mutableAttributedString!
@@ -751,13 +751,13 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                         self.label2.isHidden = false
                                                         self.label2.layer.cornerRadius = 2.0
                                                         self.label2.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZESmall)
-                                                        self.label2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                                                        self.label2.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
                                                         self.label2.backgroundColor = navColor
                                                         self.label2.tag = i
                                                         profileFieldString2 = NSLocalizedString("Download"  , comment: "")
-                                                        self.label2.setTitle("\(profileFieldString2)", for: UIControlState.normal)
+                                                        self.label2.setTitle("\(profileFieldString2)", for: UIControl.State.normal)
                                                         self.label2.setTitleColor(textColorDark, for: .highlighted)
-                                                        self.label2.addTarget(self, action: #selector(ProductProfilePage.openDownloadableProduct), for: UIControlEvents.touchUpInside)
+                                                        self.label2.addTarget(self, action: #selector(ProductProfilePage.openDownloadableProduct), for: UIControl.Event.touchUpInside)
                                                         origin_labelheight_y2  = origin_labelheight_y2 + self.label2.bounds.height + 5
                                                         self.downloadableProducts.addSubview(self.label2)
                                                         if origin_labelheight_y2 > origin_labelheight_y{
@@ -1047,11 +1047,11 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                         self.configView.frame.origin.y = getBottomEdgeY(inputView:self.priceView) + 5
                                         self.configView.isHidden = false
                                         
-                                        self.configOnClick.setTitle(NSLocalizedString("Select Configurations ", comment: ""), for: UIControlState.normal)
+                                        self.configOnClick.setTitle(NSLocalizedString("Select Configurations ", comment: ""), for: UIControl.State.normal)
                                         self.configView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProductProfilePage.selectConfigAction)))
                                         self.configOnClick.titleLabel?.textAlignment = NSTextAlignment.center
                                         self.config = configArray
-                                        self.configOnClick.addTarget(self, action: #selector(ProductProfilePage.selectConfigAction), for: UIControlEvents.touchUpInside)
+                                        self.configOnClick.addTarget(self, action: #selector(ProductProfilePage.selectConfigAction), for: UIControl.Event.touchUpInside)
                                         var arrayForShowFields = [NSDictionary]()
                                         if let configDependentArray = configArray["dependentFields"] as? NSArray{
                                             if configDependentArray.count > 0
@@ -1097,10 +1097,10 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                             }
                                             var heightForMore = self.configOnClick.bounds.height
                                             let configField = createButton(CGRect(x:2 * PADING, y:heightForMore,width:self.view.bounds.width/2  , height:30),title: "", border: false,bgColor: false, textColor: navColor )
-                                            configField.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-                                            configField.setTitle(NSLocalizedString("\(nameOfDependentField)", comment: ""), for: UIControlState.normal)
+                                            configField.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+                                            configField.setTitle(NSLocalizedString("\(nameOfDependentField)", comment: ""), for: UIControl.State.normal)
                                             configField.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-                                            configField.addTarget(self, action: #selector(ProductProfilePage.selectConfigAction), for: UIControlEvents.touchUpInside)
+                                            configField.addTarget(self, action: #selector(ProductProfilePage.selectConfigAction), for: UIControl.Event.touchUpInside)
                                             self.configView.addSubview(configField)
                                             heightForMore = heightForMore + configField.bounds.height
                                             self.configView.frame.size.height = heightForMore + 5
@@ -1139,8 +1139,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                         configField.frame.origin.x = self.view.bounds.width/2
                                                         heightForMore2 = heightForMore2+30
                                                     }
-                                                    configField.setTitle(NSLocalizedString("\(nameOfDependentField)", comment: ""), for: UIControlState.normal)
-                                                    configField.addTarget(self, action: #selector(ProductProfilePage.selectConfigAction), for: UIControlEvents.touchUpInside)
+                                                    configField.setTitle(NSLocalizedString("\(nameOfDependentField)", comment: ""), for: UIControl.State.normal)
+                                                    configField.addTarget(self, action: #selector(ProductProfilePage.selectConfigAction), for: UIControl.Event.touchUpInside)
                                                     configField.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
                                                     
                                                     self.configView.addSubview(configField)
@@ -1295,7 +1295,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                             let linkActiveColor = UIColor.green
                                                             
                                                             self.label5.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                            self.label5.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                            self.label5.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                             self.label5.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                             self.label5.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                             self.label5.isUserInteractionEnabled = true
@@ -1305,8 +1305,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                                 let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                                 
                                                                 let range1 = (profileFieldString as NSString).range(of: labelDesc as String)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                                 
                                                                 
                                                                 return mutableAttributedString!
@@ -1357,7 +1357,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                             
                                                             
                                                             self.label6.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                            self.label6.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                            self.label6.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                             self.label6.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                             self.label6.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                             self.label6.isUserInteractionEnabled = true
@@ -1369,8 +1369,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                                 let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                                 
                                                                 let range1 = (profileFieldString2 as NSString).range(of: labelDesc2 as String)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                                 
                                                                 
                                                                 return mutableAttributedString!
@@ -1436,7 +1436,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                         let linkActiveColor = UIColor.green
                                                         
                                                         self.label5.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                        self.label5.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                        self.label5.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                         self.label5.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                         self.label5.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                         self.label5.isUserInteractionEnabled = true
@@ -1446,8 +1446,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                             let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                             
                                                             let range1 = (profileFieldString as NSString).range(of: labelDesc as String)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                             
                                                             
                                                             return mutableAttributedString!
@@ -1497,7 +1497,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                         
                                                         
                                                         self.label6.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                        self.label6.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                        self.label6.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                         self.label6.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                         self.label6.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                         self.label6.isUserInteractionEnabled = true
@@ -1509,8 +1509,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                             let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                             
                                                             let range1 = (profileFieldString2 as NSString).range(of: labelDesc2 as String)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                             
                                                             
                                                             return mutableAttributedString!
@@ -1578,10 +1578,10 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                         self.shippingDetailString.isHidden = false
                                                         
                                                         self.shippingDetailString.backgroundColor = UIColor.white//aafBgColor
-                                                        self.shippingDetailString.setTitle(NSLocalizedString("Shipping Methods ", comment: ""), for: UIControlState.normal)
+                                                        self.shippingDetailString.setTitle(NSLocalizedString("Shipping Methods ", comment: ""), for: UIControl.State.normal)
                                                         self.shippingDetailString.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
                                                         
-                                                        self.shippingDetailString.addTarget(self, action: #selector(ProductProfilePage.methodsDetails), for: UIControlEvents.touchUpInside)
+                                                        self.shippingDetailString.addTarget(self, action: #selector(ProductProfilePage.methodsDetails), for: UIControl.Event.touchUpInside)
                                                         origin_labelheight_y  = origin_labelheight_y + self.shippingDetailString.bounds.height + 10
                                                         self.shippingDetails.addSubview(self.shippingDetailString)
                                                         
@@ -1617,8 +1617,8 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                                         let boldFont1 = CTFontCreateWithName((fontNormal as CFString?)!, FONTSIZESmall, nil)
                                                                         
                                                                         let range1 = (profileFieldString as NSString).range(of: profileFieldString as String)
-                                                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                                         
                                                                         
                                                                         return mutableAttributedString!
@@ -1639,10 +1639,10 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                                         heightForMore = origin_labelheight_y
                                                         
                                                         self.moreShippingMethodDetails = createButton(CGRect(x:2 * PADING, y:heightForMore,width:self.view.bounds.width - 30 , height:25),title: "", border: false,bgColor: false, textColor: navColor )
-                                                        self.moreShippingMethodDetails.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
-                                                        self.moreShippingMethodDetails.setTitle(NSLocalizedString("More", comment: ""), for: UIControlState.normal)
+                                                        self.moreShippingMethodDetails.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
+                                                        self.moreShippingMethodDetails.setTitle(NSLocalizedString("More", comment: ""), for: UIControl.State.normal)
                                                         self.moreShippingMethodDetails.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-                                                        self.moreShippingMethodDetails.addTarget(self, action: #selector(ProductProfilePage.methodsDetails), for: UIControlEvents.touchUpInside)
+                                                        self.moreShippingMethodDetails.addTarget(self, action: #selector(ProductProfilePage.methodsDetails), for: UIControl.Event.touchUpInside)
                                                         self.shippingDetails.addSubview(self.moreShippingMethodDetails)
                                                         heightForMore = heightForMore + self.moreShippingMethodDetails.bounds.height
                                                         self.shippingDetails.frame.size.height = heightForMore + 5
@@ -1683,7 +1683,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                         self.descriptionDetailString.isHidden = false
                                         
                                         self.descriptionDetailString.backgroundColor = UIColor.white//aafBgColor
-                                        self.descriptionDetailString.setTitle(NSLocalizedString("Overview", comment: ""), for: UIControlState.normal)
+                                        self.descriptionDetailString.setTitle(NSLocalizedString("Overview", comment: ""), for: UIControl.State.normal)
                                         self.descriptionDetailString.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
                                         self.descriptionView.addSubview(self.descriptionDetailString)
                                         
@@ -1728,11 +1728,11 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                                         
                                         if self.RedirectText.length > tempTextLimit{
                                             self.descriptionMoreOrLess.frame =  CGRect(x:self.view.bounds.width - 50, y:self.Description.frame.size.height + self.Description.frame.origin.y ,  width:40, height:30)
-                                            self.descriptionMoreOrLess.addTarget(self, action: #selector(ProductProfilePage.descriptionOpen), for: UIControlEvents.touchUpInside)
+                                            self.descriptionMoreOrLess.addTarget(self, action: #selector(ProductProfilePage.descriptionOpen), for: UIControl.Event.touchUpInside)
                                             
                                             self.descriptionMoreOrLess.isHidden = false
                                             
-                                            self.descriptionMoreOrLess.setTitle(NSLocalizedString("More", comment: ""), for: UIControlState.normal)
+                                            self.descriptionMoreOrLess.setTitle(NSLocalizedString("More", comment: ""), for: UIControl.State.normal)
                                         }else{
                                             self.descriptionMoreOrLess.frame =  CGRect(x:self.view.bounds.width - 50, y:self.Description.frame.size.height + self.Description.frame.origin.y ,  width:40, height:30)
                                             self.descriptionMoreOrLess.isHidden = true
@@ -2164,7 +2164,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
     
     // For Share
     @objc func shareItem(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let presentedVC = AdvanceShareViewController()
@@ -2186,7 +2186,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
         
         
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -2201,7 +2201,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -2260,7 +2260,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
     
     // Gutter Menu Option
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         var url = ""
@@ -2284,7 +2284,7 @@ class ProductProfilePage: UIViewController, UIScrollViewDelegate, TTTAttributedL
                         }
                         if (condition.range(of: "delete") != nil)
                         {
-                            alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                            alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                                 
                                 let condition = dic["name"] as! String
                                 switch(condition)

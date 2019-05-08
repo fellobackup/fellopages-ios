@@ -60,7 +60,7 @@ class AddRemoveStickersViewController: UIViewController,TTTAttributedLabelDelega
         stickersTableView.estimatedRowHeight = 75.0
         stickersTableView.dataSource = self
         stickersTableView.delegate = self
-        stickersTableView.rowHeight = UITableViewAutomaticDimension
+        stickersTableView.rowHeight = UITableView.automaticDimension
         stickersTableView.backgroundColor = tableViewBgColor
         stickersTableView.separatorColor = TVSeparatorColor
         if #available(iOS 11, *){
@@ -154,7 +154,7 @@ class AddRemoveStickersViewController: UIViewController,TTTAttributedLabelDelega
     {
         let row = (indexPath as NSIndexPath).row
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         cell.backgroundColor = tableViewBgColor
         
         var stickersInfo:NSDictionary

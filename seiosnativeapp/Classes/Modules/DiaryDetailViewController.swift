@@ -133,7 +133,7 @@ class DiaryDetailViewController: UIViewController,UITableViewDataSource,UITableV
         eventTableView.delegate = self
         eventTableView.isOpaque = false
         eventTableView.backgroundColor = tableViewBgColor
-        eventTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        eventTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         mainView.addSubview(eventTableView)
         
         // Set tableview to show events
@@ -156,7 +156,7 @@ class DiaryDetailViewController: UIViewController,UITableViewDataSource,UITableV
         
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(DiaryDetailViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(DiaryDetailViewController.refresh), for: UIControl.Event.valueChanged)
         eventTableView.addSubview(refresher)
 
         
@@ -433,7 +433,7 @@ class DiaryDetailViewController: UIViewController,UITableViewDataSource,UITableV
         
         
         let cell = eventTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! EventViewTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.lineView.isHidden = false
         cell.dateView.frame.size.height = 80
         cell.dateView.backgroundColor = navColor
@@ -888,7 +888,7 @@ class DiaryDetailViewController: UIViewController,UITableViewDataSource,UITableV
         var confirmationAlert = true
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         for menu in contentGutterMenu
         {
             if let menuItem = menu as? NSDictionary
@@ -1384,11 +1384,11 @@ class DiaryDetailViewController: UIViewController,UITableViewDataSource,UITableV
                                     {
                                         
                                         
-                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(DiaryDetailViewController.addNewEvent))
-                                        let menuItem = UIBarButtonItem(title: "\(optionIcon)", style: UIBarButtonItemStyle.plain, target: self, action: #selector(DiaryDetailViewController.showMainGutterMenu))
+                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(DiaryDetailViewController.addNewEvent))
+                                        let menuItem = UIBarButtonItem(title: "\(optionIcon)", style: UIBarButtonItem.Style.plain, target: self, action: #selector(DiaryDetailViewController.showMainGutterMenu))
                                         
                                         
-                                        menuItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+                                        menuItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
                                         
                                         self.navigationItem.setRightBarButtonItems([addBlog,menuItem], animated: true)
                                         
@@ -1462,7 +1462,7 @@ class DiaryDetailViewController: UIViewController,UITableViewDataSource,UITableV
                                     self.refreshButton.backgroundColor = bgColor
                                     self.refreshButton.layer.borderColor = navColor.cgColor
                                     self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                                    self.refreshButton.addTarget(self, action: #selector(DiaryDetailViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                                    self.refreshButton.addTarget(self, action: #selector(DiaryDetailViewController.browseEntries), for: UIControl.Event.touchUpInside)
                                     self.refreshButton.layer.cornerRadius = 5.0
                                     self.refreshButton.layer.masksToBounds = true
                                     self.mainView.addSubview(self.refreshButton)

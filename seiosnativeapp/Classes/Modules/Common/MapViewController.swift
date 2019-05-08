@@ -39,7 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         setNavigationImage(controller: self)
         
 //        let searchBar = UISearchBar()
-//        searchBar.searchBarStyle = UISearchBarStyle.minimal
+//        searchBar.searchBarStyle = UISearchBar.Style.minimal
 //        searchBar.barTintColor = UIColor.clear
 //        searchBar.tintColor = textColorLight
 //        searchBar.backgroundColor = navColor
@@ -81,7 +81,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         view.addSubview(mapView)
         
-        rightBarButton = UIBarButtonItem(image: UIImage(named: "upload") , style: UIBarButtonItemStyle.plain , target: self, action: #selector(MapViewController.openMapSettings))
+        rightBarButton = UIBarButtonItem(image: UIImage(named: "upload") , style: UIBarButtonItem.Style.plain , target: self, action: #selector(MapViewController.openMapSettings))
         rightBarButton.isEnabled = false
         self.navigationItem.rightBarButtonItem = rightBarButton
 
@@ -185,8 +185,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             longitude: self.longitude
         )
         
-        _ = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMakeWithDistance(locationCoordinate, 1500, 1500);  // MKCoordinateRegion(center: locationCoordinate, span: span)
+        _ = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: locationCoordinate, latitudinalMeters: 1500, longitudinalMeters: 1500);  // MKCoordinateRegion(center: locationCoordinate, span: span)
         mapView.setRegion(region, animated: true)
         self.mapView.showsBuildings = true
         
@@ -223,7 +223,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @objc func openMapSettings(){
         //print("browser settings")
-         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
          alertController.addAction(UIAlertAction(title: NSLocalizedString("Open in Maps", comment: ""), style: .default, handler: { (UIAlertAction) -> Void in
                 self.openInMap()
          }))

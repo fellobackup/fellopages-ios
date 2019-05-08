@@ -86,7 +86,7 @@ class ContentSlideshowScrollView: UIScrollView {
             contentView.addSubview(contentTitle)
             contentSelection = createButton(contentView.frame, title: "", border: false, bgColor: false, textColor: UIColor.clear)
 //            if comingFrom != "" {
-//            contentSelection.addTarget(self, action: #selector(ContentSlideshowScrollView.showSellPage), for: UIControlEvents.touchUpInside)
+//            contentSelection.addTarget(self, action: #selector(ContentSlideshowScrollView.showSellPage), for: UIControl.Event.touchUpInside)
 //            }
             contentSelection.tag = i
             self.addSubview(contentSelection)
@@ -156,7 +156,7 @@ class ContentSlideshowScrollView: UIScrollView {
             contentTitle.lineBreakMode = .byTruncatingTail
             contentView.addSubview(contentTitle)
             contentSelection = createButton(contentView.frame, title: "", border: false, bgColor: false, textColor: UIColor.clear)
-            contentSelection.addTarget(self, action: #selector(ContentSlideshowScrollView.showStoreProfile), for: UIControlEvents.touchUpInside)
+            contentSelection.addTarget(self, action: #selector(ContentSlideshowScrollView.showStoreProfile), for: UIControl.Event.touchUpInside)
             contentSelection.tag = i
             self.addSubview(contentSelection)
             i += 1
@@ -261,7 +261,7 @@ class ContentSlideshowScrollView: UIScrollView {
                     contentImage.kf.setImage(with: url1! as URL?, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                         
                     })
-                    contentImage.contentMode =  UIViewContentMode.scaleAspectFit
+                    contentImage.contentMode =  UIView.ContentMode.scaleAspectFit
                 }
                 else{
                     contentImage.image = nil
@@ -284,7 +284,7 @@ class ContentSlideshowScrollView: UIScrollView {
             
 
             contentSelection = createButton(contentView.frame, title: "", border: false, bgColor: false, textColor: UIColor.clear)
-            contentSelection.addTarget(self, action: #selector(ContentSlideshowScrollView.showProduct), for: UIControlEvents.touchUpInside)
+            contentSelection.addTarget(self, action: #selector(ContentSlideshowScrollView.showProduct), for: UIControl.Event.touchUpInside)
             contentSelection.tag = i
             self.addSubview(contentSelection)
             

@@ -54,14 +54,14 @@ class MusicTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
         let size = (UIScreen.main.bounds.width - (2 * PADING))/2
         
         classifiedImageView = Content1ImageViewWithGradient(frame: CGRect(x: 2*PADING , y: contentPADING, width: size - 2*PADING, height: 160 - 5))
-        classifiedImageView.contentMode = UIViewContentMode.scaleAspectFill
+        classifiedImageView.contentMode = UIView.ContentMode.scaleAspectFill
         classifiedImageView.layer.masksToBounds = true
         classifiedImageView.isUserInteractionEnabled = true
         classifiedImageView.backgroundColor = placeholderColor
@@ -90,7 +90,7 @@ class MusicTableViewCell: UITableViewCell {
         MusicPlays.isHidden = true
         
         classifiedImageView1 = Content1ImageViewWithGradient(frame: CGRect(x: (2 * PADING) + size  , y: contentPADING, width: size - 2*PADING , height: 160-5))
-        classifiedImageView1.contentMode = UIViewContentMode.scaleAspectFill
+        classifiedImageView1.contentMode = UIView.ContentMode.scaleAspectFill
         classifiedImageView1.layer.masksToBounds = true
         classifiedImageView1.isUserInteractionEnabled = true
         classifiedImageView1.backgroundColor = placeholderColor

@@ -89,9 +89,9 @@ class MLTSearchGridViewController: UIViewController ,UITableViewDataSource, UITa
         self.navigationItem.leftBarButtonItem = barButtonItem
 
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(MLTSearchGridViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(MLTSearchGridViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -123,7 +123,7 @@ class MLTSearchGridViewController: UIViewController ,UITableViewDataSource, UITa
         listingsTableView.rowHeight = 253
         listingsTableView.dataSource = self
         listingsTableView.delegate = self
-        listingsTableView.rowHeight = UITableViewAutomaticDimension
+        listingsTableView.rowHeight = UITableView.automaticDimension
         listingsTableView.backgroundColor = tableViewBgColor
         listingsTableView.separatorColor = TVSeparatorColor
         listingsTableView.isHidden = true
@@ -144,7 +144,7 @@ class MLTSearchGridViewController: UIViewController ,UITableViewDataSource, UITa
         listingsTableView.tableFooterView = footerView
         listingsTableView.tableFooterView?.isHidden = true
  
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -316,7 +316,7 @@ class MLTSearchGridViewController: UIViewController ,UITableViewDataSource, UITa
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(MLTSearchGridViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(MLTSearchGridViewController.browseEntries), for: UIControl.Event.touchUpInside)
 
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
@@ -447,7 +447,7 @@ class MLTSearchGridViewController: UIViewController ,UITableViewDataSource, UITa
         //MARK: CELL LAYOUT LIKE EVENT VIEW
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! MLTGridTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         //SET CONTENT IMAGE BOUNDS
         cell.contentImage.frame = CGRect(x: 0, y: 0, width: cell.cellView.bounds.width, height: cell.cellView.bounds.height - cell.cellView.bounds.height/4)
@@ -1181,7 +1181,7 @@ class MLTSearchGridViewController: UIViewController ,UITableViewDataSource, UITa
         listingsTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

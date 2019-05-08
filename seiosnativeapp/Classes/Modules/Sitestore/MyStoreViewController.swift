@@ -220,7 +220,7 @@ class MyStoreViewController: UIViewController, UIScrollViewDelegate, UITableView
     {
         let dic = orderArr[indexPath.row]
         let cell = myorderTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath)as! MyOrderTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.white//tableViewBgColor
         cell.btnView.tag = indexPath.row
         cell.labremaings.isHidden = true
@@ -230,7 +230,7 @@ class MyStoreViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.labdate.isHidden = false
         cell.labstatus.isHidden = false
         
-        cell.btnView.setTitle(NSLocalizedString("View", comment: ""), for: UIControlState.normal)
+        cell.btnView.setTitle(NSLocalizedString("View", comment: ""), for: UIControl.State.normal)
         if orderOrDownloads == true
         {
             let orderid = dic["order_id"] as! Int
@@ -302,7 +302,7 @@ class MyStoreViewController: UIViewController, UIScrollViewDelegate, UITableView
                 {
                     cell.btnView.isHidden = false
                     cell.labstatus.isHidden = true
-                    cell.btnView.setTitle(NSLocalizedString("Download", comment: ""), for: UIControlState.normal)
+                    cell.btnView.setTitle(NSLocalizedString("Download", comment: ""), for: UIControl.State.normal)
                     cell.btnView.addTarget(self, action: #selector(MyStoreViewController.downloadAction), for: .touchUpInside)
                 }
                 else
@@ -318,7 +318,7 @@ class MyStoreViewController: UIViewController, UIScrollViewDelegate, UITableView
                 
                 cell.btnView.isHidden = false
                 cell.labstatus.isHidden = true
-                cell.btnView.setTitle(NSLocalizedString("Download", comment: ""), for: UIControlState.normal)
+                cell.btnView.setTitle(NSLocalizedString("Download", comment: ""), for: UIControl.State.normal)
                 cell.btnView.addTarget(self, action: #selector(MyStoreViewController.downloadAction), for: .touchUpInside)
                 
             }
@@ -355,7 +355,7 @@ class MyStoreViewController: UIViewController, UIScrollViewDelegate, UITableView
         {
             self.viewOptionArr = guttermenu
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in viewOptionArr{
                 if let dic = menu as? NSDictionary{
                     alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in

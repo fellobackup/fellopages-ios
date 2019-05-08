@@ -66,9 +66,9 @@ class PlaylistSearchViewController: UIViewController , UITableViewDataSource, UI
         self.navigationItem.leftBarButtonItem = barButtonItem
         
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(PlaylistSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(PlaylistSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -92,7 +92,7 @@ class PlaylistSearchViewController: UIViewController , UITableViewDataSource, UI
         classifiedTableView.dataSource = self
         classifiedTableView.delegate = self
         classifiedTableView.estimatedRowHeight = 160.0
-        classifiedTableView.rowHeight = UITableViewAutomaticDimension
+        classifiedTableView.rowHeight = UITableView.automaticDimension
         classifiedTableView.backgroundColor = UIColor.clear
         classifiedTableView.separatorColor = UIColor.clear
         // For ios 11 spacing issue below the navigation controller
@@ -115,7 +115,7 @@ class PlaylistSearchViewController: UIViewController , UITableViewDataSource, UI
         classifiedTableView.tableFooterView = footerView
         classifiedTableView.tableFooterView?.isHidden = true
         
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -264,7 +264,7 @@ class PlaylistSearchViewController: UIViewController , UITableViewDataSource, UI
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(PlaylistSearchViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(PlaylistSearchViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.view.addSubview(self.refreshButton)
@@ -376,7 +376,7 @@ class PlaylistSearchViewController: UIViewController , UITableViewDataSource, UI
         
         let row = (indexPath as NSIndexPath).row as Int
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ClassifiedTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.lblvideocount.isHidden = false
         var index:Int!
         index = row * 2
@@ -774,7 +774,7 @@ class PlaylistSearchViewController: UIViewController , UITableViewDataSource, UI
         classifiedTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

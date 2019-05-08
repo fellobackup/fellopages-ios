@@ -54,7 +54,7 @@ class SuggetionView: UIView,UICollectionViewDataSource,UICollectionViewDelegateF
         // Showing collection view Footer
         seeAll = createButton(CGRect(x: PADING, y: getBottomEdgeY(inputView: suggetionCollectionView)-1, width: self.bounds.width - PADING, height: self.bounds.height * 0.1), title: NSLocalizedString("See All",  comment: ""), border: false, bgColor: false, textColor: textColorMedium)
         seeAll.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        seeAll.addTarget(self, action: #selector(SuggetionView.seeAllSuggestions(_:)), for: UIControlEvents.touchUpInside)
+        seeAll.addTarget(self, action: #selector(SuggetionView.seeAllSuggestions(_:)), for: UIControl.Event.touchUpInside)
         self.addSubview(seeAll)
 
     }
@@ -121,7 +121,7 @@ class SuggetionView: UIView,UICollectionViewDataSource,UICollectionViewDelegateF
             // Friend request title
             if suggetion["friendship_type"] as? String == "cancel_request"{
                 
-                cell.addFriend.setTitle(NSLocalizedString("Undo request",  comment: ""), for: UIControlState.normal)
+                cell.addFriend.setTitle(NSLocalizedString("Undo request",  comment: ""), for: UIControl.State.normal)
                 // suggestionsScrollView.contentOffset = CGPoint(x: getRightEdgeX(inputView: suggestionView)/2, y: 0)
                 
             }
@@ -147,7 +147,7 @@ class SuggetionView: UIView,UICollectionViewDataSource,UICollectionViewDelegateF
             cell.removeSuggestion.isHidden = true
             cell.findMoreSuggestions.isHidden = false
             cell.suggestionImageView.image = UIImage(named: "noContactsIcon.png")
-            cell.findMoreSuggestions.addTarget(self, action: #selector(SuggetionView.seeAllSuggestions(_:)), for: UIControlEvents.touchUpInside)
+            cell.findMoreSuggestions.addTarget(self, action: #selector(SuggetionView.seeAllSuggestions(_:)), for: UIControl.Event.touchUpInside)
             
         }
         return cell

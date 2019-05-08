@@ -56,7 +56,7 @@ class TellAFriendViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
         nameText = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING), height: 40), borderColor: borderColorClear , placeHolderText: "Your Name", corner: true)
 
-        nameText.attributedPlaceholder = NSAttributedString(string: "Your Name", attributes: [NSAttributedStringKey.foregroundColor: textColorMedium])
+        nameText.attributedPlaceholder = NSAttributedString(string: "Your Name", attributes: [NSAttributedString.Key.foregroundColor: textColorMedium])
         
 
         nameText.font =  UIFont(name: fontName, size: FONTSIZELarge)
@@ -73,8 +73,8 @@ class TellAFriendViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         
         emailText = createTextField(CGRect(x: PADING, y: TOPPADING+40, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Your Email", corner: true)
-        emailText.attributedPlaceholder = NSAttributedString(string: "Your Email", attributes: [NSAttributedStringKey.foregroundColor: textColorMedium])
-        //emailText.addTarget(self, action: #selector(TellAFriendViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        emailText.attributedPlaceholder = NSAttributedString(string: "Your Email", attributes: [NSAttributedString.Key.foregroundColor: textColorMedium])
+        //emailText.addTarget(self, action: #selector(TellAFriendViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         emailText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         emailText.backgroundColor = bgColor
         emailText.delegate = self
@@ -104,8 +104,8 @@ class TellAFriendViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.view.addSubview(lineView1)
 
         toText = createTextField(CGRect(x: PADING, y: TOPPADING+80, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Email", corner: true)
-        toText.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: textColorMedium]) //placeholderColor
-//        toText.addTarget(self, action: Selector("textFieldDidChange:"), for: UIControlEvents.editingChanged)
+        toText.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: textColorMedium]) //placeholderColor
+//        toText.addTarget(self, action: Selector("textFieldDidChange:"), for: UIControl.Event.editingChanged)
         toText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         toText.backgroundColor = bgColor
         toText.delegate = self
@@ -142,8 +142,8 @@ class TellAFriendViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.view.addSubview(lineView2)
         
         myCheckbox = createButton(CGRect(x: PADING,y: messageTextview.bounds.height + messageTextview.frame.origin.y + 5, width: 20 , height: 20), title: "", border: false, bgColor: false, textColor: textColorMedium )
-        myCheckbox.setImage(UIImage(named: "uncheckedGrey_new.png"), for: UIControlState())
-        myCheckbox.setImage(UIImage(named: "checked.png"), for: UIControlState.selected)
+        myCheckbox.setImage(UIImage(named: "uncheckedGrey_new.png"), for: UIControl.State())
+        myCheckbox.setImage(UIImage(named: "checked.png"), for: UIControl.State.selected)
         myCheckbox.addTarget(self, action: #selector(TellAFriendViewController.myCheckboxAction(_:)), for: .touchUpInside)
         view.addSubview(myCheckbox)
         
@@ -153,8 +153,8 @@ class TellAFriendViewController: UIViewController, UITextFieldDelegate, UITextVi
 
         view.addSubview(copylabel)
 
-        sendMsg = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItemStyle.done , target:self , action: #selector(TellAFriendViewController.send))
-        sendMsg.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControlState())
+        sendMsg = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItem.Style.done , target:self , action: #selector(TellAFriendViewController.send))
+        sendMsg.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControl.State())
         self.navigationItem.rightBarButtonItem = sendMsg
         
         let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
@@ -269,8 +269,8 @@ class TellAFriendViewController: UIViewController, UITextFieldDelegate, UITextVi
         {
             errorMsg =  NSLocalizedString("Content can't be empty",  comment: "")
             let alertController = UIAlertController(title: NSLocalizedString("Error",  comment: ""), message:
-                errorMsg, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",  comment: ""), style: UIAlertActionStyle.default,handler: nil))
+                errorMsg, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",  comment: ""), style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
             

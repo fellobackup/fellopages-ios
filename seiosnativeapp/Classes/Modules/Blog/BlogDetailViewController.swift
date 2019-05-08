@@ -88,7 +88,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
         // Set BlogIcon
         blogIcon = createButton(CGRect(x: PADING, y: blogTitle.bounds.height + blogTitle.frame.origin.y + contentPADING, width: 0, height: ButtonHeight), title: "", border: true,bgColor: false, textColor: textColorLight)
         blogIcon.layer.cornerRadius = cornerRadiusNormal
-        blogIcon.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        blogIcon.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         blogIcon.layer.masksToBounds = true
         blogIcon.isHidden = true
         // blogIcon.addTarget(self, action: Selector, forControlEvents: .normal)
@@ -107,7 +107,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
         
         // WebView for Blog Detail
         detailWebView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - (blogInfo.bounds.height + contentPADING + blogInfo.frame.origin.y) - tabBarHeight - 10)
-        self.detailWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 7.0, 0.0, 5.0);
+        self.detailWebView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 7.0, bottom: 0.0, right: 5.0);
         self.detailWebView.scrollView.delegate = self
         detailWebView.backgroundColor = UIColor.clear
         detailWebView.isOpaque = false
@@ -210,7 +210,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
 
         let activityViewController = UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
         
-        activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         
         
         if(activityViewController.popoverPresentationController != nil) {
@@ -225,7 +225,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
     
     // Show Gutter Menus
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         for menu in gutterMenu{
             if let dic = menu as? NSDictionary{
@@ -233,7 +233,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
                 }else{
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -254,7 +254,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
                     else{
 
 
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -460,12 +460,12 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(BlogDetailViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(BlogDetailViewController.showGutterMenu), for: .touchUpInside)
                                    // rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -559,15 +559,15 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
                                     var boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
                                     if(categoryTitle != nil && categoryTitle != ""){
                                         let range = (description as NSString).range(of: categoryTitle!)
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                         
                                     }
                                     boldFont =  CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
                                     
                                     let range1 = (description as NSString).range(of: ownerName!)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                                     
                                     // TODO: Clean this up...
                                     
@@ -679,7 +679,7 @@ class BlogDetailViewController: UIViewController, UIWebViewDelegate, UIScrollVie
     
     
     //MARK: - UIWebView Delegates
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         let urlString = request.url!.absoluteString
         // Restrict WebView to Open URLs
         
@@ -805,7 +805,7 @@ extension BlogDetailViewController: UITableViewDelegate {
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             if(activityViewController.popoverPresentationController != nil) {
                 activityViewController.popoverPresentationController?.sourceView = self.view;
                 let frame = UIScreen.main.bounds

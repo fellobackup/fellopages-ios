@@ -248,7 +248,7 @@ class LoginSlideShowViewController: UIViewController ,UIScrollViewDelegate{
         pageControl.currentPage = Int(pageNumber)
         
         if pageControl.currentPage == totalIntroSlideShowImages - 1 {
-            arrowButton.setImage(UIImage(named: "")?.maskWithColor(color: slideShowButtonColor), for: UIControlState.normal)
+            arrowButton.setImage(UIImage(named: "")?.maskWithColor(color: slideShowButtonColor), for: UIControl.State.normal)
             arrowButton.setTitle("", for: .normal)
             arrowButton1.setTitle("", for: .normal)
             arrowButton2.setTitle("Login", for: .normal)
@@ -257,7 +257,7 @@ class LoginSlideShowViewController: UIViewController ,UIScrollViewDelegate{
         }
         else{
             arrowButton.setTitle("", for: .normal)
-            arrowButton.setImage(UIImage(named: "forward")?.maskWithColor(color: slideShowButtonColor), for: UIControlState.normal)
+            arrowButton.setImage(UIImage(named: "forward")?.maskWithColor(color: slideShowButtonColor), for: UIControl.State.normal)
             arrowButton1.setTitle("Skip", for: .normal)
             arrowButton2.setTitle("", for: .normal)
             arrowButton.isHidden = false

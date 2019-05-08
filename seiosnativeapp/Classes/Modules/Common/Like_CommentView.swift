@@ -185,7 +185,7 @@ class Like_CommentView: UIView {
         {
 
             self.comment.titleLabel?.textColor = navColor
-            self.comment.setTitleColor(navColor , for: UIControlState())
+            self.comment.setTitleColor(navColor , for: UIControl.State())
         }
         comment.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZENormal)
         comment.tag = 1
@@ -275,15 +275,15 @@ class Like_CommentView: UIView {
                 })
                 self.reactionShow.addSubview(ImageView)
                 let menu = createButton(CGRect(x: width/2, y: 0, width: self.reactionShow.frame.size.width - (width/2),height: self.reactionShow.frame.size.height), title: " \(title)", border: false,bgColor: false, textColor: textColorMedium )
-                menu.addTarget(self, action: #selector(Like_CommentView.like_unLikeAction(_:)), for: UIControlEvents.touchUpInside)
+                menu.addTarget(self, action: #selector(Like_CommentView.like_unLikeAction(_:)), for: UIControl.Event.touchUpInside)
                 let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(Like_CommentView.longPressed(sender:)))
                 menu.addGestureRecognizer(longPressRecognizer)
                 menu.tag = 200
-                menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                 menu.titleLabel?.font = UIFont(name: fontName, size: FONTSIZENormal)
                 menu.titleLabel?.adjustsFontSizeToFitWidth = true
                 menu.titleLabel?.textColor = navColor
-                menu.setTitleColor(navColor , for: UIControlState())
+                menu.setTitleColor(navColor , for: UIControl.State())
                 self.reactionShow.addSubview(menu)
             }
         }
@@ -291,12 +291,12 @@ class Like_CommentView: UIView {
         {
             let    menu = createButton(CGRect(x: 0,y: 0,width: self.reactionShow.frame.size.width, height: self.reactionShow.frame.size.height), title: NSLocalizedString("\(likeIcon)", comment: ""), border: false,bgColor: false, textColor: textColorLight)
             menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZENormal)
-            menu.addTarget(self, action: #selector(Like_CommentView.like_unLikeAction(_:)), for: UIControlEvents.touchUpInside)
+            menu.addTarget(self, action: #selector(Like_CommentView.like_unLikeAction(_:)), for: UIControl.Event.touchUpInside)
             menu.titleLabel?.textColor = textColorMedium
             menu.tag = 200
-            menu.setTitle(String(format: NSLocalizedString("%@ Like", comment: ""), likeIcon), for: UIControlState())
+            menu.setTitle(String(format: NSLocalizedString("%@ Like", comment: ""), likeIcon), for: UIControl.State())
             menu.titleLabel?.textColor = textColorMedium
-            menu.setTitleColor(textColorMedium , for: UIControlState())
+            menu.setTitleColor(textColorMedium , for: UIControl.State())
             let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(Like_CommentView.longPressed(sender:)))
             menu.addGestureRecognizer(longPressRecognizer)
             self.reactionShow.addSubview(menu)
@@ -708,7 +708,7 @@ class Like_CommentView: UIView {
     @objc func showMenu(){
         // Generate Blog Menu Come From Server as! Alert Popover
         (self.parentViewController() as! AdvancePhotoViewController).deletePhoto = false
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for menuItem in myMenu{
             if let dic = menuItem as? NSDictionary{
@@ -824,13 +824,13 @@ class Like_CommentView: UIView {
                     if like_CommentStyle == 2{
                         animationEffectOnButton(sender)
                         self.like.titleLabel?.textColor = textColorLight
-                        self.like.setTitleColor(textColorLight , for: UIControlState())
+                        self.like.setTitleColor(textColorLight , for: UIControl.State())
                         self.like.isEnabled = false
                     }
                     else{
                         animationEffectOnButton(sender)
                         self.like.titleLabel?.textColor = textColorMedium
-                        self.like.setTitleColor(textColorMedium , for: UIControlState())
+                        self.like.setTitleColor(textColorMedium , for: UIControl.State())
                         self.like.isEnabled = false
                     }
                 }
@@ -839,7 +839,7 @@ class Like_CommentView: UIView {
                 if ReactionPlugin == false{
                     animationEffectOnButton(sender)
                     self.like.titleLabel?.textColor = navColor
-                    self.like.setTitleColor(navColor , for: UIControlState())
+                    self.like.setTitleColor(navColor , for: UIControl.State())
                     self.like.isEnabled = false
                 }
             }
@@ -908,17 +908,17 @@ class Like_CommentView: UIView {
                                     if(self.isLike == true){
                                         self.isLike = false
                                         total_Likes = total_Likes - 1
-                                        self.like.setTitle(likeIcon, for: UIControlState())
+                                        self.like.setTitle(likeIcon, for: UIControl.State())
                                         if like_CommentStyle == 2 {
                                             self.like.titleLabel?.textColor = textColorLight
-                                            self.like.setTitleColor(textColorLight, for: UIControlState())
-                                            self.like.setTitle("\(likeIcon)", for: UIControlState())
+                                            self.like.setTitleColor(textColorLight, for: UIControl.State())
+                                            self.like.setTitle("\(likeIcon)", for: UIControl.State())
                                             self.like.isEnabled = true
                                         }else{
                                             self.like.titleLabel?.textColor = textColorMedium
-                                            self.like.setTitle("\(likeIcon) Like", for: UIControlState())
+                                            self.like.setTitle("\(likeIcon) Like", for: UIControl.State())
                                             self.like.titleLabel?.textColor = textColorMedium
-                                            self.like.setTitleColor(textColorMedium , for: UIControlState())
+                                            self.like.setTitleColor(textColorMedium , for: UIControl.State())
                                             self.like.isEnabled = true
                                         }
                                     }
@@ -929,14 +929,14 @@ class Like_CommentView: UIView {
                                         total_Likes = total_Likes + 1
                                         if like_CommentStyle == 2 {
                                             self.like.titleLabel?.textColor = navColor
-                                            self.like.setTitleColor(navColor, for: UIControlState())
-                                            self.like.setTitle("\(likeIcon)", for: UIControlState())
+                                            self.like.setTitleColor(navColor, for: UIControl.State())
+                                            self.like.setTitle("\(likeIcon)", for: UIControl.State())
                                             self.like.isEnabled = true
                                         }else{
                                             //
-                                            self.like.setTitle("\(likeIcon) Like", for: UIControlState())
+                                            self.like.setTitle("\(likeIcon) Like", for: UIControl.State())
                                             self.like.titleLabel?.textColor = navColor
-                                            self.like.setTitleColor(navColor , for: UIControlState())
+                                            self.like.setTitleColor(navColor , for: UIControl.State())
                                             self.like.isEnabled = true
                                         }
                                         
@@ -1012,39 +1012,39 @@ class Like_CommentView: UIView {
                                 if self.isLike == false{
                                     if like_CommentStyle == 1 {
                                         self.like.titleLabel?.textColor = textColorMedium
-                                        self.like.setTitle("\(likeIcon) Like", for: UIControlState())
+                                        self.like.setTitle("\(likeIcon) Like", for: UIControl.State())
                                         self.like.titleLabel?.textColor = textColorMedium
-                                        self.like.setTitleColor(textColorMedium , for: UIControlState())
+                                        self.like.setTitleColor(textColorMedium , for: UIControl.State())
                                     }else if like_CommentStyle == 2 {
                                         self.like.titleLabel?.textColor = textColorLight
-                                        self.like.setTitleColor(textColorLight, for: UIControlState())
-                                        self.like.setTitle("\(likeIcon)", for: UIControlState())
+                                        self.like.setTitleColor(textColorLight, for: UIControl.State())
+                                        self.like.setTitle("\(likeIcon)", for: UIControl.State())
                                     }else{
                                         
-                                        self.like.setTitle(likeIcon, for: UIControlState())
+                                        self.like.setTitle(likeIcon, for: UIControl.State())
                                         self.like.titleLabel?.textColor = navColor
-                                        self.like.setTitleColor(navColor, for: UIControlState())
+                                        self.like.setTitleColor(navColor, for: UIControl.State())
                                     }
                                     
                                 }else{
-                                    self.like.setTitle(likeIcon, for: UIControlState())
+                                    self.like.setTitle(likeIcon, for: UIControl.State())
                                     
                                     if like_CommentStyle == 1 {
                                         //self.like.titleLabel?.textColor = textColorMedium
                                         //
-                                        self.like.setTitle("\(likeIcon) Like", for: UIControlState())
+                                        self.like.setTitle("\(likeIcon) Like", for: UIControl.State())
                                         self.like.titleLabel?.textColor = navColor
-                                        self.like.setTitleColor(navColor , for: UIControlState())
+                                        self.like.setTitleColor(navColor , for: UIControl.State())
                                     }
                                     else if like_CommentStyle == 2 {
                                         self.like.titleLabel?.textColor = navColor
-                                        self.like.setTitleColor(navColor, for: UIControlState())
-                                        self.like.setTitle("\(likeIcon)", for: UIControlState())
+                                        self.like.setTitleColor(navColor, for: UIControl.State())
+                                        self.like.setTitle("\(likeIcon)", for: UIControl.State())
                                     }else{
                                         //
-                                        self.like.setTitle(unlikeIcon, for: UIControlState())
+                                        self.like.setTitle(unlikeIcon, for: UIControl.State())
                                         self.like.titleLabel?.textColor = textColorMedium
-                                        self.like.setTitleColor(textColorMedium, for: UIControlState())
+                                        self.like.setTitleColor(textColorMedium, for: UIControl.State())
                                     }
                                     
                                     
@@ -1088,7 +1088,7 @@ class Like_CommentView: UIView {
             {
                 issubscribe = 0
                 self.comment.titleLabel?.textColor = textColorMedium
-                self.comment.setTitleColor(textColorMedium , for: UIControlState())
+                self.comment.setTitleColor(textColorMedium , for: UIControl.State())
                 self.comment.isEnabled = false
 
             }
@@ -1096,7 +1096,7 @@ class Like_CommentView: UIView {
             {
                 issubscribe = 1
                 self.comment.titleLabel?.textColor = navColor
-                self.comment.setTitleColor(navColor , for: UIControlState())
+                self.comment.setTitleColor(navColor , for: UIControl.State())
                 self.comment.isEnabled = false
                 
             }
@@ -1127,7 +1127,7 @@ class Like_CommentView: UIView {
                                 {
                                     issubscribe = 0
                                     self.comment.titleLabel?.textColor = textColorMedium
-                                    self.comment.setTitleColor(textColorMedium , for: UIControlState())
+                                    self.comment.setTitleColor(textColorMedium , for: UIControl.State())
                                     self.comment.isEnabled = false
                                     
                                 }
@@ -1135,7 +1135,7 @@ class Like_CommentView: UIView {
                                 {
                                     issubscribe = 1
                                     self.comment.titleLabel?.textColor = navColor
-                                    self.comment.setTitleColor(navColor , for: UIControlState())
+                                    self.comment.setTitleColor(navColor , for: UIControl.State())
                                     self.comment.isEnabled = false
                                     
                                 }

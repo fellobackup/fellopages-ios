@@ -75,11 +75,11 @@ class HashTagFeedViewController: UIViewController  , UITableViewDataSource, UITa
      var feedObj = FeedTableViewController()
     var leftBarButtonItem : UIBarButtonItem!
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     
@@ -106,7 +106,7 @@ class HashTagFeedViewController: UIViewController  , UITableViewDataSource, UITa
         view.addSubview(mainView)
 
         
-        searchResultTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-120), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-120), style: UITableView.Style.grouped)
         searchResultTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -135,9 +135,9 @@ class HashTagFeedViewController: UIViewController  , UITableViewDataSource, UITa
         self.navigationItem.leftBarButtonItem = barButtonItem
 
         // Initial table to show Activity Feeds
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         self.view.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         
         
         
@@ -624,7 +624,7 @@ class HashTagFeedViewController: UIViewController  , UITableViewDataSource, UITa
     {
   
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             for ob in mainView.subviews{
                 if ob.tag == 1000 {
                     ob.removeFromSuperview()
@@ -666,9 +666,9 @@ class HashTagFeedViewController: UIViewController  , UITableViewDataSource, UITa
             
             if let id = response["id"] as? Int{
                 if frndTag[id] != nil{
-                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }else{
-                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
                 }
             }
             

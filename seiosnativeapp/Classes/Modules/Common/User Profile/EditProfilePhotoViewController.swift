@@ -124,7 +124,7 @@ class EditProfilePhotoViewController: UIViewController, UINavigationControllerDe
     @objc func choosePhoto(_ sender: UIButton){
         let image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary
         if UIDevice.current.userInterfaceIdiom != .pad{
             image.allowsEditing = true
         }
@@ -134,7 +134,7 @@ class EditProfilePhotoViewController: UIViewController, UINavigationControllerDe
     @objc func chooseCamera(_ sender: UIButton){
         let image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerController.SourceType.camera
         if UIDevice.current.userInterfaceIdiom != .pad{
             image.allowsEditing = true
         }
@@ -142,16 +142,16 @@ class EditProfilePhotoViewController: UIViewController, UINavigationControllerDe
     }
     
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey  : Any]) {
 
         self.dismiss(animated: true, completion: nil)
 //        for dic in info{
 //            if let photoDic = dic as? NSDictionary{
 //                
-//                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
+//                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
 //                    
-//                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-//                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+//                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+//                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
 //                        imageView.image = image
 //                        //print(image as UIImage)
 //                        let imageArray = [image as UIImage]
@@ -163,7 +163,7 @@ class EditProfilePhotoViewController: UIViewController, UINavigationControllerDe
 //            
 //        }
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         imageView.image = image
         //print(image as UIImage)
         let imageArray = [image as UIImage]

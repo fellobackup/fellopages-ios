@@ -45,7 +45,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         var size:CGFloat = 0;
@@ -58,8 +58,8 @@ class PhotosTableViewCell: UITableViewCell {
         
         image1 = createButton(CGRect(x: 2*PADING, y: 0,width: size - 2*PADING , height: 160 - 5), title: "", border: false,bgColor: false, textColor: textColorLight)
         image1.isHidden = true
-        image1.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        image1.setImage(UIImage(named: "sampleImage.png"), for: UIControlState())
+        image1.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        image1.setImage(UIImage(named: "sampleImage.png"), for: UIControl.State())
         self.addSubview(image1)
         
         
@@ -75,8 +75,8 @@ class PhotosTableViewCell: UITableViewCell {
         //2
         image2 = createButton(CGRect(x: (2 * PADING) + size, y: 0,width: size - 2*PADING , height: 160-5), title: "", border: false,bgColor: false, textColor: textColorLight)
         image2.isHidden = true
-        image2.imageView?.contentMode = UIViewContentMode.scaleAspectFill
-        image2.setImage(UIImage(named: "sampleImage.png"), for: UIControlState())
+        image2.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        image2.setImage(UIImage(named: "sampleImage.png"), for: UIControl.State())
         self.addSubview(image2)
         
         
@@ -94,9 +94,9 @@ class PhotosTableViewCell: UITableViewCell {
         if(UIDevice.current.userInterfaceIdiom == .pad){
             //3
             image3 = createButton(CGRect(x: (2*size), y: 0,width: size , height: size), title: "", border: false,bgColor: false, textColor: textColorLight)
-            image3.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+            image3.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
             image3.isHidden = true
-            image3.setImage(UIImage(named: "sampleImage.png"), for: UIControlState())
+            image3.setImage(UIImage(named: "sampleImage.png"), for: UIControl.State())
             self.addSubview(image3)
             
             uploadedby3 = createLabel(CGRect(x: 15+(2*size), y: 15+size,width: size , height: 12), text: "", alignment: .left, textColor: textColorMedium)
@@ -110,9 +110,9 @@ class PhotosTableViewCell: UITableViewCell {
             
             //4
             image4 = createButton(CGRect(x: (3*size), y: 0,width: size , height: size), title: "", border: false,bgColor: false, textColor: textColorLight)
-            image4.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+            image4.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
             image4.isHidden = true
-            image4.setImage(UIImage(named: "sampleImage.png"), for: UIControlState())
+            image4.setImage(UIImage(named: "sampleImage.png"), for: UIControl.State())
             self.addSubview(image4)
             
             uploadedby4 = createLabel(CGRect(x: 20+(3*size), y: 15+size,width: size , height: 12), text: "", alignment: .left, textColor: textColorMedium)

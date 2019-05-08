@@ -107,7 +107,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate,CLLocationMa
         activityIndicatorView.startAnimating()
         
         
-        searchResultTableView = UITableView(frame: CGRect(x: 0, y: 120, width: view.bounds.width, height: view.bounds.height-120), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: 0, y: 120, width: view.bounds.width, height: view.bounds.height-120), style: UITableView.Style.grouped)
         searchResultTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -247,7 +247,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate,CLLocationMa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         
         if let response = searchResult[(indexPath as NSIndexPath).row] as? NSDictionary {

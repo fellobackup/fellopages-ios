@@ -52,7 +52,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         var size:CGFloat = 0;
@@ -61,7 +61,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         size = (UIScreen.main.bounds.width - (2 * PADING))/4
         
         photo1  = ContentImageViewWithGradient(frame: CGRect(x: 2*PADING, y: contentPADING, width: size - 2*PADING, height: size))
-        photo1.contentMode = UIViewContentMode.scaleAspectFill
+        photo1.contentMode = UIView.ContentMode.scaleAspectFill
         photo1.layer.masksToBounds = true
         photo1.isUserInteractionEnabled = true
         photo1.backgroundColor = placeholderColor
@@ -74,7 +74,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         
         image1 = createButton(CGRect(x: 0, y: 0, width: size, height: size), title: "", border: false, bgColor: false, textColor: textColorLight)
         image1.isHidden = true
-        image1.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        image1.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         photo1.addSubview(image1)
         
         likeCommentLabel = createLabel(CGRect(x: 10, y: image1.bounds.height - 30, width: size, height: 30), text: "", alignment: .left, textColor: textColorLight)
@@ -87,7 +87,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         photo1.addSubview(contentSelection1)
         
         photo2  = ContentImageViewWithGradient(frame: CGRect(x: (2 * PADING) + size, y: contentPADING, width: size - 2*PADING, height: size))
-        photo2.contentMode = UIViewContentMode.scaleAspectFill
+        photo2.contentMode = UIView.ContentMode.scaleAspectFill
         photo2.layer.masksToBounds = true
         photo2.isUserInteractionEnabled = true
         photo2.backgroundColor = placeholderColor
@@ -101,7 +101,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         
         image2 = createButton(CGRect(x: size, y: 0, width: size, height: size), title: "", border: false, bgColor: false, textColor: textColorLight)
         image2.isHidden = true
-        image2.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        image2.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         photo2.addSubview(image2)
         
         likeCommentLabel1 = createLabel(CGRect(x: 10, y: image1.bounds.height - 30, width: size, height: 30), text: "", alignment: .left, textColor: textColorLight)
@@ -117,7 +117,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         
         // FOR CHOOSE PHOTO VIEW
         photo3  = ContentImageViewWithGradient(frame: CGRect(x: (2 * PADING) + (2 * size), y: contentPADING , width: size - 2*PADING, height: size))
-        photo3.contentMode = UIViewContentMode.scaleAspectFill
+        photo3.contentMode = UIView.ContentMode.scaleAspectFill
         photo3.layer.masksToBounds = true
         photo3.isUserInteractionEnabled = true
         photo3.backgroundColor = placeholderColor
@@ -131,7 +131,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         
         image3 = createButton(CGRect(x: size, y: 0, width: size, height: size), title: "", border: false, bgColor: false, textColor: textColorLight)
         image3.isHidden = true
-        image3.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        image3.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         photo3.addSubview(image3)
         
         likeCommentLabel3 = createLabel(CGRect(x: 10, y: image1.bounds.height - 30, width: size , height: 30), text: "", alignment: .left, textColor: textColorLight)
@@ -144,7 +144,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         photo3.addSubview(contentSelection3)
         
         photo4  = ContentImageViewWithGradient(frame: CGRect(x: (2 * PADING) + (3 * size)  , y: contentPADING , width: size - 2*PADING, height: size))
-        photo4.contentMode = UIViewContentMode.scaleAspectFill
+        photo4.contentMode = UIView.ContentMode.scaleAspectFill
         photo4.layer.masksToBounds = true
         photo4.isUserInteractionEnabled = true
         photo4.backgroundColor = placeholderColor
@@ -158,7 +158,7 @@ class ChoosePhotoTableViewCell: UITableViewCell {
         
         image4 = createButton(CGRect(x: size, y: 0, width: size, height: size), title: "", border: false, bgColor: false, textColor: textColorLight)
         image4.isHidden = true
-        image4.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        image4.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         photo4.addSubview(image4)
         
         likeCommentLabel4 = createLabel(CGRect(x: 10, y: image1.bounds.height - 30, width: size , height: 30), text: "", alignment: .left, textColor: textColorLight)

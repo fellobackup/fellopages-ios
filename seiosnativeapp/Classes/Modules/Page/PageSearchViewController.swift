@@ -63,9 +63,9 @@ class PageSearchViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationItem.leftBarButtonItem = barButtonItem
 
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(PageSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(PageSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -100,7 +100,7 @@ class PageSearchViewController: UIViewController, UITableViewDataSource, UITable
         pageTableView.tableFooterView = footerView
         pageTableView.tableFooterView?.isHidden = true
  
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -392,7 +392,7 @@ class PageSearchViewController: UIViewController, UITableViewDataSource, UITable
         else{
         let cell = pageTableView.dequeueReusableCell(withIdentifier: "CellThree1", for: indexPath) as! GroupTableViewCell
 
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = bgColor
         
         // cell.contentSelection.frame.height = CGRectGetHeight(cell.contentImage.bounds) - 75
@@ -773,7 +773,7 @@ class PageSearchViewController: UIViewController, UITableViewDataSource, UITable
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
         pageTableView.tableFooterView?.isHidden = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

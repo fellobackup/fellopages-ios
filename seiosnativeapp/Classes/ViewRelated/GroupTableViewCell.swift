@@ -65,7 +65,7 @@ class GroupTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -85,7 +85,7 @@ class GroupTableViewCell: UITableViewCell {
         
         contentImage =  ContentImageViewWithGradient(frame: CGRect(x: 0, y: 0, width: cellView.bounds.width, height: cellView.bounds.height))
         contentImage.layer.masksToBounds = true
-        contentImage.contentMode = UIViewContentMode.scaleAspectFill
+        contentImage.contentMode = UIView.ContentMode.scaleAspectFill
         contentImage.backgroundColor = placeholderColor
         contentImage.layer.shadowColor = shadowColor.cgColor
         contentImage.layer.shadowOpacity = shadowOpacity
@@ -192,7 +192,7 @@ class GroupTableViewCell: UITableViewCell {
             
             contentImage2 = ContentImageViewWithGradient(frame: CGRect(x: 0, y: 0, width: cellView.bounds.width, height: cellView.bounds.height))
             contentImage2.layer.masksToBounds = true
-            contentImage2.contentMode =  UIViewContentMode.scaleAspectFill //UIViewContentMode.Top
+            contentImage2.contentMode =  UIView.ContentMode.scaleAspectFill //UIView.ContentMode.Top
             
             contentImage2.backgroundColor = placeholderColor
             contentImage2.layer.shadowColor = shadowColor.cgColor

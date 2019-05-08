@@ -81,8 +81,8 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
         ReapeatTableview = UITableView(frame: CGRect(x: 0,y: TOPPADING, width: view.bounds.width, height: view.bounds.height-TOPPADING), style: .grouped)
         ReapeatTableview.register(RepeatEventTableViewCell.self, forCellReuseIdentifier: "Cell")
         ReapeatTableview.estimatedRowHeight = 100.0
-        ReapeatTableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        ReapeatTableview.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        ReapeatTableview.separatorStyle = UITableViewCell.SeparatorStyle.none
+        ReapeatTableview.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         ReapeatTableview.backgroundColor = tableViewBgColor
         self.ReapeatTableview.isOpaque = false
         
@@ -217,9 +217,9 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
         })
         
         let datePickerView  : UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
+        datePickerView.datePickerMode = UIDatePicker.Mode.dateAndTime
         textField.inputView = datePickerView
-        datePickerView.addTarget(self, action: #selector(RepeatEventViewController.handleDatePicker(_:)), for: UIControlEvents.valueChanged)
+        datePickerView.addTarget(self, action: #selector(RepeatEventViewController.handleDatePicker(_:)), for: UIControl.Event.valueChanged)
         tag = textField.tag
         return true
     }
@@ -315,7 +315,7 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RepeatEventTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         cell.btnRSVP.tag = (indexPath as NSIndexPath).row
         let dic = repeatArr.object(at: (indexPath as NSIndexPath).row)
@@ -343,7 +343,7 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.btnguest.isHidden = false
             cell.btnRSVP.isHidden = false
             cell.lblnoguest.isHidden = true
-            cell.btnguest.setTitle("\(list)", for: UIControlState())
+            cell.btnguest.setTitle("\(list)", for: UIControl.State())
             cell.btnguest.addTarget(self, action: #selector(RepeatEventViewController.showGusetlist(_:)), for: .touchUpInside)
         }
         else
@@ -363,15 +363,15 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
             {
                 if rsvp == 0
                 {
-                    cell.btnRSVP.setTitle("Not Attending", for: UIControlState())
+                    cell.btnRSVP.setTitle("Not Attending", for: UIControl.State())
                 }
                 else if rsvp == 1
                 {
-                    cell.btnRSVP.setTitle("Maybe Attending", for: UIControlState())
+                    cell.btnRSVP.setTitle("Maybe Attending", for: UIControl.State())
                 }
                 else if rsvp == 2
                 {
-                    cell.btnRSVP.setTitle("Attending", for: UIControlState())
+                    cell.btnRSVP.setTitle("Attending", for: UIControl.State())
                 }
                 else if rsvp == 3
                 {
@@ -381,7 +381,7 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
             }
             else
             {
-                cell.btnRSVP.setTitle(rsvpvalue, for: UIControlState())
+                cell.btnRSVP.setTitle(rsvpvalue, for: UIControl.State())
             }
         }
         else
@@ -440,14 +440,14 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
             
             rsvpvalue  = "Attending"
             rsvp = "2"
-            self.ReapeatTableview.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+            self.ReapeatTableview.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             self.changeRSVP()
             
         case 2:
             
             rsvpvalue  = "maybe Attending"
             rsvp = "1"
-            self.ReapeatTableview.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+            self.ReapeatTableview.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             self.changeRSVP()
             
             
@@ -455,7 +455,7 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
             
             rsvpvalue  = "Not Attending"
             rsvp = "0"
-            self.ReapeatTableview.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+            self.ReapeatTableview.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             self.changeRSVP()
             
         default:
@@ -517,7 +517,7 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
             var confirmationAlert = true
             
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in contentGutterMenu{
                 if let menuItem = menu as? NSDictionary{
                     
@@ -856,11 +856,11 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
                                     
                                     self.msgurl = msg["url"] as! String
                                     
-                                    let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItemStyle.plain, target: self, action: #selector(RepeatEventViewController.msgGuest))
+                                    let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItem.Style.plain, target: self, action: #selector(RepeatEventViewController.msgGuest))
                                     
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(RepeatEventViewController.searchItem))
-                                    searchItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
-                                    msgItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(RepeatEventViewController.searchItem))
+                                    searchItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
+                                    msgItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
                                     
                                     self.navigationItem.setRightBarButtonItems([searchItem,msgItem], animated: true)
                                     searchItem.tintColor = textColorPrime
@@ -870,7 +870,7 @@ class RepeatEventViewController: UIViewController,UITableViewDelegate,UITableVie
                                 }
                                 else
                                 {
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(RepeatEventViewController.searchItem))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(RepeatEventViewController.searchItem))
                                     self.navigationItem.rightBarButtonItem = searchItem
                                     searchItem.tintColor = textColorPrime
                                     

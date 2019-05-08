@@ -56,7 +56,7 @@ class SetPrivacyViewController: UIViewController , UITableViewDataSource, UITabl
         
         let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(SetPrivacyViewController.cancel))
         self.navigationItem.leftBarButtonItem = cancel
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControl.State())
         cancel.tintColor = textColorPrime
         
         mainView.frame = view.frame
@@ -75,7 +75,7 @@ class SetPrivacyViewController: UIViewController , UITableViewDataSource, UITabl
         privacyTableView.dataSource = self
         privacyTableView.delegate = self
         privacyTableView.estimatedRowHeight = 40.0
-        privacyTableView.rowHeight = UITableViewAutomaticDimension
+        privacyTableView.rowHeight = UITableView.automaticDimension
         privacyTableView.backgroundColor = tableViewBgColor
         privacyTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -174,7 +174,7 @@ class SetPrivacyViewController: UIViewController , UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
         
     {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle , reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle , reuseIdentifier: "Cell")
         
         cell.accessoryView = nil
         
@@ -205,11 +205,11 @@ class SetPrivacyViewController: UIViewController , UITableViewDataSource, UITabl
 //
         let labelString =  valuesResponse[(indexPath as NSIndexPath).row] as! String
         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\(FontIconLabelString)  ")
-        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome" , size: 15.0)!, range: NSMakeRange(0, attrString.length))
-        attrString.addAttribute(NSAttributedStringKey.foregroundColor , value: navColor, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome" , size: 15.0)!, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.foregroundColor , value: navColor, range: NSMakeRange(0, attrString.length))
         
         let descString: NSMutableAttributedString = NSMutableAttributedString(string: labelString)
-        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: 16.0)!, range: NSMakeRange(0, descString.length))
+        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: 16.0)!, range: NSMakeRange(0, descString.length))
         
         attrString.append(descString);
         cell.textLabel?.attributedText = attrString

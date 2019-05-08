@@ -47,7 +47,7 @@ class SignUpValidationController: UIViewController, UITableViewDataSource, UITab
         validationTableViewButton.dataSource = self
         validationTableViewButton.delegate = self
         validationTableViewButton.estimatedRowHeight = 30.0
-        validationTableViewButton.rowHeight = UITableViewAutomaticDimension
+        validationTableViewButton.rowHeight = UITableView.automaticDimension
         validationTableViewButton.backgroundColor = tableViewBgColor
         validationTableViewButton.separatorColor = TVSeparatorColor
         mainView.addSubview(validationTableViewButton)

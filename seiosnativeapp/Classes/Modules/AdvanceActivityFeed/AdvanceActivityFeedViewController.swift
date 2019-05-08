@@ -152,11 +152,11 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     var friendRequestBadgeCount: Int = 0
     
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     var guttermenuoption = [String]()
@@ -220,7 +220,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         super.viewDidLoad()
         
      
-        NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(AdvanceActivityFeedViewController.applicationWillEnterForeground),name: UIApplication.willEnterForegroundNotification,object: nil)
         tableViewFrameType = "AdvanceActivityFeedViewController"
         if UserDefaults.standard.string(forKey: "isAppRated") != nil
         {
@@ -303,7 +303,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         hidingNavBarManager = HidingNavigationBarManager(viewController: self, scrollView: feedObj.tableView)
         
         mainView.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         
 //        let offset = CGPoint.init(x: 0, y: -(TOPPADING))
 //        feedObj.tableView.setContentOffset(offset, animated: true)
@@ -416,9 +416,9 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             //    let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
             let iconFont = CTFontCreateWithName(("fontAwesome" as CFString?)!, FONTSIZENormal, nil)
             let textFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
-            let iconPart = NSMutableAttributedString(string: "\(messagebda)", attributes: [NSAttributedStringKey.font:iconFont ,  NSAttributedStringKey.foregroundColor : navColor])
+            let iconPart = NSMutableAttributedString(string: "\(messagebda)", attributes: [NSAttributedString.Key.font:iconFont ,  NSAttributedString.Key.foregroundColor : navColor])
         
-            let textPart = NSMutableAttributedString(string: NSLocalizedString(" Message",comment: ""), attributes: [NSAttributedStringKey.font:textFont , NSAttributedStringKey.foregroundColor : navColor])
+            let textPart = NSMutableAttributedString(string: NSLocalizedString(" Message",comment: ""), attributes: [NSAttributedString.Key.font:textFont , NSAttributedString.Key.foregroundColor : navColor])
              iconPart.append(textPart)
             
             frndsBirthdayMsg.setAttributedTitle(iconPart, for: .normal)
@@ -475,9 +475,9 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
-        let attr = [NSAttributedStringKey.foregroundColor:textColorMedium]
+        let attr = [NSAttributedString.Key.foregroundColor:textColorMedium]
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""),attributes: attr)
-        refresher.addTarget(self, action: #selector(AdvanceActivityFeedViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(AdvanceActivityFeedViewController.refresh), for: UIControl.Event.valueChanged)
         feedObj.tableView.addSubview(refresher)
         
         
@@ -501,7 +501,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         self.refreshButton.backgroundColor = aafBgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(AdvanceActivityFeedViewController.browseFeed), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(AdvanceActivityFeedViewController.browseFeed), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.refreshButton.isHidden = true
@@ -750,7 +750,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     //
     //    }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         let urlString = request.url!.absoluteString
         // Restrict WebView to Open URLs
         
@@ -1803,7 +1803,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             currentButton.alpha = 0.8
         }
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         var i = 0
         for menu in gutterMenu1{
@@ -2300,12 +2300,12 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 /*if locationOnhome == 1 && isChangeManually == 1
                 {*/
                     
-//                    let button   = UIButton(type: UIButtonType.system) as UIButton
+//                    let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
 //                    button.frame = CGRect(x: self.view.bounds.size.width-100,y: 0,width: 18,height: 18)
 //                    button.backgroundColor = UIColor.clear
 //                    let loctionimg = UIImage(named: "Location")!.maskWithColor(color: textColorPrime)
-//                    button.setImage(loctionimg , for: UIControlState.normal)
-//                    button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.LocationAction), for: UIControlEvents.touchUpInside)
+//                    button.setImage(loctionimg , for: UIControl.State.normal)
+//                    button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.LocationAction), for: UIControl.Event.touchUpInside)
 //                    let locButton = UIBarButtonItem()
 //                    locButton.customView = button
 //                    self.navigationItem.setRightBarButtonItems([locButton], animated: true)
@@ -2315,12 +2315,12 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 if !isLoggedIn {
                     let button2 = UIButton(type: .custom)
                     let searchIconImage = UIImage(named: "search_icon.png")!.maskWithColor(color: textColorPrime)
-                    //button2.setImage(searchIconImage, for: UIControlState.normal)
+                    //button2.setImage(searchIconImage, for: UIControl.State.normal)
                     button2.imageView?.contentMode = .scaleAspectFit
                     button2.setBackgroundImage(searchIconImage, for: .normal)
                     button2.contentMode = .scaleAspectFit
                     button2.clipsToBounds = true
-                    button2.addTarget(self, action: #selector(AdvanceActivityFeedViewController.searchItem), for: UIControlEvents.touchUpInside)
+                    button2.addTarget(self, action: #selector(AdvanceActivityFeedViewController.searchItem), for: UIControl.Event.touchUpInside)
                 
                     
                     if #available(iOS 11.0, *) {
@@ -2339,9 +2339,9 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 //button.sizeToFit()
                 //button.clipsToBounds = true
                 let loctionimg = UIImage(named: "event_icon.png")!.maskWithColor(color: textColorPrime)
-                button.setImage(loctionimg , for: UIControlState.normal)
+                button.setImage(loctionimg , for: UIControl.State.normal)
                 button.imageView?.contentMode = .scaleAspectFit
-                button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.addNewEvent), for: UIControlEvents.touchUpInside)
+                button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.addNewEvent), for: UIControl.Event.touchUpInside)
                 let eventButton = UIBarButtonItem()
                 
                 
@@ -2355,10 +2355,10 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 }
                 eventButton.customView = button*/
                 
-                let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+                let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
                 fixedSpace.width = 7.0
                 
-                let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+                let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
                 negativeSpace.width = -7.0
                     
                 self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace], animated: true)
@@ -2372,13 +2372,13 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 if locationOnhome == 1 && isChangeManually == 1
                 {
                     
-                    let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
-                    let button   = UIButton(type: UIButtonType.system) as UIButton
+                    let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
+                    let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
                     button.frame = CGRect(x: self.view.bounds.size.width-100,y: 0,width: 20,height: 20)
                     button.backgroundColor = UIColor.clear
                     let loctionimg = UIImage(named: "Location")!.maskWithColor(color: textColorPrime)
-                    button.setImage(loctionimg , for: UIControlState.normal)
-                    button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.LocationAction), for: UIControlEvents.touchUpInside)
+                    button.setImage(loctionimg , for: UIControl.State.normal)
+                    button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.LocationAction), for: UIControl.Event.touchUpInside)
                     let locButton = UIBarButtonItem()
                     locButton.customView = button
                     self.navigationItem.setRightBarButtonItems([searchIcon,locButton], animated: true)
@@ -2387,23 +2387,23 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 }
                 else
                 {
-                    let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
+                    let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
                     self.navigationItem.rightBarButtonItem = searchIcon
                     
                 }
             }
             else
             {
-                //let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
+                //let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvanceActivityFeedViewController.searchItem))
                 
                 let button2 = UIButton(type: .custom)
                 let searchIconImage = UIImage(named: "search_icon.png")!.maskWithColor(color: textColorPrime)
-                //button2.setImage(searchIconImage, for: UIControlState.normal)
+                //button2.setImage(searchIconImage, for: UIControl.State.normal)
                 button2.imageView?.contentMode = .scaleAspectFit
                 button2.setBackgroundImage(searchIconImage, for: .normal)
                 button2.contentMode = .scaleAspectFit
                 button2.clipsToBounds = true
-                button2.addTarget(self, action: #selector(AdvanceActivityFeedViewController.searchItem), for: UIControlEvents.touchUpInside)
+                button2.addTarget(self, action: #selector(AdvanceActivityFeedViewController.searchItem), for: UIControl.Event.touchUpInside)
                 let searchButton = UIBarButtonItem()
                 
                 if #available(iOS 11.0, *) {
@@ -2422,9 +2422,9 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 //button.sizeToFit()
                 //button.clipsToBounds = true
                 let loctionimg = UIImage(named: "event_icon.png")!.maskWithColor(color: textColorPrime)
-                button.setImage(loctionimg , for: UIControlState.normal)
+                button.setImage(loctionimg , for: UIControl.State.normal)
                 button.imageView?.contentMode = .scaleAspectFit
-                button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.addNewEvent), for: UIControlEvents.touchUpInside)
+                button.addTarget(self, action: #selector(AdvanceActivityFeedViewController.addNewEvent), for: UIControl.Event.touchUpInside)
                 let eventButton = UIBarButtonItem()
                 
                 
@@ -2438,10 +2438,10 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 }
                 eventButton.customView = button*/
                 
-                let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+                let fixedSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
                 fixedSpace.width = 15.0
                 
-                let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+                let negativeSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
                 negativeSpace.width = -7.0
                 
                 self.navigationItem.setRightBarButtonItems([negativeSpace,searchButton,fixedSpace], animated: true)
@@ -2633,7 +2633,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
     override func viewWillDisappear(_ animated: Bool)
     {
         fromMenuSaveFeed = false
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
         
         feedObj.tableView.tableFooterView?.isHidden = true
         stopMyTimer()
@@ -2818,7 +2818,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                     postView.layer.masksToBounds = true
                     
                     feedTextView.tag = 1990
-                    feedTextView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                    feedTextView.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                     feedTextView.addTarget(self, action: #selector(AdvanceActivityFeedViewController.openPostFeed(sender:)), for: .touchUpInside)
                     feedTextView.backgroundColor = lightBgColor
                     postView.addSubview(feedTextView)
@@ -2832,36 +2832,36 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                         switch i {
                         case 0:
                             let attrString: NSMutableAttributedString = NSMutableAttributedString(string: menuIcon[0])
-                            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: colorIcon[0], range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: colorIcon[0], range: NSMakeRange(0, attrString.length))
                             let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("\(postMenu[0])",comment: ""))
-                            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                            descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
                             attrString.append(descString);
                             
-                            postFeed.setAttributedTitle(attrString, for: UIControlState.normal)
+                            postFeed.setAttributedTitle(attrString, for: UIControl.State.normal)
                             break
                         case 1:
                             let attrString: NSMutableAttributedString = NSMutableAttributedString(string: menuIcon[1])
-                            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: colorIcon[1], range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: colorIcon[1], range: NSMakeRange(0, attrString.length))
                             let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("\(postMenu[1])",comment: ""))
-                            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                            descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
                             attrString.append(descString);
                             
-                            postFeed.setAttributedTitle(attrString, for: UIControlState.normal)
+                            postFeed.setAttributedTitle(attrString, for: UIControl.State.normal)
                             break
                         case 2:
                             let attrString: NSMutableAttributedString = NSMutableAttributedString(string: menuIcon[2])
-                            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                            attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: colorIcon[2], range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: colorIcon[2], range: NSMakeRange(0, attrString.length))
                             let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("\(postMenu[2])",comment: ""))
-                            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                            descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
                             attrString.append(descString);
                             
-                            postFeed.setAttributedTitle(attrString, for: UIControlState.normal)
+                            postFeed.setAttributedTitle(attrString, for: UIControl.State.normal)
                             break
                         default:
                             break
@@ -2955,7 +2955,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
             {
                 
                 let indexPath = IndexPath(row: 0, section: 0)
-                self.feedObj.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+                self.feedObj.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
             }
         }
     }
@@ -2988,7 +2988,7 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
         self.feedObj.tableView.reloadData()
         self.activityFeeds.removeAll(keepingCapacity: false)
         let indexPath = IndexPath(row: 0, section: 0)
-        self.feedObj.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+        self.feedObj.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
         
     }
     
@@ -4723,14 +4723,15 @@ class AdvanceActivityFeedViewController: UIViewController, UIPopoverPresentation
                 }
                 else if let imageT = image as? UIImage
                 {
-                    imageData =  UIImageJPEGRepresentation(imageT, 0.7)
+//                    imageData =  UIImageJPEGRepresentation(imageT, 0.7)
+                    imageData =  imageT.jpegData(compressionQuality: 0.7)
                 }
                 
             }else{
                 // imageData = UIImagePNGRepresentation(image as! UIImage)
                 if image is UIImage
                 {
-                    imageData =  UIImageJPEGRepresentation(image as! UIImage, 0.7)
+                    imageData =  (image as! UIImage).jpegData(compressionQuality: 0.7)
                 }
                 //print("length \(imageData.count)")
                 

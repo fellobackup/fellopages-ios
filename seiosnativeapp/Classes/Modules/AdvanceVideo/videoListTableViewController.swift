@@ -27,7 +27,7 @@ class videoListTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        tableView = UITableView(frame: CGRect(x: 0, y: tableframeY, width: view.bounds.width, height: view.bounds.height - tabBarHeight - tableframeY-40), style: UITableViewStyle.grouped)
+        tableView = UITableView(frame: CGRect(x: 0, y: tableframeY, width: view.bounds.width, height: view.bounds.height - tabBarHeight - tableframeY-40), style: UITableView.Style.grouped)
         tableView.register(videoListTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = textColorLight
@@ -74,7 +74,7 @@ class videoListTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! videoListTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         // Configure cell
         configureCell(cell: cell, indexPath:indexPath)

@@ -109,7 +109,7 @@ class ChoosePhotoViewController: UIViewController, UITableViewDataSource, UITabl
         
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(ChoosePhotoViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ChoosePhotoViewController.refresh), for: UIControl.Event.valueChanged)
         albumPhotoTableView.addSubview(refresher)
  
         let footerView = UIView(frame: frameActivityIndicator)
@@ -163,7 +163,7 @@ class ChoosePhotoViewController: UIViewController, UITableViewDataSource, UITabl
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChoosePhotoTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         var index:Int!
@@ -181,7 +181,7 @@ class ChoosePhotoViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.photo1.kf.setImage(with: url1, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image1.tag = index
                     cell.image1.addTarget(self, action: #selector(ChoosePhotoViewController.previewSelectedPhoto(_:)), for: .touchUpInside)
-                    cell.image1.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image1.contentMode = UIView.ContentMode.scaleAspectFill
                 })
             }
             
@@ -228,7 +228,7 @@ class ChoosePhotoViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.photo2.kf.setImage(with: url1, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image2.tag = index+1
                     cell.image2.addTarget(self, action: #selector(ChoosePhotoViewController.previewSelectedPhoto(_:)), for: .touchUpInside)
-                    cell.image2.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image2.contentMode = UIView.ContentMode.scaleAspectFill
                 })
             }
             
@@ -262,7 +262,7 @@ class ChoosePhotoViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.photo3.kf.setImage(with: url1, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image3.tag = index+2
                     cell.image3.addTarget(self, action: #selector(ChoosePhotoViewController.previewSelectedPhoto(_:)), for: .touchUpInside)
-                    cell.image3.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image3.contentMode = UIView.ContentMode.scaleAspectFill
                 })
                 
             }
@@ -294,7 +294,7 @@ class ChoosePhotoViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.photo4.kf.setImage(with: url1, placeholder: nil, options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image4.tag = index+3
                     cell.image4.addTarget(self, action: #selector(ChoosePhotoViewController.previewSelectedPhoto(_:)), for: .touchUpInside)
-                    cell.image4.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image4.contentMode = UIView.ContentMode.scaleAspectFill
                 })
             }
             

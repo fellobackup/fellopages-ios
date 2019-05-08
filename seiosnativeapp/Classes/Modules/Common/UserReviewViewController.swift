@@ -117,7 +117,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         ReviewTableview = UITableView(frame: CGRect(x: 0, y: ButtonHeight+ButtonHeight+TOPPADING+30, width: view.bounds.width, height: view.bounds.height-(ButtonHeight+ButtonHeight+TOPPADING+30) - tabBarHeight), style: .grouped)
         ReviewTableview.register(UserReviewTableViewCell.self, forCellReuseIdentifier: "ReviewCell")
         ReviewTableview.estimatedRowHeight = 200.0
-        ReviewTableview.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        ReviewTableview.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         //        ReviewTableview.dataSource = self
         //        ReviewTableview.delegate = self
         ReviewTableview.isOpaque = false
@@ -130,7 +130,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(UserReviewViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(UserReviewViewController.refresh), for: UIControl.Event.valueChanged)
         ReviewTableview.addSubview(refresher)
    
         
@@ -407,7 +407,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! UserReviewTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         let Reviewdic = reviewarr[(indexPath as NSIndexPath).row] as! NSDictionary
         let initalReviewDic = actualreviewarr[(indexPath as NSIndexPath).row] as! NSDictionary
         cell.lblhelpful.isHidden = false//true
@@ -421,7 +421,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         cell.btnUser.tag = (indexPath as NSIndexPath).row
         cell.btncommentaction .addTarget(self, action: #selector(UserReviewViewController.openComment(_:)), for: .touchUpInside)
         cell.btnhelpful .addTarget(self, action: #selector(UserReviewViewController.helpfulAction(_:)), for: .touchUpInside)
-        cell.btnhelpful.setTitle("\u{f164}", for: UIControlState())
+        cell.btnhelpful.setTitle("\u{f164}", for: UIControl.State())
         cell.btnNothelpful .addTarget(self, action: #selector(UserReviewViewController.nothelpfulAction(_:)), for: .touchUpInside)
         
         if contentType == "listings"{
@@ -589,7 +589,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         for i in stride(from: 1, through: 5, by: 1){
             let rate = createButton(CGRect(x: origin_x + 20, y: 10, width: 20, height: 20), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -600,7 +600,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
             {
                 if i <= rating
                 {
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }
@@ -625,7 +625,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         for i in stride(from: 1, through: 5, by: 1){
             let rate = createButton(CGRect(x: origin_x + 20, y: 10, width: 20, height: 20), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -636,7 +636,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
             {
                 if i <= rating
                 {
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }
@@ -700,7 +700,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
             Reviewdic["is_helpful"] = true
             Reviewdic["is_not_helpful"] = false
             self.reviewarr[(indexPath as NSIndexPath).row] = Reviewdic
-            self.ReviewTableview.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+            self.ReviewTableview.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             self.callIshelpful()
         }
         
@@ -730,7 +730,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
             Reviewdic["is_not_helpful"] = true
             Reviewdic["is_helpful"] = false
             self.reviewarr[(indexPath as NSIndexPath).row] = Reviewdic
-            self.ReviewTableview.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+            self.ReviewTableview.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             self.callIshelpful()
             
             
@@ -808,7 +808,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
                                 
                                 
                                 self.reviewarr[self.indextag.row] = response
-                                self.ReviewTableview.reloadRows(at: [self.indextag], with: UITableViewRowAnimation.none)
+                                self.ReviewTableview.reloadRows(at: [self.indextag], with: UITableView.RowAnimation.none)
                                 
                                 
                             }
@@ -853,7 +853,7 @@ class UserReviewViewController: UIViewController, UITableViewDataSource, UITable
         
         if let menuOption = reviewInfo["gutterMenus"] as? NSArray {
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     

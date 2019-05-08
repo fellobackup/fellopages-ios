@@ -63,7 +63,7 @@ class CategoryBrowseTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -93,7 +93,7 @@ class CategoryBrowseTableViewCell: UITableViewCell {
         categoryImageView = createImageView(CGRect(x: cellView.bounds.width/2 - 15, y: cellView.bounds.height/4 - contentPADING, width: 30, height: 30), border: true)
         
 
-        categoryImageView.contentMode = UIViewContentMode.scaleAspectFit
+        categoryImageView.contentMode = UIView.ContentMode.scaleAspectFit
         categoryImageView.layer.masksToBounds = true
         categoryImageView.isUserInteractionEnabled = true
         categoryImageView.backgroundColor = UIColor.clear //lightGray//navColor
@@ -137,7 +137,7 @@ class CategoryBrowseTableViewCell: UITableViewCell {
         
 
         categoryImageView1 = createImageView(CGRect(x: cellView1.bounds.width/2 - 15, y: cellView1.bounds.height/4 - contentPADING, width: 30, height: 30), border: true)
-        categoryImageView1.contentMode = UIViewContentMode.scaleAspectFit
+        categoryImageView1.contentMode = UIView.ContentMode.scaleAspectFit
         categoryImageView1.layer.masksToBounds = true
         categoryImageView1.isUserInteractionEnabled = true
         categoryImageView1.image = UIImage(named: "category_icon.png")
@@ -181,7 +181,7 @@ class CategoryBrowseTableViewCell: UITableViewCell {
         
         categoryImageView2 = createImageView(CGRect(x: cellView2.bounds.width/2 - 15, y: cellView2.bounds.height/4 - contentPADING, width: 30, height: 30), border: true)
         
-        categoryImageView2.contentMode = UIViewContentMode.scaleAspectFit
+        categoryImageView2.contentMode = UIView.ContentMode.scaleAspectFit
         categoryImageView2.layer.masksToBounds = true
         categoryImageView2.isUserInteractionEnabled = true
         categoryImageView2.backgroundColor = UIColor.clear

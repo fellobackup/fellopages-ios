@@ -236,7 +236,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         eventTableView.delegate = self
         eventTableView.isOpaque = false
         eventTableView.backgroundColor = tableViewBgColor
-        eventTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        eventTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         // For ios 11 spacing issue below the navigation controller
         if #available(iOS 11.0, *) {
             eventTableView.estimatedRowHeight = 0
@@ -254,7 +254,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         myeventTableView.delegate = self
         myeventTableView.isHidden = true
         myeventTableView.backgroundColor = tableViewBgColor
-        myeventTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        myeventTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         // For ios 11 spacing issue below the navigation controller
         if #available(iOS 11.0, *) {
             myeventTableView.estimatedRowHeight = 0
@@ -278,7 +278,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         CategoryTableView.dataSource = self
         CategoryTableView.delegate = self
         CategoryTableView.estimatedRowHeight = 165.0
-        CategoryTableView.rowHeight = UITableViewAutomaticDimension
+        CategoryTableView.rowHeight = UITableView.automaticDimension
         CategoryTableView.backgroundColor = UIColor.clear
         CategoryTableView.separatorColor = UIColor.clear
         CategoryTableView.isHidden = true
@@ -293,18 +293,18 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControl.Event.valueChanged)
         eventTableView.addSubview(refresher)
         
         
         refresher1 = UIRefreshControl()
         refresher1.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher1.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher1.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControl.Event.valueChanged)
         myeventTableView.addSubview(refresher1)
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControl.Event.valueChanged)
         CategoryTableView.addSubview(refresher2)
         
         
@@ -326,7 +326,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         self.refreshButton.backgroundColor = bgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(AdvancedEventViewController.browseEntries), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(AdvancedEventViewController.browseEntries), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.mainView.addSubview(self.refreshButton)
@@ -933,7 +933,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -957,7 +957,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil
                 {
@@ -1110,7 +1110,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
                 if ob.tag == 1005
                 {
@@ -1121,7 +1121,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -1313,7 +1313,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: self.adImageView.bounds.height + 15 + self.adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -1425,7 +1425,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
 //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: self.adImageView.bounds.height + 15 + self.adImageView.frame.origin.y, width: 70, height: 30))
 //
 //        adCallToActionButton.setTitle(
-//            nativeAd.callToAction, for: UIControlState())
+//            nativeAd.callToAction, for: UIControl.State())
 //
 //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
 //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -1539,7 +1539,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1618,7 +1618,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -2133,14 +2133,14 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         switch sender.tag
         {
         case 1:
-            filterButton.setTitle("Current Orders", for: UIControlState.normal)
+            filterButton.setTitle("Current Orders", for: UIControl.State.normal)
             paramtype = "current"
             Button1.isHidden = true
             Button2.isHidden = true
             browseEntries1()
             break
         case 2:
-            filterButton.setTitle("Past Orders", for: UIControlState.normal)
+            filterButton.setTitle("Past Orders", for: UIControl.State.normal)
             paramtype = "past"
             Button1.isHidden = true
             Button2.isHidden = true
@@ -2161,7 +2161,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         ticketTableView.dataSource = self
         ticketTableView.delegate = self
         ticketTableView.estimatedRowHeight = 75
-        ticketTableView.rowHeight = UITableViewAutomaticDimension
+        ticketTableView.rowHeight = UITableView.automaticDimension
         ticketTableView.backgroundColor = tableViewBgColor
         ticketTableView.separatorColor = UIColor.gray
         ticketTableView.tag = 101
@@ -2179,7 +2179,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         ticketTableView.tableFooterView?.isHidden = true
         
         refresher5 = UIRefreshControl()
-        refresher5.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher5.addTarget(self, action: #selector(AdvancedEventViewController.refresh), for: UIControl.Event.valueChanged)
         ticketTableView.addSubview(refresher5)
     }
     
@@ -2284,7 +2284,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                         self.refreshButton.backgroundColor = bgColor
                         self.refreshButton.layer.borderColor = navColor.cgColor
                         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                        self.refreshButton.addTarget(self, action: #selector(AdvancedEventViewController.browseEntries1), for: UIControlEvents.touchUpInside)
+                        self.refreshButton.addTarget(self, action: #selector(AdvancedEventViewController.browseEntries1), for: UIControl.Event.touchUpInside)
                         
                         self.refreshButton.layer.cornerRadius = 5.0
                         self.refreshButton.layer.masksToBounds = true
@@ -2749,7 +2749,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             var ticketInfo:NSDictionary
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             for ob in cell.subviews{
                 if ob.tag != 500 && ob.tag != 501 && ob.tag != 502 {
@@ -2854,7 +2854,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             {
                 
                 let cell = CategoryTableView.dequeueReusableCell(withIdentifier: "Cellone", for: indexPath) as! CategoryTableViewCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.blue
+                cell.selectionStyle = UITableViewCell.SelectionStyle.blue
                 cell.DiaryName.isHidden = false
                 cell.DiaryName1.isHidden = false
                 cell.classifiedImageView.frame.size.height = 155
@@ -2960,7 +2960,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                 {  // or 9 == if you don't want the first cell to be an ad!
                     myeventTableView.register(NativeEventCell.self, forCellReuseIdentifier: "Cell1")
                     let cell = myeventTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeEventCell
-                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     cell.backgroundColor = tableViewBgColor
                     var Adcount: Int = 0
                     Adcount = row/(kFrequencyAdsInCells_advancedevent-1)
@@ -3252,7 +3252,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             let attrString = NSMutableAttributedString(string: stringValue)
                             let style = NSMutableParagraphStyle()
                             style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                            attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                             cell.dateLabel2.attributedText = attrString
                             cell.dateLabel2.textAlignment = NSTextAlignment.left
                             cell.dateLabel2.numberOfLines = 0
@@ -3305,7 +3305,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             let attrString = NSMutableAttributedString(string: stringValue)
                             let style = NSMutableParagraphStyle()
                             style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                            attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                             cell.dateLabel2.attributedText = attrString
                             cell.dateLabel2.textAlignment = NSTextAlignment.left
                             cell.dateLabel2.numberOfLines = 0
@@ -3338,7 +3338,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                         row = row - (row / kFrequencyAdsInCells_advancedevent)
                     }
                     let cell = myeventTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! EventViewTableViewCell
-                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell.selectionStyle = UITableViewCell.SelectionStyle.none
                     cell.lineView.isHidden = false
                     cell.dateView.backgroundColor = navColor
                     cell.btnDate.addTarget(self, action: #selector(AdvancedEventViewController.DateAction(_:)), for: .touchUpInside)
@@ -3673,7 +3673,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                         let attrString = NSMutableAttributedString(string: stringValue)
                         let style = NSMutableParagraphStyle()
                         style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                         cell.dateLabel.attributedText = attrString
                         cell.dateLabel.textAlignment = NSTextAlignment.left
                         cell.dateLabel.numberOfLines = 0
@@ -3723,7 +3723,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                         let attrString = NSMutableAttributedString(string: stringValue)
                         let style = NSMutableParagraphStyle()
                         style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                         cell.dateLabel.attributedText = attrString
                         cell.dateLabel.textAlignment = NSTextAlignment.left
                         cell.dateLabel.numberOfLines = 0
@@ -4012,7 +4012,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             let attrString = NSMutableAttributedString(string: stringValue)
                             let style = NSMutableParagraphStyle()
                             style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                            attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                             cell.dateLabel2.attributedText = attrString
                             cell.dateLabel2.textAlignment = NSTextAlignment.left
                             cell.dateLabel2.numberOfLines = 0
@@ -4095,7 +4095,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             let attrString = NSMutableAttributedString(string: stringValue)
                             let style = NSMutableParagraphStyle()
                             style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                            attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                             cell.dateLabel2.attributedText = attrString
                             cell.dateLabel2.textAlignment = NSTextAlignment.left
                             cell.dateLabel2.numberOfLines = 0
@@ -4131,7 +4131,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                     {  // or 9 == if you don't want the first cell to be an ad!
                         eventTableView.register(NativeEventCell.self, forCellReuseIdentifier: "Cell1")
                         let cell = eventTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeEventCell
-                        cell.selectionStyle = UITableViewCellSelectionStyle.none
+                        cell.selectionStyle = UITableViewCell.SelectionStyle.none
                         cell.backgroundColor = tableViewBgColor
                         var Adcount: Int = 0
                         Adcount = row/(kFrequencyAdsInCells_advancedevent-1)
@@ -4401,7 +4401,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                 let attrString = NSMutableAttributedString(string: stringValue)
                                 let style = NSMutableParagraphStyle()
                                 style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                                attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                                attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                                 cell.dateLabel2.attributedText = attrString
                                 cell.dateLabel2.textAlignment = NSTextAlignment.left
                                 cell.dateLabel2.numberOfLines = 0
@@ -4454,7 +4454,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                 let attrString = NSMutableAttributedString(string: stringValue)
                                 let style = NSMutableParagraphStyle()
                                 style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                                attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                                attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                                 cell.dateLabel2.attributedText = attrString
                                 cell.dateLabel2.textAlignment = NSTextAlignment.left
                                 cell.dateLabel2.numberOfLines = 0
@@ -4496,7 +4496,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             row = row - (row / kFrequencyAdsInCells_advancedevent)
                         }
                         let cell = eventTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! EventViewTableViewCell
-                        cell.selectionStyle = UITableViewCellSelectionStyle.none
+                        cell.selectionStyle = UITableViewCell.SelectionStyle.none
                         cell.lineView.isHidden = false
                         cell.dateView.backgroundColor = navColor
                         cell.btnDate.addTarget(self, action: #selector(AdvancedEventViewController.DateAction(_:)), for: .touchUpInside)
@@ -4791,7 +4791,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             let attrString = NSMutableAttributedString(string: stringValue)
                             let style = NSMutableParagraphStyle()
                             style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                            attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                             cell.dateLabel.attributedText = attrString
                             cell.dateLabel.textAlignment = NSTextAlignment.left
                             cell.dateLabel.numberOfLines = 0
@@ -4837,7 +4837,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                             let attrString = NSMutableAttributedString(string: stringValue)
                             let style = NSMutableParagraphStyle()
                             style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                            attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                             cell.dateLabel.attributedText = attrString
                             cell.dateLabel.textAlignment = NSTextAlignment.left
                             cell.dateLabel.numberOfLines = 0
@@ -5104,7 +5104,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                 let attrString = NSMutableAttributedString(string: stringValue)
                                 let style = NSMutableParagraphStyle()
                                 style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                                attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                                attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                                 cell.dateLabel2.attributedText = attrString
                                 cell.dateLabel2.textAlignment = NSTextAlignment.left
                                 cell.dateLabel2.numberOfLines = 0
@@ -5189,7 +5189,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                 let attrString = NSMutableAttributedString(string: stringValue)
                                 let style = NSMutableParagraphStyle()
                                 style.minimumLineHeight = 14 // change line spacing between each line like 30 or 40
-                                attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
+                                attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value:style, range:NSMakeRange(0, attrString.length))
                                 cell.dateLabel2.attributedText = attrString
                                 cell.dateLabel2.textAlignment = NSTextAlignment.left
                                 cell.dateLabel2.numberOfLines = 0
@@ -5313,7 +5313,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         case 1:
             searchtype = "all"
             let fitertext = "See All" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5322,7 +5322,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         case 2:
             searchtype = "today"
             let fitertext = "Today" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5333,7 +5333,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             
             searchtype = "tomorrow"
             let fitertext = "Tomorrow" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5342,7 +5342,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
         case 4:
             searchtype = "this_weekend"
             let fitertext = "This Weekend" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5353,7 +5353,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             
             searchtype = "this_week"
             let fitertext = "This Week" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5363,7 +5363,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             
             searchtype = "this_month"
             let fitertext = "This Month" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5373,7 +5373,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             
             searchtype = "featured"
             let fitertext = "Featured" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5383,7 +5383,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             
             searchtype = "sponsored"
             let fitertext = "Sponsored" + " " + searchFilterIcon
-            feedFilter.setTitle(fitertext, for: UIControlState())
+            feedFilter.setTitle(fitertext, for: UIControl.State())
             scrollView.isUserInteractionEnabled = false
             isFilterapplied = true
             showSpinner = true
@@ -5457,7 +5457,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
             var confirmationAlert = true
             
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in contentGutterMenu{
                 if let menuItem = menu as? NSDictionary{
                     
@@ -6332,10 +6332,10 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                     if (response["canCreate"] as! Bool == true)
                                     {
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
-                                        searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
-                                        addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+                                        searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20.0)
+                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
+                                        addBlog.imageInsets = UIEdgeInsets(top: 0,left: -20, bottom: 0, right: 0)
                                         self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
                                         
                                         searchItem.tintColor = textColorPrime
@@ -6344,7 +6344,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                     }
                                     else
                                     {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
                                         
                                         self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
@@ -6423,18 +6423,18 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
                                     {
                                         if (response["canCreate"] as! Bool == true)
                                         {
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
-                                            searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+                                            searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20.0)
+                                            let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
                                             self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
-                                            addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                            addBlog.imageInsets = UIEdgeInsets(top: 0,left: -20, bottom: 0, right: 0)
                                             searchItem.tintColor = textColorPrime
                                             addBlog.tintColor = textColorPrime
                                             
                                         }
                                         else
                                         {
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
                                             self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
                                             
@@ -6713,10 +6713,10 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
 //                                    if (response["canCreate"] as! Bool == true)
 //                                    {
                                     
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
-                                    searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
-                                    addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+                                    searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20.0)
+                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvancedEventViewController.addNewEvent))
+                                    addBlog.imageInsets = UIEdgeInsets(top: 0,left: -20, bottom: 0, right: 0)
                                     self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
                                     
                                     searchItem.tintColor = textColorPrime
@@ -6726,7 +6726,7 @@ class AdvancedEventViewController: UIViewController, UITableViewDelegate, UITabl
 //                                    }
 //                                    else
 //                                    {
-//                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
+//                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedEventViewController.searchItem))
 //
 //                                        self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
 //                                        searchItem.tintColor = textColorPrime

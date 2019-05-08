@@ -113,7 +113,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
         videoListObj.tableView.addSubview(headerView)
         videoListObj.headerheight = headerView.frame.size.height + headerView.frame.origin.y
         self.view.addSubview(videoListObj.view)
-        self.addChildViewController(videoListObj)
+        self.addChild(videoListObj)
         
         tableViewFrameType = "ChannelProfileViewController"
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelProfileViewController.ScrollingactionAdvVideoChannel(_:)), name: NSNotification.Name(rawValue: "ScrollingactionAdvVideoChannel"), object: nil)
@@ -286,7 +286,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(ChannelProfileViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ChannelProfileViewController.refresh), for: UIControl.Event.valueChanged)
         self.feedObj.tableView.addSubview(refresher)
         self.automaticallyAdjustsScrollViewInsets = false;
 
@@ -404,12 +404,12 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(ChannelProfileViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(ChannelProfileViewController.showGutterMenu), for: .touchUpInside)
                                 //    rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -592,7 +592,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
         refreshButton.backgroundColor = bgColor
         refreshButton.layer.borderColor = navColor.cgColor
         refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        refreshButton.addTarget(self, action: #selector(ChannelProfileViewController.browseVideos), for: UIControlEvents.touchUpInside)
+        refreshButton.addTarget(self, action: #selector(ChannelProfileViewController.browseVideos), for: UIControl.Event.touchUpInside)
         
         refreshButton.layer.cornerRadius = 5.0
         refreshButton.layer.masksToBounds = true
@@ -668,7 +668,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
                         self.addfilterview()
                         selectedTabmenu = menuItem["name"] as! String
                         self.view.addSubview(feedObj.view)
-                        self.addChildViewController(feedObj)
+                        self.addChild(feedObj)
                         if self.activityFeeds.count > 0
                         {
                             self.feedObj.refreshLikeUnLike = true
@@ -685,7 +685,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
                     if menuItem["name"] as! String == "video"{
                         videoListObj.tableView.addSubview(headerView)
                         self.view.addSubview(videoListObj.view)
-                        self.addChildViewController(videoListObj)
+                        self.addChild(videoListObj)
                         self.likecommentView()
                         if self.channelvideos.count == 0 {
                             self.emptylistingMessage(msg: "video")
@@ -1393,7 +1393,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
         
     }
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in gutterMenu{
@@ -1403,7 +1403,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
                     let titleString = dic["name"] as! String
                     
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Video Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -1681,14 +1681,14 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
     @objc func showFeedFilterOption(_ sender: UIButton){
         // Generate Feed Filter Options Gutter Menu from Server as! Alert Popover
         //      if logoutUser != true {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in filterGutterMenu{
             if let dic = menu as? NSDictionary{
                 alertController.addAction(UIAlertAction(title: (dic["tab_title"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in
                     // Set Feed Filter Option Title
-                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControlState())
+                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControl.State())
                     self.feedFilterFlag = true
                     
                     // Set Parameters for Feed Filter
@@ -1726,7 +1726,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
     }
     @objc func shareItem()
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let pv = AdvanceShareViewController()
             pv.url = self.shareUrl
@@ -1743,7 +1743,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -1757,7 +1757,7 @@ class ChannelProfileViewController: UIViewController,TTTAttributedLabelDelegate,
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if (UIDevice.current.userInterfaceIdiom == .phone){
                 

@@ -24,7 +24,7 @@ class ManageEventTicketTableCell: UITableViewCell
         
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         cellView = createView(CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 111), borderColor: borderColorMedium, shadow: false)
@@ -61,7 +61,7 @@ class ManageEventTicketTableCell: UITableViewCell
         cellView.addSubview(ticketQuantity)
         
         btnMenu = createButton(CGRect(x: cellView.frame.size.width-40, y: cellView.frame.size.height/2-15, width: 40, height: 40), title: "", border: false, bgColor: false, textColor: textColorMedium)
-        btnMenu.setImage(UIImage(named: "verticaldots.png"), for: UIControlState())
+        btnMenu.setImage(UIImage(named: "verticaldots.png"), for: UIControl.State())
         //btnMenu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZESmall)
         cellView.addSubview(btnMenu)
         

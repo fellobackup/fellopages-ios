@@ -27,7 +27,7 @@ class InviteMemberTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String!)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String!)
     {
         //First Call Super
         super.init(style: style, reuseIdentifier: reuseIdentifier)

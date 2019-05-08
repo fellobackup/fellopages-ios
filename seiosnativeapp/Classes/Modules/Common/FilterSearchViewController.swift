@@ -108,7 +108,7 @@ var subCategoryDicFilter : NSMutableDictionary = [:]
 
         //MARK: Work for Reset Form to Global Search
         if fromGlobSearch && conditionalForm != "coreSearch"{
-            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(FilterSearchViewController.toGlobalSearch))
+            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(FilterSearchViewController.toGlobalSearch))
             self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
         }
     }
@@ -1524,8 +1524,8 @@ var subCategoryDicFilter : NSMutableDictionary = [:]
         }else{
 
             if error != ""{
-                let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
                 self.present(alertController, animated: true, completion: nil)
             }
             else{

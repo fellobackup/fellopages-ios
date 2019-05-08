@@ -73,7 +73,7 @@ class UploadChoosenPhotosViewController: UIViewController, UITableViewDataSource
         self.edgesForExtendedLayout = UIRectEdge.all;
         self.automaticallyAdjustsScrollViewInsets = false;
         
-        selectedPhotostableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height-TOPPADING - tabBarHeight), style: UITableViewStyle.grouped)
+        selectedPhotostableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height-TOPPADING - tabBarHeight), style: UITableView.Style.grouped)
         selectedPhotostableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "Cell")
         selectedPhotostableView.rowHeight = 120.0
         selectedPhotostableView.dataSource = self
@@ -369,7 +369,7 @@ class UploadChoosenPhotosViewController: UIViewController, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotosTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         var index:Int!
@@ -381,25 +381,25 @@ class UploadChoosenPhotosViewController: UIViewController, UITableViewDataSource
         
         if allPhotos.count > index {
             cell.image1.isHidden = false
-            cell.image1.setImage((allPhotos[index]), for: UIControlState())
+            cell.image1.setImage((allPhotos[index]), for: UIControl.State())
         }
         dynamicHeight = cell.image1.bounds.width
         
         if allPhotos.count > index + 1{
             cell.image2.isHidden = false
-            cell.image2.setImage((allPhotos[index+1]), for: UIControlState())
+            cell.image2.setImage((allPhotos[index+1]), for: UIControl.State())
         }
         
         if(UIDevice.current.userInterfaceIdiom == .pad){
             
             if allPhotos.count > index + 2{
                 cell.image3.isHidden = false
-                cell.image3.setImage((allPhotos[index+2]), for: UIControlState())
+                cell.image3.setImage((allPhotos[index+2]), for: UIControl.State())
             }
             
             if allPhotos.count > index + 3{
                 cell.image4.isHidden = false
-                cell.image4.setImage((allPhotos[index+3]), for: UIControlState())
+                cell.image4.setImage((allPhotos[index+3]), for: UIControl.State())
             }
             
         }

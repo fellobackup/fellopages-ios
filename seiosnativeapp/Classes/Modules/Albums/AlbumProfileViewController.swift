@@ -207,7 +207,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
         headerView.addSubview(descView)
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(AlbumProfileViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(AlbumProfileViewController.refresh), for: UIControl.Event.valueChanged)
         albumPhotoTableView.addSubview(refresher)
         
         likeCommentContent_id = albumId
@@ -373,7 +373,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
     // Present Feed Gutter Menus
     @objc func showGutterMenu(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         for menu in gutterMenu{
             if let dic = menu as? NSDictionary{
@@ -382,7 +382,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil {
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             if  dic["name"] as! String ==  "delete"{
                                 
                                 // Confirmation Alert
@@ -482,7 +482,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
     }
     @objc func shareItem()
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let pv = AdvanceShareViewController()
             pv.url = self.shareUrl
@@ -498,7 +498,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -513,7 +513,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -728,8 +728,8 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
                                                 boldFont =  CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                                                 
                                                 let range1 = (description as NSString).range(of: ownerName)
-                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
 
                                                 
                                                 // TODO: Clean this up...
@@ -744,9 +744,9 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
                                 if let menu = body["gutterMenu"] as? NSArray
                                 {
                                     self.gutterMenu = menu
-                                    let menu = UIBarButtonItem(title:optionIcon, style: UIBarButtonItemStyle.plain , target:self , action: #selector(AlbumProfileViewController.showGutterMenu))
+                                    let menu = UIBarButtonItem(title:optionIcon, style: UIBarButtonItem.Style.plain , target:self , action: #selector(AlbumProfileViewController.showGutterMenu))
 
-                                    menu.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControlState())
+                                    menu.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControl.State())
                                     self.navigationItem.rightBarButtonItem = menu
                                     
                                 }
@@ -779,14 +779,14 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
                                     let rightNavView = UIView(frame: CGRect(x: 0, y: 0, width: 66, height: 44))
                                     rightNavView.backgroundColor = UIColor.clear
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(AlbumProfileViewController.shareItem), for: .touchUpInside)
                                     if (self.shareUrl != nil)
                                     {
                                       rightNavView.addSubview(shareButton)
                                     }
                                     let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(AlbumProfileViewController.showGutterMenu), for: .touchUpInside)
                                
                                     if isCancel == false
@@ -866,7 +866,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = lightBgColor
         
         var index:Int!
@@ -885,7 +885,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
                 cell.photo1.kf.setImage(with: url1, placeholder: UIImage(named : "default.png"), options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image1.tag = index
                     cell.image1.addTarget(self, action: #selector(AlbumProfileViewController.openImage(_:)), for: .touchUpInside)
-                    cell.image1.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image1.contentMode = UIView.ContentMode.scaleAspectFill
                 })
             }
         }
@@ -911,7 +911,7 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
                 cell.photo2.kf.setImage(with: url1, placeholder: UIImage(named : "default.png"), options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image2.tag = index+1
                     cell.image2.addTarget(self, action: #selector(AlbumProfileViewController.openImage(_:)), for: .touchUpInside)
-                    cell.image2.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image2.contentMode = UIView.ContentMode.scaleAspectFill
                 })
 
             }
@@ -1086,11 +1086,11 @@ class AlbumProfileViewController: UIViewController, UITableViewDataSource, UITab
             self.descView.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                 let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                 let range2 = (tempInfo as NSString).range(of: NSLocalizedString("more",  comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range2)
                 let range1 = (tempInfo as NSString).range(of: NSLocalizedString("less",  comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range1)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
 
                 return mutableAttributedString
             })

@@ -48,7 +48,7 @@ class SinglePhotoLightBoxController: UIViewController, UIGestureRecognizerDelega
         
         
         lightBoxImage  = UIImageView(frame:view.frame);
-        lightBoxImage.contentMode = UIViewContentMode.scaleAspectFit
+        lightBoxImage.contentMode = UIView.ContentMode.scaleAspectFit
         self.lightBoxImage.clipsToBounds = true;
 
         if contentType == "product"{
@@ -80,10 +80,10 @@ class SinglePhotoLightBoxController: UIViewController, UIGestureRecognizerDelega
         crossButton =  createButton(CGRect(x: 15, y: 10, width: 40, height: 70), title: "", border: false,bgColor: false, textColor: textColorLight)
         }
         if contentType == "product"{
-             crossButton.setImage(UIImage(named: "cross")!.maskWithColor(color: textColorPrime), for: UIControlState())
+             crossButton.setImage(UIImage(named: "cross")!.maskWithColor(color: textColorPrime), for: UIControl.State())
         }
         else{
-        crossButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorPrime), for: UIControlState())
+        crossButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorPrime), for: UIControl.State())
         }
         crossButton.addTarget(self, action: #selector(SinglePhotoLightBoxController.cancel), for: .touchUpInside)
 
@@ -166,7 +166,7 @@ class SinglePhotoLightBoxController: UIViewController, UIGestureRecognizerDelega
         let activityItems = ActivityShareItemSources(text: shareText, image: shareImage!, url: URL(string: shareUrl)!)
 
         let activityViewController = UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         if(activityViewController.popoverPresentationController != nil) {
             activityViewController.popoverPresentationController?.sourceView = self.view;
             let frame = UIScreen.main.bounds

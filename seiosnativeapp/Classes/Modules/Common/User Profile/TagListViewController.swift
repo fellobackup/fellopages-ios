@@ -40,7 +40,7 @@ class TagListViewController: UIViewController , UITableViewDataSource, UITableVi
         blogTableView.dataSource = self
         blogTableView.delegate = self
         blogTableView.estimatedRowHeight = 75
-        blogTableView.rowHeight = UITableViewAutomaticDimension
+        blogTableView.rowHeight = UITableView.automaticDimension
         blogTableView.backgroundColor = tableViewBgColor
         blogTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -85,7 +85,7 @@ class TagListViewController: UIViewController , UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         cell.backgroundColor = tableViewBgColor
         
         var blogInfo:NSDictionary

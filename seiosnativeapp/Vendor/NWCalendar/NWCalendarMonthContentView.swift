@@ -187,7 +187,7 @@ class NWCalendarMonthContentView: UIScrollView {
         delegate = self
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
-        decelerationRate = UIScrollViewDecelerationRateFast
+        decelerationRate = UIScrollView.DecelerationRate.fast
         presentMonthIndex = kCurrentMonthOffset
         dayViewHeight = frame.height / 6
         currentPage = kCurrentMonthOffset

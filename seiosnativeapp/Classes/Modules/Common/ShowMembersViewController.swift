@@ -128,7 +128,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
         view.addSubview(info)
         
         
-        gpMemberstableView = UITableView(frame: CGRect(x: 0, y: info.bounds.height + info.frame.origin.y , width: view.bounds.width, height: view.bounds.height-(info.bounds.height + info.frame.origin.y + tabBarHeight)), style: UITableViewStyle.grouped)
+        gpMemberstableView = UITableView(frame: CGRect(x: 0, y: info.bounds.height + info.frame.origin.y , width: view.bounds.width, height: view.bounds.height-(info.bounds.height + info.frame.origin.y + tabBarHeight)), style: UITableView.Style.grouped)
         gpMemberstableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "Cell")
         gpMemberstableView.rowHeight = 65.0
         gpMemberstableView.dataSource = self
@@ -153,7 +153,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
         gpMemberstableView.tableFooterView = footerView
         gpMemberstableView.tableFooterView?.isHidden = true
         
-        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -260,12 +260,12 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
             dic["menu"] = "1"
             
             if waitingMembers {
-                self.checkWaiting.setTitle("", for: UIControlState())
+                self.checkWaiting.setTitle("", for: UIControl.State())
                 dic["waiting"] = "1"
             }
             
             if condition2 == "Approved"{
-                self.checkWaiting.setTitle("", for: UIControlState())
+                self.checkWaiting.setTitle("", for: UIControl.State())
             }
             
             if pageNumber == 1{
@@ -324,11 +324,11 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                                         if let _ = body["messageGuest"] as? NSDictionary
                                         {
                                             
-                                            let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShowMembersViewController.msgGuest))
-                                            msgItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+                                            let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ShowMembersViewController.msgGuest))
+                                            msgItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
                                             
-                                            let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ShowMembersViewController.addNewMember))
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
+                                            let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ShowMembersViewController.addNewMember))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
                                             
                                             self.navigationItem.setRightBarButtonItems([addMember,msgItem,searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
@@ -337,8 +337,8 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                                         }
                                         else
                                         {
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
-                                            let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ShowMembersViewController.addNewMember))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
+                                            let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ShowMembersViewController.addNewMember))
                                             
                                             self.navigationItem.setRightBarButtonItems([addMember,searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
@@ -355,9 +355,9 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                                         
                                         if let _ = body["messageGuest"] as? NSDictionary
                                         {
-                                            let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShowMembersViewController.msgGuest))
-                                            msgItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
+                                            let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ShowMembersViewController.msgGuest))
+                                            msgItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
                                             
                                             
                                             self.navigationItem.setRightBarButtonItems([msgItem,searchItem], animated: true)
@@ -373,8 +373,8 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                                 {
                                     if self.canInvite == true
                                     {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
-                                        let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ShowMembersViewController.addNewMember))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
+                                        let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ShowMembersViewController.addNewMember))
                                         
                                         self.navigationItem.setRightBarButtonItems([addMember,searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
@@ -384,9 +384,9 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                                     else{
                                         if let _ = body["messageGuest"] as? NSDictionary
                                         {
-                                            let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShowMembersViewController.msgGuest))
-                                            msgItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
+                                            let msgItem = UIBarButtonItem(title: "\(messageIcon)", style: UIBarButtonItem.Style.plain, target: self, action: #selector(ShowMembersViewController.msgGuest))
+                                            msgItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
                                             
                                             
                                             self.navigationItem.setRightBarButtonItems([msgItem,searchItem], animated: true)
@@ -395,7 +395,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                                         }
                                         else{
                                             
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ShowMembersViewController.searchItem))
                                             
                                             self.navigationItem.setRightBarButtonItems([searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
@@ -648,7 +648,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
     }
     
     @objc func updateStaff(_ sender:UIButton){
-        let  alert1 = UIAlertController(title:NSLocalizedString("Edit Staff", comment: "") , message: NSLocalizedString("Update Staff", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        let  alert1 = UIAlertController(title:NSLocalizedString("Edit Staff", comment: "") , message: NSLocalizedString("Update Staff", comment: ""), preferredStyle: UIAlertController.Style.alert)
         alert1.addTextField(configurationHandler: configurationTextField)
         alert1.addAction(UIAlertAction(title: NSLocalizedString("Submit", comment: ""), style: .default, handler:{
             (UIAlertAction) -> Void in
@@ -825,7 +825,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CommentTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             memberInfo = allMembers[(indexPath as NSIndexPath).row] as! NSDictionary
             cell.author_photo.frame = CGRect(x: 5,y: 5,width: 60,height: 60)
@@ -850,7 +850,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
             cell.author_title.sizeToFit()
             
             cell.imageButton.accessibilityIdentifier = "\((indexPath as NSIndexPath).row)"
-            cell.imageButton.addTarget(self, action: #selector(ShowMembersViewController.showProfile(_:)), for: UIControlEvents.touchUpInside)
+            cell.imageButton.addTarget(self, action: #selector(ShowMembersViewController.showProfile(_:)), for: UIControl.Event.touchUpInside)
             cell.imageButton.tag = userId
             
             cell.staff.isHidden = true
@@ -859,7 +859,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                     
                     if staff != "" {
                         
-                        cell.staff.setTitle("(\(staff))", for: UIControlState())
+                        cell.staff.setTitle("(\(staff))", for: UIControl.State())
                         if memberInfo["user_id"] != nil {
                             cell.staff.tag = memberInfo["user_id"] as! Int
                         }
@@ -876,7 +876,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                             
                             cell.staff.addTarget(self, action: #selector(ShowMembersViewController.updateStaff(_:)), for: .touchUpInside)
                             
-                            cell.staff.setImage(UIImage(named: "icon-edit.png"), for: UIControlState())
+                            cell.staff.setImage(UIImage(named: "icon-edit.png"), for: UIControl.State())
                             
                             // the space between the image and text
                             let spacing:CGFloat = 2.0;
@@ -884,16 +884,16 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
                             //  below the image
                             let imageSize = (cell.staff.imageView?.image?.size)!;
                             
-                            cell.staff.titleEdgeInsets = UIEdgeInsetsMake(
-                                0.0, -imageSize.width, 0.0, 0.0);
+                            cell.staff.titleEdgeInsets = UIEdgeInsets(
+                                top: 0.0, left: -imageSize.width, bottom: 0.0, right: 0.0);
                             
                             // raise the image and push it right so it appears centered
                             //  above the text
                             //  var titleSize = [cell.staff.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
-                            cell.staff.imageEdgeInsets = UIEdgeInsetsMake(
-                                0.0, (cell.staff.frame.size.width + spacing - 22), 0.0, 0.0);
+                            cell.staff.imageEdgeInsets = UIEdgeInsets(
+                                top: 0.0, left: (cell.staff.frame.size.width + spacing - 22), bottom: 0.0, right: 0.0);
                         }else{
-                            cell.staff.setTitleColor(textColorMedium, for: UIControlState())
+                            cell.staff.setTitleColor(textColorMedium, for: UIControl.State())
                         }
                         
                         
@@ -1005,7 +1005,7 @@ class ShowMembersViewController: UIViewController ,UITableViewDataSource, UITabl
         var message = ""
         var url = ""
         var param: NSDictionary = [:]
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         let currentRow = sender.tag
         

@@ -127,7 +127,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         
         let items = ["Browse Listings", "My Listings"]
         customSegmentControl = UISegmentedControl(items: items)
-        customSegmentControl.addTarget(self, action: #selector(ClassifiedViewController.indexChanged(_:)), for: UIControlEvents.valueChanged)
+        customSegmentControl.addTarget(self, action: #selector(ClassifiedViewController.indexChanged(_:)), for: UIControl.Event.valueChanged)
         _ = UIScreen.main.bounds
         customSegmentControl.frame = CGRect(x: PADING,y: TOPPADING, width: view.bounds.width - 2*PADING, height: ButtonHeight)
         customSegmentControl.selectedSegmentIndex = 0
@@ -201,7 +201,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         classifiedTableView.dataSource = self
         classifiedTableView.delegate = self
         classifiedTableView.estimatedRowHeight = 160.0
-        classifiedTableView.rowHeight = UITableViewAutomaticDimension
+        classifiedTableView.rowHeight = UITableView.automaticDimension
         classifiedTableView.backgroundColor = UIColor.clear
         classifiedTableView.separatorColor = UIColor.clear
         // For ios 11 spacing issue below the navigation controller
@@ -215,7 +215,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         // Initialize Reresher for Table (Pull to Refresh)
         refresher = UIRefreshControl()
         //    refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(ClassifiedViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ClassifiedViewController.refresh), for: UIControl.Event.valueChanged)
         classifiedTableView.addSubview(refresher)
         
         //    self.shyNavBarManager.scrollView = classifiedTableView
@@ -570,7 +570,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -594,7 +594,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -746,7 +746,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
     for ob in adsReportView.subviews{
         if ob .isKind(of: UIButton.self){
             if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
             }
             if ob.tag == 1005
             {
@@ -757,7 +757,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
     }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -936,7 +936,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: adImageView.bounds.height + 5 + adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -1034,7 +1034,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
 //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: adImageView.bounds.height + 5 + adImageView.frame.origin.y, width: 70, height: 30))
 //
 //        adCallToActionButton.setTitle(
-//            nativeAd.callToAction, for: UIControlState())
+//            nativeAd.callToAction, for: UIControl.State())
 //
 //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
 //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -1139,7 +1139,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1210,7 +1210,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1571,9 +1571,9 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
                                 
                                 if (response["canCreate"] as! Bool == true){
                                     
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ClassifiedViewController.searchItem))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ClassifiedViewController.searchItem))
                                     
-                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(ClassifiedViewController.addNewClassified))
+                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ClassifiedViewController.addNewClassified))
                                     searchItem.tintColor = textColorPrime
                                     addBlog.tintColor = textColorPrime
 
@@ -1584,7 +1584,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
                                     
                                 }else{
                                 
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ClassifiedViewController.searchItem))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(ClassifiedViewController.searchItem))
 
                                     self.navigationItem.rightBarButtonItem = searchItem
                                     searchItem.tintColor = textColorPrime
@@ -1618,7 +1618,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(ClassifiedViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(ClassifiedViewController.browseEntries), for: UIControl.Event.touchUpInside)
 
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
@@ -1746,7 +1746,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         {  // or 9 == if you don't want the first cell to be an ad!
             classifiedTableView.register(NativeClassifiedCell.self, forCellReuseIdentifier: "Cell1")
             let cell = classifiedTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeClassifiedCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             var Adcount: Int = 0
             Adcount = row/(kFrequencyAdsInCells_classified-1)
@@ -1862,7 +1862,7 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
         {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ClassifiedTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
 
             if kFrequencyAdsInCells_classified > 4 && nativeAdArray.count > 0
             {
@@ -2045,13 +2045,13 @@ class ClassifiedViewController: UIViewController, UITableViewDataSource, UITable
 
             
             let menuOption = classifiedInfo["menu"] as! NSArray
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     let titleString = menuItem["name"] as! String
                     
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             let condition = menuItem["name"] as! String
 
                             

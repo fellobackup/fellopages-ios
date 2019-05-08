@@ -66,7 +66,7 @@ class UserInfoViewController: UIViewController, UITableViewDataSource, UITableVi
         userinfoTableView1.register(UserInfoTableViewCell.self, forCellReuseIdentifier: "Cell")
         
         userinfoTableView1.estimatedRowHeight = 50.0
-        userinfoTableView1.rowHeight = UITableViewAutomaticDimension
+        userinfoTableView1.rowHeight = UITableView.automaticDimension
         userinfoTableView1.backgroundColor = tableViewBgColor
         userinfoTableView1.separatorColor = TVSeparatorColor
 
@@ -218,7 +218,7 @@ class UserInfoViewController: UIViewController, UITableViewDataSource, UITableVi
                                                             let linkActiveColor = UIColor.green
                                                             
                                                             self.label5.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                            self.label5.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                            self.label5.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                             self.label5.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                             // self.label5.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                             self.label5.isUserInteractionEnabled = true
@@ -228,8 +228,8 @@ class UserInfoViewController: UIViewController, UITableViewDataSource, UITableVi
                                                                 let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                                                                 
                                                                 let range1 = (profileFieldString as NSString).range(of:labelDesc as String)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                                 
                                                                 
                                                                 return mutableAttributedString
@@ -453,7 +453,7 @@ class UserInfoViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserInfoTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         var subChild = [AnyObject]()
         var subValue = [AnyObject]()
         

@@ -87,7 +87,7 @@ class MLTGridTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -155,7 +155,7 @@ class MLTGridTableViewCell: UITableViewCell {
         contentImage = ContentImageViewWithGradient(frame: CGRect(x: 0, y: 0, width: cellView.bounds.width, height: cellView.bounds.height - cellView.bounds.height/4))
 
         contentImage.layer.masksToBounds = true
-        contentImage.contentMode = UIViewContentMode.scaleAspectFill
+        contentImage.contentMode = UIView.ContentMode.scaleAspectFill
         contentImage.backgroundColor = navColor
         contentImage.layer.shadowColor = shadowColor.cgColor
         contentImage.layer.shadowOpacity = shadowOpacity
@@ -263,7 +263,7 @@ class MLTGridTableViewCell: UITableViewCell {
         ownerImage.layer.borderWidth = 2.5
         ownerImage.layer.cornerRadius = contentImage.frame.size.width / 2
         ownerImage.backgroundColor = placeholderColor
-        ownerImage.contentMode = UIViewContentMode.scaleAspectFill
+        ownerImage.contentMode = UIView.ContentMode.scaleAspectFill
         ownerImage.layer.masksToBounds = true
         ownerImage.image = UIImage(named: "user_profile_image.png")
         ownerImage.tag = 321
@@ -327,7 +327,7 @@ class MLTGridTableViewCell: UITableViewCell {
             contentImage2.layer.shadowColor = shadowColor.cgColor
             contentImage2.layer.shadowOffset = CGSize(width: 0,height: 5);
             contentImage2.layer.shadowOpacity = 0.5;
-            contentImage2.contentMode = UIViewContentMode.scaleAspectFill
+            contentImage2.contentMode = UIView.ContentMode.scaleAspectFill
             cellView2.addSubview(contentImage2)
             
 
@@ -422,7 +422,7 @@ class MLTGridTableViewCell: UITableViewCell {
             ownerImage2.layer.borderWidth = 2.5
             ownerImage2.layer.cornerRadius = contentImage2.frame.size.width / 2
             ownerImage2.backgroundColor = placeholderColor
-            ownerImage2.contentMode = UIViewContentMode.scaleAspectFill
+            ownerImage2.contentMode = UIView.ContentMode.scaleAspectFill
             ownerImage2.layer.masksToBounds = true
             ownerImage2.image = UIImage(named: "user_profile_image.png")
             ownerImage2.tag = 321

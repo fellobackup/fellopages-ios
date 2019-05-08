@@ -36,11 +36,11 @@ class ManageCartCell: UITableViewCell {
     var profileFieldLabel : TTTAttributedLabel!
     
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = UITableViewCellSelectionStyle.blue
+        self.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         errorLabel = createLabel(CGRect(x:10,y:5,width:UIScreen.main.bounds.width-20,height:10), text: "", alignment: .left, textColor: UIColor.red)
         errorLabel.numberOfLines = 0
@@ -75,7 +75,7 @@ class ManageCartCell: UITableViewCell {
         btnMinus.layer.cornerRadius = 0.5 * btnMinus.bounds.size.width
         btnMinus.layer.borderWidth = 1
         btnMinus.layer.borderColor = textColorMedium.cgColor
-        btnMinus.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+        btnMinus.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
         self.addSubview(btnMinus)
         
         labQuantity = createLabel(CGRect(x:btnMinus.frame.origin.x+btnMinus.frame.size.width,y:btnMinus.frame.origin.y+3,width:25,height:15), text: "2", alignment: .left, textColor: textColorMedium)
@@ -86,7 +86,7 @@ class ManageCartCell: UITableViewCell {
         self.addSubview(labQuantity)
         
         btnPlus = createButton(CGRect(x:labQuantity.frame.origin.x+labQuantity.frame.size.width, y:labTitle.frame.origin.y+labTitle.frame.size.height+5, width:20 , height:20), title: "+", border: false, bgColor: false, textColor: textColorMedium)
-        btnPlus.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+        btnPlus.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
         btnPlus.titleLabel?.font =  UIFont(name: fontName, size:FONTSIZEExtraLarge)
         btnPlus.layer.cornerRadius = 0.5 * btnMinus.bounds.size.width
         btnPlus.layer.borderWidth = 1

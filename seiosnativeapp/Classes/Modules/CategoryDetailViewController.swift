@@ -100,14 +100,14 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         eventTableView.delegate = self
         eventTableView.isOpaque = false
         eventTableView.backgroundColor = tableViewBgColor
-        eventTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        eventTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         mainView.addSubview(eventTableView)
         
         
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(CategoryDetailViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(CategoryDetailViewController.refresh), for: UIControl.Event.valueChanged)
       //  eventTableView.addSubview(refresher)
         if #available(iOS 10.0, *) {
             eventTableView.refreshControl = refresher
@@ -339,7 +339,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         
         
         let cell = eventTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! EventViewTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.lineView.isHidden = false
         cell.dateView.frame.size.height = 80
         cell.dateView.backgroundColor = navColor
@@ -835,7 +835,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
                 
                 let subcat = Subcategoryarr[buttonIndex-1] as! NSDictionary
                 subcatid = subcat["sub_cat_id"] as! Int
-                feedFilter.setTitle(subcat["sub_cat_name"] as? String, for: UIControlState())
+                feedFilter.setTitle(subcat["sub_cat_name"] as? String, for: UIControl.State())
                 subcategory = subcat["sub_cat_name"] as? String
                 subsubcategory = ""
                 subsubcatid = nil
@@ -851,7 +851,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
             {
                 let subcat = SubSubcategoryarr[buttonIndex-1] as! NSDictionary
                 subsubcatid = subcat["tree_sub_cat_id"] as! Int
-                feedFilter2.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControlState())
+                feedFilter2.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControl.State())
                 subsubcategory = subcat["tree_sub_cat_name"] as? String
                 self.showSpinner = true
                 browseEntries()
@@ -1147,7 +1147,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.mainView.addSubview(self.refreshButton)

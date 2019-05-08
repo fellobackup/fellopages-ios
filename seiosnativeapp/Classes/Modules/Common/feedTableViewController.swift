@@ -178,16 +178,16 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
     var heightAtIndexPath = NSMutableDictionary()
   //  var myimageCache = [String:UIImage]()
     let subscriptionTagLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: textColorDark,
+        NSAttributedString.Key.foregroundColor: textColorDark,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: buttonColor,
+        NSAttributedString.Key.foregroundColor: buttonColor,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     var guttermenuoption = [String]()
@@ -257,7 +257,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 let offset = CGPoint.init(x: 0, y: -TOPPADING)
                 self.tableView.setContentOffset(offset, animated: false)
             }
-            tableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height - 22 - TOPPADING), style: UITableViewStyle.grouped)
+            tableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height - 22 - TOPPADING), style: UITableView.Style.grouped)
         }
         else
         {
@@ -273,28 +273,28 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
 //                    
 //                }
                 if DeviceType.IS_IPHONE_X{
-                    tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 40), style: UITableViewStyle.grouped)
+                    tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 40), style: UITableView.Style.grouped)
                 }
                 else{
                     
-                    tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 22), style: UITableViewStyle.grouped)
+                    tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 22), style: UITableView.Style.grouped)
                 }
                 
                 
             }
             else if tableViewFrameType == "CommentsViewController"
             {
-                tableView = UITableView(frame: CGRect(x: 0, y: -35, width: view.bounds.width, height: view.bounds.height - 35), style: UITableViewStyle.grouped)
+                tableView = UITableView(frame: CGRect(x: 0, y: -35, width: view.bounds.width, height: view.bounds.height - 35), style: UITableView.Style.grouped)
                 let offset = CGPoint.init(x: 0, y: -TOPPADING)
                 self.tableView.setContentOffset(offset, animated: false)
                 tableView.backgroundColor = textColorLight
             }
             else if tableViewFrameType == "FeedViewPageViewController" {
-                tableView = UITableView(frame: CGRect(x: 0, y: 25, width: view.bounds.width, height: view.bounds.height - 25), style: UITableViewStyle.grouped)
+                tableView = UITableView(frame: CGRect(x: 0, y: 25, width: view.bounds.width, height: view.bounds.height - 25), style: UITableView.Style.grouped)
             }
             else
             {
-                tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 22), style: UITableViewStyle.grouped)
+                tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 22), style: UITableView.Style.grouped)
             }
             
             
@@ -476,7 +476,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 10,width: 20,height: 20))
                 let adsimg = UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark)
-                self.adCallToActionButton.setImage(adsimg , for: UIControlState.normal)
+                self.adCallToActionButton.setImage(adsimg , for: UIControl.State.normal)
                 adCallToActionButton.backgroundColor = textColorclear
                 adCallToActionButton.layer.cornerRadius = 2;
                 //                adCallToActionButton.layer.shouldRasterize = true
@@ -504,7 +504,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
 
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
 
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
@@ -620,8 +620,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                     
                     let range4 = (titleOfAds as NSString).range(of:NSLocalizedString("\(resourceTitle)",  comment: ""))
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range4)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range4)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range4)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range4)
                     
                     
                     if let tags = dic["likes"] as? NSArray{
@@ -634,8 +634,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                     {
                                         range = (titleOfAds as NSString).range(of:tag, options: NSString.CompareOptions(), range: range)
                                         if(range.location != NSNotFound) {
-                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:buttonColor , range: range)
+                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:buttonColor , range: range)
                                             range = NSMakeRange(range.location + range.length, length! - (range.location + range.length));
                                             
                                         }
@@ -689,7 +689,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(25), y: 20,width: 15,height: 15))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2;
                 adCallToActionButton.layer.shouldRasterize = true
@@ -723,7 +723,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 {
                     adImageView1 = createImageView(CGRect(x: 5,y: 0,width: self.customAlbumView.bounds.width,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFill
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFill
                 adImageView1.clipsToBounds = true
                 customAlbumView.addSubview(adImageView1)
                 if dic["image"] != nil{
@@ -776,11 +776,11 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     
                     addLikeTitle = UIButton(frame:CGRect(x:  self.fbView.bounds.width - (addLikeTitleHeight + 1),y: customAlbumView.frame.size.height + customAlbumView.frame.origin.y ,width:addLikeTitleHeight,height: 55))
                     addLikeTitle.titleLabel?.font = UIFont(name: "FontAwesome", size: 28)
-                    addLikeTitle.setTitle("\(likeIcon)", for: UIControlState.normal)
+                    addLikeTitle.setTitle("\(likeIcon)", for: UIControl.State.normal)
                     addLikeTitle.contentHorizontalAlignment = .center
-                    addLikeTitle.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+                    addLikeTitle.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
                     addLikeTitle.tag = i
-                    addLikeTitle.setTitleColor(textColorMedium, for: UIControlState.normal)
+                    addLikeTitle.setTitleColor(textColorMedium, for: UIControl.State.normal)
                     // addLikeTitle.backgroundColor = UIColor.red
                     addLikeTitle.addTarget(self, action: #selector(FeedTableViewController.actionLikeUnlike(_:)), for: .touchUpInside)
                     self.fbView.addSubview(addLikeTitle)
@@ -1062,13 +1062,13 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 if islike1 == 0{
                     
                     tempDic["isLike"] = 1
-                    sender.setTitleColor(navColor, for: UIControlState.normal)
+                    sender.setTitleColor(navColor, for: UIControl.State.normal)
                     self.tableView.reloadData()
                     
                 }
                 else{
                     tempDic["isLike"] = 0
-                    sender.setTitleColor(textColorMedium, for: UIControlState.normal)
+                    sender.setTitleColor(textColorMedium, for: UIControl.State.normal)
                     self.tableView.reloadData()
                     
                 }
@@ -1117,7 +1117,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                     (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                     (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
                 if ob.tag == 1005
                 {
@@ -1128,7 +1128,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"] ?? ""
-        sender.setTitle("\u{f111}", for: UIControlState.normal)            
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)            
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -1302,7 +1302,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80, y: adImageView.bounds.height + 20 + adImageView.frame.origin.y,width: 70,height: 30))
         
-        adCallToActionButton.setTitle(nativeAd.callToAction, for: UIControlState.normal)
+        adCallToActionButton.setTitle(nativeAd.callToAction, for: UIControl.State.normal)
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = buttonColor
@@ -1417,7 +1417,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1490,7 +1490,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1670,7 +1670,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
             if let height = heightAtIndexPath.object(forKey: indexPath) as? NSNumber {
                 return CGFloat(height.floatValue)
             } else {
-                return UITableViewAutomaticDimension
+                return UITableView.automaticDimension
             }
         }
         
@@ -1755,7 +1755,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         {
             
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.textLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
             cell.separatorInset.left = 10.0
             cell.separatorInset.right = 10.0
@@ -1824,7 +1824,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
             {  // or 9 == if you don't want the first cell to be an ad!
                 self.tableView.register(NativeAdinstallFeedCell.self, forCellReuseIdentifier: AdsCellidentifier)
                 let cell1 = tableView.dequeueReusableCell(withIdentifier: AdsCellidentifier, for: indexPath as IndexPath) as! NativeAdinstallFeedCell
-                cell1.selectionStyle = UITableViewCellSelectionStyle.none
+                cell1.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell1.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)//cellBackgroundColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_feeds-1)
@@ -1862,7 +1862,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 let slideShowCell = tableView.dequeueReusableCell(withIdentifier: suggestionCellidentifier, for: indexPath as IndexPath)
                 if suggetionCollectionView == nil {
                
-                slideShowCell.selectionStyle = UITableViewCellSelectionStyle.none
+                slideShowCell.selectionStyle = UITableViewCell.SelectionStyle.none
                 slideShowCell.backgroundColor = UIColor(red: 207/255.0, green: 208/255.0, blue: 212/255.0, alpha: 0.3)//cellBackgroundColor
                 
                 // Add collection view for showing suggetions
@@ -1978,8 +1978,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         cell.feedInfo.setText(tempFeedInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                             let boldFont = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZEMedium, nil)
                             let range = (tempFeedInfo as NSString).range(of:NSLocalizedString("Undo",  comment: ""))
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             return mutableAttributedString
                         })
                         
@@ -2199,8 +2199,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                     }
                                     let normalFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                     let range4 = (title as NSString).range(of:NSLocalizedString(titleword,  comment: ""))
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: normalFont, range: range4)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range4)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: normalFont, range: range4)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range4)
                                     
                                 }
                                 
@@ -2425,15 +2425,15 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         
                         let range = (statusBody as NSString).range(of:statusBody)
                         
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
                         
                         let boldFont1 = CTFontCreateWithName((fontBold as CFString?)!, CGFloat(fontSize), nil)
                         
                         let range2 = (statusBody as NSString).range(of:NSLocalizedString("See more",  comment: ""))
                         
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range2)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range2)
                         
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range2)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range2)
                         
                         let paragraphStyle = NSMutableParagraphStyle()
                         
@@ -2441,7 +2441,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         paragraphStyle.lineSpacing = 1.5 // Whatever line spacing you want in points
                         
                         // *** Apply attribute to string ***
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (mutableAttributedString?.length)!))
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (mutableAttributedString?.length)!))
                         
                         for match in matches {
                             var stringurl = ""
@@ -2452,8 +2452,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             
                             let boldFont2 = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZEMedium, nil)
                             let range3 = (statusBody as NSString).range(of:NSLocalizedString("\(stringurl)",  comment: ""))
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont2, range: range2)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:buttonColor , range: range3)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont2, range: range2)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:buttonColor , range: range3)
                             
                         }
                         
@@ -2467,8 +2467,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                         {
                                             range = (statusBody as NSString).range(of:tag, options: NSString.CompareOptions(), range: range)
                                             if(range.location != NSNotFound) {
-                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
-                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
+                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                                 range = NSMakeRange(range.location + range.length, length! - (range.location + range.length));
                                                 
                                             }
@@ -2487,8 +2487,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                 {
                                     range = (statusBody as NSString).range(of:"\(word)", options: NSString.CompareOptions(), range: range)
                                     if(range.location != NSNotFound) {
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
-                                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
+                                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                         range = NSMakeRange(range.location + range.length, length! - (range.location + range.length));
                                         
                                     }
@@ -2523,8 +2523,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             {
                                 range = (statusBody as NSString).range(of:tag, options: .caseInsensitive, range: range)
                                 if(range.location != NSNotFound) {
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:bodyWordStyle , range: range)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:bodyWordStyle , range: range)
                                     range = NSMakeRange(range.location + range.length, length! - (range.location + range.length));
                                     
                                 }
@@ -2807,15 +2807,15 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                     let sellFont = CTFontCreateWithName((fontNormal as CFString?)!, CGFloat(fontSize), nil)
                                     let range = (desc as NSString).range(of:desc)
                                     
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: sellFont, range: range)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: sellFont, range: range)
                                     
                                     let boldFont1 = CTFontCreateWithName((fontBold as CFString?)!, CGFloat(fontSize), nil)
                                     
                                     let range2 = (statusBody as NSString).range(of:NSLocalizedString("See more",  comment: ""))
                                     
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range2)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range2)
                                     
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range2)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range2)
                                     
                                     let paragraphStyle = NSMutableParagraphStyle()
                                     
@@ -2823,7 +2823,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                     paragraphStyle.lineSpacing = 1.5 // Whatever line spacing you want in points
                                     
                                     // *** Apply attribute to string ***
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (mutableAttributedString?.length)!))
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (mutableAttributedString?.length)!))
                                     
                                     return mutableAttributedString!
                                 })
@@ -3449,15 +3449,15 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             
                             let range = (statusBody as NSString).range(of:statusBody)
                             
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
                             
                             let boldFont1 = CTFontCreateWithName((fontBold as CFString?)!, CGFloat(fontSize), nil)
                             
                             let range2 = (statusBody as NSString).range(of:NSLocalizedString("See more",  comment: ""))
                             
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range2)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range2)
                             
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range2)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range2)
                             
                             let paragraphStyle = NSMutableParagraphStyle()
                             
@@ -3466,7 +3466,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             paragraphStyle.alignment = NSTextAlignment.center
                             
                             // *** Apply attribute to string ***
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (mutableAttributedString?.length)!))
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, (mutableAttributedString?.length)!))
                             
                             
                             
@@ -3480,8 +3480,8 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                             {
                                                 range = (statusBody as NSString).range(of:tag, options: NSString.CompareOptions(), range: range)
                                                 if(range.location != NSNotFound) {
-                                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
-                                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
+                                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                                     range = NSMakeRange(range.location + range.length, length! - (range.location + range.length));
                                                     
                                                     
@@ -3827,13 +3827,13 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         
         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\(attachment_title)")
         let boldFont = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZENormal, nil)
-        attrString.addAttribute(NSAttributedStringKey.font, value: boldFont, range: NSMakeRange(0, attrString.length))
-        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.black, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.font, value: boldFont, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSMakeRange(0, attrString.length))
         
         if attachment_description != ""
         {
             let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("\n\n\(attachment_description)"))
-            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZENormal)!, range: NSMakeRange(0, descString.length))
+            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZENormal)!, range: NSMakeRange(0, descString.length))
             attrString.append(descString);
         }
         cell.contentAttributedLabel.attributedText = attrString
@@ -4335,14 +4335,14 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                 {
                                     if let d = activityFeed["is_like"] as? Bool, d == true{
                                         menu = createButton(CGRect(x: 35,y: 0 ,width: menuItemWidth, height: 40), title: " \(title)", border: false,bgColor: false, textColor: iconColor)
-                                        menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                                        menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                                         menu.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
                                         
                                     }
                                     else
                                     {
                                         menu = createButton(CGRect(x: 20, y: 0, width: menuItemWidth,height: 40), title: " Like", border: false,bgColor: false, textColor: iconColor)
-                                        menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                                        menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                                         menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
                                         menu.setImage(UIImage(named: "thumbs_up_gray"), for: .normal)
                                         
@@ -4374,11 +4374,11 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                 //menu.titleLabel?.adjustsFontSizeToFitWidth = true
                                 if menuCount == 2
                                 {
-                                    menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                                    menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
                                 }
                                 else
                                 {
-                                    menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                                    menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
                                 }
                                 
                                 menu.backgroundColor = textColorLight
@@ -4401,15 +4401,15 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                         let menu = createButton(CGRect(x: 20 + origin_x,y: 0, width: menuItemWidth - 5, height: 40), title: "\(icon)", border: false,bgColor: false, textColor: iconColor)
                         menu.tag = row
                         menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
-                        menu.setTitle(" \(title)", for: UIControlState.normal)
+                        menu.setTitle(" \(title)", for: UIControl.State.normal)
                         menu.titleLabel?.textColor = iconColor
                         menu.tintColor = textColorMedium
-                        menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                        menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
                         if menuSequence.count == 1{
-                            menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                            menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
                         }
                         let image = UIImage(named: "\(icon)")
-                        menu.setImage(image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+                        menu.setImage(image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                         menu.backgroundColor = textColorLight
                         menu.addTarget(self, action: #selector(FeedTableViewController.feedMenuShare(sender:)), for: .touchUpInside)
                         cell.cellMenu.addSubview(menu)
@@ -4424,16 +4424,16 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                             saveFeedButton = createButton(CGRect(x: 20 + origin_x,y: 0, width: menuItemWidth, height: 40), title: "\(icon)", border: false,bgColor: false, textColor: iconColor)
                             saveFeedButton.tag = row
                             saveFeedButton.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
-                            saveFeedButton.setTitle(" \(title)", for: UIControlState.normal)
+                            saveFeedButton.setTitle(" \(title)", for: UIControl.State.normal)
                             saveFeedButton.titleLabel?.textColor = iconColor
                             saveFeedButton.tintColor = textColorMedium
-                            saveFeedButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+                            saveFeedButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
                             if menuSequence.count == 1{
-                                saveFeedButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                                saveFeedButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
                             }
                             let image = UIImage(named: "\(icon)")
                             saveFeedButton.tag = row
-                            saveFeedButton.setImage(image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+                            saveFeedButton.setImage(image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
                             saveFeedButton.backgroundColor = textColorLight
                         
                             saveFeedButton.addTarget(self, action: #selector(FeedTableViewController.saveFeedAction(sender:)), for: .touchUpInside)
@@ -4571,7 +4571,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
         if let feed_menu = feed["feed_menus"] as? NSArray{
             
             // Generate Feed Filter Gutter Menu for Feed Come From Server as! Alert Popover
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             for menuItem in feed_menu{
                 if let dic = menuItem as? NSDictionary {
@@ -4579,7 +4579,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                    if let titleString = dic["label"] as? String
                    {
                     if titleString.range(of: "Delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             self.menuOptionSelected = dic["name"] as! String
                             // Delete Activity Feed Entry
                             if let d = dic["name"] as? String, d == "delete_feed"{
@@ -4771,7 +4771,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
 
                 let index = Int()
                 let indexPath = IndexPath(row: index, section: 0)
-                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                 
             }
            
@@ -4819,7 +4819,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
 //                            }
                             //print(index)
                             //let indexPath = IndexPath(row: index, section: 0)
-                            //self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                            //self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                             self.tableView.reloadData()
                             self.delegate?.deleteFeed()
                             
@@ -5121,7 +5121,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                                // delay(2.0, closure: {
                                 if self.menuOptionSelected == "update_save_feed" || self.menuOptionSelected == "on_off_notification" {
                                     let indexPath = IndexPath(row: index, section: 0)
-                                    self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                                    self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                                     self.tableView.contentOffset = .zero
                                 }
                                 else{
@@ -6879,7 +6879,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     self.shareTitle  = self.shareTitle + "..."
                 }
                 
-                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
                 alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
                     
                     
@@ -7037,7 +7037,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     }
                 })
                 
-                alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+                alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
                     
                     var sharingItems = [AnyObject]()
                     
@@ -7054,7 +7054,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                     }
                     
                     let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-                    activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                    activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
                     
                     if (UIDevice.current.userInterfaceIdiom == .phone){
                         
@@ -8036,7 +8036,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 present(vc, animated: true) {
                     
                     do {
-                        try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                        try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     }
                     catch {
                         // report for an error
@@ -8116,7 +8116,7 @@ class FeedTableViewController: UITableViewController, TTTAttributedLabelDelegate
                 }
                 
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch _ as NSError {
                     //print(error)
@@ -8233,7 +8233,7 @@ extension NSAttributedString {
 //}
 extension UIActivityIndicatorView {
     func assignColor(_ color: UIColor) {
-        activityIndicatorViewStyle = .white
+        style = .white
         self.color = color
     }
 }

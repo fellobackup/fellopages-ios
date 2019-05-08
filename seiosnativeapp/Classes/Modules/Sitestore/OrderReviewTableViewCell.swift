@@ -37,11 +37,11 @@ class OrderReviewTableViewCell: UITableViewCell {
     var profileFieldLabel : TTTAttributedLabel!
     
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = UITableViewCellSelectionStyle.blue
+        self.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         // Title
         labTitle = createLabel(CGRect(x:10, y:5,width:(UIScreen.main.bounds.width - 20) , height:20), text: " ", alignment: .left, textColor: textColorDark)

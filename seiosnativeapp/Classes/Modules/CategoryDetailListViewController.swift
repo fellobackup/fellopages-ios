@@ -100,7 +100,7 @@ class CategoryDetailListViewController: UIViewController, UITableViewDelegate, U
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(CategoryDetailListViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(CategoryDetailListViewController.refresh), for: UIControl.Event.valueChanged)
         listingTableView.addSubview(refresher)
         
         contentIcon = createLabel(CGRect(x: 0,y: 0,width: 0,height: 0), text: "", alignment: .center, textColor: textColorMedium )
@@ -244,7 +244,7 @@ class CategoryDetailListViewController: UIViewController, UITableViewDelegate, U
         
         
         let cell = listingTableView.dequeueReusableCell(withIdentifier: "MLTGridTypeCell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.lineView.isHidden = false
         
         var listingInfo:NSDictionary
@@ -508,7 +508,7 @@ class CategoryDetailListViewController: UIViewController, UITableViewDelegate, U
                 
                 let subcat = Subcategoryarr[buttonIndex-1] as! NSDictionary
                 subcatid = subcat["sub_cat_id"] as! Int
-                rootCategoryBar.setTitle(subcat["sub_cat_name"] as? String, for: UIControlState())
+                rootCategoryBar.setTitle(subcat["sub_cat_name"] as? String, for: UIControl.State())
                 subcategory = subcat["sub_cat_name"] as? String
                 subsubcategory = ""
                 self.showSpinner = true
@@ -523,7 +523,7 @@ class CategoryDetailListViewController: UIViewController, UITableViewDelegate, U
             {
                 let subcat = SubSubcategoryarr[buttonIndex-1] as! NSDictionary
                 subsubcatid = subcat["tree_sub_cat_id"] as! Int
-                childCategoryBar.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControlState())
+                childCategoryBar.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControl.State())
                 subsubcategory = subcat["tree_sub_cat_name"] as? String
                 self.showSpinner = true
                 browseEntries()
@@ -794,7 +794,7 @@ class CategoryDetailListViewController: UIViewController, UITableViewDelegate, U
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailListViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(CategoryDetailListViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.mainView.addSubview(self.refreshButton)

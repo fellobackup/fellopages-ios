@@ -30,11 +30,11 @@ class Shimmeringcell: UITableViewCell {
     var shimmerlabel3: UILabel!
     var shimmeringView: FBShimmeringView!
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = aafBgColor
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
         cellView = createView(CGRect(x: 0, y: 0,width: UIScreen.main.bounds.width ,height: 165), borderColor: borderColorLight, shadow: true)
         cellView.layer.shadowColor = shadowColor.cgColor
         cellView.layer.shadowOpacity = shadowOpacity

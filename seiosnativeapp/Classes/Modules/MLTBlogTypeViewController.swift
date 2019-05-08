@@ -151,11 +151,11 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
     var rightBarButtonItem : UIBarButtonItem!
     var feedObj = FeedTableViewController()
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     
@@ -195,9 +195,9 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
         mainView.removeGestureRecognizer(tapGesture)
         
         // Initial table to show Activity Feeds
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         self.view.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         
         
         if(UIDevice.current.userInterfaceIdiom == .pad){
@@ -214,7 +214,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
         mainSubView.backgroundColor = UIColor.clear
         feedObj.tableView.addSubview(mainSubView)
         
-        coverImage.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage.contentMode = UIView.ContentMode.scaleAspectFill
         coverImage.layer.masksToBounds = true
         coverImage.backgroundColor = placeholderColor
         coverImage.isUserInteractionEnabled = true
@@ -486,12 +486,12 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(MLTBlogTypeViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(MLTBlogTypeViewController.showGutterMenu), for: .touchUpInside)
                                  //   rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -787,7 +787,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
     @objc func shareItem(){
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let presentedVC = AdvanceShareViewController()
             
@@ -807,7 +807,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -822,7 +822,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -880,7 +880,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
 
         let activityViewController = UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
         
-        activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         
         
         if(activityViewController.popoverPresentationController != nil) {
@@ -895,7 +895,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
     
     // Show Gutter Menus
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         var url = ""
         for menu in gutterMenu{
             if let dic = menu as? NSDictionary{
@@ -908,7 +908,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
                 if dic["name"] as! String != "share" {
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -930,7 +930,7 @@ class MLTBlogTypeViewController: UIViewController, UIWebViewDelegate, UIScrollVi
 
                         if dic["name"] as! String != "apply-now"
                         {
-                            alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                            alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                                 // Write For Edit Album Entry
                                 let condition = dic["name"] as! String
                                 switch(condition){

@@ -87,12 +87,12 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CoreAdvancedSearchViewController.keyboardWasShown),
-                                               name: .UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(CoreAdvancedSearchViewController.keyboardWillHide),
-                                               name: .UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
     
@@ -117,7 +117,7 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
         converstationTableView.dataSource = self
         converstationTableView.delegate = self
         converstationTableView.estimatedRowHeight = 50.0
-        converstationTableView.rowHeight = UITableViewAutomaticDimension
+        converstationTableView.rowHeight = UITableView.automaticDimension
         converstationTableView.backgroundColor = tableViewBgColor
         converstationTableView.separatorColor = TVSeparatorColor
         converstationTableView.tag = 22
@@ -142,12 +142,12 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
         let button = createButton(CGRect(x: self.view.bounds.size.width-100,y: 0,width: 30,height: 30), title: fiterIcon, border: false, bgColor: false, textColor: textColorPrime)
         button.backgroundColor = UIColor.clear
         button.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)
-        button.addTarget(self, action: #selector(CoreAdvancedSearchViewController.filter), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(CoreAdvancedSearchViewController.filter), for: UIControl.Event.touchUpInside)
         let locButton = UIBarButtonItem()
         locButton.customView = button
         self.navigationItem.setRightBarButtonItems([locButton], animated: true)
 
-        searchResultTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-120), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-120), style: UITableView.Style.grouped)
         searchResultTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -159,7 +159,7 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
         view.addSubview(searchResultTableView)
         searchResultTableView.keyboardDismissMode = .onDrag
         
-        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 440), style: UITableViewStyle.plain)
+        tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 440), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -216,14 +216,14 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
 //        searchBar.addSearchBarWithText(self,placeholderText: NSLocalizedString("Search",  comment: ""))
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             filterSearchString = ""
             globCoreSearchType = "0"
         }
     }
     @objc func keyboardWasShown(notification: NSNotification) {
         let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyBoardHeight1 = keyboardFrame.size.height
         //print(keyBoardHeight1)
         if #available(iOS 9.0, *) {
@@ -322,7 +322,7 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
         
         if tableView.tag == 22{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             var blogInfo:NSDictionary
             blogInfo = conversation[(indexPath as NSIndexPath).row] as! NSDictionary
             
@@ -426,7 +426,7 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             
             
@@ -461,9 +461,9 @@ class CoreAdvancedSearchViewController: UIViewController, UITableViewDataSource,
                 
                 if let id = response["id"] as? Int{
                     if frndTag[id] != nil{
-                        cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                     }else{
-                        cell.accessoryType = UITableViewCellAccessoryType.none
+                        cell.accessoryType = UITableViewCell.AccessoryType.none
                     }
                 }
                 

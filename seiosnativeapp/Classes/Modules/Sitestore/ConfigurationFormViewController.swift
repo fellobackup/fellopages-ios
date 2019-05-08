@@ -211,7 +211,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                     label2.titleEdgeInsets.right = 30
                                     label2.layer.borderColor = textColorMedium.cgColor
                                     label2.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                                    label2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                                    label2.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
                                     label2.addTarget(self, action: #selector(dependentPressed(_:)), for: .touchUpInside)
                                     label2.tag = index
                                     fieldView.addSubview(label2)
@@ -345,15 +345,15 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                     
                                     let textView =  UITextField(frame: CGRect(x: 5, y: origin_y+5, width: self.view.bounds.width-10, height: 30))
                                     textView.font = UIFont.systemFont(ofSize: 15)
-                                    textView.borderStyle = UITextBorderStyle.roundedRect
+                                    textView.borderStyle = UITextField.BorderStyle.roundedRect
                                     textView.placeholder = "Enter Text Here"
                                     textView.layer.borderWidth = 0.5
                                     textView.layer.borderColor = UIColor.black.cgColor
                                     textView.autocorrectionType = UITextAutocorrectionType.no
                                     textView.keyboardType = UIKeyboardType.default
                                     textView.returnKeyType = UIReturnKeyType.done
-                                    textView.clearButtonMode = UITextFieldViewMode.whileEditing;
-                                    textView.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+                                    textView.clearButtonMode = UITextField.ViewMode.whileEditing;
+                                    textView.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
                                     textView.delegate = self
                                     textView.tag = index
                                     fieldView.addSubview(textView)
@@ -462,7 +462,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                     label2.titleEdgeInsets.right = 30
                                     label2.layer.borderColor = textColorMedium.cgColor
                                     label2.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                                    label2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                                    label2.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
                                     label2.addTarget(self, action: #selector(radioButtonPressed(_:)), for: .touchUpInside)
                                     label2.tag = index
                                     fieldView.addSubview(label2)
@@ -489,7 +489,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
     
     @objc func radioButtonPressed(_ sender: UIButton)
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         if let radioDic = configArrayIndependentFields[sender.tag] as? NSDictionary
         {
             let configName = radioDic["name"] as? String ?? ""
@@ -503,7 +503,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                         let v = v as! NSDictionary
                         let label = v["label"] as? String ?? ""
                         alertController.addAction(UIAlertAction(title: label, style: .default, handler:{ (UIAlertAction) -> Void in
-                            sender.setTitle("  \(label)", for: UIControlState.normal)
+                            sender.setTitle("  \(label)", for: UIControl.State.normal)
                             self.dic[configName] = k as AnyObject
                             if let priceIncrement = v["price_increment"] as? Bool{
                                 if priceIncrement == true
@@ -569,7 +569,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                     let stringValue = index as! String
                                     let value = parametersToPass["\(stringValue)"]
                                     let profilestring = String(format: NSLocalizedString(" %@   \(value ?? "")  ", comment: ""), "\u{f096}")
-                                    sender.setTitle("\(profilestring)", for: UIControlState.normal)
+                                    sender.setTitle("\(profilestring)", for: UIControl.State.normal)
                                     parametersToPass.removeValue(forKey: index as! String)
                                     
                                 }
@@ -595,7 +595,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                         // let value  = (values["label"] as! String)
                                         
                                         let    profileString = String(format: NSLocalizedString(" %@   \(value1)  ", comment: ""), "\u{f046}")
-                                        sender.setTitle("\(profileString)", for: UIControlState.normal)
+                                        sender.setTitle("\(profileString)", for: UIControl.State.normal)
                                         
                                     }
                                 }
@@ -619,7 +619,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                     }
                                     parametersToPass["\(index)"] = "\(value1)"
                                     let    profileString = String(format: NSLocalizedString(" %@   \(value1)  ", comment: ""), "\u{f046}")
-                                    sender.setTitle("\(profileString)", for: UIControlState.normal)
+                                    sender.setTitle("\(profileString)", for: UIControl.State.normal)
                                 }
                             }
                         }
@@ -633,7 +633,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
     
     @objc func dependentPressed(_ sender : UIButton)
     {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         if let configValue = configArrayValueChange[sender.tag] as? NSDictionary
         {
             let configName = configValue["name"] as? String ?? ""
@@ -661,11 +661,11 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                 valueLabel = String(val)
                             }
                             alertController.addAction(UIAlertAction(title: valueLabel, style: .default, handler:{ (UIAlertAction) -> Void in
-                                sender.setTitle(valueLabel, for: UIControlState.normal)
+                                sender.setTitle(valueLabel, for: UIControl.State.normal)
                                 for view in self.configView.subviews as [UIView] {
                                     if let btn = view as? UIButton {
                                         if btn.tag > sender.tag && btn.tag <= self.dependentField - 1 && btn.tag != 1000{
-                                            btn.setTitle(" -----Select----- ", for: UIControlState.normal)
+                                            btn.setTitle(" -----Select----- ", for: UIControl.State.normal)
                                             if   let configValue = self.configArrayValueChange[btn.tag] as? NSDictionary{
                                                 if let  _ = configValue["multiOptions"] as? NSDictionary{
                                                     (self.configArrayValueChange[btn.tag] as AnyObject).remove("multiOptions")
@@ -814,8 +814,8 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                                 {
                                     error = true
                                     productDetailUpdate = false
-                                    let alertController = UIAlertController(title: "Error", message:  NSLocalizedString("Please select the desired product options from below", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                                    let alertController = UIAlertController(title: "Error", message:  NSLocalizedString("Please select the desired product options from below", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
                                     self.present(alertController, animated: true, completion: nil)
                                     
                                 }
@@ -844,8 +844,8 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
                             {
                                 error = true
                                 productDetailUpdate = false
-                                let alertController = UIAlertController(title: "Error", message:  NSLocalizedString("Please select the desired product options from below", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                                let alertController = UIAlertController(title: "Error", message:  NSLocalizedString("Please select the desired product options from below", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
                                 self.present(alertController, animated: true, completion: nil)
                                 
                             }
@@ -1085,12 +1085,12 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationFormViewController.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationFormViewController.keyboardWillShow(sender:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         return true
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationFormViewController.keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationFormViewController.keyboardWillShow(sender:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         return true
     }
     
@@ -1167,7 +1167,7 @@ class ConfigurationFormViewController: UIViewController, UIWebViewDelegate, TTTA
     // Whenever keyboard will open
     @objc func keyboardWillShow(sender: NSNotification) {
         
-        if let keyboardSize = (sender.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size.height
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size.height
         {
             if scrollView.contentSize.height > view.bounds.height - keyboardSize{
                 scrollView.frame.origin.y = -200

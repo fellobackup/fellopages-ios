@@ -120,7 +120,7 @@ class ProductCategoriesDetailViewController: UIViewController,UITableViewDelegat
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(ProductCategoriesDetailViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ProductCategoriesDetailViewController.refresh), for: UIControl.Event.valueChanged)
         productTableView.addSubview(refresher)
         
         
@@ -265,7 +265,7 @@ class ProductCategoriesDetailViewController: UIViewController,UITableViewDelegat
     {
         let row = indexPath.row as Int
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! ProductTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = bgColor
         
         var index:Int!
@@ -775,7 +775,7 @@ class ProductCategoriesDetailViewController: UIViewController,UITableViewDelegat
                 
                 let subcat = Subcategoryarr[buttonIndex-1] as! NSDictionary
                 subcatid = subcat["sub_cat_id"] as! Int
-                feedFilter.setTitle(subcat["sub_cat_name"] as? String, for: UIControlState.normal)
+                feedFilter.setTitle(subcat["sub_cat_name"] as? String, for: UIControl.State.normal)
                 subcategory = subcat["sub_cat_name"] as? String
                 subsubcategory = ""
                 subsubcatid = nil
@@ -791,7 +791,7 @@ class ProductCategoriesDetailViewController: UIViewController,UITableViewDelegat
             {
                 let subcat = SubSubcategoryarr[buttonIndex-1] as! NSDictionary
                 subsubcatid = subcat["tree_sub_cat_id"] as! Int
-                feedFilter2.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControlState.normal)
+                feedFilter2.setTitle(subcat["tree_sub_cat_name"] as? String, for: UIControl.State.normal)
                 subsubcategory = subcat["tree_sub_cat_name"] as? String
                 self.showSpinner = true
                 browseEntries()
@@ -1107,7 +1107,7 @@ class ProductCategoriesDetailViewController: UIViewController,UITableViewDelegat
                                 self.refreshButton.backgroundColor = bgColor
                                 self.refreshButton.layer.borderColor = navColor.cgColor
                                 self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                                self.refreshButton.addTarget(self, action: #selector(ProductCategoriesDetailViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                                self.refreshButton.addTarget(self, action: #selector(ProductCategoriesDetailViewController.browseEntries), for: UIControl.Event.touchUpInside)
                                 self.refreshButton.layer.cornerRadius = 5.0
                                 self.refreshButton.layer.masksToBounds = true
                                 self.mainView.addSubview(self.refreshButton)

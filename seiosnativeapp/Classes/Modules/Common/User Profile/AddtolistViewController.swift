@@ -46,12 +46,12 @@ class AddtolistViewController: UIViewController, UITextViewDelegate,UIGestureRec
         //Notification for showing/Hiding keyboard
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(AddtolistViewController.keyboardWasShown),
-                                               name: .UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(AddtolistViewController.keyboardWillHide),
-                                               name: .UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
 
@@ -137,12 +137,12 @@ class AddtolistViewController: UIViewController, UITextViewDelegate,UIGestureRec
             self.navigationItem.leftBarButtonItem = barButtonItem
             navigationBar.addSubview(navtitle)
             
-            let button   = UIButton(type: UIButtonType.system) as UIButton
+            let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
             button.frame = CGRect(x: self.view.bounds.size.width-100, y: 0, width: 20, height: 20)
             button.backgroundColor = UIColor.clear
-            button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControlState())
+            button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControl.State())
             
-            button.addTarget(self, action: #selector(AddtolistViewController.send), for: UIControlEvents.touchUpInside)
+            button.addTarget(self, action: #selector(AddtolistViewController.send), for: UIControl.Event.touchUpInside)
 
         
             let filter = UIBarButtonItem()
@@ -272,7 +272,7 @@ class AddtolistViewController: UIViewController, UITextViewDelegate,UIGestureRec
     
     @objc func keyboardWasShown(notification: NSNotification) {
         let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyBoardHeight = keyboardFrame.size.height
         
         height1 = Listtableview.bounds.height - (view.bounds.height - keyBoardHeight)
@@ -377,7 +377,7 @@ extension AddtolistViewController: UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         let formdata = form[indexPath.row]
 //        label.isHidden = false

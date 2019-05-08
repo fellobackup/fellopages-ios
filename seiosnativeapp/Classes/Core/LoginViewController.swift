@@ -69,7 +69,8 @@ class LoginViewController: UIViewController , UIScrollViewDelegate, UITextFieldD
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: [.mixWithOthers])
+//            , with: [.mixWithOthers]
+            try audioSession.setCategory(AVAudioSession.Category.playback)
             try audioSession.setActive(true)
         }catch{
             // handle error
@@ -682,7 +683,7 @@ class LoginViewController: UIViewController , UIScrollViewDelegate, UITextFieldD
                         // Send Server Request for Sign In
                         post(loginParams as! Dictionary<String, String>, url: "login", method: "POST") { (succeeded, msg) -> () in
                             DispatchQueue.main.async(execute: {
-                                self.signIn.setTitle("Sign In", for: UIControlState())
+                                self.signIn.setTitle("Sign In", for: UIControl.State())
                                 activityIndicatorView.stopAnimating()
                             //    self.loginView.isUserInteractionEnabled = true
                                 // On Success save authentication_token in Core Data

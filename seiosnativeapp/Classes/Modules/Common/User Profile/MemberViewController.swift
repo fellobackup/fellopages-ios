@@ -109,7 +109,7 @@ class MemberViewController: UIViewController, UITableViewDataSource, UITableView
         
         self.infoWindow = loadNiB()
         
-    NotificationCenter.default.addObserver(self,selector:#selector(MemberViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(MemberViewController.applicationWillEnterForeground),name: UIApplication.willEnterForegroundNotification,object: nil)
         
         kCameraLatitude = self.defaults.double(forKey:"Latitude")
         kCameraLongitude = self.defaults.double(forKey:"Longitude") // Do any additional setup after loading the view.
@@ -148,7 +148,7 @@ class MemberViewController: UIViewController, UITableViewDataSource, UITableView
         setNavigationImage(controller: self)
         
         if self.contentType == "user"{
-            let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(MemberViewController.addNewMember))
+            let addMember = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(MemberViewController.addNewMember))
             self.navigationItem.rightBarButtonItem = addMember
         }
         
@@ -183,11 +183,11 @@ class MemberViewController: UIViewController, UITableViewDataSource, UITableView
             view.addSubview(mainView)
             mainView.removeGestureRecognizer(tapGesture)
             
-            let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MemberViewController.searchItem))
+            let searchIcon = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(MemberViewController.searchItem))
             searchIcon.tintColor = textColorPrime
-            _   = UIButton(type: UIButtonType.system) as UIButton
-            let filterItem = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(MemberViewController.filter))
-            filterItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+            _   = UIButton(type: UIButton.ButtonType.system) as UIButton
+            let filterItem = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(MemberViewController.filter))
+            filterItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
             filterItem.tintColor = textColorPrime
             self.navigationItem.setRightBarButtonItems([filterItem,searchIcon], animated: true)
             
@@ -450,7 +450,7 @@ class MemberViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
         membersTableView.tableFooterView?.isHidden = true
     }
 
@@ -1007,7 +1007,7 @@ class MemberViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Server Connection For All Likes
     @objc func menuAction(_ sender:UIButton){
         // Generate Feed Filter Gutter Menu for Feed Come From Server as! Alert Popover
-        // let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        // let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         // var memberInfo:NSDictionary
         if (sender.tag > -1){
             let memberInfo = allMembers[sender.tag]
@@ -1657,7 +1657,7 @@ class MemberViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         let memberInfo = allMembers[(indexPath as NSIndexPath).row]
         cell.tag = (indexPath as NSIndexPath).row

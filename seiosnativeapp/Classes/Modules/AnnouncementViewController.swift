@@ -55,7 +55,7 @@ class AnnouncementViewController: UIViewController,TTTAttributedLabelDelegate,UI
         ancmntTableView.dataSource = self
         ancmntTableView.delegate = self
         ancmntTableView.estimatedRowHeight = 70
-        ancmntTableView.rowHeight = UITableViewAutomaticDimension
+        ancmntTableView.rowHeight = UITableView.automaticDimension
         ancmntTableView.backgroundColor = tableViewBgColor
         ancmntTableView.separatorColor = TVSeparatorColor
         view.addSubview(ancmntTableView)
@@ -171,7 +171,7 @@ class AnnouncementViewController: UIViewController,TTTAttributedLabelDelegate,UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         var ancmntInfo:NSDictionary
         ancmntInfo = ancmntResponse[(indexPath as NSIndexPath).row] as! NSDictionary
@@ -198,8 +198,8 @@ class AnnouncementViewController: UIViewController,TTTAttributedLabelDelegate,UI
             let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZEMedium, nil)
             
             let range = (labMsg as NSString).range(of: labMsg)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value: textColorMedium, range: range)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value: textColorMedium, range: range)
             
             // TODO: Clean this up..
             return mutableAttributedString

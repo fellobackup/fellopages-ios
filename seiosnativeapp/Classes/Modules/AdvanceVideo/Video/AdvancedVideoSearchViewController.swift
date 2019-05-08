@@ -60,8 +60,8 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
         self.navigationItem.leftBarButtonItem = barButtonItem
         
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(AdvancedVideoSearchViewController.filter))
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(AdvancedVideoSearchViewController.filter))
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -95,7 +95,7 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
         videoTableView.tableFooterView = footerView
         videoTableView.tableFooterView?.isHidden = true
         
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -152,7 +152,7 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
         videoTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")
@@ -263,7 +263,7 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! CustomTableViewCellThree
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         var videosInfo:NSDictionary!
@@ -345,8 +345,8 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
             let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
             
             let range = (tempInfo as NSString).range(of: value)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
             
             // TODO: Clean this up...
             
@@ -469,12 +469,12 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
             cell.createdBy2.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                 let boldFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZELarge, nil)
                 let range = (tempInfo as NSString).range(of: value2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                 let boldFont1 = CTFontCreateWithName( (fontName as CFString?)!, FONTSIZESmall, nil)
                 let range1 = (tempInfo as NSString).range(of: postedOn2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                 
                 // TODO: Clean this up...
                 
@@ -989,7 +989,7 @@ class AdvancedVideoSearchViewController: UIViewController , UITableViewDataSourc
                 }
                 
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                 } catch _ as NSError {
                     //print(error)

@@ -71,7 +71,7 @@ class BrowseLocationViewController: UIViewController, UIGestureRecognizerDelegat
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,selector:#selector(BrowseLocationViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(BrowseLocationViewController.applicationWillEnterForeground),name: UIApplication.willEnterForegroundNotification,object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = bgColor
         navigationController?.navigationBar.isHidden = false
@@ -129,11 +129,11 @@ class BrowseLocationViewController: UIViewController, UIGestureRecognizerDelegat
             
         }
         
-        let button   = UIButton(type: UIButtonType.system) as UIButton
+        let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.frame = CGRect(x: self.view.bounds.size.width-100, y: 0, width: 20, height: 20)
         button.backgroundColor = UIColor.clear
-        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControlState())
-        button.addTarget(self, action: #selector(BrowseLocationViewController.send), for: UIControlEvents.touchUpInside)
+        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControl.State())
+        button.addTarget(self, action: #selector(BrowseLocationViewController.send), for: UIControl.Event.touchUpInside)
         //        button.isHidden = true
         let sendButton = UIBarButtonItem()
         
@@ -144,7 +144,7 @@ class BrowseLocationViewController: UIViewController, UIGestureRecognizerDelegat
         tap.delegate = self
         tap.cancelsTouchesInView = false;
         view.addGestureRecognizer(tap)
-        searchResultTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height), style: UITableViewStyle.plain)
+        searchResultTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height), style: UITableView.Style.plain)
         searchResultTableView.register(LocationTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -195,7 +195,7 @@ class BrowseLocationViewController: UIViewController, UIGestureRecognizerDelegat
         }
         
         detectMyLocation = createButton(CGRect(x: 0, y: getBottomEdgeY(inputView: searchController.searchBar), width: view.bounds.width, height: 40), title: " Detect My Location", border: true, bgColor: false, textColor: buttonColor)
-        detectMyLocation.addTarget(self, action: #selector(detectLocation), for: UIControlEvents.touchUpInside)
+        detectMyLocation.addTarget(self, action: #selector(detectLocation), for: UIControl.Event.touchUpInside)
         detectMyLocation.layer.borderWidth = 0.5
         detectMyLocation.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         detectMyLocation.titleLabel?.font = UIFont(name: fontName, size: FONTSIZENormal)
@@ -323,7 +323,7 @@ class BrowseLocationViewController: UIViewController, UIGestureRecognizerDelegat
         //titleLabel.text = ""
         self.navigationController?.navigationBar.viewWithTag(1001)?.removeFromSuperview()
         
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     func fetchPlacesNearCoordinate(_ coordinate: CLLocationCoordinate2D, radius: Double, name : String)
     {
@@ -738,7 +738,7 @@ class BrowseLocationViewController: UIViewController, UIGestureRecognizerDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LocationTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         var locationInfo:NSDictionary
         locationInfo = locationResultResponse[(indexPath as NSIndexPath).row] as! NSDictionary
         var vicinity = ""

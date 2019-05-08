@@ -57,7 +57,7 @@ class EdittwostepverficationsettingViewController: UIViewController, UITextField
         code_textfield = UITextField(frame: CGRect(x: sidepaading, y : getBottomEdgeY(inputView: label2) + 10,width: 80, height: 45))
         let paddingView : UIView = UIView(frame: CGRect(x :0, y :0, width: 5, height : 20))
         code_textfield.leftView = paddingView
-        code_textfield.leftViewMode = UITextFieldViewMode.always
+        code_textfield.leftViewMode = UITextField.ViewMode.always
         code_textfield.text = countrycode//"Code"
         code_textfield.placeholder = "Code"
         code_textfield.keyboardType = UIKeyboardType.numbersAndPunctuation
@@ -71,7 +71,7 @@ class EdittwostepverficationsettingViewController: UIViewController, UITextField
         no_textfield = UITextField(frame: CGRect(x: getRightEdgeX(inputView: code_textfield)+10, y : getBottomEdgeY(inputView: label2) + 10,width: UIScreen.main.bounds.width-(getRightEdgeX(inputView: code_textfield)+40), height: 45))
         let paddingView1 : UIView = UIView(frame: CGRect(x :0, y :0, width: 5, height : 20))
         no_textfield.leftView = paddingView1
-        no_textfield.leftViewMode = UITextFieldViewMode.always
+        no_textfield.leftViewMode = UITextField.ViewMode.always
         no_textfield.text = phoneno//"Phone Number"
         no_textfield.placeholder = "Phone Number"
         no_textfield.keyboardType = UIKeyboardType.decimalPad
@@ -107,7 +107,7 @@ class EdittwostepverficationsettingViewController: UIViewController, UITextField
         
         if code_textfield.text?.length != 0 {
             if no_textfield.text?.length != 0{
-                verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControlState())
+                verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControl.State())
                 view.addSubview(activityIndicatorView)
                 activityIndicatorView.center = self.view.center
                 activityIndicatorView.startAnimating()
@@ -116,7 +116,7 @@ class EdittwostepverficationsettingViewController: UIViewController, UITextField
                 // Send Server Request to Sign Up Form
                 post(parameter,url: url , method: "POST") { (succeeded, msg) -> () in
                     DispatchQueue.main.async(execute: {
-                        self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControlState())
+                        self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControl.State())
                         activityIndicatorView.stopAnimating()
                         if msg{
                             country_code = self.code_textfield.text!

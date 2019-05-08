@@ -43,7 +43,7 @@ class MessageOwnerViewController: UIViewController,UITextFieldDelegate,UITextVie
         self.title = NSLocalizedString("Message owner",  comment: "")
         
         subjectText = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Subject", corner: true)
-        subjectText.attributedPlaceholder = NSAttributedString(string: "Subject", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        subjectText.attributedPlaceholder = NSAttributedString(string: "Subject", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
 
         subjectText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         subjectText.backgroundColor = bgColor
@@ -71,15 +71,15 @@ class MessageOwnerViewController: UIViewController,UITextFieldDelegate,UITextVie
         bodyTextview.layer.addSublayer(border4)
         view.addSubview(bodyTextview)
         
-        sendMsg = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItemStyle.done , target:self , action: #selector(MessageOwnerViewController.send))
+        sendMsg = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItem.Style.done , target:self , action: #selector(MessageOwnerViewController.send))
         
         
-        sendMsg.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControlState())
+        sendMsg.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControl.State())
         sendMsg.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = sendMsg
         
-        let cancel = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain , target:self , action: #selector(MessageOwnerViewController.cancel))
-        cancel.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControlState())
+        let cancel = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain , target:self , action: #selector(MessageOwnerViewController.cancel))
+        cancel.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControl.State())
         cancel.tintColor = textColorPrime
         self.navigationItem.leftBarButtonItem = cancel
         
@@ -166,8 +166,8 @@ class MessageOwnerViewController: UIViewController,UITextFieldDelegate,UITextVie
         {
             errorMsg =  NSLocalizedString("Content can't be empty",  comment: "")
             let alertController = UIAlertController(title: NSLocalizedString("Error",  comment: ""), message:
-                errorMsg, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",  comment: ""), style: UIAlertActionStyle.default,handler: nil))
+                errorMsg, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",  comment: ""), style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
             

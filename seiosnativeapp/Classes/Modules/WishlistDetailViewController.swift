@@ -133,7 +133,7 @@ class WishlistDetailViewController
         // Set pull to referseh for wishlistTableView
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: #selector(WishlistDetailViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(WishlistDetailViewController.refresh), for: UIControl.Event.valueChanged)
         wishlistTableView.addSubview(refresher)
         
         contentIcon = createLabel(CGRect(x: 0, y: 0, width: 0, height: 0), text: "", alignment: .center, textColor: textColorMedium )
@@ -433,7 +433,7 @@ class WishlistDetailViewController
         //MARK: CELL LAYOUT LIKE EVENT VIEW
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "wishlistProfileCell", for: indexPath) as! MLTGridTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         //SET CONTENT IMAGE BOUNDS
         cell.contentImage.frame = CGRect(x: 0, y: 0, width: cell.cellView.bounds.width, height: cell.cellView.bounds.height - cell.cellView.bounds.height/4)
@@ -835,7 +835,7 @@ class WishlistDetailViewController
         var confirmationAlert = true
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for menu in contentGutterMenu
         {
@@ -1242,12 +1242,12 @@ class WishlistDetailViewController
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(WishlistDetailViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(WishlistDetailViewController.showMainGutterMenu), for: .touchUpInside)
                                     rightNavView.addSubview(optionButton)
                                     
@@ -1315,7 +1315,7 @@ class WishlistDetailViewController
                                 self.refreshButton.layer.borderColor = navColor.cgColor
                                 self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
 
-                                self.refreshButton.addTarget(self, action: #selector(WishlistDetailViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                                self.refreshButton.addTarget(self, action: #selector(WishlistDetailViewController.browseEntries), for: UIControl.Event.touchUpInside)
 
                                 self.refreshButton.layer.cornerRadius = 5.0
                                 self.refreshButton.layer.masksToBounds = true
@@ -1351,7 +1351,7 @@ class WishlistDetailViewController
     @objc func shareItem(){
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let pv = AdvanceShareViewController()
             pv.url = self.shareUrl
@@ -1364,7 +1364,7 @@ class WishlistDetailViewController
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside", comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside", comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -1378,7 +1378,7 @@ class WishlistDetailViewController
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 

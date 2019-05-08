@@ -89,7 +89,7 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
         blogTableView.dataSource = self
         blogTableView.delegate = self
         blogTableView.estimatedRowHeight = 75.0
-        blogTableView.rowHeight = UITableViewAutomaticDimension
+        blogTableView.rowHeight = UITableView.automaticDimension
         blogTableView.backgroundColor = tableViewBgColor
         blogTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -110,7 +110,7 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
         activityIndicatorView.startAnimating()
         blogTableView.tableFooterView = footerView
         blogTableView.tableFooterView?.isHidden = true
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -399,7 +399,7 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CommentTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         //print(cell)
         
         
@@ -427,7 +427,7 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
 
         cell.author_title.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.author_title.sizeToFit()
-        cell.imageButton.addTarget(self, action: #selector(ShowMemberSearchViewController.showProfile(_:)), for: UIControlEvents.touchUpInside)
+        cell.imageButton.addTarget(self, action: #selector(ShowMemberSearchViewController.showProfile(_:)), for: UIControl.Event.touchUpInside)
         cell.imageButton.tag = userId
         cell.imageButton.accessibilityIdentifier = "\((indexPath as NSIndexPath).row)"
         
@@ -437,7 +437,7 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
                 
                 if staff != "" {
                     
-                    cell.staff.setTitle("(\(staff))", for: UIControlState())
+                    cell.staff.setTitle("(\(staff))", for: UIControl.State())
                     
                     cell.staff.tag = (memberInfo["user_id"] as? Int)!
                     
@@ -446,7 +446,7 @@ class ShowMemberSearchViewController: UIViewController, UITableViewDataSource, U
                     cell.staff.frame.origin.x = cell.author_title.frame.size.width + cell.author_title.frame.origin.x + 10
                     cell.staff.frame.origin.y = cell.author_title.frame.origin.y - 4
                     cell.staff.frame.size.width = (findWidthByText("(\(staff))")+22)
-                    cell.staff.setTitleColor(textColorMedium, for: UIControlState())
+                    cell.staff.setTitleColor(textColorMedium, for: UIControl.State())
 
                     
                 }

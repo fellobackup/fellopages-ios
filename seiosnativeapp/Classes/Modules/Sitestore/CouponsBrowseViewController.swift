@@ -136,7 +136,7 @@ class CouponsBrowseViewController: UIViewController, UITableViewDataSource, UITa
         
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(CouponsBrowseViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(CouponsBrowseViewController.refresh), for: UIControl.Event.valueChanged)
         couponsTableView.addSubview(refresher)
         
         
@@ -144,7 +144,7 @@ class CouponsBrowseViewController: UIViewController, UITableViewDataSource, UITa
             couponsTableView.frame.size.height = view.bounds.height - tabBarHeight
         }
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         view.addGestureRecognizer(swipeDown)
         
         if isFromSearchPage && resultInfo.count > 0{
@@ -372,7 +372,7 @@ class CouponsBrowseViewController: UIViewController, UITableViewDataSource, UITa
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(CouponsBrowseViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(CouponsBrowseViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.mainView.addSubview(self.refreshButton)
@@ -439,7 +439,7 @@ class CouponsBrowseViewController: UIViewController, UITableViewDataSource, UITa
         var couponInfo:NSDictionary
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         couponInfo = couponsResponse[row] as! NSDictionary
@@ -621,14 +621,14 @@ class CouponsBrowseViewController: UIViewController, UITableViewDataSource, UITa
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 //        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
 //            switch swipeGesture.direction {
-//            case UISwipeGestureRecognizerDirection.right:
+//            case UISwipeGestureRecognizer.Direction.right:
 //                //print("Swiped right")
-//            case UISwipeGestureRecognizerDirection.down:
+//            case UISwipeGestureRecognizer.Direction.down:
 //                //print("Swiped down")
 //                hideCouponDetail()
-//            case UISwipeGestureRecognizerDirection.left:
+//            case UISwipeGestureRecognizer.Direction.left:
 //                //print("Swiped left")
-//            case UISwipeGestureRecognizerDirection.up:
+//            case UISwipeGestureRecognizer.Direction.up:
 //                //print("Swiped up")
 //            default:
 //                break
@@ -747,7 +747,7 @@ class CouponsBrowseViewController: UIViewController, UITableViewDataSource, UITa
             couponDetailView.couponStartDate.isHidden = true
         }
         
-        couponDetailView.doneButton.addTarget(self, action: #selector(CouponsBrowseViewController.hideCouponDetail), for: UIControlEvents.touchUpInside)
+        couponDetailView.doneButton.addTarget(self, action: #selector(CouponsBrowseViewController.hideCouponDetail), for: UIControl.Event.touchUpInside)
         
         view.addSubview(couponDetailView)
         

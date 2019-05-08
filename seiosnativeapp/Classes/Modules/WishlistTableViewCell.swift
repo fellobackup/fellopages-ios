@@ -58,7 +58,7 @@ class WishlistTableViewCell: UITableViewCell
         // Configure the view for the selected state
     }
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -134,20 +134,20 @@ class WishlistTableViewCell: UITableViewCell
         coverImage4.layer.masksToBounds = true
         coverImage4.backgroundColor = UIColor.clear//navColor
         coverImage4.isHidden = true
-        coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-        coverImage4.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        coverImage4.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-        coverImage4.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+        coverImage4.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        coverImage4.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+        coverImage4.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         cellView.addSubview(coverImage4)
         
         coverImage5 = createButton(CGRect(x: (cellView.bounds.width*0.5) + 1, y: 0, width: (cellView.bounds.width*0.5) - 1, height: cellView.bounds.size.height), title: "", border: false,bgColor: false, textColor: textColorLight)
         coverImage5.layer.masksToBounds = true
         coverImage5.backgroundColor = UIColor.clear//navColor
         coverImage5.isHidden = true
-     //   coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-        coverImage5.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        coverImage5.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-        coverImage5.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+     //   coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+        coverImage5.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.fill
+        coverImage5.contentVerticalAlignment = UIControl.ContentVerticalAlignment.fill
+        coverImage5.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         cellView.addSubview(coverImage5)
         
         coverSelection = createButton(cellView.frame, title: "", border: false,bgColor: false, textColor: textColorLight)

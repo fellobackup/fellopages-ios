@@ -3239,8 +3239,8 @@ var videoDuration : Double = 0.00
         {
             
             let alertController = UIAlertController(title: "\(errorTitle)", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
             
@@ -3725,8 +3725,8 @@ var videoDuration : Double = 0.00
                         {
                             
                             let alertController = UIAlertController(title: "\(errorTitle)", message:
-                                error, preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                                error, preferredStyle: UIAlertController.Style.alert)
+                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
                             
                             self.present(alertController, animated: true, completion: nil)
                             
@@ -4031,8 +4031,8 @@ var videoDuration : Double = 0.00
                                 if error != ""{
                                     
                                     let alertController = UIAlertController(title: "\(errorTitle)", message:
-                                        error, preferredStyle: UIAlertControllerStyle.alert)
-                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                                        error, preferredStyle: UIAlertController.Style.alert)
+                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
                                     
                                     self.present(alertController, animated: true, completion: nil)
                                     
@@ -4876,7 +4876,7 @@ var videoDuration : Double = 0.00
     
     func enterPaymentPassword ()
     {
-        let alert = UIAlertController(title: "Password", message: "Enter Your Login Password", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Password", message: "Enter Your Login Password", preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
         }

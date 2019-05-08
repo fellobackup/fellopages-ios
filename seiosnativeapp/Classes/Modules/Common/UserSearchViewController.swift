@@ -47,11 +47,11 @@ class UserSearchViewController: UIViewController, UIGestureRecognizerDelegate, U
         self.navigationItem.leftBarButtonItem = barButtonItem
         
         
-        button   = UIButton(type: UIButtonType.system) as UIButton
+        button   = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.frame = CGRect(x: self.view.bounds.size.width-100, y: 0, width: 20, height: 20)
         button.backgroundColor = UIColor.clear
-        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControlState())
-        button.addTarget(self, action: #selector(UserSearchViewController.send), for: UIControlEvents.touchUpInside)
+        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControl.State())
+        button.addTarget(self, action: #selector(UserSearchViewController.send), for: UIControl.Event.touchUpInside)
         button.isHidden = true
         let sendButton = UIBarButtonItem()
         
@@ -66,8 +66,8 @@ class UserSearchViewController: UIViewController, UIGestureRecognizerDelegate, U
         
         
         searchLabel = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Type Member Name",  comment: ""), corner: true)
-        searchLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type Member Name",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        searchLabel.addTarget(self, action: #selector(UserSearchViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        searchLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type Member Name",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+        searchLabel.addTarget(self, action: #selector(UserSearchViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         searchLabel.font =  UIFont(name: fontName, size: FONTSIZELarge)
         searchLabel.backgroundColor = bgColor
         searchLabel.delegate = self
@@ -83,10 +83,10 @@ class UserSearchViewController: UIViewController, UIGestureRecognizerDelegate, U
         self.view.addSubview(lineView1)
         
         
-        searchTable = UITableView(frame: (CGRect(x: searchLabel.bounds.origin.x,y: searchLabel.frame.origin.y+searchLabel.frame.size.height+1, width: searchLabel.bounds.size.width, height: view.bounds.height-(searchLabel.bounds.origin.x + searchLabel.frame.size.height+5 + tabBarHeight) )), style: UITableViewStyle.grouped)
+        searchTable = UITableView(frame: (CGRect(x: searchLabel.bounds.origin.x,y: searchLabel.frame.origin.y+searchLabel.frame.size.height+1, width: searchLabel.bounds.size.width, height: view.bounds.height-(searchLabel.bounds.origin.x + searchLabel.frame.size.height+5 + tabBarHeight) )), style: UITableView.Style.grouped)
         searchTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        searchTable.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        searchTable.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         searchTable.rowHeight = 35
         searchTable.isHidden = true
         searchTable.isOpaque = false
@@ -328,7 +328,7 @@ class UserSearchViewController: UIViewController, UIGestureRecognizerDelegate, U
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         let dic = userArray.object(at: (indexPath as NSIndexPath).row) as! NSDictionary
         if Url == "user/suggest"
         {

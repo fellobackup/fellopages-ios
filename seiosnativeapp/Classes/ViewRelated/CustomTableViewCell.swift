@@ -60,11 +60,11 @@ class CustomTableViewCell: UITableViewCell {
     var cross :UIButton!
     
     // Initialize Variable for Custom Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = UITableViewCellSelectionStyle.blue
+        self.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         // Icon Size
         if  (UIDevice.current.userInterfaceIdiom == .phone){

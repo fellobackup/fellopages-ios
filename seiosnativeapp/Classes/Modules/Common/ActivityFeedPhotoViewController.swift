@@ -96,7 +96,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         view.addSubview(upperViewInfo)
         
         cross =  createButton(CGRect(x: 15, y: 15, width: 50, height: 60), title: "", border: false,bgColor: false, textColor: textColorPrime)
-        cross.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorPrime), for: UIControlState())
+        cross.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorPrime), for: UIControl.State())
         cross.titleLabel?.font = UIFont(name: "FontAwesome", size: 20)
         cross.addTarget(self, action: #selector(ActivityFeedPhotoViewController.cancel), for: .touchUpInside)
         upperViewInfo.addSubview(cross)
@@ -105,7 +105,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         // More icon on Top Right
         moreMenu1 = createButton(CGRect(x: view.bounds.width-55,y: 15, width: 50, height: 60), title: "", border: false,bgColor: false, textColor: textColorLight)
         moreMenu1.titleLabel?.font = UIFont(name: "FontAwesome", size: 25.0)
-        moreMenu1.setTitle("\(optionIcon)", for: UIControlState())
+        moreMenu1.setTitle("\(optionIcon)", for: UIControl.State())
         moreMenu1.addTarget(self, action: #selector(ActivityFeedPhotoViewController.moreMenu), for: .touchUpInside)
         moreMenu1.isHidden = false
         upperViewInfo.addSubview(moreMenu1)
@@ -133,12 +133,12 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
 
         if photoType == "product_photo"{
             cross =  createButton(CGRect(x:15, y:40 + iphonXTopsafeArea, width:30, height:30), title: "", border: false,bgColor: false, textColor: textColorDark)
-            cross.setImage(UIImage(named: "cross"), for: UIControlState())
+            cross.setImage(UIImage(named: "cross"), for: UIControl.State())
         }
         else
         {
             cross =  createButton(CGRect(x: 15, y: 5 + iphonXTopsafeArea , width: 40, height: 70), title: "", border: false,bgColor: false, textColor: textColorLight)
-            cross.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorPrime), for: UIControlState())
+            cross.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorPrime), for: UIControl.State())
         }
         cross.titleLabel?.font = UIFont(name: "FontAwesome", size: 20)
         cross.backgroundColor = UIColor.black
@@ -157,37 +157,37 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         {
             likeShow = createButton(CGRect(x: 0,y: 0.5, width: 40, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
             likeShow.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
-            likeShow.setTitle("\(likeIcon)", for: UIControlState())
-            likeShow.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: UIControlEvents.touchUpInside)
+            likeShow.setTitle("\(likeIcon)", for: UIControl.State())
+            likeShow.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: UIControl.Event.touchUpInside)
             bottomView.addSubview(likeShow)
             likeWidth = 40
         }
         
         commentShow = createButton(CGRect(x: likeWidth,y: 0.5, width: 40, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
-        commentShow.setTitle("\(commentIcon)", for: UIControlState())
+        commentShow.setTitle("\(commentIcon)", for: UIControl.State())
         commentShow.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
-        commentShow.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControlEvents.touchUpInside)
+        commentShow.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControl.Event.touchUpInside)
         bottomView.addSubview(commentShow)
         shareShow = createButton(CGRect(x: getRightEdgeX(inputView: commentShow),y: 0.5, width: 40, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
         shareShow.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
-        shareShow.setTitle("\(shareIcon)", for: UIControlState())
-        shareShow.addTarget(self, action: #selector(ActivityFeedPhotoViewController.shareAction(_:)), for: UIControlEvents.touchUpInside)
+        shareShow.setTitle("\(shareIcon)", for: UIControl.State())
+        shareShow.addTarget(self, action: #selector(ActivityFeedPhotoViewController.shareAction(_:)), for: UIControl.Event.touchUpInside)
         bottomView.addSubview(shareShow)
         moreMenu1 = createButton(CGRect(x: getRightEdgeX(inputView: shareShow),y: 1, width: 40, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
         moreMenu1.titleLabel?.font = UIFont(name: "FontAwesome", size: 25.0)
-        moreMenu1.setTitle("\(optionIcon)", for: UIControlState())
+        moreMenu1.setTitle("\(optionIcon)", for: UIControl.State())
         moreMenu1.addTarget(self, action: #selector(ActivityFeedPhotoViewController.moreMenu), for: .touchUpInside)
         moreMenu1.isHidden = false
         //bottomView.addSubview(moreMenu1)
         likeCount = createButton(CGRect(x: view.bounds.width-140,y: 0.5, width: 50, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
         likeCount.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZENormal)
         likeCount.tag = 22
-        //likeCount.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControlEvents.touchUpInside)
+        //likeCount.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControl.Event.touchUpInside)
         bottomView.addSubview(likeCount)
         commentCount = createButton(CGRect(x: view.bounds.width-85,y: 0.5, width: 80, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
         commentCount.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZENormal)
         commentCount.tag = 23
-        commentCount.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControlEvents.touchUpInside)
+        commentCount.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControl.Event.touchUpInside)
         bottomView.addSubview(commentCount)
         
         let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(ActivityFeedPhotoViewController.cancel))
@@ -290,11 +290,11 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                             self.reactionShow.addSubview(ImageView)
                             ImageView.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: .touchUpInside)
                             let menu = createButton(CGRect(x: 25, y: 0, width: reactionShow.frame.size.width - 20,height: 50), title: " \(title)", border: false,bgColor: false, textColor: textColorMedium )
-                            menu.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: UIControlEvents.touchUpInside)
+                            menu.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: UIControl.Event.touchUpInside)
                             let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ActivityFeedPhotoViewController.longPressed(sender:)))
                             menu.addGestureRecognizer(longPressRecognizer)
                             menu.tag = 200
-                            menu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                            menu.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                             menu.titleLabel?.font = UIFont(name: fontName, size: FONTSIZENormal)
                             //menu.titleLabel?.adjustsFontSizeToFitWidth = true
                             self.reactionShow.addSubview(menu)
@@ -315,7 +315,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                     }
                 }
                 else{
-                    self.likeShow.setTitleColor(navColor, for: UIControlState())
+                    self.likeShow.setTitleColor(navColor, for: UIControl.State())
                 }
             }
             else{
@@ -324,7 +324,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                     ShowLikeButton()
                 }
                 else{
-                    self.likeShow.setTitleColor(textColorLight, for: UIControlState())
+                    self.likeShow.setTitleColor(textColorLight, for: UIControl.State())
                 }
             }
         }
@@ -359,7 +359,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                     })
                                     }
                                     emoji.tag = 22
-                                    emoji.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControlEvents.touchUpInside)
+                                    emoji.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControl.Event.touchUpInside)
                                     reactionsInfo.addSubview(emoji)
                                     origin_x += (menuWidth) + 2
                                     i = i + 1
@@ -398,7 +398,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
             let likeCommentInfo = createButton(CGRect(x: origin_x + 2 ,y: 3 ,width: 200 , height: 30), title: "", border: false,bgColor: false, textColor: textColorMedium)
             likeCommentInfo.titleLabel?.font = UIFont(name: fontName , size: FONTSIZESmall)
             likeCommentInfo.tag = 22
-            likeCommentInfo.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControlEvents.touchUpInside)
+            likeCommentInfo.addTarget(self, action: #selector(ActivityFeedPhotoViewController.commentAction(_:)), for: UIControl.Event.touchUpInside)
             likeCommentInfo.titleLabel?.textColor = likeInfo
             likeCommentInfo.contentHorizontalAlignment = .left
             likeCommentInfo.setTitle("\(infoTitle)", for: .normal)
@@ -435,11 +435,11 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         }
         if let likecount = self.photoForViewer[self.currentPage].likes_count{
             let finalText = singlePluralCheck( NSLocalizedString(" Like", comment: ""),  plural: NSLocalizedString(" Likes", comment: ""), count: likecount)
-            self.likeCount.setTitle("\(finalText)", for: UIControlState())
+            self.likeCount.setTitle("\(finalText)", for: UIControl.State())
         }
         if let commentcount = self.photoForViewer[self.currentPage].comment_count{
             let finalText = singlePluralCheck( NSLocalizedString(" Comment", comment: ""),  plural: NSLocalizedString(" Comments", comment: ""), count: commentcount)
-            self.commentCount.setTitle("\(finalText)", for: UIControlState())
+            self.commentCount.setTitle("\(finalText)", for: UIControl.State())
         }
     }
 
@@ -452,8 +452,8 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         }
         let menu = createButton(CGRect(x: 0,y: 0, width: 40, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
         menu.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
-        menu.setTitle("\(likeIcon)", for: UIControlState())
-        menu.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: UIControlEvents.touchUpInside)
+        menu.setTitle("\(likeIcon)", for: UIControl.State())
+        menu.addTarget(self, action: #selector(ActivityFeedPhotoViewController.like_unLikeAction(_:)), for: UIControl.Event.touchUpInside)
         menu.tag = 200
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ActivityFeedPhotoViewController.longPressed(sender:)))
         menu.addGestureRecognizer(longPressRecognizer)
@@ -1044,7 +1044,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
             
             let imageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0-iphonXTopsafeArea, width: view.bounds.width, height: innerscrollview.bounds.height)
-            imageView.contentMode = UIViewContentMode.scaleAspectFit
+            imageView.contentMode = UIView.ContentMode.scaleAspectFit
             imageView.isUserInteractionEnabled = true
             imageView.tag = 111
             
@@ -1087,11 +1087,11 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         
         if let likecount = photoForViewer[currentPage].likes_count{
             let finalText = singlePluralCheck( NSLocalizedString(" Like", comment: ""),  plural: NSLocalizedString(" Likes", comment: ""), count: likecount)
-            likeCount.setTitle("\(finalText)", for: UIControlState())
+            likeCount.setTitle("\(finalText)", for: UIControl.State())
         }
         if let commentcount = photoForViewer[currentPage].comment_count{
             let finalText = singlePluralCheck( NSLocalizedString(" Comment", comment: ""),  plural: NSLocalizedString(" Comments", comment: ""), count: commentcount)
-            commentCount.setTitle("\(finalText)", for: UIControlState())
+            commentCount.setTitle("\(finalText)", for: UIControl.State())
             
         }
         
@@ -1127,7 +1127,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                     // work for like
                     total_likes = total_likes! - 1
                     animationEffectOnButton(sender)
-                    likeShow.setTitleColor(textColorLight , for: UIControlState())
+                    likeShow.setTitleColor(textColorLight , for: UIControl.State())
                 }
             }
             else{
@@ -1135,12 +1135,12 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                     // work for unlike
                     total_likes = total_likes! + 1
                     animationEffectOnButton(sender)
-                    likeShow.setTitleColor(navColor , for: UIControlState())
+                    likeShow.setTitleColor(navColor , for: UIControl.State())
                 }
             }
             
             let finalText = singlePluralCheck( NSLocalizedString(" Like", comment: ""),  plural: NSLocalizedString(" Likes", comment: ""), count: total_likes ?? 0)
-            likeCount.setTitle("\(finalText)", for: UIControlState())
+            likeCount.setTitle("\(finalText)", for: UIControl.State())
             var photo_type = "photo"
             if (photoType == ("album_photo")) || (photoType == ("album")) {
                 photo_type = "photo"
@@ -1227,10 +1227,10 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                             // On Success Update
                             if succeeded["message"] != nil{
                                 if(is_like == true){
-                                    sender.setTitleColor(textColorLight , for: UIControlState())
+                                    sender.setTitleColor(textColorLight , for: UIControl.State())
 //                                    sender.isEnabled = true
                                 }else{
-                                    sender.setTitleColor(navColor, for: UIControlState())
+                                    sender.setTitleColor(navColor, for: UIControl.State())
                                 }
                                 
                                 for (index,value) in self.photoForViewer.enumerated(){
@@ -1262,7 +1262,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                                 }
                                 
                                 let finalText = singlePluralCheck( NSLocalizedString(" Like", comment: ""),  plural: NSLocalizedString(" Likes", comment: ""), count: total_likes!)
-                                self.likeCount.setTitle("\(finalText)", for: UIControlState())
+                                self.likeCount.setTitle("\(finalText)", for: UIControl.State())
                                 
                                 
                             }
@@ -1335,7 +1335,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
             
         })
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Share Outside",  comment: ""), style: .default, handler:{
             (UIAlertAction) -> Void in
             let url = URL(string: self.currentImage)
@@ -1364,7 +1364,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
                             // Change Here For Edit
                             if dic["name"] as! String ==  "edit"{
                                 self.editPhoto = true
-                                NotificationCenter.default.addObserver(self, selector: #selector(ActivityFeedPhotoViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+                                NotificationCenter.default.addObserver(self, selector: #selector(ActivityFeedPhotoViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
                                 let startPoint = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height - 50)
                                 self.popover = Popover(options: self.popoverOptions, showHandler: nil, dismissHandler: nil)
                                 self.popover.show(self.popView, point: startPoint)
@@ -1419,7 +1419,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         if  (UIDevice.current.userInterfaceIdiom == .phone){
             alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel",  comment: ""), style: .cancel, handler:nil))
         }else{
-            //alertController = UIAlertController(title: "Appcoda", message: "Message in alert dialog", preferredStyle: UIAlertControllerStyle.actionSheet)
+            //alertController = UIAlertController(title: "Appcoda", message: "Message in alert dialog", preferredStyle: UIAlertController.Style.actionSheet)
             alertController.popoverPresentationController?.sourceView = view
             alertController.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.width/2 , y: view.bounds.height/2, width: 0, height: 0)
             alertController.popoverPresentationController!.permittedArrowDirections = UIPopoverArrowDirection()
@@ -1458,7 +1458,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         
         let activityViewController = UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
         
-        activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         
         if  (UIDevice.current.userInterfaceIdiom == .phone){
             
@@ -1555,7 +1555,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
         if(updateComment == true)
         {
             let finalText = singlePluralCheck( NSLocalizedString(" Comment", comment: ""),  plural: NSLocalizedString(" Comments", comment: ""), count: total_Comments)
-            commentCount.setTitle("\(finalText)", for: UIControlState())
+            commentCount.setTitle("\(finalText)", for: UIControl.State())
             commentUpdate()
             updateComment = false
             feedUpdate = true
@@ -1734,7 +1734,7 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
     @objc func keyboardWillShow(_ sender: Foundation.Notification) {
         if editPhoto == true{
             if let userInfo = (sender as NSNotification).userInfo {
-                let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size.height
+                let keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size.height
                 if keyboardHeight > 0 {
 
                     UIView.animate(withDuration: 0.5, animations: {
@@ -1823,9 +1823,9 @@ class ActivityFeedPhotoViewController: UIViewController, UIScrollViewDelegate, U
 }
 extension UIImage {
     var jpeg: Data? {
-        return UIImageJPEGRepresentation(self, 1)   // QUALITY min = 0 / max = 1
+        return self.jpegData(compressionQuality: 1)   // QUALITY min = 0 / max = 1
     }
     var png: Data? {
-        return UIImagePNGRepresentation(self)
+        return self.pngData()
     }
 }

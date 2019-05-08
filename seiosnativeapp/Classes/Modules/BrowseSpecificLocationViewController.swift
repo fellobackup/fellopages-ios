@@ -55,11 +55,11 @@ class BrowseSpecificLocationViewController: UIViewController, UIGestureRecognize
         }
 
         
-        let button   = UIButton(type: UIButtonType.system) as UIButton
+        let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.frame = CGRect(x: self.view.bounds.size.width-100, y: 0, width: 20, height: 20)
         button.backgroundColor = UIColor.clear
-        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControlState())
-        button.addTarget(self, action: #selector(BrowseSpecificLocationViewController.send), for: UIControlEvents.touchUpInside)
+        button.setImage(UIImage(named: "Checkmark.png")!.maskWithColor(color: textColorPrime), for: UIControl.State())
+        button.addTarget(self, action: #selector(BrowseSpecificLocationViewController.send), for: UIControl.Event.touchUpInside)
         let sendButton = UIBarButtonItem()
         
         sendButton.customView = button
@@ -68,8 +68,8 @@ class BrowseSpecificLocationViewController: UIViewController, UIGestureRecognize
         
 
         loctextfeild = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Select location",  comment: ""), corner: true)
-        loctextfeild.attributedPlaceholder = NSAttributedString(string: "Select location", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        loctextfeild.addTarget(self, action: #selector(BrowseSpecificLocationViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        loctextfeild.attributedPlaceholder = NSAttributedString(string: "Select location", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+        loctextfeild.addTarget(self, action: #selector(BrowseSpecificLocationViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         loctextfeild.font =  UIFont(name: fontName, size: FONTSIZELarge)
         loctextfeild.backgroundColor = bgColor
         loctextfeild.layer.masksToBounds = true
@@ -99,14 +99,14 @@ class BrowseSpecificLocationViewController: UIViewController, UIGestureRecognize
         self.view.addSubview(lineView1)
         
         
-        locationTable = UITableView(frame: (CGRect(x: loctextfeild.bounds.origin.x,y: loctextfeild.frame.origin.y+loctextfeild.frame.size.height+1, width: loctextfeild.bounds.size.width, height: 100)), style: UITableViewStyle.grouped)
+        locationTable = UITableView(frame: (CGRect(x: loctextfeild.bounds.origin.x,y: loctextfeild.frame.origin.y+loctextfeild.frame.size.height+1, width: loctextfeild.bounds.size.width, height: 100)), style: UITableView.Style.grouped)
         locationTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        locationTable.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0)
+        locationTable.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
         locationTable.rowHeight = 25
         locationTable.isHidden = true
         locationTable.isOpaque = false
-        //locationTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        //locationTable.separatorStyle = UITableViewCell.SeparatorStyle.None
         locationTable.backgroundColor = UIColor.white//tableViewBgColor
         view.addSubview(locationTable)
    
@@ -267,7 +267,7 @@ class BrowseSpecificLocationViewController: UIViewController, UIGestureRecognize
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         cell.textLabel?.text = locationArray.object(at: (indexPath as NSIndexPath).row) as? String
         return cell
     }

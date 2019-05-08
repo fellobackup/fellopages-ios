@@ -33,12 +33,12 @@ class MultiplePrivacyViewController: UIViewController , UITableViewDataSource, U
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
         
-        let button   = UIButton(type: UIButtonType.system) as UIButton
+        let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
         button.frame = CGRect(x: self.view.bounds.size.width-100,y: 0,width: 18,height: 18)
         button.backgroundColor = UIColor.clear
         let loctionimg = UIImage(named: "checkmark.png")!.maskWithColor(color: textColorPrime)
-        button.setImage(loctionimg , for: UIControlState.normal)
-        button.addTarget(self, action: #selector(MultiplePrivacyViewController.submit), for: UIControlEvents.touchUpInside)
+        button.setImage(loctionimg , for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(MultiplePrivacyViewController.submit), for: UIControl.Event.touchUpInside)
         let locButton = UIBarButtonItem()
         locButton.customView = button
         self.navigationItem.setRightBarButtonItems([locButton], animated: true)
@@ -51,7 +51,7 @@ class MultiplePrivacyViewController: UIViewController , UITableViewDataSource, U
         privacyTableView.dataSource = self
         privacyTableView.delegate = self
         privacyTableView.estimatedRowHeight = 40.0
-        privacyTableView.rowHeight = UITableViewAutomaticDimension
+        privacyTableView.rowHeight = UITableView.automaticDimension
         privacyTableView.backgroundColor = tableViewBgColor
         privacyTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -117,7 +117,7 @@ class MultiplePrivacyViewController: UIViewController , UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
         
     {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle , reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle , reuseIdentifier: "Cell")
         
         let row = (indexPath as NSIndexPath).row as Int
         cell.accessoryView = nil
@@ -127,10 +127,10 @@ class MultiplePrivacyViewController: UIViewController , UITableViewDataSource, U
         privacyInfo = privacyArray[row] as! NSDictionary
 //        if arrayPrivacy.contains(privacyInfo["name"] as! String){
 //
-//            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+//            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
 //        }
 //        else{
-//            cell.accessoryType = UITableViewCellAccessoryType.none
+//            cell.accessoryType = UITableViewCell.AccessoryType.none
 //
 //        }
         cell.textLabel?.text = privacyInfo["label"] as? String
@@ -141,21 +141,21 @@ class MultiplePrivacyViewController: UIViewController , UITableViewDataSource, U
     }
     // Handle Settings Table Cell Selection
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // let cell = UITableViewCell(style: UITableViewCellStyle.subtitle , reuseIdentifier: "Cell")
+       // let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle , reuseIdentifier: "Cell")
         let cell: UITableViewCell = tableView.cellForRow(at: indexPath)!
         let row = (indexPath as NSIndexPath).row as Int
         var privacyInfo:NSDictionary
        
         
         privacyInfo = privacyArray[row] as! NSDictionary
-        if (cell.accessoryType == UITableViewCellAccessoryType.none) {
+        if (cell.accessoryType == UITableViewCell.AccessoryType.none) {
             
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
             arrayPrivacy.append(String(describing: privacyInfo["name"] as AnyObject))
             //print(arrayPrivacy)
         }
         else{
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
             if let index = arrayPrivacy.index(of: String(describing: privacyInfo["name"] as AnyObject)) {
                 arrayPrivacy.remove(at: index)
             }

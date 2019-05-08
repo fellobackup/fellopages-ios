@@ -141,8 +141,8 @@ var sign_up : Int = 0
         }
         
         if error != ""{
-            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }else{
             if isEnableOtp != false {
@@ -633,8 +633,8 @@ var sign_up : Int = 0
     
     @objc func goBack()
     {
-        let alertController = UIAlertController(title: "Go Back?", message:"Are you sure that you want to go back?", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Go Back", style: UIAlertActionStyle.default,handler: { action -> Void in
+        let alertController = UIAlertController(title: "Go Back?", message:"Are you sure that you want to go back?", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Go Back", style: UIAlertAction.Style.default,handler: { action -> Void in
             FBSDKAccessToken.setCurrent(nil)
             if let tabBarObject = self.tabBarController?.tabBar
             {
@@ -642,7 +642,7 @@ var sign_up : Int = 0
             }
             _ = self.navigationController?.popViewController(animated: false)
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     

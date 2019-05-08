@@ -148,11 +148,11 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
     var rightBarButtonItem : UIBarButtonItem!
     var feedObj = FeedTableViewController()
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     
@@ -203,9 +203,9 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
         mainView.removeGestureRecognizer(tapGesture)
         
         // Initial table to show Activity Feeds
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         self.view.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         
         removeNavigationImage(controller: self)
         
@@ -225,7 +225,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
         
         
         
-        coverImage.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage.contentMode = UIView.ContentMode.scaleAspectFill
         coverImage.layer.masksToBounds = true
         coverImage.backgroundColor = placeholderColor
         coverImage.tag = 123
@@ -329,7 +329,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(MLTClassifiedSimpleTypeViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(MLTClassifiedSimpleTypeViewController.refresh), for: UIControl.Event.valueChanged)
         feedObj.tableView.addSubview(refresher)
         
         // Cover Photo and Profile Photo
@@ -349,7 +349,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
         memberProfilePhoto.layer.borderWidth = 2.5
         memberProfilePhoto.layer.cornerRadius = memberProfilePhoto.frame.size.width / 2
         memberProfilePhoto.backgroundColor = placeholderColor
-        memberProfilePhoto.contentMode = UIViewContentMode.scaleAspectFill
+        memberProfilePhoto.contentMode = UIView.ContentMode.scaleAspectFill
         memberProfilePhoto.layer.masksToBounds = true
         memberProfilePhoto.image = UIImage(named: "user_profile_image.png")
         memberProfilePhoto.tag = 321
@@ -472,14 +472,14 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
     @objc func showFeedFilterOption(_ sender: UIButton){
         // Generate Feed Filter Options Gutter Menu from Server as! Alert Popover
         //      if logoutUser != true {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in filterGutterMenu{
             if let dic = menu as? NSDictionary{
                 alertController.addAction(UIAlertAction(title: (dic["tab_title"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in
                     // Set Feed Filter Option Title
-                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControlState())
+                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControl.State())
                     self.feedFilterFlag = true
                     
                     // Set Parameters for Feed Filter
@@ -599,12 +599,12 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(MLTClassifiedSimpleTypeViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(MLTClassifiedSimpleTypeViewController.showGutterMenu), for: .touchUpInside)
                                    // rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -1034,7 +1034,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
         }
         
         if imageMenus.count > 0{
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             for menu in imageMenus{
                 if let dic = menu as? NSDictionary{
@@ -1042,7 +1042,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
                     
                     if dic["name"] as! String == "remove_photo" || dic["name"] as! String == "remove_cover_photo"{
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             // Delete Activity Feed Entry
                             if dic["name"] as! String == "remove_photo"{
                                 
@@ -1074,7 +1074,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
                         }))
                         
                     }else{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -1855,7 +1855,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
     
     // Show Gutter Menus
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         deleteContent = false
@@ -1877,7 +1877,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
                 if dic["name"] as! String != "share"{
                     let titleString = dic["name"] as! String
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -1904,7 +1904,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
                             
                         }))
                     }else{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -2304,10 +2304,10 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
                     origin_x += width
                     
                     if button_title == "Updates"{
-                        menu.setTitleColor(textColorDark, for: UIControlState())
+                        menu.setTitleColor(textColorDark, for: UIControl.State())
                     }
                     else{
-                        menu.setTitleColor(textColorMedium, for: UIControlState())
+                        menu.setTitleColor(textColorMedium, for: UIControl.State())
                     }
                     
                 }
@@ -2490,7 +2490,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
     @objc func shareItem(){
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             
             let presentedVC = AdvanceShareViewController()
@@ -2509,7 +2509,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
 
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -2524,7 +2524,7 @@ class MLTClassifiedSimpleTypeViewController: UIViewController, TTTAttributedLabe
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 

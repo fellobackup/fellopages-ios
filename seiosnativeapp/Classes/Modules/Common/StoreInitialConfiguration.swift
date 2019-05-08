@@ -30,8 +30,8 @@ class StoreInitialConfiguration: UIViewController, UITableViewDataSource,UITable
         PackageTableview = UITableView(frame: CGRect(x: 0,y: 0, width: view.bounds.width, height: view.bounds.height), style: .grouped)
         PackageTableview.register(PackageTableViewCell.self, forCellReuseIdentifier: "Cell")
         PackageTableview.estimatedRowHeight = 60.0
-        PackageTableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        PackageTableview.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        PackageTableview.separatorStyle = UITableViewCell.SeparatorStyle.none
+        PackageTableview.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         PackageTableview.backgroundColor = tableViewBgColor
         self.PackageTableview.isOpaque = false
         self.PackageTableview.dataSource = self
@@ -97,7 +97,7 @@ class StoreInitialConfiguration: UIViewController, UITableViewDataSource,UITable
             alert.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter Login Password"
             }
-            let action1 = UIAlertAction(title: "OK", style:UIAlertActionStyle.default, handler: { (action) -> Void in
+            let action1 = UIAlertAction(title: "OK", style:UIAlertAction.Style.default, handler: { (action) -> Void in
             
             let firstTextField = alert.textFields![0] as UITextField
             let firstValue = firstTextField.text
@@ -108,7 +108,7 @@ class StoreInitialConfiguration: UIViewController, UITableViewDataSource,UITable
             self.present(nativationController, animated: false, completion: nil)
             
         })
-        let action2 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        let action2 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         
         alert.addAction(action1)
         alert.addAction(action2)
@@ -149,7 +149,7 @@ class StoreInitialConfiguration: UIViewController, UITableViewDataSource,UITable
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PackageTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         cell.lbltitle.text = storeCell[(indexPath as NSIndexPath).row]
         cell.btnmenu.tag = (indexPath as NSIndexPath).row

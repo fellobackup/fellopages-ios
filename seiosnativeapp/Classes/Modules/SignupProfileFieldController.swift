@@ -325,8 +325,8 @@ extension Dictionary {
                         }else if signUpUserSubscriptionEnabled == true {
                             
                             let alertController = UIAlertController(title: "Message", message:
-                                NSLocalizedString("You have successfully signed up. Please choose a Subscription Plan for your account.",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                NSLocalizedString("You have successfully signed up. Please choose a Subscription Plan for your account.",comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                 let presentedVC = SignupUserSubscriptionViewController()
                                 if succeeded["body"] != nil{
                                     if let response = succeeded["body"] as? NSDictionary{
@@ -527,12 +527,12 @@ extension Dictionary {
     
     @objc func goBack()
     {
-        let alertController = UIAlertController(title: "Go Back?", message:"Are you sure that you want to go back?", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Go Back", style: UIAlertActionStyle.default,handler: { action -> Void in
+        let alertController = UIAlertController(title: "Go Back?", message:"Are you sure that you want to go back?", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Go Back", style: UIAlertAction.Style.default,handler: { action -> Void in
             _ = self.navigationController?.popViewController(animated: true)
 
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     

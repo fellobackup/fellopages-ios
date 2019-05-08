@@ -311,22 +311,22 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(PageViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(PageViewController.refresh), for: UIControl.Event.valueChanged)
         pageTableView.addSubview(refresher)
         
         refresher1 = UIRefreshControl()
         refresher1.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher1.addTarget(self, action: #selector(PageViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher1.addTarget(self, action: #selector(PageViewController.refresh), for: UIControl.Event.valueChanged)
         myPageTableView.addSubview(refresher1)
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(PageViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(PageViewController.refresh), for: UIControl.Event.valueChanged)
         categoryTableView.addSubview(refresher2)
         
         refresher3 = UIRefreshControl()
         refresher3.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher3.addTarget(self, action: #selector(PageViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher3.addTarget(self, action: #selector(PageViewController.refresh), for: UIControl.Event.valueChanged)
         popularPageTableView.addSubview(refresher3)
         
         self.contentIcon = createLabel(CGRect(x: self.view.bounds.width/2 - 30,y: self.view.bounds.height/2-50,width: 60 , height: 50), text: NSLocalizedString("\(eventIcon)",  comment: "") , alignment: .center, textColor: textColorMedium)
@@ -347,7 +347,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.refreshButton.backgroundColor = bgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(PageViewController.browseEntries), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(PageViewController.browseEntries), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.mainView.addSubview(self.refreshButton)
@@ -728,7 +728,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -752,7 +752,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -909,13 +909,13 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         for ob in adsReportView.subviews{
             if ob .isKind(of: UIButton.self){
                 if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                    (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
                 }
             }
         }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -1123,7 +1123,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: self.adImageView.bounds.height + 10 + self.adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -1241,7 +1241,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: self.adImageView.bounds.height + 10 + self.adImageView.frame.origin.y, width: 70, height: 30))
 //
 //        adCallToActionButton.setTitle(
-//            nativeAd.callToAction, for: UIControlState())
+//            nativeAd.callToAction, for: UIControl.State())
 //
 //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
 //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -1362,7 +1362,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1441,7 +1441,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1890,14 +1890,14 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         pageInfo = myPageResponse[sender.tag] as! NSDictionary
         if(pageInfo["menu"] != nil){
             let menuOption = pageInfo["menu"] as! NSArray
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     let titleString = menuItem["name"] as! String
                     
                     if titleString.range(of: "delete") != nil{
                         
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             let condition = menuItem["name"] as! String
                             
                             switch(condition){
@@ -2226,8 +2226,8 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     if (response["canCreate"] as! Bool == true)
                                     {
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
-                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
                                         self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
                                         addPage.tintColor = textColorPrime
@@ -2323,8 +2323,8 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     {
                                         
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
-                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
                                         self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
                                         addPage.tintColor = textColorPrime
@@ -2333,7 +2333,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     else
                                     {
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
                                         self.navigationItem.rightBarButtonItem = searchItem
                                         searchItem.tintColor = textColorPrime
                                         
@@ -2396,8 +2396,8 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         if (response["canCreate"] as! Bool == true)
                                         {
                                             
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
-                                            let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                            let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
                                             
                                             self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
@@ -2407,7 +2407,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         else
                                         {
                                             
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
                                             
                                             self.navigationItem.rightBarButtonItem = searchItem
                                             searchItem.tintColor = textColorPrime
@@ -2485,8 +2485,8 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     if (response["canCreate"] as! Bool == true)
                                     {
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
-                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PageViewController.addNewPage))
                                         self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
                                         addPage.tintColor = textColorPrime
@@ -2498,7 +2498,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     }
                                     else
                                     {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(PageViewController.searchItem))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(PageViewController.searchItem))
                                         self.navigationItem.rightBarButtonItem = searchItem
                                         searchItem.tintColor = textColorPrime
                                         
@@ -2765,7 +2765,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if tableView.tag == 11
         {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             cell.textLabel?.text = guttermenuoption[(indexPath as NSIndexPath).row]
             return cell
@@ -2782,7 +2782,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
             {  // or 9 == if you don't want the first cell to be an ad!
                 pageTableView.register(NativeGroupCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = pageTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeGroupCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_page-1)
@@ -2921,7 +2921,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 let cell = pageTableView.dequeueReusableCell(withIdentifier: "CellThree1") as! GroupTableViewCell
                 
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = bgColor
                 
                 
@@ -3150,7 +3150,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else if (pageBrowseType == 2 && popularPageResponse.count > (indexPath.row - 1))
         {
             let cell = popularPageTableView.dequeueReusableCell(withIdentifier: "CellThree1") as! GroupTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = bgColor
             
             
@@ -3345,7 +3345,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
             {  // or 9 == if you don't want the first cell to be an ad!
                 myPageTableView.register(NativeGroupCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = myPageTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeGroupCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_page-1)
@@ -3481,7 +3481,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 let cell = myPageTableView.dequeueReusableCell(withIdentifier: "CellThree1") as! GroupTableViewCell
                 
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = bgColor
                 
                 
@@ -3711,7 +3711,7 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else if (categoryResponse.count > (indexPath.row - 1)) {
             
             let cell = categoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryBrowseTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell.categoryName.isHidden = false
             cell.categoryName1.isHidden = false
             cell.categoryName2.isHidden = false
@@ -4111,12 +4111,12 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case 1:
             searchType = "view_count"
             self.showSpinner = true
-            feedFilter.setTitle(NSLocalizedString("Most Viewed", comment: ""), for: UIControlState())
+            feedFilter.setTitle(NSLocalizedString("Most Viewed", comment: ""), for: UIControl.State())
             browseEntries()
             
         case 2:
             searchType = "comment_count"
-            feedFilter.setTitle(NSLocalizedString("Most Commented", comment: ""), for: UIControlState())
+            feedFilter.setTitle(NSLocalizedString("Most Commented", comment: ""), for: UIControl.State())
             self.showSpinner = true
             browseEntries()
             
@@ -4125,13 +4125,13 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             searchType = "like_count"
             self.showSpinner = true
-            feedFilter.setTitle(NSLocalizedString("Most Liked", comment: ""), for: UIControlState())
+            feedFilter.setTitle(NSLocalizedString("Most Liked", comment: ""), for: UIControl.State())
             browseEntries()
             
         case 4:
             searchType = "title"
             self.showSpinner = true
-            feedFilter.setTitle(NSLocalizedString("Alphabetical", comment: ""), for: UIControlState())
+            feedFilter.setTitle(NSLocalizedString("Alphabetical", comment: ""), for: UIControl.State())
             browseEntries()
             
             
@@ -4139,14 +4139,14 @@ class PageViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             searchType = "review_count"
             self.showSpinner = true
-            feedFilter.setTitle(NSLocalizedString("Most Reviewed", comment: ""), for: UIControlState())
+            feedFilter.setTitle(NSLocalizedString("Most Reviewed", comment: ""), for: UIControl.State())
             browseEntries()
             
         case 6:
             
             searchType = "rating"
             self.showSpinner = true
-            feedFilter.setTitle(NSLocalizedString("Most Rated", comment: ""), for: UIControlState())
+            feedFilter.setTitle(NSLocalizedString("Most Rated", comment: ""), for: UIControl.State())
             browseEntries()
             
             

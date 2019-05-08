@@ -60,7 +60,7 @@ class ProductTableViewCell: UITableViewCell {
     
     
     // Initialize Variable for Comments Table Cell
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Configure the view for the selected state
         
@@ -76,7 +76,7 @@ class ProductTableViewCell: UITableViewCell {
         
         
         classifiedImageView = ProductsImageViewWithGradient(frame: CGRect(x:2*PADING , y:contentPADING, width:size - 2*PADING, height:150 - contentPADING))
-        classifiedImageView.contentMode = UIViewContentMode.scaleAspectFill
+        classifiedImageView.contentMode = UIView.ContentMode.scaleAspectFill
         classifiedImageView.layer.masksToBounds = true
         classifiedImageView.isUserInteractionEnabled = true
         classifiedImageView.backgroundColor = placeholderColor
@@ -133,7 +133,7 @@ class ProductTableViewCell: UITableViewCell {
         discountedPrice.isHidden = true
       
         productImageView1 = ProductsImageViewWithGradient(frame: CGRect(x:(2 * PADING) + size  , y:contentPADING, width:size - 2*PADING , height:150-contentPADING))
-        productImageView1.contentMode = UIViewContentMode.scaleAspectFill
+        productImageView1.contentMode = UIView.ContentMode.scaleAspectFill
         productImageView1.layer.masksToBounds = true
         productImageView1.isUserInteractionEnabled = true
         productImageView1.backgroundColor = placeholderColor

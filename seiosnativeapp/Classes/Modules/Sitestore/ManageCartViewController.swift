@@ -125,11 +125,11 @@ class ManageCartViewController: UIViewController, UITableViewDelegate, UITableVi
                 GetrecartData()
                 
                 // Login button in case of guest user
-                let button   = UIButton(type: UIButtonType.system) as UIButton
-                button.setTitle("Login", for:UIControlState.normal)
+                let button   = UIButton(type: UIButton.ButtonType.system) as UIButton
+                button.setTitle("Login", for:UIControl.State.normal)
                 button.frame = CGRect(x:self.view.bounds.size.width-100, y:0, width:60, height:20)
                 button.backgroundColor = UIColor.clear
-                button.addTarget(self, action: #selector(ManageCartViewController.loginAction), for: UIControlEvents.touchUpInside)
+                button.addTarget(self, action: #selector(ManageCartViewController.loginAction), for: UIControl.Event.touchUpInside)
                 let loginButton = UIBarButtonItem()
                 loginButton.customView = button
                 self.navigationItem.setRightBarButtonItems([loginButton], animated: true)
@@ -194,17 +194,17 @@ class ManageCartViewController: UIViewController, UITableViewDelegate, UITableVi
         
         cartTableView.register(ManageCartCell.self, forCellReuseIdentifier: "CellThree")
         cartTableView.estimatedRowHeight = 70
-        cartTableView.rowHeight = UITableViewAutomaticDimension
+        cartTableView.rowHeight = UITableView.automaticDimension
         cartTableView.isOpaque = false
         cartTableView.backgroundColor = tableViewBgColor//UIColor.white//tableViewBgColor
-        cartTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        cartTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.cartTableView.dataSource = self
         self.cartTableView.delegate = self
         self.view.addSubview(cartTableView)
         
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(ManageCartViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ManageCartViewController.refresh), for: UIControl.Event.valueChanged)
         cartTableView.addSubview(refresher)
         
         btnUpdateCart = createButton(CGRect(x:0,y:UIScreen.main.bounds.height, width:UIScreen.main.bounds.width , height:40), title: "Update Cart", border: false, bgColor: false, textColor: textColorLight)
@@ -748,7 +748,7 @@ class ManageCartViewController: UIViewController, UITableViewDelegate, UITableVi
     {
         let cell = cartTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath)as! ManageCartCell
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.white//tableViewBgColor
         cell.profileFieldLabel.text = ""
         cell.profileFieldLabel.isHidden = true
@@ -849,8 +849,8 @@ class ManageCartViewController: UIViewController, UITableViewDelegate, UITableVi
                         let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZEMedium, nil)
                         
                         let range1 = (profileFieldString as NSString).range(of: profileFieldString)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                         
                         return mutableAttributedString!
                     })
@@ -896,8 +896,8 @@ class ManageCartViewController: UIViewController, UITableViewDelegate, UITableVi
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete)
         {
             DeleteAction(indexpath: indexPath as NSIndexPath)
         }
@@ -1839,7 +1839,7 @@ class ManageCartViewController: UIViewController, UITableViewDelegate, UITableVi
         loginORguestView = CouponDetailView(frame:CGRect(x:10, y:view.bounds.height, width:view.bounds.width - 20, height:160))
         loginORguestView.couponImage.image = nil
         
-        loginORguestView.doneButton.addTarget(self, action: #selector(ManageCartViewController.hideView), for: UIControlEvents.touchUpInside)
+        loginORguestView.doneButton.addTarget(self, action: #selector(ManageCartViewController.hideView), for: UIControl.Event.touchUpInside)
         loginORguestView.couponImage.isHidden = true
         loginORguestView.couponLabel.isHidden = true
         loginORguestView.couponStartDateLabel.isHidden = true

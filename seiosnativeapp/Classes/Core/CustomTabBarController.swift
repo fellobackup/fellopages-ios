@@ -14,8 +14,8 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font:UIFont(name: fontName, size: FONTSIZELarge - 5.0)!], for: UIControlState())
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : buttonColor], for: UIControlState.selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font:UIFont(name: fontName, size: FONTSIZELarge - 5.0)!], for: UIControl.State())
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : buttonColor], for: UIControl.State.selected)
         UITabBar.appearance().clipsToBounds = true
         UITabBar.appearance().tintColor = buttonColor
         tabBar.layer.borderWidth = 0.3
@@ -52,7 +52,7 @@ class CustomTabBarController: UITabBarController {
         if let items = tabBar.items {
             for item in items {
                 item.title = nil
-                item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+                item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0);
                 if let image = item.image {
                     item.image = image.imageWithColor(tintColor: UIColor(red: 96/255 , green: 96/255 , blue: 96/255, alpha: 1.0)).withRenderingMode(.alwaysOriginal)
                 }

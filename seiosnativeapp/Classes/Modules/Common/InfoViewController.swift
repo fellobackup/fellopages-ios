@@ -54,7 +54,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         userinfoTableView1 = UITableView(frame: CGRect(x: 0,y: -35 , width: view.bounds.width, height: view.bounds.height+35), style: .grouped)
         userinfoTableView1.register(UserInfoTableViewCell.self, forCellReuseIdentifier: "Cell")
         userinfoTableView1.estimatedRowHeight = 50.0
-        userinfoTableView1.rowHeight = UITableViewAutomaticDimension
+        userinfoTableView1.rowHeight = UITableView.automaticDimension
         userinfoTableView1.backgroundColor = tableViewBgColor
         userinfoTableView1.separatorColor = TVSeparatorColor
         view.addSubview(userinfoTableView1)
@@ -129,7 +129,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserInfoTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         var subChild = [AnyObject]()
         var subValue = [AnyObject]()
         var array3 = [String]()

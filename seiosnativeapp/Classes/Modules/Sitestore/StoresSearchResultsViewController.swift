@@ -75,9 +75,9 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
 //        let leftButton = UIBarButtonItem(customView: leftNavView)
 //        self.navigationItem.leftBarButtonItem = leftButton
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(StoresSearchResultsViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(StoresSearchResultsViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControlState.normal)
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!], for: UIControl.State.normal)
         
         self.navigationItem.rightBarButtonItem = filter
         
@@ -127,7 +127,7 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
         storesTableView.tableFooterView = footerView
         storesTableView.tableFooterView?.isHidden = true
   
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -182,7 +182,7 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
         storesTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")
@@ -312,7 +312,7 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(StoresSearchResultsViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(StoresSearchResultsViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.view.addSubview(self.refreshButton)
@@ -431,7 +431,7 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
         let row = indexPath.row as Int
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath as IndexPath) as! MLTGridTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         //SET CONTENT IMAGE BOUNDS
         //cell.contentImage.frame = CGRect(x:0, 0, cell.cellView.bounds.width, cell.cellView.bounds.height - cell.cellView.bounds.height/4)
@@ -441,7 +441,7 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
         cell.ownerImage.layer.borderWidth = 2.5
         cell.ownerImage.layer.cornerRadius = cell.ownerImage.frame.size.width / 2
         cell.ownerImage.backgroundColor = placeholderColor
-        cell.ownerImage.contentMode = UIViewContentMode.scaleAspectFill
+        cell.ownerImage.contentMode = UIView.ContentMode.scaleAspectFill
         cell.ownerImage.layer.masksToBounds = true
         cell.ownerImage.image = UIImage(named: "user_profile_image.png")
         cell.ownerImage.tag = 321
@@ -628,7 +628,7 @@ class StoresSearchResultsViewController: UIViewController, UITableViewDataSource
             cell.ownerImage2.layer.borderWidth = 2.5
             cell.ownerImage2.layer.cornerRadius = cell.ownerImage2.frame.size.width / 2
             cell.ownerImage2.backgroundColor = placeholderColor
-            cell.ownerImage2.contentMode = UIViewContentMode.scaleAspectFill
+            cell.ownerImage2.contentMode = UIView.ContentMode.scaleAspectFill
             cell.ownerImage2.layer.masksToBounds = true
             cell.ownerImage2.image = UIImage(named: "user_profile_image.png")
             cell.ownerImage2.tag = 321

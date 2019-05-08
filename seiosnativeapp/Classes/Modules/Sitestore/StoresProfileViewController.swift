@@ -140,7 +140,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
             productsTableView = UITableView(frame: CGRect(x:0,y: -TOPPADING, width: view.bounds.width, height: view.bounds.height - tabBarHeight+TOPPADING), style:.grouped)
         }else{
             productsTableView = UITableView(frame: CGRect(x:0,y: -TOPPADING, width: view.bounds.width, height: view.bounds.height+TOPPADING), style:.grouped)
-            productsTableView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0)
+            productsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         }
         
         productsTableView.register(ProductTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -172,7 +172,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
         //view.addSubview(mainSubView)
         
         
-        coverImage.contentMode = UIViewContentMode.scaleToFill
+        coverImage.contentMode = UIView.ContentMode.scaleToFill
         coverImage.layer.masksToBounds = true
         coverImage.backgroundColor = placeholderColor
         coverImage.isUserInteractionEnabled = true
@@ -231,7 +231,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
         memberProfilePhoto.layer.borderWidth = 2.5
         memberProfilePhoto.layer.cornerRadius = memberProfilePhoto.frame.size.width / 2
         memberProfilePhoto.backgroundColor = placeholderColor
-        memberProfilePhoto.contentMode = UIViewContentMode.scaleAspectFill
+        memberProfilePhoto.contentMode = UIView.ContentMode.scaleAspectFill
         memberProfilePhoto.layer.masksToBounds = true
         memberProfilePhoto.image = UIImage(named: "user_profile_image.png")
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(StoresProfileViewController.onImageViewTap2))
@@ -292,9 +292,9 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
         mainSubView.addSubview(whiteBackView)
         
         likeButton = createButton(CGRect(x:10,y: PADING, width: self.whiteBackView.bounds.width - 20, height: ButtonHeight - 2 * PADING), title: "", border: false, bgColor: false, textColor: textColorPrime)
-        likeButton.addTarget(self, action: #selector(StoresProfileViewController.like_unLikeAction), for: UIControlEvents.touchUpInside)
+        likeButton.addTarget(self, action: #selector(StoresProfileViewController.like_unLikeAction), for: UIControl.Event.touchUpInside)
         likeButton.titleLabel?.font = UIFont(name: "fontAwesome", size: FONTSIZELarge)
-        likeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+        likeButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
         whiteBackView.addSubview(likeButton)
         
         label1 = TTTAttributedLabel(frame:CGRect(x:PADING, y: 10, width: self.mainSubView.bounds.width/2 - PADING , height: 30) )
@@ -313,7 +313,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
         
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(StoresProfileViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(StoresProfileViewController.refresh), for: UIControl.Event.valueChanged)
         productsTableView.addSubview(refresher)
         self.automaticallyAdjustsScrollViewInsets = false
         //view.addSubview(refresher)
@@ -341,7 +341,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
         memberProfilePhoto.layer.borderWidth = 2.5
         memberProfilePhoto.layer.cornerRadius = memberProfilePhoto.frame.size.width / 2
         memberProfilePhoto.backgroundColor = placeholderColor
-        memberProfilePhoto.contentMode = UIViewContentMode.scaleAspectFill
+        memberProfilePhoto.contentMode = UIView.ContentMode.scaleAspectFill
         memberProfilePhoto.layer.masksToBounds = true
         memberProfilePhoto.image = UIImage(named: "user_profile_image.png")
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(StoresProfileViewController.onImageViewTap2))
@@ -484,7 +484,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
     }
     
     @objc func shareItem(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let presentedVC = AdvanceShareViewController()
@@ -506,7 +506,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
             
             })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -521,7 +521,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -1099,7 +1099,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                             let linkActiveColor = UIColor.green
                                                             
                                                             self.label5.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                            self.label5.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                            self.label5.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                             self.label5.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                             self.label5.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                             self.label5.isUserInteractionEnabled = true
@@ -1109,8 +1109,8 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                                 let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                                 
                                                                 let range1 = (profileFieldString as NSString).range(of: labelDesc as String)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium, range: range1)
                                                                 
                                                                 
                                                                 return mutableAttributedString
@@ -1153,7 +1153,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                             let linkActiveColor = UIColor.green
                                                             
                                                             self.label6.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor, kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                            self.label6.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                            self.label6.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                             self.label6.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                             self.label6.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                             self.label6.isUserInteractionEnabled = true
@@ -1163,8 +1163,8 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                                 let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                                 
                                                                 let range1 = (profileFieldString2 as NSString).range(of: labelDesc2 as String)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium, range: range1)
                                                                 
                                                                 return mutableAttributedString
                                                             })
@@ -1226,7 +1226,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                         let linkActiveColor = UIColor.green
                                                         
                                                         self.label5.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                        self.label5.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                        self.label5.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                         self.label5.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                         self.label5.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                         self.label5.isUserInteractionEnabled = true
@@ -1236,8 +1236,8 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                             let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                             
                                                             let range1 = (profileFieldString as NSString).range(of: labelDesc as String)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                                                             
                                                             
                                                             return mutableAttributedString
@@ -1279,7 +1279,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                         
                                                         
                                                         self.label6.linkAttributes = [kCTForegroundColorAttributeName as AnyHashable : linkColor.cgColor,kCTUnderlineStyleAttributeName as AnyHashable : NSNumber(value: true)]
-                                                        self.label6.activeLinkAttributes = [NSAttributedStringKey.foregroundColor : linkActiveColor]
+                                                        self.label6.activeLinkAttributes = [NSAttributedString.Key.foregroundColor : linkActiveColor]
                                                         self.label6.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
                                                         self.label6.enabledTextCheckingTypes = NSTextCheckingAllTypes
                                                         self.label6.isUserInteractionEnabled = true
@@ -1291,8 +1291,8 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                                             let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
                                                             
                                                             let range1 = (profileFieldString2 as NSString).range(of: labelDesc2 as String)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                                                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium, range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                                                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium, range: range1)
                                                             
                                                             
                                                             return mutableAttributedString
@@ -1710,7 +1710,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
     
     @objc func showGutterMenu(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         deleteContent = false
         let confirmationTitle = ""
@@ -1730,7 +1730,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                     let titleString = dic["name"] as! String
                     
                     if titleString.range(of: "delete") != nil{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -1752,7 +1752,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                         }))
                     }else{
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (action) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (action) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -1932,7 +1932,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                 alert.addTextField { (textField : UITextField!) -> Void in
                                     textField.placeholder = "Enter Login Password"
                                 }
-                                let action1 = UIAlertAction(title: "OK", style:UIAlertActionStyle.default, handler: { (action) -> Void in
+                                let action1 = UIAlertAction(title: "OK", style:UIAlertAction.Style.default, handler: { (action) -> Void in
                                     
                                     let firstTextField = alert.textFields![0] as UITextField
                                     let firstValue = firstTextField.text
@@ -1945,7 +1945,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
                                     
                                     
                                 })
-                                let action2 = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+                                let action2 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                                 
                                 alert.addAction(action1)
                                 alert.addAction(action2)
@@ -2166,7 +2166,7 @@ class StoresProfileViewController: UIViewController, TTTAttributedLabelDelegate,
         let row = indexPath.row as Int
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! ProductTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = bgColor
         var index:Int!
         

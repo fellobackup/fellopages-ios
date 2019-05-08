@@ -38,12 +38,12 @@ class AddPaymentMethodViewController : FXFormViewController
         if fromCreateEvent == true {
             let cancel = UIBarButtonItem(title: NSLocalizedString("Cancel",  comment: ""), style:.plain , target:self , action: #selector(AddPaymentMethodViewController.cancel))
             self.navigationItem.leftBarButtonItem = cancel
-            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControl.State())
             cancel.tintColor = textColorPrime
             
             let skip = UIBarButtonItem(title: NSLocalizedString("Skip",  comment: ""), style:.plain , target:self , action: #selector(AddPaymentMethodViewController.skip))
             self.navigationItem.rightBarButtonItem = skip
-            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControlState())
+            navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!],for: UIControl.State())
             skip.tintColor = textColorPrime
         }
         else {
@@ -301,8 +301,8 @@ class AddPaymentMethodViewController : FXFormViewController
         if error != ""
         {
             let alertController = UIAlertController(title: "\(errorTitle)", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
             

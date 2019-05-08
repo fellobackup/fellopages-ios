@@ -278,9 +278,9 @@ class two_step_verificationViewController: UIViewController{
     
     @objc func alertview()
     {
-        let alert = UIAlertController(title: "\(NSLocalizedString("Remove Phone Number ?",  comment: ""))", message: "\(NSLocalizedString("Are you sure you want to remove the phone number ?",  comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: {
+        let alert = UIAlertController(title: "\(NSLocalizedString("Remove Phone Number ?",  comment: ""))", message: "\(NSLocalizedString("Are you sure you want to remove the phone number ?",  comment: ""))", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: {
             (UIAlertAction) -> Void in
             self.removeno()
         }))

@@ -157,13 +157,13 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         
         bottomTableView = createView(CGRect(x: 0, y: 0, width: view.bounds.width, height: 170), borderColor: textColorLight , shadow: false)
         signInButton = createButton(CGRect(x: 15, y: 70, width: (view.bounds.width / 2) - 25, height: 40), title: "Sign Up", border: false, bgColor: true, textColor: textColorPrime)
-        signInButton.addTarget(self, action: #selector(DashboardViewController.signup), for: UIControlEvents.touchUpInside)
+        signInButton.addTarget(self, action: #selector(DashboardViewController.signup), for: UIControl.Event.touchUpInside)
         signInButton.layer.cornerRadius = 5
         bottomTableView.addSubview(signInButton)
         
         signUpButton = createButton(CGRect(x: (view.bounds.width / 2) + 10, y: 70, width: (view.bounds.width / 2) - 25, height: 40), title: "Sign In", border: false, bgColor: true, textColor: textColorPrime)
         signUpButton.layer.cornerRadius = 5
-        signUpButton.addTarget(self, action: #selector(DashboardViewController.signin), for: UIControlEvents.touchUpInside)
+        signUpButton.addTarget(self, action: #selector(DashboardViewController.signin), for: UIControl.Event.touchUpInside)
         bottomTableView.backgroundColor = textColorLight
         bottomTableView.addSubview(signUpButton)
         if let facebookSdk = Bundle.main.infoDictionary?["FacebookAppID"] as? String {
@@ -181,7 +181,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         dashboardTableView.dataSource = self
         dashboardTableView.delegate = self
         dashboardTableView.estimatedRowHeight = 40.0
-        dashboardTableView.rowHeight = UITableViewAutomaticDimension
+        dashboardTableView.rowHeight = UITableView.automaticDimension
         dashboardTableView.backgroundColor = tableViewBgColor
         dashboardTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -872,7 +872,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 ob.removeFromSuperview()
             }
         }
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         var FontIconLabelString = ""
         if (dashboardInfo["type"] as! String == "menu" ){
             cell.textLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium)
@@ -1174,7 +1174,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                             }
                             else if name == "core_main_sitevideoplaylist"{
                                 FontIconLabelString = "\(playlistIcon)"
-                                cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                                 let buttonBackView = createLabel(CGRect(x: 10, y: 10 , width: 25,height: 25), text: "\(FontIconLabelString)", alignment: .left, textColor: textColorLight)
                                 buttonBackView.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium + 3.0)
                                 buttonBackView.textAlignment = .center
@@ -1838,7 +1838,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                                 
                             else if name == "core_main_rate"{
                                 FontIconLabelString = "\(ratingIcon)"
-                                cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                                 let buttonBackView = createLabel(CGRect(x: 10, y: 10 , width: 25,height: 25), text: "\(FontIconLabelString)", alignment: .left, textColor: textColorLight)
                                 buttonBackView.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium + 3.0)
                                 buttonBackView.textAlignment = .center
@@ -1962,16 +1962,16 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                                 
                             }
                             let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "")
-                            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
                             
                             let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("       \(labelString!)"))
-                            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
                             
                             attrString.append(descString);
                             cell.textLabel?.attributedText = attrString
                             
                             cell.backgroundColor = tabbedDashboardBgColor
-                            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                             
                         }
                         else
@@ -1980,10 +1980,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                             
                             let labelString =  dashboardInfo["label"] as? String
                             let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "")
-                            attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
+                            attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
                             
                             let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("       \(labelString!)"))
-                            descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                            descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
                             
                             attrString.append(descString);
                             cell.textLabel?.attributedText = attrString
@@ -1993,7 +1993,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         
                     }
                     cell.accessoryView?.isHidden = false
-                    cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                    cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                     
                 }
                 else{
@@ -2026,10 +2026,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         
                         let labelString =  dashboardInfo["label"] as? String
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "")
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
                         
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("       \(labelString!)"))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
                         
                         attrString.append(descString);
                         cell.textLabel?.attributedText = attrString
@@ -2359,7 +2359,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         }
                         else if name == "core_main_sitevideoplaylist"{
                             FontIconLabelString = "\(playlistIcon)"
-                            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                             let buttonBackView = createLabel(CGRect(x: 10, y: 10 , width: 25,height: 25), text: "\(FontIconLabelString)", alignment: .left, textColor: textColorLight)
                             buttonBackView.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium + 3.0)
                             buttonBackView.textAlignment = .center
@@ -3065,7 +3065,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         
                         else if name == "core_main_rate"{
                             FontIconLabelString = "\(ratingIcon)"
-                            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                             let buttonBackView = createLabel(CGRect(x: 10, y: 10 , width: 25,height: 25), text: "\(FontIconLabelString)", alignment: .left, textColor: textColorLight)
                             buttonBackView.font = UIFont(name: "FontAwesome", size: FONTSIZEMedium + 3.0)
                             buttonBackView.textAlignment = .center
@@ -3214,10 +3214,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                             
                         }
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "")
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
                         
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("       \(labelString!)"))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
                         attrString.append(descString);
                         cell.textLabel?.attributedText = attrString
                         cell.textLabel?.textColor = UIColor(red: 51/255 , green: 51/255 , blue: 51/255, alpha: 1.0)//UIColor.black
@@ -3225,7 +3225,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                     }
                     
                     cell.accessoryView?.isHidden = false
-                    cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                    cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                     
                     
                     
@@ -3269,10 +3269,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                     
                     let labelString =  dashboardInfo["label"] as? String
                     let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "")
-                    attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
+                    attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome" , size: FONTSIZELarge + 2.0)!, range: NSMakeRange(0, attrString.length))
                     
                     let descString: NSMutableAttributedString = NSMutableAttributedString(string:  String("       \(labelString!)"))
-                    descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                    descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
                     
                     attrString.append(descString);
                     cell.textLabel?.attributedText = attrString
@@ -3285,7 +3285,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }
             
             cell.accessoryView?.isHidden = false
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             
         }else{
             cell.textLabel?.text = dashboardInfo["label"] as? String
@@ -3293,10 +3293,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             cell.backgroundColor = UIColor(red: 235/255 , green: 235/255 , blue: 235/255, alpha: 1.0)//UIColor.red//aafBgColor
             cell.textLabel?.font = UIFont(name: fontBold, size: 14 )
             cell.accessoryView?.isHidden = true
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 5, cell.bounds.size.width);
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: cell.bounds.size.width);
             
             cell.accessoryView?.isHidden = true
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
             
         }
         
@@ -3560,7 +3560,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         }
         if name == "signout"{
             if reachability.connection != .none {
-                let alertController = UIAlertController(title: nil, message: NSLocalizedString("Are you sure you want to logout?", comment: "") , preferredStyle: UIAlertControllerStyle.actionSheet)
+                let alertController = UIAlertController(title: nil, message: NSLocalizedString("Are you sure you want to logout?", comment: "") , preferredStyle: UIAlertController.Style.actionSheet)
                 
                 var dashboardInfo:NSDictionary
                 dashboardInfo = dashboardMenu[id] as! NSDictionary
@@ -3570,7 +3570,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                     headingTitle = headingLabelTitle
                 }
                 
-                alertController.addAction(UIAlertAction(title: "\(headingTitle)", style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                alertController.addAction(UIAlertAction(title: "\(headingTitle)", style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                     if((FBSDKAccessToken.current()) != nil){
                         let loginManager = FBSDKLoginManager()
                         loginManager.logOut()

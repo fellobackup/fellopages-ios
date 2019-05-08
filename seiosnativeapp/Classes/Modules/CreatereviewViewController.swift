@@ -71,9 +71,9 @@ class CreatereviewViewController: UIViewController,UIGestureRecognizerDelegate,U
         ambience = 0.0
         organization = 0.0
         
-        btnCreate = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItemStyle.done , target:self , action: #selector(CreatereviewViewController.send))
+        btnCreate = UIBarButtonItem(title: "\u{f1d8}", style: UIBarButtonItem.Style.done , target:self , action: #selector(CreatereviewViewController.send))
         
-        btnCreate.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControlState())
+        btnCreate.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZELarge)!], for: UIControl.State())
         self.navigationItem.rightBarButtonItem = btnCreate
         
         let leftNavView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
@@ -187,8 +187,8 @@ class CreatereviewViewController: UIViewController,UIGestureRecognizerDelegate,U
         Scrollview.addSubview(Descriptionlabel)
         
         checkboxYes = createButton(CGRect(x: Descriptionlabel.frame.origin.x,y: Descriptionlabel.frame.size.height+Descriptionlabel.frame.origin.y+10, width: 20 , height: 20), title: "", border: false,bgColor: false, textColor: textColorMedium )
-        checkboxYes.setImage(UIImage(named: "unchecked.png"), for: UIControlState())
-        checkboxYes.setImage(UIImage(named: "checked.png"), for: UIControlState.selected)
+        checkboxYes.setImage(UIImage(named: "unchecked.png"), for: UIControl.State())
+        checkboxYes.setImage(UIImage(named: "checked.png"), for: UIControl.State.selected)
         checkboxYes.addTarget(self, action: #selector(CreatereviewViewController.checkboxYesAction(_:)), for: .touchUpInside)
         checkboxYes.tag = 0
         Scrollview.addSubview(checkboxYes)
@@ -201,8 +201,8 @@ class CreatereviewViewController: UIViewController,UIGestureRecognizerDelegate,U
         
         
         checkboxNo = createButton(CGRect(x: checkboxYes.frame.origin.x,y: checkboxYes.frame.size.height+checkboxYes.frame.origin.y+10, width: 20 , height: 20), title: "", border: false,bgColor: false, textColor: textColorMedium)
-        checkboxNo.setImage(UIImage(named: "unchecked.png"), for: UIControlState())
-        checkboxNo.setImage(UIImage(named: "checked.png"), for: UIControlState.selected)
+        checkboxNo.setImage(UIImage(named: "unchecked.png"), for: UIControl.State())
+        checkboxNo.setImage(UIImage(named: "checked.png"), for: UIControl.State.selected)
         checkboxNo.addTarget(self, action: #selector(CreatereviewViewController.checkboxNoAction(_:)), for: .touchUpInside)
         checkboxNo.tag = 0
         Scrollview.addSubview(checkboxNo)
@@ -227,7 +227,7 @@ class CreatereviewViewController: UIViewController,UIGestureRecognizerDelegate,U
         // Optional params
         OverallRatingView.delegate = self
         OverallRatingView.tag = 1
-        OverallRatingView.contentMode = UIViewContentMode.scaleAspectFit
+        OverallRatingView.contentMode = UIView.ContentMode.scaleAspectFit
         OverallRatingView.maxRating = 5
         OverallRatingView.minRating = 0
         //self.floatRatingView.rating = 2.5
@@ -250,7 +250,7 @@ class CreatereviewViewController: UIViewController,UIGestureRecognizerDelegate,U
         // Optional params
         AmbienceRatingView.delegate = self
         AmbienceRatingView.tag = 2
-        AmbienceRatingView.contentMode = UIViewContentMode.scaleAspectFit
+        AmbienceRatingView.contentMode = UIView.ContentMode.scaleAspectFit
         AmbienceRatingView.maxRating = 5
         AmbienceRatingView.minRating = 0
         //self.floatRatingView.rating = 2.5
@@ -273,7 +273,7 @@ class CreatereviewViewController: UIViewController,UIGestureRecognizerDelegate,U
         // Optional params
         OrganizationRatingView.delegate = self
         OrganizationRatingView.tag = 3
-        OrganizationRatingView.contentMode = UIViewContentMode.scaleAspectFit
+        OrganizationRatingView.contentMode = UIView.ContentMode.scaleAspectFit
         OrganizationRatingView.maxRating = 5
         OrganizationRatingView.minRating = 0
         //self.floatRatingView.rating = 2.5

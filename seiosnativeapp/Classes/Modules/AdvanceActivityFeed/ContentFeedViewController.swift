@@ -150,11 +150,11 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     var feedObj = FeedTableViewController()
     var addedToCalandar: [Int] = []
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     //For Rating
@@ -233,9 +233,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
         
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         self.view.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         
         if(UIDevice.current.userInterfaceIdiom == .pad){
             mainSubView = createView(CGRect(x: 0, y: 0, width: view.bounds.width, height: 370), borderColor: borderColorDark, shadow: false)
@@ -249,7 +249,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         
         coverImage =   CoverImageViewWithGradient(frame:CGRect(x: 0, y: 0, width: mainSubView.bounds.width, height: mainSubView.bounds.height))
         
-        coverImage.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage.contentMode = UIView.ContentMode.scaleAspectFill
         coverImage.layer.masksToBounds = true
         coverImage.tag = 123
         coverImage.backgroundColor = placeholderColor
@@ -415,7 +415,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(ContentFeedViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ContentFeedViewController.refresh), for: UIControl.Event.valueChanged)
         feedObj.tableView.addSubview(refresher)
         
         // Cover Photo and Profile Photo
@@ -437,7 +437,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         memberProfilePhoto.layer.borderWidth = 2.5
         memberProfilePhoto.layer.cornerRadius = memberProfilePhoto.frame.size.width / 2
         memberProfilePhoto.backgroundColor = placeholderColor
-        memberProfilePhoto.contentMode = UIViewContentMode.scaleAspectFill
+        memberProfilePhoto.contentMode = UIView.ContentMode.scaleAspectFill
         memberProfilePhoto.layer.masksToBounds = true
         memberProfilePhoto.clipsToBounds = true
         memberProfilePhoto.image = UIImage(named: "user_profile_image.png")
@@ -519,7 +519,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     self.likeCountLabel.text = "\(self.likeCount - 1) likes"
                     self.likeCount = self.likeCount - 1
                 }
-                self.likeButton.setTitle(" Like", for: UIControlState())
+                self.likeButton.setTitle(" Like", for: UIControl.State())
                 self.isLike = false
             }
             else {
@@ -528,7 +528,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     self.likeCountLabel.text = "\(self.likeCount + 1) likes"
                     self.likeCount = self.likeCount + 1
                 }
-                self.likeButton.setTitle(" Unlike", for: UIControlState())
+                self.likeButton.setTitle(" Unlike", for: UIControl.State())
                 self.isLike = true
             }
 //             Send Server Request to Update Feed Gutter Menu
@@ -545,12 +545,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
 
                             if isLike == true {
                                 self.likeCountLabel.text = "\(response["count_likes"] as! Int) likes"
-                                self.likeButton.setTitle(" Unlike", for: UIControlState())
+                                self.likeButton.setTitle(" Unlike", for: UIControl.State())
                                 self.likeId = response["like_id"] as! Int
                             }
                             else {
                                 self.likeCountLabel.text = "\(response["count_likes"] as! Int) likes"
-                                self.likeButton.setTitle(" Like", for: UIControlState())
+                                self.likeButton.setTitle(" Like", for: UIControl.State())
                                 self.likeId = 0
                             }
                         }
@@ -728,37 +728,37 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     let postFeed = createButton(CGRect(x: origin_x, y: tabsContainerMenu.frame.origin.y + tabsContainerMenu.bounds.height + contentPADING, width: view.bounds.width/CGFloat(postMenu.count), height: ButtonHeight - PADING), title: "" , border: false ,bgColor: false, textColor: textColorMedium)
                     if i == 0{
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\u{f044}")
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: 14.0)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: 14.0)!, range: NSMakeRange(0, attrString.length))
                         
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString(" Status",comment: ""))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold , size: 14.0)!, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold , size: 14.0)!, range: NSMakeRange(0, descString.length))
                         
                         attrString.append(descString);
                         
-                        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorMedium, range: NSMakeRange(0, attrString.length))
-                        postFeed.setAttributedTitle(attrString, for: UIControlState())
+                        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorMedium, range: NSMakeRange(0, attrString.length))
+                        postFeed.setAttributedTitle(attrString, for: UIControl.State())
                     }else if i == 1{
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\u{f030}")
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: 14.0)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: 14.0)!, range: NSMakeRange(0, attrString.length))
                         
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString(" Photo",comment: ""))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold , size: 14.0)!, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold , size: 14.0)!, range: NSMakeRange(0, descString.length))
                         
                         attrString.append(descString);
                         
-                        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorMedium, range: NSMakeRange(0, attrString.length))
-                        postFeed.setAttributedTitle(attrString, for: UIControlState())
+                        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorMedium, range: NSMakeRange(0, attrString.length))
+                        postFeed.setAttributedTitle(attrString, for: UIControl.State())
                     }else if i == 2 {
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: "\u{f041}")
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: 14.0)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: 14.0)!, range: NSMakeRange(0, attrString.length))
                         
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString(" Check In",comment: ""))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontBold , size: 14.0)!, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontBold , size: 14.0)!, range: NSMakeRange(0, descString.length))
                         
                         attrString.append(descString);
                         
-                        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: textColorMedium, range: NSMakeRange(0, attrString.length))
-                        postFeed.setAttributedTitle(attrString, for: UIControlState())
+                        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColorMedium, range: NSMakeRange(0, attrString.length))
+                        postFeed.setAttributedTitle(attrString, for: UIControl.State())
                     }
                     postFeed.backgroundColor = lightBgColor
                     postFeed.tag = i+1 + 1990
@@ -790,7 +790,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
-            imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+            imagePickerController.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum
             if UIDevice.current.userInterfaceIdiom != .pad{
                 imagePickerController.allowsEditing = true
             }
@@ -803,7 +803,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             NSLog("Camera");
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
-            imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+            imagePickerController.sourceType = UIImagePickerController.SourceType.camera
             if UIDevice.current.userInterfaceIdiom != .pad{
                 imagePickerController.allowsEditing = true
             }
@@ -819,7 +819,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey  : Any])
     {
         self.dismiss(animated: true, completion: { () -> Void in
             
@@ -827,10 +827,10 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
 //        for dic in info{
 //            if let photoDic = dic as? NSDictionary{
 //
-//                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
+//                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
 //
-//                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-//                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+//                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+//                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
 //                        let selectedImage : UIImage = image
 //                        coverImage.image = selectedImage
 //                    }
@@ -839,7 +839,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
 //
 //        }
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let selectedImage : UIImage = image
         coverImage.image = selectedImage
        
@@ -1165,14 +1165,14 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     @objc func showFeedFilterOptions(_ sender: UIButton){
         // Generate Feed Filter Options Gutter Menu from Server as! Alert Popover
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in gutterMenu{
             if let dic = menu as? NSDictionary{
                 alertController.addAction(UIAlertAction(title: (dic["tab_title"] as! String), style: .default, handler:{ (UIAlertAction) -> Void in
                     // Set Feed Filter Option Title
-                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControlState())
+                    self.feedFilter.setTitle((dic["tab_title"] as! String), for: UIControl.State())
                     self.feedFilterFlag = true
                     
                     // Set Parameters for Feed Filter
@@ -1450,13 +1450,13 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
 //                rsvpOption.layer.borderColor = navColor.cgColor
 //                rsvpOption.tag = value as Int
 //                if self.profile_rsvp_value == value as Int{
-//                    rsvpOption.setTitle(" \(key)", for: UIControlState())
+//                    rsvpOption.setTitle(" \(key)", for: UIControl.State())
 //                    rsvpOption.backgroundColor =  buttonColor
-//                    rsvpOption.setTitleColor(UIColor.white, for: UIControlState())
+//                    rsvpOption.setTitleColor(UIColor.white, for: UIControl.State())
 //                }else{
-//                    rsvpOption.setTitle(" \(key)", for: UIControlState())
+//                    rsvpOption.setTitle(" \(key)", for: UIControl.State())
 //                    rsvpOption.backgroundColor =  UIColor.white
-//                    rsvpOption.setTitleColor(buttonColor, for: UIControlState())
+//                    rsvpOption.setTitleColor(buttonColor, for: UIControl.State())
 //                }
 //                rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.rsvpAction(_:)), for: .touchUpInside)
 //                if self.showRsvp != false
@@ -1523,11 +1523,11 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         let writeReview = createButton(CGRect(x: 5, y: originY, width: self.rsvp.bounds.width/2-10, height: ButtonHeight-PADING), title: "Write a Review", border: false,bgColor: false, textColor: textColorPrime)
                         if tempDic["name"] as! String == "createReview"
                         {
-                            writeReview.setTitle("Write a Review", for: UIControlState())
+                            writeReview.setTitle("Write a Review", for: UIControl.State())
                         }
                         else
                         {
-                            writeReview.setTitle("Update Review", for: UIControlState())
+                            writeReview.setTitle("Update Review", for: UIControl.State())
                         }
                         
                         writeReview.backgroundColor = navColor
@@ -1618,7 +1618,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         }
         
         if imageMenus.count > 0{
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             for menu in imageMenus{
                 if let dic = menu as? NSDictionary{
@@ -1626,7 +1626,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     
                     if dic["name"] as! String == "remove_photo" || dic["name"] as! String == "remove_cover_photo"{
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             // Delete Activity Feed Entry
                             if dic["name"] as! String == "remove_photo"{
                                 
@@ -1658,7 +1658,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         }))
                         
                     }else{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){
@@ -2018,9 +2018,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         
                         let iconFont = CTFontCreateWithName(("fontAwesome" as CFString?)!, FONTSIZENormal, nil)
                         let textFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
-                        let iconPart = NSMutableAttributedString(string: "\(boldText)", attributes: [NSAttributedStringKey.font:iconFont ,  NSAttributedStringKey.foregroundColor : textColorDark])
+                        let iconPart = NSMutableAttributedString(string: "\(boldText)", attributes: [NSAttributedString.Key.font:iconFont ,  NSAttributedString.Key.foregroundColor : textColorDark])
                         
-                        let textPart = NSMutableAttributedString(string: "  \(showString)", attributes: [NSAttributedStringKey.font:textFont , NSAttributedStringKey.foregroundColor : colorCode])
+                        let textPart = NSMutableAttributedString(string: "  \(showString)", attributes: [NSAttributedString.Key.font:textFont , NSAttributedString.Key.foregroundColor : colorCode])
                         iconPart.append(textPart)
                         eventInfo2.attributedText = iconPart
 
@@ -2064,25 +2064,25 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                             eventInfo1.setText(locationInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                                 
                                 //Format location string link
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
-                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: range)
                                 
                                 //Format email string link
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: emailRange)
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: emailRange)
-                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: emailRange)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: emailRange)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: emailRange)
+                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: emailRange)
                                 
                                 //Format phone string link
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: phoneRange)
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: phoneRange)
-                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: phoneRange)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: phoneRange)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: phoneRange)
+                                mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: phoneRange)
                                 
                                 if website.isEmpty == false{
                                     
                                     //Format website string link
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: websiteRange)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: websiteRange)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: websiteRange)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: websiteRange)
                                     //mutableAttributedString?.addAttributes([.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: websiteRange)
                                     
                                 }
@@ -2192,8 +2192,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                             let boldFont = CTFontCreateWithName( (fontBold as CFString?)! , FONTSIZENormal, nil)
                             
                             let range = (categoryInfo as NSString).range(of: NSLocalizedString("\(categoryTitle)", comment: ""))
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                             // TODO: Clean this up...
                             return mutableAttributedString
                         })
@@ -2318,9 +2318,9 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                         
                         let iconFont = CTFontCreateWithName(("fontAwesome" as CFString?)!, FONTSIZENormal, nil)
                         let textFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
-                        let iconPart = NSMutableAttributedString(string: "\(boldText)", attributes: [NSAttributedStringKey.font:iconFont ,  NSAttributedStringKey.foregroundColor : textColorDark])
+                        let iconPart = NSMutableAttributedString(string: "\(boldText)", attributes: [NSAttributedString.Key.font:iconFont ,  NSAttributedString.Key.foregroundColor : textColorDark])
                         
-                        let textPart = NSMutableAttributedString(string: "  \(showString)", attributes: [NSAttributedStringKey.font:textFont , NSAttributedStringKey.foregroundColor : colorCode])
+                        let textPart = NSMutableAttributedString(string: "  \(showString)", attributes: [NSAttributedString.Key.font:textFont , NSAttributedString.Key.foregroundColor : colorCode])
                         iconPart.append(textPart)
                         eventInfo2.attributedText = iconPart
                         
@@ -2340,8 +2340,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 let boldFont = CTFontCreateWithName(("FontName" as CFString?)!, FONTSIZENormal, nil)
                                 
                                 let range = (locationInfo as NSString).range(of: NSLocalizedString("\(info)", comment: ""))
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                                 // TODO: Clean this up...
                                 return mutableAttributedString
                             })
@@ -2419,8 +2419,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                             let boldFont = CTFontCreateWithName( (fontBold as CFString?)! , FONTSIZENormal, nil)
                             
                             let range = (categoryInfo as NSString).range(of: NSLocalizedString("\(categoryTitle)", comment: ""))
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String  as String), value:textColorDark , range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String  as String), value:textColorDark , range: range)
                             // TODO: Clean this up...
                             return mutableAttributedString
                         })
@@ -2484,8 +2484,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                     
                     let range = (value as NSString).range(of: String(info))
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                     // TODO: Clean this up...
                     return mutableAttributedString
                 })
@@ -2535,8 +2535,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             info.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                 let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                 let range = (tempInfo as NSString).range(of: NSLocalizedString("Details", comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                 
                 // TODO: Clean this up...
                 return mutableAttributedString
@@ -2552,12 +2552,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             eventMoreOrLess.sizeToFit()
             if  showFulldescription == false{
                 eventMoreOrLess.tag = 1
-                eventMoreOrLess.setTitle(NSLocalizedString("More", comment: ""), for: UIControlState())
+                eventMoreOrLess.setTitle(NSLocalizedString("More", comment: ""), for: UIControl.State())
             }
             else
             {
                 eventMoreOrLess.tag = 2
-                eventMoreOrLess.setTitle(NSLocalizedString("Less", comment: ""), for: UIControlState())
+                eventMoreOrLess.setTitle(NSLocalizedString("Less", comment: ""), for: UIControl.State())
             }
             if description.length > descriptionTextLimit{
                 eventMoreOrLess.isHidden = false
@@ -2698,8 +2698,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                     let boldFont = CTFontCreateWithName( (fontBold as CFString?)! , FONTSIZENormal, nil)
                     
                     let range = (categoryInfo as NSString).range(of: NSLocalizedString("\(categoryTitle)", comment: ""))
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
                     // TODO: Clean this up...
                     return mutableAttributedString
                 })
@@ -2962,12 +2962,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     
 //                                    if logoutUser == false{
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(ContentFeedViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(ContentFeedViewController.showMainGutterMenu), for: .touchUpInside)
                                     
                                     rightNavView.addSubview(optionButton)
@@ -3127,12 +3127,12 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                 if isLike == true
                                                 {
                                                     self.likeID = likeInfo["like_id"] as? Int
-                                                    self.likeButton.setTitle(" Unlike", for: UIControlState())
+                                                    self.likeButton.setTitle(" Unlike", for: UIControl.State())
                                                 }
                                                 else
                                                 {
                                                     self.likeID = 0
-                                                    self.likeButton.setTitle(" Like", for: UIControlState())
+                                                    self.likeButton.setTitle(" Like", for: UIControl.State())
                                                 }
                                             }
                                         }
@@ -3412,7 +3412,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                     
                                                     if (menuItem["name"] as! String == "request_invite")
                                                     {
-                                                        rsvpOption.setTitle(NSLocalizedString("Request Invite",  comment: ""), for: UIControlState())
+                                                        rsvpOption.setTitle(NSLocalizedString("Request Invite",  comment: ""), for: UIControl.State())
                                                         rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                                                         rsvpOption.isHidden = false
                                                         rsvpOption.tag = 11
@@ -3420,7 +3420,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                     }
                                                     else if (menuItem["name"] as! String == "cancel_invite")
                                                     {
-                                                        rsvpOption.setTitle(NSLocalizedString("Cancel Invite Request",  comment: ""), for: UIControlState())
+                                                        rsvpOption.setTitle(NSLocalizedString("Cancel Invite Request",  comment: ""), for: UIControl.State())
                                                         rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                                                         rsvpOption.isHidden = false
                                                         rsvpOption.tag = 12
@@ -3429,7 +3429,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                     }
                                                     else if (menuItem["name"] as! String == "join")
                                                     {
-                                                        rsvpOption.setTitle(NSLocalizedString("RSVP / JOIN",  comment: ""), for: UIControlState())
+                                                        rsvpOption.setTitle(NSLocalizedString("RSVP / JOIN",  comment: ""), for: UIControl.State())
                                                         rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                                                         rsvpOption.isHidden = false
                                                         rsvpOption.tag = 13
@@ -3438,7 +3438,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                         
                                                     else if (menuItem["name"] as! String == "join-waitlist")
                                                     {
-                                                        rsvpOption.setTitle(NSLocalizedString("Add me to waitlist",  comment: ""), for: UIControlState())
+                                                        rsvpOption.setTitle(NSLocalizedString("Add me to waitlist",  comment: ""), for: UIControl.State())
                                                         rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                                                         rsvpOption.isHidden = false
                                                         rsvpOption.tag = 14
@@ -3448,7 +3448,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                         
                                                     else if (menuItem["name"] as! String == "book_now")
                                                     {
-                                                        rsvpOption.setTitle(NSLocalizedString("Register",  comment: ""), for: UIControlState())
+                                                        rsvpOption.setTitle(NSLocalizedString("Register",  comment: ""), for: UIControl.State())
                                                         rsvpOption.addTarget(self, action: #selector(ContentFeedViewController.RSVPJOINAction(_:)), for: .touchUpInside)
                                                         rsvpOption.isHidden = false
                                                         rsvpOption.tag = 15
@@ -3459,7 +3459,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                 }
                                             }
                                             
-                                            rsvpOption.setTitleColor(navColor, for: UIControlState())
+                                            rsvpOption.setTitleColor(navColor, for: UIControl.State())
                                             
                                             
                                             let addToDairy = createButton(CGRect(x: 5, y: rsvpOption.frame.height+10, width: self.rsvp.bounds.width-15, height: ButtonHeight-PADING), title: "Add To Diary", border: false,bgColor: false, textColor: textColorPrime)
@@ -3502,11 +3502,11 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                                         let writeReview = createButton(CGRect(x: 0, y: rsvpOption.frame.height+10, width: self.rsvp.bounds.width/2-5, height: ButtonHeight-PADING), title: "Write a Review", border: false,bgColor: false, textColor: textColorPrime)
                                                         if menuItem["name"] as! String == "createreview"
                                                         {
-                                                            writeReview.setTitle("Write a Review", for: UIControlState())
+                                                            writeReview.setTitle("Write a Review", for: UIControl.State())
                                                         }
                                                         else
                                                         {
-                                                            writeReview.setTitle("Update Review", for: UIControlState())
+                                                            writeReview.setTitle("Update Review", for: UIControl.State())
                                                         }
                                                         
                                                         writeReview.backgroundColor = navColor
@@ -3894,7 +3894,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         var confirmationAlert = true
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         for menu in contentGutterMenu{
             if let menuItem = menu as? NSDictionary{
                 
@@ -4030,7 +4030,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                             switch(condition){
                             case "dashboard":
                                 if let url = URL(string: self.contentUrl){
-                                    let popUpAlert = UIAlertController(title: "Please go to website to manage your dashboard", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                                    let popUpAlert = UIAlertController(title: "Please go to website to manage your dashboard", message: nil, preferredStyle: UIAlertController.Style.alert)
                                     popUpAlert.addAction(UIKit.UIAlertAction(title: "Go to website", style: .default, handler:{ _ in
                                          UIApplication.shared.open(url, options: [:])
                                     }))
@@ -4283,8 +4283,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                 
                                 
                             case "upgrade_package":
-                                let alert = UIAlertController(title: "Upgrade Package", message: "Are you sure you want to change package for this event? Amount paid for the old package will not be refunded or applied.", preferredStyle: UIAlertControllerStyle.alert)
-                                let action1 = UIKit.UIAlertAction(title: "Upgrade", style:UIAlertActionStyle.default, handler: { (action) -> Void in
+                                let alert = UIAlertController(title: "Upgrade Package", message: "Are you sure you want to change package for this event? Amount paid for the old package will not be refunded or applied.", preferredStyle: UIAlertController.Style.alert)
+                                let action1 = UIKit.UIAlertAction(title: "Upgrade", style: .default, handler: { (action) -> Void in
                                     
                                     let presentedVC = PackageViewController()
                                     presentedVC.url = menuItem["url"] as! String
@@ -4296,7 +4296,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                                     
                                     
                                 })
-                                let action2 = UIKit.UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+                                let action2 = UIKit.UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                                 alert.addAction(action1)
                                 alert.addAction(action2)
                                 self.present(alert, animated: false, completion: nil)
@@ -4838,8 +4838,8 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZENormal, nil)
                 
                 let range = (tempInfo as NSString).range(of: NSLocalizedString("Details", comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTFontAttributeName as NSString) as String as String), value: boldFont, range: range)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: (kCTForegroundColorAttributeName as NSString) as String as String), value:textColorDark , range: range)
                 
                 
                 // TODO: Clean this up...
@@ -4855,10 +4855,10 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 groupMoreOrLess.isHidden = false
                 if self.showFulldescription == false{
                     groupMoreOrLess.tag = 1
-                    groupMoreOrLess.setTitle(NSLocalizedString("More", comment: ""), for: UIControlState())
+                    groupMoreOrLess.setTitle(NSLocalizedString("More", comment: ""), for: UIControl.State())
                 }else{
                     groupMoreOrLess.tag = 2
-                    groupMoreOrLess.setTitle(NSLocalizedString("Less", comment: ""), for: UIControlState())
+                    groupMoreOrLess.setTitle(NSLocalizedString("Less", comment: ""), for: UIControl.State())
                     
                 }
             }else{
@@ -5089,7 +5089,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
     @objc func shareItem()
     {
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  String(format: NSLocalizedString("Share on %@", comment: ""),app_title), style: .default) { action -> Void in
             let pv = AdvanceShareViewController()
             pv.url = self.shareUrl
@@ -5106,7 +5106,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share Outside",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             
             var sharingItems = [AnyObject]()
             
@@ -5121,7 +5121,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
@@ -5243,7 +5243,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
         for i in stride(from: 1, through: 5, by: 1){
             let rate = createButton(CGRect(x: origin_x, y: 10, width: 15, height: 15), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -5255,7 +5255,7 @@ class ContentFeedViewController: UIViewController, UINavigationControllerDelegat
                 if i <= rating
                 {
                     //                    rate.backgroundColor = UIColor.green
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }

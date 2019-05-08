@@ -44,10 +44,10 @@ class OrderReviewViewController: UIViewController,UITableViewDelegate,UITableVie
         orderReviewTableView = UITableView(frame: CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height-50), style:.grouped)
         orderReviewTableView.register(OrderReviewTableViewCell.self, forCellReuseIdentifier: "CellThree")
         orderReviewTableView.estimatedRowHeight = 70
-        orderReviewTableView.rowHeight = UITableViewAutomaticDimension
+        orderReviewTableView.rowHeight = UITableView.automaticDimension
         orderReviewTableView.isOpaque = false
         orderReviewTableView.backgroundColor = tableViewBgColor//UIColor.white//tableViewBgColor
-        orderReviewTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        orderReviewTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         // cartTableView.estimatedSectionFooterHeight = 120
         self.orderReviewTableView.dataSource = self
         self.orderReviewTableView.delegate = self
@@ -875,7 +875,7 @@ class OrderReviewViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = orderReviewTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath as IndexPath)as! OrderReviewTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.white//tableViewBgColor
         cell.profileFieldLabel.frame = CGRect(x:cell.labTitle.frame.origin.x, y:cell.labTitle.frame.origin.y + cell.labTitle.bounds.height + 8 , width:UIScreen.main.bounds.width - 20 , height:0)
         cell.profileFieldLabel.text = ""
@@ -952,8 +952,8 @@ class OrderReviewViewController: UIViewController,UITableViewDelegate,UITableVie
                         let boldFont1 = CTFontCreateWithName((fontName as CFString?)!, FONTSIZEMedium, nil)
                         
                         let range1 = (profileFieldString as NSString).range(of: profileFieldString)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
-                        mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont1, range: range1)
+                        mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorMedium , range: range1)
                         
                         
                         return mutableAttributedString!
@@ -1132,13 +1132,13 @@ class OrderReviewViewController: UIViewController,UITableViewDelegate,UITableVie
             btnprivatePurchase.isHidden = false
             btnprivatePurchase.tag = 1000
             btnprivatePurchase.backgroundColor = UIColor.clear
-            btnprivatePurchase.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            btnprivatePurchase.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             let profileFieldString = String(format: NSLocalizedString("%@", comment: ""), "\u{f046}")
             btnprivatePurchase.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)
-            btnprivatePurchase.addTarget(self, action: #selector(OrderReviewViewController.pressedCheckBox), for: UIControlEvents.touchUpInside)
+            btnprivatePurchase.addTarget(self, action: #selector(OrderReviewViewController.pressedCheckBox), for: UIControl.Event.touchUpInside)
             btnprivatePurchase.isSelected = true
             checkoutDic["is_private_order"] = "1"
-            btnprivatePurchase.setTitle("\(profileFieldString)", for: UIControlState.normal)
+            btnprivatePurchase.setTitle("\(profileFieldString)", for: UIControl.State.normal)
             bacgoundView.addSubview(btnprivatePurchase)
             
             
@@ -1814,14 +1814,14 @@ class OrderReviewViewController: UIViewController,UITableViewDelegate,UITableVie
         {
             sender.isSelected = false
             let   profileString = String(format: NSLocalizedString("%@", comment: ""), "\u{f096}")
-            sender.setTitle("\(profileString)", for: UIControlState.normal)
+            sender.setTitle("\(profileString)", for: UIControl.State.normal)
             checkoutDic["is_private_order"] = "0"
         }
         else
         {
             sender.isSelected = true
             let   profileString = String(format: NSLocalizedString("%@", comment: ""), "\u{f046}")
-            sender.setTitle("\(profileString)", for: UIControlState.normal)
+            sender.setTitle("\(profileString)", for: UIControl.State.normal)
             checkoutDic["is_private_order"] = "1"
         }
     }

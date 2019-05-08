@@ -52,7 +52,7 @@ class WaitingMemberViewController: UIViewController,UITableViewDataSource, UITab
         self.navigationItem.leftBarButtonItem = barButtonItem
         
         
-        gpMemberstableView = UITableView(frame: CGRect(x: 0, y: 0 , width: view.bounds.width, height: view.bounds.height), style: UITableViewStyle.plain)
+        gpMemberstableView = UITableView(frame: CGRect(x: 0, y: 0 , width: view.bounds.width, height: view.bounds.height), style: UITableView.Style.plain)
         gpMemberstableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "Cell")
         gpMemberstableView.rowHeight = 65.0
         gpMemberstableView.dataSource = self
@@ -213,7 +213,7 @@ class WaitingMemberViewController: UIViewController,UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CommentTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         memberInfo = allMembers[(indexPath as NSIndexPath).row] as! NSDictionary
         cell.author_photo.frame = CGRect(x: 5,y: 5,width: 60,height: 60)
@@ -241,7 +241,7 @@ class WaitingMemberViewController: UIViewController,UITableViewDataSource, UITab
     
         cell.author_title.addLink(toTransitInformation: [ "type" : "user", "user_id" : userId  ], with:NSMakeRange(0,length));
         
-        cell.imageButton.addTarget(self, action: #selector(WaitingMemberViewController.showProfile(_:)), for: UIControlEvents.touchUpInside)
+        cell.imageButton.addTarget(self, action: #selector(WaitingMemberViewController.showProfile(_:)), for: UIControl.Event.touchUpInside)
         cell.imageButton.tag = userId
         
         cell.staff.isHidden = true
@@ -322,8 +322,8 @@ class WaitingMemberViewController: UIViewController,UITableViewDataSource, UITab
         var message = ""
         var url = ""
         var param: NSDictionary = [:]
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        //       let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        //       let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let currentRow = sender.tag
         
         memberInfo = allMembers[currentRow] as! NSDictionary

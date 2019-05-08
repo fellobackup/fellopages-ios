@@ -160,7 +160,7 @@ class PollProfileViewController: UIViewController, TTTAttributedLabelDelegate, U
     
     //MARK: - Show Gutter Menus
     @objc func showGutterMenu(){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         var title = ""
         if showBarGraph == true {
@@ -248,7 +248,7 @@ class PollProfileViewController: UIViewController, TTTAttributedLabelDelegate, U
                     let viewBorder = UIView(frame:CGRect(x: 0, y: optionButton.bounds.height-2, width: view.bounds.width-5*PADING, height: 1))
                     viewBorder.backgroundColor = UIColor.lightGray
                     optionButton.layer.borderColor = UIColor.clear.cgColor
-                    optionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                    optionButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                     optionButton.addSubview(viewBorder)
                     optionButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZESmall)
                     optionButton.tag = options["poll_option_id"] as! Int
@@ -467,12 +467,12 @@ class PollProfileViewController: UIViewController, TTTAttributedLabelDelegate, U
                                     rightNavView.backgroundColor = UIColor.clear
                                     
                                     let shareButton = createButton(CGRect(x: 0,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    shareButton.setImage(UIImage(named: "upload")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     shareButton.addTarget(self, action: #selector(PollProfileViewController.shareItem), for: .touchUpInside)
                                     rightNavView.addSubview(shareButton)
                                     
                                     let optionButton = createButton(CGRect(x: 44,y: 12,width: 22,height: 22), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                    optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                     optionButton.addTarget(self, action: #selector(PollProfileViewController.showGutterMenu), for: .touchUpInside)
                                    // rightNavView.addSubview(optionButton)
                                     if isCancel == false
@@ -532,8 +532,8 @@ class PollProfileViewController: UIViewController, TTTAttributedLabelDelegate, U
                                     let boldFont =  CTFontCreateWithName((fontBold as CFString?)!, FONTSIZESmall, nil)
                                     
                                     let range1 = (description as NSString).range(of: ownerName!)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                                    mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                                    mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                                     
                                     
                                     // TODO: Clean this up...
@@ -637,11 +637,11 @@ class PollProfileViewController: UIViewController, TTTAttributedLabelDelegate, U
             self.pollDescription.setText(tempInfo, afterInheritingLabelAttributesAndConfiguringWith: { (mutableAttributedString: NSMutableAttributedString?) -> NSMutableAttributedString? in
                 let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZESmall, nil)
                 let range2 = (tempInfo as NSString).range(of: NSLocalizedString("more",  comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
                 let range1 = (tempInfo as NSString).range(of: NSLocalizedString("<< less",  comment: ""))
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
                 // TODO: Clean this up...
                 return mutableAttributedString
             })
@@ -751,7 +751,7 @@ extension PollProfileViewController: UITableViewDelegate {
             }
             
             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
             if  (UIDevice.current.userInterfaceIdiom == .phone){
                 
                 if(activityViewController.popoverPresentationController != nil) {

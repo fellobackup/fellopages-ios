@@ -77,16 +77,16 @@ class InviteMemberViewController: UIViewController , UITextViewDelegate, UITextF
         contentIcon.isHidden = true
         
         toLabelText = createTextField(CGRect(x: PADING, y: TOPPADING, width: view.bounds.width - (2 * PADING ), height: 40), borderColor: borderColorClear , placeHolderText: "Invite Members", corner: true)
-        toLabelText.attributedPlaceholder = NSAttributedString(string: "Invite Members", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        toLabelText.attributedPlaceholder = NSAttributedString(string: "Invite Members", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         toLabelText.becomeFirstResponder()
-        toLabelText.addTarget(self, action: #selector(InviteMemberViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        toLabelText.addTarget(self, action: #selector(InviteMemberViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         toLabelText.font =  UIFont(name: fontName, size: FONTSIZELarge)
         toLabelText.backgroundColor = bgColor
         toLabelText.delegate = self
         toLabelText.layer.masksToBounds = true
         view.addSubview(toLabelText)
         
-        searchResultTableView = UITableView(frame: CGRect(x: PADING, y: TOPPADING + 40, width: view.bounds.width - PADING, height: view.bounds.height-120), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: PADING, y: TOPPADING + 40, width: view.bounds.width - PADING, height: view.bounds.height-120), style: UITableView.Style.grouped)
         searchResultTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -101,12 +101,12 @@ class InviteMemberViewController: UIViewController , UITextViewDelegate, UITextF
     
     override func viewWillAppear(_ animated: Bool)
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         {
             let tableFrame = self.searchResultTableView.frame.origin.y
             let keyboardHeight = keyboardSize.height
@@ -240,7 +240,7 @@ class InviteMemberViewController: UIViewController , UITextViewDelegate, UITextF
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         
         if let response = suggestedFrnd[(indexPath as NSIndexPath).row] as? NSDictionary {
@@ -273,9 +273,9 @@ class InviteMemberViewController: UIViewController , UITextViewDelegate, UITextF
             
             if let id = response["id"] as? Int{
                 if invitePeople[id] != nil{
-                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }else{
-                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
                 }
             }
             

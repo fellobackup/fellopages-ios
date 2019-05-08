@@ -196,7 +196,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         mainView.addSubview(blogTableView)
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(BlogViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(BlogViewController.refresh), for: UIControl.Event.valueChanged)
         blogTableView.addSubview(refresher)
         
         
@@ -520,7 +520,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -544,7 +544,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -696,7 +696,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
     for ob in adsReportView.subviews{
         if ob .isKind(of: UIButton.self){
             if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
             }
             if ob.tag == 1005
             {
@@ -707,7 +707,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -878,7 +878,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-75,y: adImageView.bounds.height/2 + adImageView.frame.origin.y/2-10, width: 70, height: 30))
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -962,7 +962,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //
 //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-75,y: adImageView.bounds.height/2 + adImageView.frame.origin.y/2-10, width: 70, height: 30))
 //        adCallToActionButton.setTitle(
-//            nativeAd.callToAction, for: UIControlState())
+//            nativeAd.callToAction, for: UIControl.State())
 //
 //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
 //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -1066,7 +1066,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: (appInstallAdView.bounds).width-75,y: ((appInstallAdView.imageView as! UIImageView).bounds).height/2 + (appInstallAdView.imageView as! UIImageView).frame.origin.y/2-10, width: 65, height: 30)
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1133,7 +1133,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: (contentAdView.bounds).width-75,y: ((contentAdView.imageView as! UIImageView).bounds).height/2 + (contentAdView.imageView as! UIImageView).frame.origin.y/2-10, width: 65, height: 30)
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1430,8 +1430,8 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 
                                 if (response["canCreate"] as! Bool == true){
                                     
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(BlogViewController.searchItem))
-                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(BlogViewController.addNewBlog))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(BlogViewController.searchItem))
+                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(BlogViewController.addNewBlog))
 
                                     self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
                                     searchItem.tintColor = textColorPrime
@@ -1440,7 +1440,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     
                                     
                                 }else{
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(BlogViewController.searchItem))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(BlogViewController.searchItem))
 
                                     self.navigationItem.rightBarButtonItem = searchItem
                                     searchItem.tintColor = textColorPrime
@@ -1473,7 +1473,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(BlogViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(BlogViewController.browseEntries), for: UIControl.Event.touchUpInside)
 
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
@@ -1600,7 +1600,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {  // or 9 == if you don't want the first cell to be an ad!
             blogTableView.register(NativeAdBlogcell.self, forCellReuseIdentifier: "Cell1")
             let cell = blogTableView.dequeueReusableCell(withIdentifier: "Cell1",for: indexPath) as! NativeAdBlogcell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             var Adcount: Int = 0
             Adcount = row/(kFrequencyAdsInCells_blogs-1)
@@ -1647,7 +1647,7 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell.backgroundColor = tableViewBgColor
             
             blogInfo = blogResponse[row] as! NSDictionary
@@ -1728,12 +1728,12 @@ class BlogViewController: UIViewController, UITableViewDataSource, UITableViewDe
         editBlogID = blogInfo["blog_id"] as! Int
         if(blogInfo["menu"] != nil){
             let menuOption = blogInfo["menu"] as! NSArray
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             for menu in menuOption{
                 if let menuItem = menu as? NSDictionary{
                     let titleString = menuItem["name"] as! String
                     if titleString.range(of: "delete") != nil {
-                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                             let condition = menuItem["name"] as! String
                             switch(condition){
                             case "delete":

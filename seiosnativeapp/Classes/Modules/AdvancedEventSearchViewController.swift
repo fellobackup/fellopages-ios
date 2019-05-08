@@ -90,9 +90,9 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
         }
 
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(AdvancedEventSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(AdvancedEventSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         automaticallyAdjustsScrollViewInsets = false
@@ -159,7 +159,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
         advancedeventTableView.tableFooterView = footerView
         advancedeventTableView.tableFooterView?.isHidden = true
 
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -215,7 +215,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
         
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")
@@ -600,7 +600,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
         else if eventBrowseType == 10
         {
             let cell = DiaryTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DiaryTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             var eventInfo:NSDictionary!
             
@@ -668,8 +668,8 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
                     cell.coverImage4.isHidden = false
                     cell.coverImage5.isHidden = false
                     
-                    cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-                    cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                    cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+                    cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                     
                     let imagedic1 = eventInfo["images_1"] as! NSDictionary
                     let imagedic2 = eventInfo["images_2"] as! NSDictionary
@@ -677,7 +677,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
                     let url1 = URL(string: imagedic1["image"] as! NSString as String)
                     if url1 != nil {
 
-                      cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                      cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                         cell.coverImage4.kf.setImage(with: url1, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                             
                         })
@@ -687,7 +687,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
                     let url2 = URL(string: imagedic2["image"] as! NSString as String)
                     if url2 != nil {
 
-                        cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                        cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                         cell.coverImage5.kf.setImage(with: url2, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                             
                         })
@@ -845,7 +845,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
                         let url7 = URL(string: imagedic7["image"] as! NSString as String)
 
                         if url7 != nil {
-                            cell.coverImage10.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                            cell.coverImage10.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                             cell.coverImage10.kf.setImage(with: url7, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                                 
                             })
@@ -856,7 +856,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
 
                         if url8 != nil {
 
-                            cell.coverImage11.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                            cell.coverImage11.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                             cell.coverImage11.kf.setImage(with: url8, for: .normal, placeholder: UIImage(named: "nophoto_diary_thumb_profile.png"), options: [.transition(.fade(1.0))], completionHandler:{(image, error, cache, url) in
                                 
                             })
@@ -948,7 +948,7 @@ class AdvancedEventSearchViewController: UIViewController,UISearchBarDelegate,UI
         else
         {
             let cell = advancedeventTableView.dequeueReusableCell(withIdentifier: "CellThree", for: indexPath) as! EventViewTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.lineView.isHidden = false
             cell.dateView.backgroundColor = navColor
             cell.btnDate.addTarget(self, action: Selector(("DateAction:")), for: .touchUpInside)

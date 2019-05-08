@@ -91,7 +91,7 @@ class PhotoListViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(PhotoListViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(PhotoListViewController.refresh), for: UIControl.Event.valueChanged)
         gpPhotostableView.addSubview(refresher)
         
         let footerView = UIView(frame: frameActivityIndicator)
@@ -275,11 +275,11 @@ class PhotoListViewController: UIViewController, UITableViewDataSource, UITableV
                                 
                                 if let canUpload = body["canUpload"] as? Bool{
                                     if canUpload{
-                                        let upload = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PhotoListViewController.uploadPhotos))
+                                        let upload = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PhotoListViewController.uploadPhotos))
                                         self.navigationItem.rightBarButtonItem = upload
                                         upload.tintColor = textColorPrime
                                         
-                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(PhotoListViewController.addphotos))
+                                        let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PhotoListViewController.addphotos))
                                         addBlog.tintColor = textColorPrime
                                         self.navigationItem.setRightBarButtonItems([addBlog], animated: true)
                                         
@@ -439,7 +439,7 @@ class PhotoListViewController: UIViewController, UITableViewDataSource, UITableV
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         var index:Int!
@@ -458,7 +458,7 @@ class PhotoListViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.photo1.kf.setImage(with: url1 , placeholder: UIImage(named : "album-default.png"), options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image1.tag = index
                     cell.image1.addTarget(self, action: #selector(PhotoListViewController.openImage(_:)), for: .touchUpInside)
-                    cell.image1.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image1.contentMode = UIView.ContentMode.scaleAspectFill
                 })
                 
             }
@@ -498,7 +498,7 @@ class PhotoListViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.photo2.kf.setImage(with: url1 , placeholder: UIImage(named : "album-default.png"), options: [.transition(.fade(1.0))], completionHandler: { (image, error, cache, url) in
                     cell.image2.tag = index+1
                     cell.image2.addTarget(self, action: #selector(PhotoListViewController.openImage(_:)), for: .touchUpInside)
-                    cell.image2.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.image2.contentMode = UIView.ContentMode.scaleAspectFill
                 })
             }
             

@@ -284,7 +284,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         userImage = createImageView(CGRect(x: 10, y: 10 , width: 50, height: 50), border: true)
         scrollView.addSubview(userImage)
         userImage.tag = 9999
-        userImage.contentMode = UIViewContentMode.scaleAspectFill
+        userImage.contentMode = UIView.ContentMode.scaleAspectFill
         userImage.clipsToBounds = true
         userImage.image = UIImage(named: "user_profile_image.png")
         frndTag.removeAll(keepingCapacity: false)
@@ -563,7 +563,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         }
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         self.view.addGestureRecognizer(swipeDown)
         
         EventSelectionView =  createView(CGRect(x:10, y:-200, width:view.bounds.width-20, height:200), borderColor: borderColorMedium , shadow: true)
@@ -571,7 +571,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         view.addSubview(EventSelectionView)
         
         EventNameLabel = createTextField(CGRect(x:0, y:0, width:EventSelectionView.frame.size.width, height:40), borderColor: borderColorClear , placeHolderText: NSLocalizedString("Search",  comment: ""), corner: true)
-        EventNameLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        EventNameLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         EventNameLabel.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         EventNameLabel.font =  UIFont(name: fontName, size: FONTSIZENormal)
         EventNameLabel.backgroundColor  =  textColorLight
@@ -582,7 +582,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         
         crossBtn = createButton(CGRect(x: getRightEdgeX(inputView: EventNameLabel) - 35, y: 10, width:20, height: 20),title:"" , border: false,bgColor: false, textColor: textColorDark)
         crossBtn.titleLabel?.font = UIFont(name: fontName , size: FONTSIZESmall)
-        crossBtn.setImage(UIImage(named: "cross_icon")?.maskWithColor(color: textColorDark), for: UIControlState())
+        crossBtn.setImage(UIImage(named: "cross_icon")?.maskWithColor(color: textColorDark), for: UIControl.State())
         crossBtn.addTarget(self, action: #selector(AdvancePostFeedViewController.hideAction(_:)), for: .touchUpInside)
         EventSelectionView.addSubview(crossBtn)
         
@@ -593,9 +593,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         EventSelectionView.addSubview(lineView1)
         
         
-        EventTable = UITableView(frame: (CGRect(x:EventNameLabel.bounds.origin.x,y:EventNameLabel.frame.origin.y+EventNameLabel.frame.size.height+1, width:EventNameLabel.bounds.size.width, height:158)), style: UITableViewStyle.grouped)
+        EventTable = UITableView(frame: (CGRect(x:EventNameLabel.bounds.origin.x,y:EventNameLabel.frame.origin.y+EventNameLabel.frame.size.height+1, width:EventNameLabel.bounds.size.width, height:158)), style: UITableView.Style.grouped)
         EventTable.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
-        EventTable.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        EventTable.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         EventTable.rowHeight = 60
         EventTable.isOpaque = false
         
@@ -611,7 +611,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         view.addSubview(tabsContainerMenu)
         
         extraMenuLeft  = createButton(CGRect(x: 10,y: UIScreen.main.bounds.height - (50 + 25 + ButtonHeight + iphonXBottomsafeArea) , width: 30, height: 30), title: "", border: true,bgColor: false, textColor: textColorMedium)
-        extraMenuLeft.setImage(UIImage(named: "customback")?.maskWithColor(color: textColorMedium), for: UIControlState.normal)
+        extraMenuLeft.setImage(UIImage(named: "customback")?.maskWithColor(color: textColorMedium), for: UIControl.State.normal)
         extraMenuLeft.titleLabel?.font =  UIFont(name: fontNormal, size: 10)
         extraMenuLeft.addTarget(self, action: #selector(AdvancePostFeedViewController.scrollImage), for: .touchUpInside)
         extraMenuLeft.backgroundColor = bgColor
@@ -693,18 +693,18 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     }
     
     @objc func scrollImage(){
-        extraMenuLeft.setImage(nil, for: UIControlState.normal)
+        extraMenuLeft.setImage(nil, for: UIControl.State.normal)
         if imageCovert == false{
             imageCovert = true
             
             
             tabsContainerMenu.setContentOffset(CGPoint(x:tabsContainerMenu.contentSize.width,y: 0), animated: true)
-            extraMenuLeft.setImage(UIImage(named: "coloredRing"), for: UIControlState.normal)
+            extraMenuLeft.setImage(UIImage(named: "coloredRing"), for: UIControl.State.normal)
             extraMenuLeft.layer.borderWidth = 0.0
         }
         else{
             imageCovert = false
-            extraMenuLeft.setImage(UIImage(named: "customback")?.maskWithColor(color: textColorMedium), for: UIControlState.normal)
+            extraMenuLeft.setImage(UIImage(named: "customback")?.maskWithColor(color: textColorMedium), for: UIControl.State.normal)
             tabsContainerMenu.setContentOffset(CGPoint(x:0,y: 0), animated: true)
             extraMenuLeft.layer.borderWidth = 0.5
         }
@@ -933,9 +933,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         toolBar.tintColor = navColor
         toolBar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action:#selector(AdvancePostFeedViewController.donePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action:#selector(AdvancePostFeedViewController.donePicker))
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action:#selector(AdvancePostFeedViewController.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action:#selector(AdvancePostFeedViewController.donePicker))
         toolBar.tag = 44
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
@@ -954,9 +954,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         bottomSheetVC.sequences = sequence
         
         // 2- Add bottomSheetVC as a child view
-        self.addChildViewController(bottomSheetVC)
+        self.addChild(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)
-        bottomSheetVC.didMove(toParentViewController: self)
+        bottomSheetVC.didMove(toParent: self)
         
         // 3- Adjust bottomSheet frame and initial position.
         let height  = 250//(postOptions.count * 50) + 25
@@ -1075,7 +1075,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         tableView.separatorStyle = .none
         
@@ -1104,9 +1104,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             
             if let id = response["id"] as? Int{
                 if frndTag[id] != nil{
-                    cell.accessoryType = UITableViewCellAccessoryType.checkmark
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }else{
-                    cell.accessoryType = UITableViewCellAccessoryType.none
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
                 }
             }
             
@@ -1580,19 +1580,19 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             let boldFont = CTFontCreateWithName( (fontBold as CFString?)!, FONTSIZEMedium, nil)
             
             let range1 = (completeUserDetailString as NSString).range(of: userName!)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range1)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range1)
             
             if self.locationInfoString != "" {
                 let range2 = (completeUserDetailString as NSString).range(of: self.locationInfoString)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range2)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range2)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range2)
             }
             
             if self.taggedFriendsString != "" {
                 let range3 = (completeUserDetailString as NSString).range(of: self.taggedFriendsString)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range3)
-                mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range3)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range3)
+                mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range3)
             }
             
             return mutableAttributedString
@@ -1612,7 +1612,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     
     func photoOptions(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Camera",comment: ""), style: .default) { action -> Void in
             
             if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.notDetermined {
@@ -1635,10 +1635,10 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                 self.openCamera()
             }
             if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.denied {
-                let alert = UIAlertController(title: "Access Denied", message: "This app does not have access to your camera. You can enable access in privacy settings.", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Access Denied", message: "This app does not have access to your camera. You can enable access in privacy settings.", preferredStyle: UIAlertController.Style.alert)
                 
                 // add an action (button)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 // show the alert
                 self.present(alert, animated: true, completion: nil)
@@ -1650,7 +1650,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             
         })
         
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Gallery",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Gallery",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
             self.openGallery()
         })
         
@@ -1702,7 +1702,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     @objc func keyboardWillShow(_ sender: Foundation.Notification) {
         if let userInfo = (sender as NSNotification).userInfo {
             
-            let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size.height
+            let keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size.height
             
             if keyboardHeight > 0 {
                 bottomSheetVC.view.frame.origin.y = self.view.bounds.height - keyboardHeight - (bottomSheetVC.postView.frame.origin.y + bottomSheetVC.postView.frame.size.height )
@@ -1887,7 +1887,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                 self.sellView.addSubview(sellImageView)
                 
                 let cross =  createButton(CGRect(x: 15, y: 10, width: 30, height: 30), title: "", border: false,bgColor: false, textColor: textColorPrime)
-                cross.setImage(UIImage(named: "cross_icon")?.maskWithColor(color: buttonColor), for: UIControlState())
+                cross.setImage(UIImage(named: "cross_icon")?.maskWithColor(color: buttonColor), for: UIControl.State())
                 cross.tag = i
                 cross.addTarget(self, action: #selector(AdvancePostFeedViewController.cancelSellImage(_:)), for: .touchUpInside)
                 sellImageView.addSubview(cross)
@@ -2000,8 +2000,8 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         }
         
         feedTextView.isUserInteractionEnabled = true
-        notificationCenter.addObserver(self,selector: #selector(AdvancePostFeedViewController.keyboardWillBeHidden(_:)),name: NSNotification.Name.UIKeyboardWillHide,object: nil)
-        notificationCenter.addObserver(self, selector: #selector(AdvancePostFeedViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        notificationCenter.addObserver(self,selector: #selector(AdvancePostFeedViewController.keyboardWillBeHidden(_:)),name: UIResponder.keyboardWillHideNotification,object: nil)
+        notificationCenter.addObserver(self, selector: #selector(AdvancePostFeedViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         self.title = NSLocalizedString("Update Status", comment: "")
         self.feedTextView.frame.size.width = view.bounds.width - 20
         
@@ -2255,10 +2255,10 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         
         for dic in info{
             if let photoDic = dic as? NSDictionary{
-                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
-                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
-                        if (image.imageOrientation == UIImageOrientation.right || image.imageOrientation == UIImageOrientation.left || image.imageOrientation == UIImageOrientation.down )
+                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
+                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
+                        if (image.imageOrientation == UIImage.Orientation.right || image.imageOrientation == UIImage.Orientation.left || image.imageOrientation == UIImage.Orientation.down )
                         {
                             let imgageNormalize = fixOrientation(img: image)
                             allPhotos.append(imgageNormalize)
@@ -2268,10 +2268,10 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                         }
                     }
                 }
-                else if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypeVideo {
-                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil)
+                else if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypeVideo {
+                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil)
                     {
-                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
                         allPhotos.append(image)
                     }
                 }
@@ -2314,16 +2314,16 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             
             let iconFont = CTFontCreateWithName(("fontAwesome" as CFString?)!, FONTSIZENormal, nil)
             let textFont = CTFontCreateWithName((fontName as CFString?)!, FONTSIZENormal, nil)
-            let iconPart = NSMutableAttributedString(string: "\(iconString)", attributes: [NSAttributedStringKey.font:iconFont ,  NSAttributedStringKey.foregroundColor : textColorDark])
+            let iconPart = NSMutableAttributedString(string: "\(iconString)", attributes: [NSAttributedString.Key.font:iconFont ,  NSAttributedString.Key.foregroundColor : textColorDark])
             
-            let textPart = NSMutableAttributedString(string: "  \(privacyStringContent)", attributes: [NSAttributedStringKey.font:textFont , NSAttributedStringKey.foregroundColor : textColorDark])
+            let textPart = NSMutableAttributedString(string: "  \(privacyStringContent)", attributes: [NSAttributedString.Key.font:textFont , NSAttributedString.Key.foregroundColor : textColorDark])
             iconPart.append(textPart)
             
             self.privacyButton.setAttributedTitle(iconPart, for: .normal)
             
           //  let completeString = "\(iconString)  \(privacyStringContent)"
             
-          //  self.privacyButton.setTitle(completeString, for: UIControlState())
+          //  self.privacyButton.setTitle(completeString, for: UIControl.State())
             var fontSize: CGFloat = 15
             let bounds = UIScreen.main.bounds
             let height = bounds.size.height
@@ -2342,7 +2342,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             
             if let font =  UIFont(name: fontName, size: fontSize)
             {
-                let fontAttributes = [NSAttributedStringKey.font: font]
+                let fontAttributes = [NSAttributedString.Key.font: font]
                 var myText = ""
                 if auth_View != nil && auth_View != "" {
                     myText = privacyDictionary[auth_View] as! String
@@ -2396,7 +2396,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             self.scrollView.addSubview(imageView)
             
             let cross =  createButton(CGRect(x: view.bounds.width - 70, y: 10, width: 50, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
-            cross.setImage(UIImage(named: "cross_icon"), for: UIControlState())
+            cross.setImage(UIImage(named: "cross_icon"), for: UIControl.State())
             cross.tag = i
             cross.addTarget(self, action: #selector(AdvancePostFeedViewController.cancel(_:)), for: .touchUpInside)
             cross.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -2472,9 +2472,9 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     }
     
     func attachLink(){
-        let alert = UIAlertController(title: NSLocalizedString("Attach Link",comment: ""), message: NSLocalizedString("Enter url:",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertActionStyle.default, handler: forgotPasswordHandler))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Attach Link",comment: ""), message: NSLocalizedString("Enter url:",comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertAction.Style.default, handler: forgotPasswordHandler))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertAction.Style.default, handler: nil))
         alert.addTextField(configurationHandler: {(textField: UITextField) in
             textField.placeholder = NSLocalizedString("Enter Url",comment: "")
             textField.isSecureTextEntry = false
@@ -2500,8 +2500,8 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         
         if error != ""{
             let alertController = UIAlertController(title: "Error", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }else{
             
@@ -2729,7 +2729,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         }
         photoView.addSubview(coverimageView)
         let cross =  createButton(CGRect(x: view.bounds.width - 70, y: 10, width: 50, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
-        cross.setImage(UIImage(named: "cross_icon"), for: UIControlState())
+        cross.setImage(UIImage(named: "cross_icon"), for: UIControl.State())
         //cross.tag = i
         cross.addTarget(self, action: #selector(AdvancePostFeedViewController.cancleSelection(_:)), for: .touchUpInside)
         cross.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -3243,11 +3243,11 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     
     func openCamera(){
         
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
         {
             let image = UIImagePickerController()
             image.delegate = self
-            image.sourceType = UIImagePickerControllerSourceType.camera
+            image.sourceType = UIImagePickerController.SourceType.camera
             if UIDevice.current.userInterfaceIdiom != .pad{
                 image.allowsEditing = true
             }
@@ -3256,12 +3256,12 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     }
     
     // MARK:  UIImagePickerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey  : Any]) {
         
         allPhotos.removeAll(keepingCapacity: false)
-        if "public.image" != info[UIImagePickerControllerMediaType] as? String
+        if "public.image" != info[UIImagePickerController.InfoKey.mediaType] as? String
         {
-            let  videoUrl : NSURL = info[UIImagePickerControllerMediaURL] as! NSURL
+            let  videoUrl : NSURL = info[UIImagePickerController.InfoKey.mediaURL] as! NSURL
             
             //print("videourl: ", videoUrl)
             //trying compression of video
@@ -3273,7 +3273,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                 self.dismiss(animated: true, completion:
                     {
                     
-                    let alertController = UIAlertController(title: "\(NSLocalizedString("Maximum allowed size for Media is", comment: "")) \(videoSize)\(NSLocalizedString("MB. Please try uploading a smaller size file.", comment: ""))", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                    let alertController = UIAlertController(title: "\(NSLocalizedString("Maximum allowed size for Media is", comment: "")) \(videoSize)\(NSLocalizedString("MB. Please try uploading a smaller size file.", comment: ""))", message: nil, preferredStyle: UIAlertController.Style.alert)
                     
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("Ok",  comment: ""), style: .default, handler:nil))
                     self.present(alertController, animated:true, completion: nil)
@@ -3292,7 +3292,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
             self.dismiss(animated: true, completion: nil)
             filePathArray.removeAll(keepingCapacity: false)
             mediaType = "video"
-            let imageArray = info[UIImagePickerControllerMediaURL]
+                let imageArray = info[UIImagePickerController.InfoKey.mediaURL]
          //   filePathArray.removeAll(keepingCapacity: false)
             var arryVideo = [AnyObject]()
             
@@ -3314,7 +3314,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         else
         {
             //let  image = (info[UIImagePickerControllerEditedImage] as? UIImage)!
-            let cameraImage = (info[UIImagePickerControllerEditedImage] as? UIImage)!
+            let cameraImage = (info[UIImagePickerController.InfoKey.editedImage] as? UIImage)!
             let image = fixOrientation(img: cameraImage)
             self.dismiss(animated: true, completion: nil)
             postButton.isEnabled = true
@@ -3442,7 +3442,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
         
         
          let cross =  createButton(CGRect(x: view.bounds.width - 70, y: 10, width: 50, height: 50), title: "", border: false,bgColor: false, textColor: textColorLight)
-        cross.setImage(UIImage(named: "cross_icon"), for: UIControlState())
+        cross.setImage(UIImage(named: "cross_icon"), for: UIControl.State())
         cross.addTarget(self, action: #selector(AdvancePostFeedViewController.cancelCameraImage), for: .touchUpInside)
         cross.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         sampleImage.addSubview(cross)
@@ -3473,7 +3473,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     func openVideoPicker(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.mediaTypes = [String(kUTTypeMovie)]
         imagePicker.allowsEditing = false
         self.present(imagePicker, animated: false, completion: nil)
@@ -3516,7 +3516,7 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
 
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.mediaTypes = [String(kUTTypeMovie)]
         imagePicker.allowsEditing = false
         // imagePicker.showsCameraControls = false
@@ -3663,10 +3663,10 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                 
                 if  (UIDevice.current.userInterfaceIdiom == .phone){
                     
-                    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+                    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
                     
                     
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("Discard Post",  comment: ""), style: UIAlertActionStyle.destructive, handler:{ (UIAlertAction) -> Void in
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("Discard Post",  comment: ""), style: UIAlertAction.Style.destructive, handler:{ (UIAlertAction) -> Void in
                         Formbackup.removeAllObjects()
                         self.dismiss(animated: true, completion: nil)
                         
@@ -3678,16 +3678,16 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
                 }
                 else{
                     let alertController = UIAlertController(title: "Discard", message:
-                        "If you cancel, your post will be discarded. ", preferredStyle: UIAlertControllerStyle.alert)
+                        "If you cancel, your post will be discarded. ", preferredStyle: UIAlertController.Style.alert)
                     
-                    alertController.addAction(UIAlertAction(title: "Discard Post", style: UIAlertActionStyle.destructive ,handler: { (action) in
+                    alertController.addAction(UIAlertAction(title: "Discard Post", style: UIAlertAction.Style.destructive ,handler: { (action) in
                         
                         Formbackup.removeAllObjects()
                         self.dismiss(animated: true, completion: nil)
                         
                     }))
                     
-                    alertController.addAction(UIAlertAction(title: "Keep", style: UIAlertActionStyle.default,handler: nil))
+                    alertController.addAction(UIAlertAction(title: "Keep", style: UIAlertAction.Style.default,handler: nil))
                     
                     self.present(alertController, animated: true, completion: nil)
                 }
@@ -3864,14 +3864,14 @@ class AdvancePostFeedViewController: UIViewController, TTTAttributedLabelDelegat
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 //        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
 //            switch swipeGesture.direction {
-//            case UISwipeGestureRecognizerDirection.right:
+//            case UISwipeGestureRecognizer.Direction.right:
 //                //print("Swiped right")
-//            case UISwipeGestureRecognizerDirection.down:
+//            case UISwipeGestureRecognizer.Direction.down:
 //                //print("Swiped down")
 //                self.view.endEditing(false)
-//            case UISwipeGestureRecognizerDirection.left:
+//            case UISwipeGestureRecognizer.Direction.left:
 //                //print("Swiped left")
-//            case UISwipeGestureRecognizerDirection.up:
+//            case UISwipeGestureRecognizer.Direction.up:
 //                //print("Swiped up")
 //            default:
 //                break

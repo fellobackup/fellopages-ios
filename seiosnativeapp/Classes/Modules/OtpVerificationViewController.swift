@@ -50,11 +50,11 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
         navigationItem.title = "\(NSLocalizedString("OTP Verification",  comment: ""))"
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(OtpVerificationViewController.applicationDidEnterBackground),
-                                               name: .UIApplicationDidEnterBackground,
+                                               name: UIApplication.didEnterBackgroundNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(OtpVerificationViewController.applicationWillEnterForeground),
-                                               name: .UIApplicationWillEnterForeground,
+                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         
         view.backgroundColor = bgColor
@@ -92,7 +92,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
         otpTextfield = UITextField(frame: CGRect(x: sidepaading, y : getBottomEdgeY(inputView: otplabel) - 5 ,width: UIScreen.main.bounds.width - (150), height: 45))
         let paddingView : UIView = UIView(frame: CGRect(x :0, y :0, width: 5, height : 20))
         otpTextfield.leftView = paddingView
-        otpTextfield.leftViewMode = UITextFieldViewMode.always
+        otpTextfield.leftViewMode = UITextField.ViewMode.always
         otpTextfield.isSecureTextEntry = true
         view.addSubview(otpTextfield)
         
@@ -183,7 +183,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             self.view.makeToast(NSLocalizedString("Please complete this field - it is required.",  comment: ""), duration: 5, position: CSToastPositionCenter)
         }
         else {
-            verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControlState())
+            verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControl.State())
             view.addSubview(activityIndicatorView)
             activityIndicatorView.center = self.view.center
             activityIndicatorView.startAnimating()
@@ -192,7 +192,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             // Send Server Request to Sign Up Form
             post(parameter,url: "otpverifier/code-verification" , method: "POST") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
-                    self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControlState())
+                    self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControl.State())
                     activityIndicatorView.stopAnimating()
                     if msg{
                         self.view.makeToast(NSLocalizedString("Verification is successfull.",  comment: ""), duration: 5, position: CSToastPositionCenter)
@@ -225,7 +225,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             self.view.makeToast(NSLocalizedString("Please enter OTP to verify.",  comment: ""), duration: 5, position: CSToastPositionCenter)
         }
         else {
-            verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControlState())
+            verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControl.State())
             self.view.addSubview(activityIndicatorView)
             activityIndicatorView.center = self.view.center
             activityIndicatorView.startAnimating()
@@ -239,7 +239,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             {
                 activityIndicatorView.stopAnimating()
                 sign_up = 1
-                self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControlState())
+                self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControl.State())
                 if otp == self.otpTextfield.text!{
                     if sign_up == 1 {
                         otp = ""
@@ -255,7 +255,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             }
             else{
                 activityIndicatorView.stopAnimating()
-                self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControlState())
+                self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControl.State())
                 self.view.makeToast(NSLocalizedString("OTP has been expired. Please resend OTP.",  comment: ""), duration: 5, position: CSToastPositionCenter)
             }
         }
@@ -266,7 +266,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
         timeduration = duration
         timer1.invalidate()
         createTimer()
-        resend.setTitle(NSLocalizedString("Sending...",comment: ""), for: UIControlState())
+        resend.setTitle(NSLocalizedString("Sending...",comment: ""), for: UIControl.State())
         otpTextfield.text = ""
         view.addSubview(activityIndicatorView)
         activityIndicatorView.center = self.view.center
@@ -280,7 +280,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
                 // Send Server Request to Sign Up Form
                 post(parameter,url: "otpverifier/send" , method: "POST") { (succeeded, msg) -> () in
                     DispatchQueue.main.async(execute: {
-                        self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControlState())
+                        self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControl.State())
                         activityIndicatorView.stopAnimating()
                         if msg{
                             self.view.makeToast(NSLocalizedString("OTP has been resent successfully.",comment: ""), duration: 5, position: CSToastPositionCenter)
@@ -303,7 +303,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             // Send Server Request to Sign Up Form
             post(parameter,url: url , method: "POST") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
-                    self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControlState())
+                    self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControl.State())
                     activityIndicatorView.stopAnimating()
             
                     if msg{
@@ -326,7 +326,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             param = ["email":"\(phone_no)","country_code":country_code]
             post( param,url: "otpverifier/forgot-password", method: "POST") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
-                    self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControlState())
+                    self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControl.State())
                     activityIndicatorView.stopAnimating()
                     if(msg){
                         self.view.makeToast(NSLocalizedString("OTP has been resent successfully.",comment: ""), duration: 5, position: CSToastPositionCenter)
@@ -354,7 +354,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
         // Send Server Request to Sign Up Form
         post(parameter,url: "otpverifier/verify-mobileno" , method: "POST") { (succeeded, msg) -> () in
             DispatchQueue.main.async(execute: {
-                self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControlState())
+                self.resend.setTitle(NSLocalizedString("Resend OTP",comment: ""), for: UIControl.State())
                 activityIndicatorView.stopAnimating()
                 if msg{
                     if let body = succeeded["body"] as? NSDictionary
@@ -398,7 +398,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             self.view.makeToast(NSLocalizedString("Please complete this field - it is required.",  comment: ""), duration: 5, position: CSToastPositionCenter)
         }
         else {
-            verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControlState())
+            verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControl.State())
             view.addSubview(activityIndicatorView)
             activityIndicatorView.center = self.view.center
             activityIndicatorView.startAnimating()
@@ -410,7 +410,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
             // Send Server Request to Sign Up Form
             post(parameter,url: "otpverifier/verify" , method: "POST") { (succeeded, msg) -> () in
                 DispatchQueue.main.async(execute: {
-                    self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControlState())
+                    self.verify.setTitle(NSLocalizedString("Verify",comment: ""), for: UIControl.State())
                     activityIndicatorView.stopAnimating()
                     if msg{
                         //print(succeeded)
@@ -458,7 +458,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
                 activityIndicatorView.center = self.view.center
                 activityIndicatorView.startAnimating()
                 
-                verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControlState())
+                verify.setTitle(NSLocalizedString("Verifying...",comment: ""), for: UIControl.State())
                 // Send Server Request for Sign In
                 loginParams = [login_id:"\(useremail)","ip":"127.0.0.1" , "subscriptionForm": "1","loginWithOtp":"1","code":self.otpTextfield.text!]
                 logoutUser = true
@@ -473,7 +473,7 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
                     
                     DispatchQueue.main.async(execute: {
                         activityIndicatorView.stopAnimating()
-                        self.verify.setTitle("Verify", for: UIControlState())
+                        self.verify.setTitle("Verify", for: UIControl.State())
                         sign_in = 0
                         // On Success save authentication_token in Core Data
                         if(msg)
@@ -509,9 +509,9 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
 //                                    alertTest.show()
                                     
                                     let alertController = UIAlertController(title: "Message", message:
-                                        "\(validationMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                                        "\(validationMessage)", preferredStyle: UIAlertController.Style.alert)
                                     
-                                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                         if let url = URL(string: self.Subscriptionurl)
                                         {
                                             
@@ -551,9 +551,9 @@ class OtpVerificationViewController: UIViewController , UIGestureRecognizerDeleg
 //                                        alertTest.show()
                                         
                                         let alertController = UIAlertController(title: "Message", message:
-                                            "\(SubscriptionMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                                            "\(SubscriptionMessage)", preferredStyle: UIAlertController.Style.alert)
                                         
-                                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                             if let url = URL(string: self.Subscriptionurl)
                                             {
                                                 

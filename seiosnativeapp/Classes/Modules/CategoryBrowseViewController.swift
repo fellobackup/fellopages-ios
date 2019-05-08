@@ -123,7 +123,7 @@ class CategoryBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         CategoryTableView.dataSource = self
         CategoryTableView.delegate = self
         CategoryTableView.estimatedRowHeight = 110.0
-        CategoryTableView.rowHeight = UITableViewAutomaticDimension
+        CategoryTableView.rowHeight = UITableView.automaticDimension
         CategoryTableView.backgroundColor = UIColor.white
         CategoryTableView.separatorColor = UIColor.clear
         CategoryTableView.isHidden = true
@@ -153,7 +153,7 @@ class CategoryBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
         self.refreshButton.backgroundColor = bgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(CategoryBrowseViewController.browseEntries), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(CategoryBrowseViewController.browseEntries), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.mainView.addSubview(self.refreshButton)
@@ -332,7 +332,7 @@ class CategoryBrowseViewController: UIViewController, UIScrollViewDelegate, UITa
     {
         
         let cell = CategoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryBrowseTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         cell.categoryName.isHidden = false
         cell.categoryName1.isHidden = false
         cell.categoryName2.isHidden = false

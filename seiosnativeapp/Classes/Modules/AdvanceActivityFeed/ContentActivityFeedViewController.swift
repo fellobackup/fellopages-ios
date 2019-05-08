@@ -103,11 +103,11 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
      var userImage : UIImageView!
     var menuView = UIView()
     let subscriptionNoticeLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
         // NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     let subscriptionNoticeActiveLinkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
+        NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.80),
         //NSUnderlineStyleAttributeName: NSNumber(bool:true),
     ]
     var marqueeHeader = MarqueeLabel()
@@ -216,9 +216,9 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
         
         self.feedObj.view.backgroundColor =   UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
         // Initial table to show Activity Feeds
-        feedObj.willMove(toParentViewController: self)
+        feedObj.willMove(toParent: self)
         mainView.addSubview(feedObj.view)
-        self.addChildViewController(feedObj)
+        self.addChild(feedObj)
         self.feedObj.userFeeds = true
         feedObj.feedShowingFrom = "UserFeed"
         feedObj.delegatepin = self
@@ -256,7 +256,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
         coverImageView.layer.masksToBounds = true
         coverImageView.tag = 123
         coverImageView.isUserInteractionEnabled = true
-        coverImageView.contentMode = UIViewContentMode.scaleAspectFill
+        coverImageView.contentMode = UIView.ContentMode.scaleAspectFill
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(ContentActivityFeedViewController.showProfileCoverImageMenu(_:)))
         coverImageView.addGestureRecognizer(tap1)
         if !isCoverEnabled || (logoutUser == true){
@@ -281,7 +281,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
         memberProfilePhoto.layer.borderWidth = 2.5
         memberProfilePhoto.layer.cornerRadius = memberProfilePhoto.frame.size.width / 2
         memberProfilePhoto.backgroundColor = placeholderColor
-        memberProfilePhoto.contentMode = UIViewContentMode.scaleAspectFill
+        memberProfilePhoto.contentMode = UIView.ContentMode.scaleAspectFill
         memberProfilePhoto.layer.masksToBounds = true
       //  memberProfilePhoto.image = UIImage(named: "user_profile_image.png")
         if let url = URL(string: strProfileImageUrl)
@@ -374,7 +374,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
         // Initialize Pull to Refresh to ActivityFeed Table
         refresher = UIRefreshControl()
 //        refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh",  comment: ""))
-        refresher.addTarget(self, action: #selector(ContentActivityFeedViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(ContentActivityFeedViewController.refresh), for: UIControl.Event.valueChanged)
         feedObj.tableView.addSubview(refresher)
         
         removeNavigationImage(controller: self)
@@ -388,7 +388,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                 profilePic = createImageView(CGRect(x: (2 * contentPADING),  y: coverImageView.bounds.height - (2 * contentPADING) - 80 ,width: 80 , height: 80 ), border: true)
             }
             
-            profilePic.contentMode =  UIViewContentMode.scaleAspectFill //UIViewContentMode.center
+            profilePic.contentMode =  UIView.ContentMode.scaleAspectFill //UIView.ContentMode.center
             profilePic.layer.masksToBounds = true
             profilePic.backgroundColor = placeholderColor
             profilePic.layer.borderWidth = 2.0
@@ -985,7 +985,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
     func reloadpin(){
         maxid = 0
         let indexPath = IndexPath(row: 0, section: 0)
-        self.feedObj.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+        self.feedObj.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
         feed_filter = 0
         browseFeed()
     }
@@ -1162,7 +1162,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                 postView.layer.masksToBounds = true
                 
                 feedTextView.tag = 1990
-                feedTextView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                feedTextView.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
                 feedTextView.addTarget(self, action: #selector(ContentActivityFeedViewController.openPostFeed(_:)), for: .touchUpInside)
                 feedTextView.backgroundColor = lightBgColor
                 postView.addSubview(feedTextView)
@@ -1175,36 +1175,36 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                     switch i {
                     case 0:
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string:  menuIcon[0])
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                          attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: colorIcon[0], range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                          attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: colorIcon[0], range: NSMakeRange(0, attrString.length))
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("\(postMenu[0])",comment: ""))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                        descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
                         attrString.append(descString);
                         
-                        postFeed.setAttributedTitle(attrString, for: UIControlState.normal)
+                        postFeed.setAttributedTitle(attrString, for: UIControl.State.normal)
                         break
                     case 1:
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: menuIcon[1])
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: colorIcon[1], range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: colorIcon[1], range: NSMakeRange(0, attrString.length))
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("\(postMenu[1])",comment: ""))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                         descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                         descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
                         attrString.append(descString);
                         
-                        postFeed.setAttributedTitle(attrString, for: UIControlState.normal)
+                        postFeed.setAttributedTitle(attrString, for: UIControl.State.normal)
                         break
                     case 2:
                         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: menuIcon[2])
-                        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
-                        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: colorIcon[2], range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "FontAwesome", size: FONTSIZELarge)!, range: NSMakeRange(0, attrString.length))
+                        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: colorIcon[2], range: NSMakeRange(0, attrString.length))
                         let descString: NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("\(postMenu[2])",comment: ""))
-                        descString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
-                         descString.addAttribute(NSAttributedStringKey.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
+                        descString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: fontName , size: FONTSIZELarge)!, range: NSMakeRange(0, descString.length))
+                         descString.addAttribute(NSAttributedString.Key.foregroundColor, value: iconTextColor, range: NSMakeRange(0, descString.length))
                         attrString.append(descString);
                         
-                        postFeed.setAttributedTitle(attrString, for: UIControlState.normal)
+                        postFeed.setAttributedTitle(attrString, for: UIControl.State.normal)
                         break
                     default:
                         break
@@ -1370,7 +1370,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                     
                     
                     if origin_x > view.bounds.width{
-                        extraMenuRight.setTitle("", for: UIControlState())
+                        extraMenuRight.setTitle("", for: UIControl.State())
                     }
                     
                     tabsContainerMenu.contentSize = CGSize(width: origin_x, height: tabsContainerMenu.bounds.height)
@@ -2188,7 +2188,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                                         if logoutUser == false{
                                              if self.profileOfUserId != currentUserId{
                                             let optionButton = createButton(CGRect(x: 22,y: 0,width: 45,height: 45), title: "", border: false, bgColor: false, textColor: UIColor.clear)
-                                            optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControlState())
+                                            optionButton.setImage(UIImage(named: "option")?.maskWithColor(color: textColorPrime), for: UIControl.State())
                                             optionButton.addTarget(self, action: #selector(ContentActivityFeedViewController.showMainGutterMenu1), for: .touchUpInside)
                                             
                                             rightNavView.addSubview(optionButton)
@@ -2858,7 +2858,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
               let  icon = createButton(CGRect(x: widthXgap/2 - 12, y: 5, width: 25, height: 25), title: "", border: false, bgColor: false, textColor: iconColor)
             let image = UIImage(named: "\(showIcon[i])")
             let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-            icon.setBackgroundImage(tintedImage, for: UIControlState.normal)
+            icon.setBackgroundImage(tintedImage, for: UIControl.State.normal)
             icon.tag = i
             icon.addTarget(self, action: #selector(ContentActivityFeedViewController.openMenus(_:)), for: .touchUpInside)
               icon.isHidden = false
@@ -2942,7 +2942,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
             let  icon = createButton(CGRect(x: widthXgap/2 - 12, y: 5, width: 25, height: 25), title: "", border: false, bgColor: false, textColor: iconColor)
             let image = UIImage(named: "\(showIcon[i])")
             let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-            icon.setBackgroundImage(tintedImage, for: UIControlState.normal)
+            icon.setBackgroundImage(tintedImage, for: UIControl.State.normal)
             icon.tag = i
             icon.addTarget(self, action: #selector(ContentActivityFeedViewController.openMenus(_:)), for: .touchUpInside)
             icon.isHidden = false
@@ -3014,14 +3014,14 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
     // action after click
     @objc func showMainGutterMenu1(){
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         searchDic.removeAll(keepingCapacity: false)
         
         for menu in gutterMainMenu{
             if let dic = menu as? NSDictionary{
                 
                 if self.moreNameMenu.contains(dic["name"] as! String){
-                    alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                    alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                         // Write For Edit Album Entry
                         let condition = dic["name"] as! String
                         self.redirection(condition : condition, dic : dic)
@@ -3537,7 +3537,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
         }
         
         if imageMenus.count > 0{
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             for menu in imageMenus{
                 if let dic = menu as? NSDictionary{
@@ -3545,7 +3545,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                     
                     if dic["name"] as! String == "remove_photo" || dic["name"] as! String == "remove_cover_photo"{
                         
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                             // Delete Activity Feed Entry
                             if dic["name"] as! String == "remove_photo"{
                                 
@@ -3573,7 +3573,7 @@ class ContentActivityFeedViewController: UIViewController, UITableViewDelegate, 
                         }))
                         
                     }else{
-                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertActionStyle.default, handler:{ (UIAlertAction) -> Void in
+                        alertController.addAction(UIAlertAction(title: (dic["label"] as! String), style: UIAlertAction.Style.default, handler:{ (UIAlertAction) -> Void in
                             // Write For Edit Album Entry
                             let condition = dic["name"] as! String
                             switch(condition){

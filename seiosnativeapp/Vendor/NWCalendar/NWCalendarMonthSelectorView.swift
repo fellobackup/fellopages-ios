@@ -22,10 +22,10 @@ class NWCalendarMonthSelectorView: UIView {
     
     let buttonWidth = floor(frame.width/7)
     prevButton = UIButton(frame: CGRect(x: 0, y: 0, width: buttonWidth, height: frame.height))
-    prevButton.setImage(kPrevButtonImage, for: UIControlState())
+    prevButton.setImage(kPrevButtonImage, for: UIControl.State())
 
     nextButton = UIButton(frame: CGRect(x: frame.width-buttonWidth, y: 0, width: buttonWidth, height: frame.height))
-    nextButton.setImage(kNextButtonImage, for: UIControlState())
+    nextButton.setImage(kNextButtonImage, for: UIControl.State())
 
     monthLabel = UILabel(frame: CGRect(x: buttonWidth, y: 0, width: frame.width-(2*buttonWidth), height: frame.height))
     monthLabel.textAlignment = .center

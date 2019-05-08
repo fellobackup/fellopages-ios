@@ -107,12 +107,12 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         //Notification for showing/Hiding keyboard
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(TicketDetailPageViewController.keyboardWasShown),
-                                               name: .UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(TicketDetailPageViewController.keyboardWillHide),
-                                               name: .UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
         // For resign keyboard on click on view anywhere
@@ -154,7 +154,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
     
     @objc func keyboardWasShown(notification: NSNotification) {
         let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyBoardHeight1 = keyboardFrame.size.height
         // Animation On TextView Begin Editing
         UIView.animate(withDuration: 0.5, animations: {
@@ -307,7 +307,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         couponButton.backgroundColor = buttonColor
         couponButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZELarge)
         couponButton.layer.cornerRadius = cornerRadiusNormal
-        couponButton.addTarget(self, action: #selector(applyCopon), for: UIControlEvents.touchUpInside)
+        couponButton.addTarget(self, action: #selector(applyCopon), for: UIControl.Event.touchUpInside)
         view5.addSubview(couponButton)
         
         let width1:CGFloat = 60
@@ -366,11 +366,11 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         BooknowButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZELarge)
         if status != "Event is Full"
         {
-            BooknowButton.addTarget(self, action: #selector(booknow), for: UIControlEvents.touchUpInside)
+            BooknowButton.addTarget(self, action: #selector(booknow), for: UIControl.Event.touchUpInside)
         }
         else
         {
-            BooknowButton.setTitle("Event is Full", for: UIControlState.normal)
+            BooknowButton.setTitle("Event is Full", for: UIControl.State.normal)
         }
         
         view5.addSubview(BooknowButton)
@@ -431,7 +431,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                     info.backgroundColor = UIColor.white
                     info.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
                     info.tag = i
-                    info.addTarget(self, action: #selector(clickonMoreinfo(_ : )), for: UIControlEvents.touchUpInside)
+                    info.addTarget(self, action: #selector(clickonMoreinfo(_ : )), for: UIControl.Event.touchUpInside)
                     view4.addSubview(info)
                     
                     //                    let price = Stirng(dic["price"] as? CGFloat)
@@ -456,7 +456,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                     }
                     else if (dic["status"] as? Int != nil)
                     {
-                        tab3.addTarget(self, action: #selector(buttonclick(_ : )), for: UIControlEvents.touchUpInside)
+                        tab3.addTarget(self, action: #selector(buttonclick(_ : )), for: UIControl.Event.touchUpInside)
                     }
                     view4.addSubview(tab3)
                     
@@ -537,7 +537,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         
         if orderResponse["sell_starttime"] != nil
         {
-            filterButton.setTitle("\((orderResponse["sell_starttime"] as? String)!)", for: UIControlState.normal)
+            filterButton.setTitle("\((orderResponse["sell_starttime"] as? String)!)", for: UIControl.State.normal)
         }
         
     }
@@ -563,7 +563,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         dateTableView.dataSource = self
         dateTableView.delegate = self
         dateTableView.estimatedRowHeight = 40
-        dateTableView.rowHeight = UITableViewAutomaticDimension
+        dateTableView.rowHeight = UITableView.automaticDimension
         dateTableView.backgroundColor = UIColor.clear
         dateTableView.separatorColor = UIColor.gray
         dateTableView.isHidden = true
@@ -579,7 +579,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         quantityTableView.dataSource = self
         quantityTableView.delegate = self
         quantityTableView.estimatedRowHeight = 40
-        quantityTableView.rowHeight = UITableViewAutomaticDimension
+        quantityTableView.rowHeight = UITableView.automaticDimension
         quantityTableView.backgroundColor = UIColor.clear//tableViewBgColor
         quantityTableView.separatorColor = UIColor.gray
         quantityTableView.isHidden = true
@@ -597,7 +597,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
     {
         quantityTableView.isHidden = true
         dateTableView.isHidden = false
-        scrollView.bringSubview(toFront: dateTableView)
+        scrollView.bringSubviewToFront(dateTableView)
         dateTableView.reloadData()
     }
     
@@ -613,7 +613,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         }
         
         quantityTableView.isHidden = false
-        scrollView.bringSubview(toFront: quantityTableView)
+        scrollView.bringSubviewToFront(quantityTableView)
         dateTableView.isHidden = true
         quantityTableView.reloadData()
     }
@@ -628,7 +628,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
             if let dic = ticket[sender.tag] as? NSDictionary{
                 
                 hideCouponDetail()
-                button.setTitle("Less Info", for: UIControlState.normal)
+                button.setTitle("Less Info", for: UIControl.State.normal)
                 couponDetailView = CouponDetailView(frame:CGRect(x:10, y:view.bounds.height, width:view.bounds.width - 20, height:80))
                 
                 couponDetailView.backgroundColor = tableViewBgColor
@@ -651,7 +651,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                 couponDetailView.couponLabel.text = NSLocalizedString("Tickets: \(String(describing: dic["quantity"]!))", comment: "")
                 couponDetailView.couponDescription.text = NSLocalizedString("End date: \(String(describing: dic["sell_endtime"]!))", comment: "")
                 
-                couponDetailView.doneButton.addTarget(self, action: #selector(TicketDetailPageViewController.hideCouponDetail), for: UIControlEvents.touchUpInside)
+                couponDetailView.doneButton.addTarget(self, action: #selector(TicketDetailPageViewController.hideCouponDetail), for: UIControl.Event.touchUpInside)
                 view.addSubview(couponDetailView)
                 
                 UIView.animate(withDuration: 0.5) { () -> Void in
@@ -666,7 +666,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
     // Hide pop up window
     @objc func hideCouponDetail(){
         
-        button.setTitle("More Info", for: UIControlState.normal)
+        button.setTitle("More Info", for: UIControl.State.normal)
         UIView.animate(withDuration:0.5) { () -> Void in
             self.couponDetailView.frame.origin.y = self.view.bounds.height
             self.blackScreen.alpha = 0.0
@@ -977,7 +977,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
             
             let cell = dateTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! TicketCustomTableViewCell
             
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = UIColor.white
             
             dateInfo = self.datearray[row] as! NSDictionary
@@ -1011,7 +1011,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
         {
             let cell = quantityTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! TicketCustomTableViewCell
             
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = UIColor.white
             
             cell.labTitle.frame = CGRect(x:0, y:0,width:quantityTableView.frame.size.width , height:40)
@@ -1054,7 +1054,7 @@ class TicketDetailPageViewController: UIViewController , UITableViewDataSource, 
                 tempInfo1 += " at \(DateC1[3])"
             }
             
-            filterButton.setTitle("\(tempInfo) - \(tempInfo1)", for: UIControlState.normal)
+            filterButton.setTitle("\(tempInfo) - \(tempInfo1)", for: UIControl.State.normal)
             
             let occurance_date = dateInfo["occurrence_id"]! as? Int
             parameters["occurrence_id"] = "\(occurance_date!)"

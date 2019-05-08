@@ -110,7 +110,7 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
             let rightNavView = UIView(frame: CGRect(x: 0, y: 0, width: 66, height: 44))
             rightNavView.backgroundColor = UIColor.clear
             let optionButton = createButton(CGRect(x: 15,y: 0,width: 50,height: 44), title: "Skip", border: false, bgColor: false, textColor: textColorPrime)
-            // optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControlState())
+            // optionButton.setImage(UIImage(named: "option")!.maskWithColor(color: textColorPrime), for: UIControl.State())
             optionButton.addTarget(self, action: #selector(SignupProfilePhotoController.save(_:)), for: .touchUpInside)
             rightNavView.addSubview(optionButton)
             
@@ -150,7 +150,7 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
     @objc func choosePhoto(_ sender: UIButton){
         let image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary
         if UIDevice.current.userInterfaceIdiom != .pad{
             image.allowsEditing = true
         }
@@ -195,10 +195,10 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
             self.chooseCamera()
         }
         if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.denied {
-            let alert = UIAlertController(title: "Access Denied", message: "This app does not have access to your camera. You can enable access in privacy settings.", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Access Denied", message: "This app does not have access to your camera. You can enable access in privacy settings.", preferredStyle: UIAlertController.Style.alert)
             
             // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
@@ -214,22 +214,22 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
     func chooseCamera(){
         let image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerController.SourceType.camera
         if UIDevice.current.userInterfaceIdiom != .pad{
             image.allowsEditing = true
         }
         self.present(image, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey  : Any]) {
         self.dismiss(animated: true, completion: nil)
 //        for dic in info{
 //            if let photoDic = dic as? NSDictionary{
 //                
-//                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
+//                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
 //                    
-//                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-//                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+//                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+//                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
 //                        imageView.image = image
 //                        //print(image as UIImage)
 //                        let imageArray = [image as UIImage]
@@ -240,7 +240,7 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
 //            }
 //            
 //        }
-        let cameraImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let cameraImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let image = fixOrientation(img: cameraImage)
         imageView.image = image
         //print(image as UIImage)
@@ -301,8 +301,8 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
             }
         }
         if error != ""{
-            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
         else{
@@ -356,8 +356,8 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
                         if signUpUserSubscriptionEnabled == true {
                             PhotoForm.removeAll(keepingCapacity: false)
                             let alertController = UIAlertController(title: "Message", message:
-                                NSLocalizedString("You have successfully signed up. Please choose a Subscription Plan for your account.",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                NSLocalizedString("You have successfully signed up. Please choose a Subscription Plan for your account.",comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                 let presentedVC = SignupUserSubscriptionViewController()
                                 if succeeded["body"] != nil{
                                     if let response = succeeded["body"] as? NSDictionary{
@@ -464,9 +464,9 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
                 message = "\(validationMessage)"
             }
             let alertController = UIAlertController(title: "Verify Your Email", message:
-                "\(message)", preferredStyle: UIAlertControllerStyle.alert)
+                "\(message)", preferredStyle: UIAlertController.Style.alert)
             
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                 if showAppSlideShow == 1 {
                     let presentedVC  = SlideShowLoginScreenViewController()
                     self.navigationController?.pushViewController(presentedVC, animated: true)
@@ -505,9 +505,9 @@ class SignupProfilePhotoController: UIViewController, UINavigationControllerDele
 //                alertTest.show()
 //
                 let alertController = UIAlertController(title: "Message", message:
-                    "\(SubscriptionMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                    "\(SubscriptionMessage)", preferredStyle: UIAlertController.Style.alert)
                 
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                     if showAppSlideShow == 1 {
                         let presentedVC  = SlideShowLoginScreenViewController()
                         self.navigationController?.pushViewController(presentedVC, animated: true)

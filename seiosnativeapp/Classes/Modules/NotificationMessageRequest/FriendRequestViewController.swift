@@ -51,7 +51,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
         
         setNavigationImage(controller: self)
         
-        membersTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING  , width: view.bounds.width, height: view.bounds.height - TOPPADING - tabBarHeight), style: UITableViewStyle.plain)
+        membersTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING  , width: view.bounds.width, height: view.bounds.height - TOPPADING - tabBarHeight), style: UITableView.Style.plain)
         membersTableView.register(FriendRequestTableViewCell.self, forCellReuseIdentifier: "Cell")
         membersTableView.rowHeight = 70
         membersTableView.bounces = true
@@ -63,7 +63,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
         }
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(FriendRequestViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(FriendRequestViewController.refresh), for: UIControl.Event.valueChanged)
         membersTableView.addSubview(refresher)
         
         if contentType == "friendmembers" {
@@ -327,7 +327,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
                             let footerSeeAllBtn = createButton(CGRect(x: 0, y: 0.0, width: self.membersTableView.frame.size.width, height: ButtonHeight), title: "See All", border: false, bgColor: false, textColor: textColorMedium)
                             footerSeeAllBtn.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
                             footerSeeAllBtn.backgroundColor = tableViewBgColor
-                            footerSeeAllBtn.addTarget(self, action: #selector(FriendRequestViewController.seeAllSuggestions(_:)), for: UIControlEvents.touchUpInside)
+                            footerSeeAllBtn.addTarget(self, action: #selector(FriendRequestViewController.seeAllSuggestions(_:)), for: UIControl.Event.touchUpInside)
                             footerView.addSubview(footerSeeAllBtn)
                             self.membersTableView.tableFooterView = footerView
                         }
@@ -418,7 +418,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
     {
         if indexPath.section == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FriendRequestTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         let memberInfo = allMembers[(indexPath as NSIndexPath).row]
         
         // Set Name People who Likes Content
@@ -449,7 +449,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
             
             membersTableView.register(FriendRequestTableViewCell.self, forCellReuseIdentifier: "suggestionsCell")
             let cell = tableView.dequeueReusableCell(withIdentifier: "suggestionsCell", for: indexPath) as! FriendRequestTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             let memberInfo = userSuggestions[indexPath.row] as! [String: AnyObject]
             
             // Set Name People who Likes Content
@@ -475,14 +475,14 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
                 }
             }
             
-            cell.acceptButton.setTitle(NSLocalizedString("Add Friend",  comment: ""), for: UIControlState.normal)
+            cell.acceptButton.setTitle(NSLocalizedString("Add Friend",  comment: ""), for: UIControl.State.normal)
             if memberInfo["friendship_type"] != nil && memberInfo["friendship_type"] as! String == "cancel_request"{
-                cell.acceptButton.setTitle("Undo", for: UIControlState.normal)
+                cell.acceptButton.setTitle("Undo", for: UIControl.State.normal)
             }
             cell.acceptButton.tag =  120 + (indexPath as NSIndexPath).row
             cell.acceptButton.addTarget(self, action: #selector(FriendRequestViewController.acceptSuggestion(_:)), for: .touchUpInside)
             
-            cell.rejectButton.setTitle(NSLocalizedString("Remove",  comment: ""), for: UIControlState.normal)
+            cell.rejectButton.setTitle(NSLocalizedString("Remove",  comment: ""), for: UIControl.State.normal)
             cell.rejectButton.tag = 130 + (indexPath as NSIndexPath).row
             cell.rejectButton.addTarget(self, action: #selector(FriendRequestViewController.removeSuggestionFromList(_:)), for: .touchUpInside)
             return cell
@@ -538,7 +538,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
                         let indexPath = IndexPath(row: sender.tag, section: 0)
                         self.membersTableView.beginUpdates()
                         self.allMembers.remove(at: sender.tag)
-                        self.membersTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                        self.membersTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                         self.membersTableView.endUpdates()
                         self.membersTableView.reloadData()
 
@@ -580,7 +580,7 @@ class FriendRequestViewController: UIViewController ,UITableViewDataSource, UITa
                         let indexPath = IndexPath(row: sender.tag, section: 0)
                         self.membersTableView.beginUpdates()
                         self.allMembers.remove(at: sender.tag)
-                        self.membersTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                        self.membersTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                         self.membersTableView.endUpdates()
                         self.membersTableView.reloadData()
 

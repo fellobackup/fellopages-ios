@@ -50,7 +50,7 @@ class CheckInViewController: UIViewController, UISearchBarDelegate,CLLocationMan
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,selector:#selector(CheckInViewController.applicationWillEnterForeground),name: .UIApplicationWillEnterForeground,object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(CheckInViewController.applicationWillEnterForeground),name: UIApplication.willEnterForegroundNotification,object: nil)
         // Do any additional setup after loading the view.
         view.backgroundColor = bgColor
         self.title = NSLocalizedString("Where are you?",  comment: "")
@@ -67,7 +67,7 @@ class CheckInViewController: UIViewController, UISearchBarDelegate,CLLocationMan
         
         let barButtonItem = UIBarButtonItem(customView: leftNavView)
         self.navigationItem.leftBarButtonItem = barButtonItem
-        searchResultTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height), style: UITableViewStyle.grouped)
+        searchResultTableView = UITableView(frame: CGRect(x: 0, y: TOPPADING, width: view.bounds.width, height: view.bounds.height), style: UITableView.Style.grouped)
         searchResultTableView.register(LocationTableViewCell.self, forCellReuseIdentifier: "Cell")
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
@@ -100,7 +100,7 @@ class CheckInViewController: UIViewController, UISearchBarDelegate,CLLocationMan
         headerView.addSubview(searchController.searchBar)
 
         detectMyLocation = createButton(CGRect(x: 0, y: getBottomEdgeY(inputView: searchController.searchBar), width: view.bounds.width, height: 40), title: " Detect My Location", border: true, bgColor: false, textColor: buttonColor)
-        detectMyLocation.addTarget(self, action: #selector(self.detectLocation), for: UIControlEvents.touchUpInside)
+        detectMyLocation.addTarget(self, action: #selector(self.detectLocation), for: UIControl.Event.touchUpInside)
         detectMyLocation.layer.borderWidth = 0.5
         detectMyLocation.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         detectMyLocation.titleLabel?.font = UIFont(name: fontName, size: FONTSIZENormal)
@@ -165,7 +165,7 @@ class CheckInViewController: UIViewController, UISearchBarDelegate,CLLocationMan
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     @objc func applicationWillEnterForeground(_ application: UIApplication) {
@@ -341,7 +341,7 @@ class CheckInViewController: UIViewController, UISearchBarDelegate,CLLocationMan
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LocationTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         var locationInfo:NSDictionary
         locationInfo = locationResultResponse[(indexPath as NSIndexPath).row] as! NSDictionary
         var vicinity = ""

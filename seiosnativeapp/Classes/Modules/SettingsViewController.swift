@@ -89,7 +89,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         blogTableView.dataSource = self
         blogTableView.delegate = self
         blogTableView.estimatedRowHeight = 40.0
-        blogTableView.rowHeight = UITableViewAutomaticDimension
+        blogTableView.rowHeight = UITableView.automaticDimension
         blogTableView.backgroundColor = tableViewBgColor
         blogTableView.separatorColor = TVSeparatorColor
         // For ios 11 spacing issue below the navigation controller
@@ -217,7 +217,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         var blogInfo:NSDictionary
         blogInfo = settingResponse[(indexPath as NSIndexPath).row] as! NSDictionary

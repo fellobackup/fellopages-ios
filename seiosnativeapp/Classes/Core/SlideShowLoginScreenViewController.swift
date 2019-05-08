@@ -88,7 +88,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         }
         email = createSkyTextField(CGRect(x: (view.bounds.width/2 - 140) , y: 0 ,width: 280 , height: 50), borderColor: borderColorClear,placeHolderText: String(format: NSLocalizedString("%@ %@", comment: ""), messageIcon , namelabel)  , corner: true)
         
-        email.attributedPlaceholder = NSAttributedString (string: String(format:  NSLocalizedString("%@ %@",  comment: ""), messageIcon, namelabel), attributes: [NSAttributedStringKey.foregroundColor: textColorMedium])
+        email.attributedPlaceholder = NSAttributedString (string: String(format:  NSLocalizedString("%@ %@",  comment: ""), messageIcon, namelabel), attributes: [NSAttributedString.Key.foregroundColor: textColorMedium])
         email.autocapitalizationType = .none
         email.layer.masksToBounds = false
         email.layer.shadowOffset = CGSize(width: 0, height: 0);
@@ -126,7 +126,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         let pwdIcon = "\u{F023}"
         pass = createSkyTextField(CGRect(x: (view.bounds.width/2 - 140) , y: getBottomEdgeY(inputView: email) + 13,width: 280 , height: 50),borderColor: borderColorClear,placeHolderText: String(format: NSLocalizedString("%@ Password", comment: ""), pwdIcon) , corner: true)  //"\u{F023} Password"
       
-        pass.attributedPlaceholder = NSAttributedString(string: String(format:  NSLocalizedString("%@ Password",  comment: ""), pwdIcon), attributes: [NSAttributedStringKey.foregroundColor: textColorMedium])
+        pass.attributedPlaceholder = NSAttributedString(string: String(format:  NSLocalizedString("%@ Password",  comment: ""), pwdIcon), attributes: [NSAttributedString.Key.foregroundColor: textColorMedium])
       
         pass.backgroundColor = UIColor.clear
         pass.layer.masksToBounds = false
@@ -144,7 +144,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
          let eyeicon = "\u{f06e}"
         button = UIButton(type: .custom)
         button.setTitle(eyeicon, for: .normal)
-        button.imageEdgeInsets = UIEdgeInsetsMake(0, -12, 5, 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -12, bottom: 5, right: 0)
         button.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
         button.setTitleColor(textColorMedium, for: .normal)
         button.frame = CGRect(x: CGFloat(email.frame.size.width - 20), y: CGFloat(10), width: CGFloat(20), height: CGFloat(20))
@@ -242,7 +242,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
             rightNavView.backgroundColor = UIColor.clear
             
             let shareButton = createButton(CGRect(x: 20,y: 12,width: 44,height: 22), title: "Skip", border: false, bgColor: false, textColor: textColorMedium)
-            // shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControlState())
+            // shareButton.setImage(UIImage(named: "upload")!.maskWithColor(color: textColorPrime), for: UIControl.State())
             shareButton.addTarget(self, action: #selector(SlideShowLoginScreenViewController.logoutSite), for: .touchUpInside)
             rightNavView.addSubview(shareButton)
             
@@ -315,14 +315,14 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                     let fbColor = UIColor(red: 59/255 , green: 89/255 , blue: 152/255, alpha: 1.0)
                     let iconFont = CTFontCreateWithName(("FontAwesome5BrandsRegular" as CFString?)!, 18.0, nil)
                     let textFont = CTFontCreateWithName((fontName as CFString?)!, 18.0, nil)
-                    let attrString = NSMutableAttributedString(string: " \(fbIcon)", attributes: [NSAttributedStringKey.font:iconFont ,  NSAttributedStringKey.foregroundColor : textColorLight])
+                    let attrString = NSMutableAttributedString(string: " \(fbIcon)", attributes: [NSAttributedString.Key.font:iconFont ,  NSAttributedString.Key.foregroundColor : textColorLight])
                     
-                    let textPart = NSMutableAttributedString(string: "       Login with Facebook", attributes: [NSAttributedStringKey.font:textFont , NSAttributedStringKey.foregroundColor : textColorLight])
+                    let textPart = NSMutableAttributedString(string: "       Login with Facebook", attributes: [NSAttributedString.Key.font:textFont , NSAttributedString.Key.foregroundColor : textColorLight])
                     attrString.append(textPart)
-                    facebookSignUpButton.contentVerticalAlignment = UIControlContentVerticalAlignment.center
-//                    facebookSignUpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+                    facebookSignUpButton.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+//                    facebookSignUpButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
 //                    facebookSignUpButton.titleLabel?.textAlignment = .left
-                    facebookSignUpButton.setAttributedTitle(attrString, for: UIControlState.normal)
+                    facebookSignUpButton.setAttributedTitle(attrString, for: UIControl.State.normal)
                     
                     
                     facebookSignUpButton.backgroundColor = fbColor//textColorLight
@@ -348,7 +348,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         // Do any additional setup after loading the view.
     }
     @objc func fakeFbLoginButtonClick(_ sender: UIButton){
-        loginView.sendActions(for: UIControlEvents.touchUpInside)
+        loginView.sendActions(for: UIControl.Event.touchUpInside)
     }
     
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -445,7 +445,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                         // Send Server Request for Sign In
                         post(loginParams as! Dictionary<String, String>, url: "login", method: "POST") { (succeeded, msg) -> () in
                             DispatchQueue.main.async(execute: {
-                                self.signIn.setTitle("Sign In", for: UIControlState())
+                                self.signIn.setTitle("Sign In", for: UIControl.State())
                                 activityIndicatorView.stopAnimating()
                                 //    self.loginView.isUserInteractionEnabled = true
                                 // On Success save authentication_token in Core Data
@@ -649,8 +649,8 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         
         if error != ""{
             let alertController = UIAlertController(title: NSLocalizedString("Error",comment: ""), message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",comment: ""), style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",comment: ""), style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
         else {
@@ -659,7 +659,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                 
                 view.isUserInteractionEnabled = false
                 loginCustomView.alpha = 0.7
-                signIn.setTitle(NSLocalizedString("Loging...",comment: ""), for: UIControlState())
+                signIn.setTitle(NSLocalizedString("Loging...",comment: ""), for: UIControl.State())
                 // Send Server Request for Sign In
                 loginParams = [login_id:"\(self.email.text!)","password":"\(self.pass.text!)","ip":"127.0.0.1" , "subscriptionForm": "1"]
                 
@@ -673,7 +673,7 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                 post(loginParams, url: "login", method: "POST") { (succeeded, msg) -> () in
                     
                     DispatchQueue.main.async(execute: {
-                        self.signIn.setTitle("Sign In", for: UIControlState())
+                        self.signIn.setTitle("Sign In", for: UIControl.State())
                         self.view.isUserInteractionEnabled = true
                         self.loginCustomView.alpha = 1.0
                         // On Success save authentication_token in Core Data
@@ -710,9 +710,9 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                                     //                                    alertTest.show()
                                     
                                     let alertController = UIAlertController(title: "Message", message:
-                                        "\(validationMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                                        "\(validationMessage)", preferredStyle: UIAlertController.Style.alert)
                                     
-                                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                         if let url = URL(string: self.Subscriptionurl)
                                         {
                                             
@@ -752,9 +752,9 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                                         //                                        alertTest.show()
                                         
                                         let alertController = UIAlertController(title: "Message", message:
-                                            "\(SubscriptionMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                                            "\(SubscriptionMessage)", preferredStyle: UIAlertController.Style.alert)
                                         
-                                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                             if let url = URL(string: self.Subscriptionurl)
                                             {
                                                 
@@ -788,9 +788,9 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
     
     @objc func forgotPasswords(){
         if isOTPEnableplugin != 1 {
-            let alert = UIAlertController(title: NSLocalizedString("Forgot Password",comment: ""), message: NSLocalizedString("Enter your email address",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertActionStyle.default, handler: forgotPasswordHandler))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Forgot Password",comment: ""), message: NSLocalizedString("Enter your email address",comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Done",comment: ""), style: UIAlertAction.Style.default, handler: forgotPasswordHandler))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
             alert.addTextField(configurationHandler: {(textField: UITextField) in
                 textField.placeholder = NSLocalizedString("Enter Email",comment: "")
                 textField.isSecureTextEntry = false
@@ -800,9 +800,9 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         }
         else
         {
-            let alert = UIAlertController(title: NSLocalizedString("Forgot Password",comment: ""), message: NSLocalizedString("Please enter your email address or mobile number whose password you want to reset.",comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Continue",comment: ""), style: UIAlertActionStyle.default, handler: forgotPasswordHandler))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Forgot Password",comment: ""), message: NSLocalizedString("Please enter your email address or mobile number whose password you want to reset.",comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Continue",comment: ""), style: UIAlertAction.Style.default, handler: forgotPasswordHandler))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
             alert.addTextField(configurationHandler: {(textField: UITextField) in
                 textField.placeholder = NSLocalizedString("Enter Email or Mobile No",comment: "")
                 textField.isSecureTextEntry = false
@@ -858,8 +858,8 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         }
         if error != ""{
             let alertController = UIAlertController(title: "Error", message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }else{
             self.proceed()
@@ -902,8 +902,8 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
         
         if error != ""{
             let alertController = UIAlertController(title: NSLocalizedString("Error",comment: ""), message:
-                error, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",comment: ""), style: UIAlertActionStyle.default,handler: nil))
+                error, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Dismiss",comment: ""), style: UIAlertAction.Style.default,handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
         else
@@ -916,11 +916,11 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                 self.view.isUserInteractionEnabled = false
                 self.loginCustomView.alpha = 0.7
                 if formmode != "both" {
-                    self.signIn.setTitle("Signing...", for: UIControlState())
+                    self.signIn.setTitle("Signing...", for: UIControl.State())
                 }
                 else
                 {
-                    self.signInotp.setTitle("OTP Signing...", for: UIControlState())
+                    self.signInotp.setTitle("OTP Signing...", for: UIControl.State())
                 }
                 // Send Server Request for Sign In
                 
@@ -939,8 +939,8 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                 post(param, url: "otpverifier/send", method: "POST") { (succeeded, msg) -> () in
                     
                     DispatchQueue.main.async(execute: {
-                        self.signIn.setTitle("Sign In", for: UIControlState())
-                        self.signInotp.setTitle("OTP Sign In", for: UIControlState())
+                        self.signIn.setTitle("Sign In", for: UIControl.State())
+                        self.signInotp.setTitle("OTP Sign In", for: UIControl.State())
                         self.view.isUserInteractionEnabled = true
                         self.loginCustomView.alpha = 1.0
                         // On Success save authentication_token in Core Data
@@ -1004,9 +1004,9 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                                     //                                    alertTest.show()
                                     
                                     let alertController = UIAlertController(title: "Message", message:
-                                        "\(validationMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                                        "\(validationMessage)", preferredStyle: UIAlertController.Style.alert)
                                     
-                                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                         if let url = URL(string: self.Subscriptionurl)
                                         {
                                             
@@ -1046,9 +1046,9 @@ class SlideShowLoginScreenViewController: UIViewController , UITextFieldDelegate
                                         //                                        alertTest.show()
                                         
                                         let alertController = UIAlertController(title: "Message", message:
-                                            "\(SubscriptionMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                                            "\(SubscriptionMessage)", preferredStyle: UIAlertController.Style.alert)
                                         
-                                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                                        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                                             if let url = URL(string: self.Subscriptionurl)
                                             {
                                                 

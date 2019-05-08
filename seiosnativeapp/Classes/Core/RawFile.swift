@@ -367,7 +367,7 @@ extension  UILabel{
 
 //MARK: - Download Image From Url String
 extension UIImageView {
-    func downloadedFrom(link:String, contentMode mode: UIViewContentMode) {
+    func downloadedFrom(link:String, contentMode mode: UIView.ContentMode) {
         guard
             let url = URL(string: link)
             else {return}
@@ -488,12 +488,12 @@ func getTOPsafeArea() -> (CGFloat){
 //MARK: - To Change the color of Image.
 extension UIImage {
     
-    var uncompressedPNGData: Data      { return UIImagePNGRepresentation(self)!        }
-    var highestQualityJPEGNSData: Data { return UIImageJPEGRepresentation(self, 1.0)!  }
-    var highQualityJPEGNSData: Data    { return UIImageJPEGRepresentation(self, 0.75)! }
-    var mediumQualityJPEGNSData: Data  { return UIImageJPEGRepresentation(self, 0.5)!  }
-    var lowQualityJPEGNSData: Data     { return UIImageJPEGRepresentation(self, 0.25)! }
-    var lowestQualityJPEGNSData:Data   { return UIImageJPEGRepresentation(self, 0.0)!  }
+    var uncompressedPNGData: Data      { return self.pngData()!        }
+    var highestQualityJPEGNSData: Data { return self.jpegData(compressionQuality: 1.0)!  }
+    var highQualityJPEGNSData: Data    { return self.jpegData(compressionQuality: 0.75)! }
+    var mediumQualityJPEGNSData: Data  { return self.jpegData(compressionQuality: 0.5)!  }
+    var lowQualityJPEGNSData: Data     { return self.jpegData(compressionQuality: 0.25)! }
+    var lowestQualityJPEGNSData:Data   { return self.jpegData(compressionQuality: 0.0)!  }
     
 
     
@@ -520,14 +520,14 @@ extension UIImage {
     }
     
     func resizedTo1MB() -> UIImage? {
-        guard let imageData = UIImagePNGRepresentation(self) else { return nil }
+        guard let imageData = self.pngData() else { return nil }
         
         var resizingImage = self
         var imageSizeKB = Double(imageData.count) / 1000.0 // ! Or devide for 1024 if you need KB but not kB
         
         while imageSizeKB > 1000 { // ! Or use 1024 if you need KB but not kB
             guard let resizedImage = resizingImage.resized(withPercentage: 0.5),
-                let imageData = UIImagePNGRepresentation(resizedImage)
+                let imageData = resizedImage.pngData()
                 else { return nil }
             
             resizingImage = resizedImage
@@ -537,14 +537,14 @@ extension UIImage {
         return resizingImage
     }
     func resizedTo1KB() -> UIImage? {
-        guard let imageData = UIImagePNGRepresentation(self) else { return nil }
+        guard let imageData = self.pngData() else { return nil }
         
         var resizingImage = self
         var imageSizeKB = Double(imageData.count) / 1000.0 // ! Or devide for 1024 if you need KB but not kB
         
         while imageSizeKB > 1000 { // ! Or use 1024 if you need KB but not kB
             guard let resizedImage = resizingImage.resized(withPercentage: 0.001),
-                let imageData = UIImagePNGRepresentation(resizedImage)
+                let imageData = resizedImage.pngData()
                 else { return nil }
             
             resizingImage = resizedImage
@@ -587,7 +587,7 @@ extension UIImage {
             return nil
         }
         UIGraphicsEndImageContext()
-        guard let imageData = UIImageJPEGRepresentation(img, compressionQuality) else {
+        guard let imageData = img.jpegData(compressionQuality: compressionQuality) else {
             return nil
         }
         return UIImage(data: imageData)
@@ -1002,9 +1002,9 @@ func performLoginActionSuccessfully(_ body: NSDictionary) -> Bool {
 func currentLocation(controller: UIViewController)
 {
     let alertController = UIAlertController(title: "Allow Location Permission", message:
-        "\nIt is required to display near-by members, places, Events and listings in the app.", preferredStyle: UIAlertControllerStyle.alert)
-    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel,handler: nil))
-    alertController.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.default,handler: { action in
+        "\nIt is required to display near-by members, places, Events and listings in the app.", preferredStyle: UIAlertController.Style.alert)
+    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel,handler: nil))
+    alertController.addAction(UIAlertAction(title: "Settings", style: UIAlertAction.Style.default,handler: { action in
         locationSetting()
     }))
     controller.present(alertController, animated: true, completion: nil)
@@ -1014,15 +1014,15 @@ func currentLocation(controller: UIViewController)
 func gpsLocation(controller: UIViewController)
 {
     let alertController = UIAlertController(title: "Enable GPS for this device", message:
-        "\nIt is required to display Near-by Members, Places, Events and Listings in the App.\n 1. Go to Settings \n 2. Click on Privacy \n 3. Turn ON Location Services", preferredStyle: UIAlertControllerStyle.alert)
-    alertController.addAction(UIAlertAction(title: "Got It", style: UIAlertActionStyle.cancel,handler: nil))
+        "\nIt is required to display Near-by Members, Places, Events and Listings in the App.\n 1. Go to Settings \n 2. Click on Privacy \n 3. Turn ON Location Services", preferredStyle: UIAlertController.Style.alert)
+    alertController.addAction(UIAlertAction(title: "Got It", style: UIAlertAction.Style.cancel,handler: nil))
     controller.present(alertController, animated: true, completion: nil)
 }
 
 func locationSetting()
 {
     if #available(iOS 10.0, *) {
-        UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: { _ in })
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { _ in })
     } else {
         // Fallback on earlier versions
     }
@@ -1031,7 +1031,7 @@ func locationSetting()
 func photoPermissionSetting()
 {
     if #available(iOS 10.0, *) {
-        UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: { _ in })
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { _ in })
     } else {
         // Fallback on earlier versions
     }
@@ -1040,9 +1040,9 @@ func photoPermissionSetting()
 func photoPermission(controller: UIViewController)
 {
     let alertController = UIAlertController(title: "Allow Photos Permission", message:
-        "\nIt is required to choose pictures from the Photo Library to upload them as Profile Picture (during Sign up) and other photos acorss the app.", preferredStyle: UIAlertControllerStyle.alert)
-    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel,handler: nil))
-    alertController.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.default,handler: { action in
+        "\nIt is required to choose pictures from the Photo Library to upload them as Profile Picture (during Sign up) and other photos acorss the app.", preferredStyle: UIAlertController.Style.alert)
+    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel,handler: nil))
+    alertController.addAction(UIAlertAction(title: "Settings", style: UIAlertAction.Style.default,handler: { action in
         photoPermissionSetting()
     }))
     controller.present(alertController, animated: true, completion: nil)
@@ -1183,7 +1183,7 @@ func cropToBounds(_ image: UIImage, width: Double, height: Double) -> UIImage {
 //MARK: - Image Orientation
 func fixOrientation(img:UIImage) -> UIImage {
     
-    if (img.imageOrientation == UIImageOrientation.up) {
+    if (img.imageOrientation == UIImage.Orientation.up) {
         return img;
     }
     UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale);
@@ -1426,12 +1426,12 @@ extension UIView {
         return nil
     }
     func fadeIn(_ duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.alpha = 1.0
             }, completion: completion)  }
     
     func fadeOut(_ duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.alpha = 0.0
             }, completion: completion)
     }
@@ -2257,7 +2257,7 @@ func openMenuSlideOnView(_ mainView: UIView) {
 
 // Animation for Side Menu
 func animateCenterPanelXPosition(targetPosition: CGFloat, mainView:UIView ,completion: ((Bool) -> Void)! = nil) {
-    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIView.AnimationOptions(), animations: {
         mainView.frame.origin.x = targetPosition
         }, completion: completion)
 }
@@ -2273,7 +2273,7 @@ func displayAlert(_ title: String, error: String )->(){
 
 // Create Native Alert
 func displayAlertWithOtherButton(_ title: String, message: String ,otherButton:String , otherButtonAction:@escaping () -> ()){
-    alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
     if otherButton != "" {
         
         if otherButton.range(of: "Delete") != nil{
@@ -2531,14 +2531,14 @@ func saveFileInDocumentDirectory(_ images :[AnyObject]) ->([String]){
             }
             else if let imageT = image as? UIImage
             {
-                imageData =  UIImageJPEGRepresentation(imageT, 0.7)
+                imageData =  imageT.jpegData(compressionQuality: 0.7)
             }
            
         }
         else
         {
             // imageData = UIImagePNGRepresentation(image as! UIImage)
-            imageData =  UIImageJPEGRepresentation(image as! UIImage, 0.7)
+            imageData = (image as! UIImage).jpegData(compressionQuality: 0.7)
             //print("length \(imageData.count)")
             
         }
@@ -2561,7 +2561,8 @@ func saveFileInCacheDirectory(_ images :[String:UIImage]){
         let filePathToWrite = "\(paths)/\(filename)"
         if !(fileManager.fileExists(atPath: filePathToWrite)){
             //let imageData: NSData = UIImagePNGRepresentation(value as UIImage)!
-            let imageData: Data = NSData(data: UIImageJPEGRepresentation((value as UIImage), 0.7)!) as Data
+//            let imageData: Data = NSData(data: UIImageJPEGRepresentation((value as UIImage), 0.7)!) as Data
+            let imageData: Data = NSData(data: (value as! UIImage).jpegData(compressionQuality: 0.7)!) as Data
             //print("length1 \(imageData.count)")
             fileManager.createFile(atPath: filePathToWrite, contents: imageData, attributes: nil)
         }else{
@@ -2579,7 +2580,7 @@ func getImageFromCache(_ getImagePath:String) -> Data{
     {
         //Pick Image and Use accordingly
         let imageis: UIImage = UIImage(contentsOfFile: filePath)!
-        imageData = UIImagePNGRepresentation(imageis)!
+        imageData = imageis.pngData()!
         
     }
     else
@@ -2763,10 +2764,10 @@ class UIVerticalAlignLabel: UILabel {
 func setupImageTextInsideButton(_ button: UIButton) {
     let spacing: CGFloat = 6.0
     let imageSize: CGSize = (button.imageView?.frame.size)!
-    button.titleEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, -(imageSize.height + spacing), 0.0);
+    button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: -imageSize.width, bottom: -(imageSize.height + spacing), right: 0.0);
     let labelString = NSString(string: button.titleLabel!.text!)
-    let titleSize = labelString.size(withAttributes: [NSAttributedStringKey.font: button.titleLabel!.font])
-    button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0.0, 0.0, -titleSize.width);
+    let titleSize = labelString.size(withAttributes: [NSAttributedString.Key.font: button.titleLabel!.font])
+    button.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0.0, bottom: 0.0, right: -titleSize.width);
 }
 //MARK: - Table View Cell Animator
 
@@ -2834,12 +2835,12 @@ extension UIButton {
         return image!
     }
     
-    @objc func setBackgroundColor(_ color: UIColor, forUIControlState state: UIControlState) {
+    @objc func setBackgroundColor(_ color: UIColor, for: UIControl.State, state: UIControl.State) {
         self.setBackgroundImage(imageWithColor(color), for: state)
     }
     
     func setSelectedButton(){
-        self.setTitleColor(buttonColor, for: UIControlState())
+        self.setTitleColor(buttonColor, for: UIControl.State())
         self.backgroundColor = tableViewBgColor
         for ob in self.subviews{
             if ob.tag == 1001{
@@ -2855,7 +2856,7 @@ extension UIButton {
     }
     
     func setUnSelectedButton(){
-        self.setTitleColor(textColorMedium, for: UIControlState())
+        self.setTitleColor(textColorMedium, for: UIControl.State())
         self.backgroundColor = tableViewBgColor
         for ob in self.subviews{
             if ob.tag == 1000{
@@ -3256,10 +3257,10 @@ public extension UISearchBar {
         let svs = subviews.flatMap { $0.subviews }
         guard let tf = (svs.filter { $0 is UITextField }).first as? UITextField else { return }
         tf.attributedPlaceholder = NSAttributedString(string:"\(placeholderText)",
-            attributes:[NSAttributedStringKey.foregroundColor: textColorPrime])
+            attributes:[NSAttributedString.Key.foregroundColor: textColorPrime])
         tf.font = UIFont(name: fontBold, size: FONTSIZENormal )
         if let glassIconView = tf.leftView as? UIImageView {
-            glassIconView.image = glassIconView.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            glassIconView.image = glassIconView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             glassIconView.tintColor = textColorPrime
         }
     }
@@ -3268,7 +3269,7 @@ public extension UISearchBar {
         self.barTintColor = UIColor.clear
         self.tintColor = textColorPrime
         self.backgroundColor = navColor
-        self.searchBarStyle = UISearchBarStyle.minimal
+        self.searchBarStyle = UISearchBar.Style.minimal
         self.setPlaceholderWithColor(placeholderText)
         self.becomeFirstResponder()
         self.layer.borderWidth = 0;
@@ -3485,7 +3486,7 @@ func soundEffect(_ sound : String) {
         do {
             if let bundle = Bundle.main.path(forResource: sound, ofType: "wav") {
                 let alertSound = URL(fileURLWithPath: bundle)
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
                 try AVAudioSession.sharedInstance().setActive(true)
                 try audioPlayer = AVAudioPlayer(contentsOf: alertSound)
                 audioPlayer.prepareToPlay()
@@ -3503,12 +3504,12 @@ func soundEffect(_ sound : String) {
 
 func cartButtonView(functionOf:UIViewController) -> UIButton{
     
-    let tempbutton   = UIButton(type: UIButtonType.system) as UIButton
+    let tempbutton   = UIButton(type: UIButton.ButtonType.system) as UIButton
     tempbutton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
     tempbutton.backgroundColor = UIColor.clear
     tempbutton.titleLabel?.font = UIFont(name: "fontAwesome", size: 18.0)
-    tempbutton.setTitle("\(storeCartIcon)", for: UIControlState.normal)
-    tempbutton.addTarget(functionOf, action: Selector(("showCart")), for: UIControlEvents.touchUpInside)
+    tempbutton.setTitle("\(storeCartIcon)", for: UIControl.State.normal)
+    tempbutton.addTarget(functionOf, action: Selector(("showCart")), for: UIControl.Event.touchUpInside)
     
     //Replace random with count of products in cart
     let countLabel = createLabel(CGRect(x: 15, y: -3, width: 15, height: 15), text: "\(cartCount!)", alignment: .center, textColor: textColorLight)
@@ -3930,7 +3931,7 @@ func getThumbnailFrom(path: URL) -> UIImage? {
         let asset = AVURLAsset(url: path , options: nil)
         let imgGenerator = AVAssetImageGenerator(asset: asset)
         imgGenerator.appliesPreferredTrackTransform = true
-        let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+        let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
         let thumbnail = UIImage(cgImage: cgImage)
         return thumbnail
         
@@ -3990,7 +3991,7 @@ class SearchBarContainerView: UIView {
     init(_ ob : UIViewController, customSearchBar: UISearchBar, isKeyboardAppear: Bool = true)
     {
         searchBar = customSearchBar
-        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.searchBarStyle = UISearchBar.Style.minimal
         searchBar.barTintColor = UIColor.clear
         searchBar.tintColor = textColorLight
         searchBar.backgroundColor = UIColor.clear
@@ -4163,13 +4164,13 @@ class ActivityShareItemSources : NSObject,UIActivityItemSource
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         
         
-        let jpgImage = UIImageJPEGRepresentation(image!, 0.8)
+        let jpgImage = image.jpegData(compressionQuality: 0.8)
         return jpgImage!
     }
     
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any?
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any?
     {
-        let jpgImage = UIImageJPEGRepresentation(image!, 0.8)
+        let jpgImage = image.jpegData(compressionQuality: 0.8)
         return ["text": text, "image": jpgImage!, "url": url]
         //return ["text": text, "url": url]
     }

@@ -215,7 +215,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         lblOpacitytext.text = NSLocalizedString("Opacity",comment: "")
         btnSend.isHidden = true
         activityIndicatorView.stopAnimating()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
         tapGesture.cancelsTouchesInView = false
         tapGesture.delegate = self
@@ -240,7 +240,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
                 asset.imageHeight = requiredHeight
                 arrSelectedAssests.remove(at: index)
                 arrSelectedAssests.insert(asset, at: index)
-                if let data = UIImagePNGRepresentation(img) {
+                if let data = img.pngData() {
                 totalData.append(data)
                 }
             }
@@ -351,7 +351,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     {
         if let videoSize = UserDefaults.standard.object(forKey: "videoSize") as? String, let v = Double(videoSize), v <= Double(data.count / 1048576)
         {
-            let alertController = UIAlertController(title: "\(NSLocalizedString("Maximum allowed size for Media is", comment: "")) \(videoSize)\(NSLocalizedString("MB. Please try uploading a smaller size file.", comment: ""))", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "\(NSLocalizedString("Maximum allowed size for Media is", comment: "")) \(videoSize)\(NSLocalizedString("MB. Please try uploading a smaller size file.", comment: ""))", message: nil, preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                 let viewControllers = self.navigationController!.viewControllers
                 for aViewController in viewControllers {
@@ -366,7 +366,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         }
         else if let videoSize = UserDefaults.standard.object(forKey: "rest_space") as? Int, videoSize >= 0 , Double(videoSize) <= Double((data.count) / 1048576)
         {
-            let alertController = UIAlertController(title:  "\(NSLocalizedString("Remaining Storage Limit for your account is", comment: "")) \(videoSize)\(NSLocalizedString("MB. Please try uploading a smaller size file or delete your previously uploaded Media.", comment: ""))", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title:  "\(NSLocalizedString("Remaining Storage Limit for your account is", comment: "")) \(videoSize)\(NSLocalizedString("MB. Please try uploading a smaller size file or delete your previously uploaded Media.", comment: ""))", message: nil, preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                 let viewControllers = self.navigationController!.viewControllers
                 for aViewController in viewControllers {
@@ -414,7 +414,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     func adjustContentSize(tv: UITextView){
         let deadSpace = tv.bounds.size.height - tv.contentSize.height
         let inset = max(0, deadSpace/2.0)
-        tv.contentInset = UIEdgeInsetsMake(inset, tv.contentInset.left, inset, tv.contentInset.right)
+        tv.contentInset = UIEdgeInsets(top: inset, left: tv.contentInset.left, bottom: inset, right: tv.contentInset.right)
     }
     //MARK: UITextView Delegate
     func textViewDidChangeSelection(_ textView: UITextView) {
@@ -616,7 +616,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
             let dic = arrFilterImages[indexPath.row]
             if let filter = CIFilter(name: "\(dic["effect"]!)")
             {
-                self.view.bringSubview(toFront: activityMainView)
+                self.view.bringSubviewToFront(activityMainView)
                 activityMainView.startAnimating()
                 DispatchQueue.global(qos:.userInteractive).async {
                     let ciContext = CIContext(options: nil)
@@ -715,7 +715,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     }
     //MARK:- IBActions and Methods
     @objc private func keyboardWillChangeFrame(_ notification: Notification) {
-        if let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             var keyboardHeight = UIScreen.main.bounds.height - endFrame.origin.y
             if #available(iOS 11, *) {
                 if keyboardHeight > 0 {
@@ -809,12 +809,12 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     
     @IBAction func btnEraseDrawingAction(_ sender: UIButton) {
         if sender.tag == 103 {
-            self.containerViewCapture.bringSubview(toFront: viewDrawingActive)
-            self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
-            self.view.bringSubview(toFront: viewBrush)
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingActive)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
+            self.view.bringSubviewToFront(viewBrush)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
             swipeUp.isEnabled = false
             swipeDown.isEnabled = false
             tapGesture.isEnabled = false
@@ -829,11 +829,11 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         }
         else
         {
-            self.containerViewCapture.bringSubview(toFront: viewMovingActive)
-            self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.containerViewCapture.bringSubviewToFront(viewMovingActive)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
             swipeUp.isEnabled = true
             swipeDown.isEnabled = true
             tapGesture.isEnabled = true
@@ -848,12 +848,12 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         {
             currentlySelectedAsset.isViewDrawVisible = true
             viewDrawingActive.isUserInteractionEnabled = false
-            self.containerViewCapture.bringSubview(toFront: viewDrawingActive)
-            self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
-            self.view.bringSubview(toFront: viewBrush)
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingActive)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
+            self.view.bringSubviewToFront(viewBrush)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
             tapGesture.isEnabled = true
             sender.tag = 1001
             sender.setImage(UIImage(named: "StoryIcons_FilterBrush")!.maskWithColor(color: navColor), for: .normal)
@@ -873,11 +873,11 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         }
         else
         {
-            self.containerViewCapture.bringSubview(toFront: viewMovingActive)
-            self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.containerViewCapture.bringSubviewToFront(viewMovingActive)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
             swipeUp.isEnabled = true
             swipeDown.isEnabled = true
             tapGesture.isEnabled = true
@@ -899,12 +899,12 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         }
         setViewHideShow(view: viewTextViewLarge, hidden: true)
         // viewDrawContainer.isUserInteractionEnabled = false
-        self.containerViewCapture.bringSubview(toFront: viewMovingActive)
-        self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
+        self.containerViewCapture.bringSubviewToFront(viewMovingActive)
+        self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
         setViewHideShow(view: viewMovingActive, hidden: false)
-        self.view.bringSubview(toFront: viewGrowingTextField)
-        self.view.bringSubview(toFront: viewFilterIcon)
-        self.view.bringSubview(toFront: viewEffectsIcon)
+        self.view.bringSubviewToFront(viewGrowingTextField)
+        self.view.bringSubviewToFront(viewFilterIcon)
+        self.view.bringSubviewToFront(viewEffectsIcon)
         
         
         if let textString = txtViewLarge.text, textString.count != 0
@@ -945,10 +945,10 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         btnBrush.tag = 101
         btnBrush.setImage(UIImage(named: "StoryIcons_FilterBrush")!.maskWithColor(color: .white), for: .normal)
         setViewHideShow(view: viewTextViewLarge, hidden: false)
-        self.view.bringSubview(toFront: viewGrowingTextField)
-        self.view.bringSubview(toFront: viewFilterIcon)
-        self.view.bringSubview(toFront: viewEffectsIcon)
-        self.containerViewCapture.bringSubview(toFront: viewTextViewLarge)
+        self.view.bringSubviewToFront(viewGrowingTextField)
+        self.view.bringSubviewToFront(viewFilterIcon)
+        self.view.bringSubviewToFront(viewEffectsIcon)
+        self.containerViewCapture.bringSubviewToFront(viewTextViewLarge)
         txtViewLarge.text = nil
         txtViewLarge.becomeFirstResponder()
         swipeUp.isEnabled = false
@@ -983,7 +983,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         swipeUp.isEnabled = true
         swipeDown.isEnabled = true
         tapGesture.isEnabled = true
-        self.view.bringSubview(toFront: viewFilters)
+        self.view.bringSubviewToFront(viewFilters)
         
         viewFiltersCollectionConstraintHeight.constant = viewFilterHeightConstraintConstant
         UIView.animate(withDuration: 0.3){
@@ -1008,7 +1008,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         tapGesture.isEnabled = true
         viewDrawingActive.isUserInteractionEnabled = false
         
-        self.view.bringSubview(toFront: viewSticker)
+        self.view.bringSubviewToFront(viewSticker)
         viewStickerHeightConstraint.constant = viewStcikerHeightConstraintConstant
         UIView.animate(withDuration: 0.3){
             self.view.layoutIfNeeded()
@@ -1048,11 +1048,11 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         btnBrush.setImage(UIImage(named: "StoryIcons_FilterBrush")!.maskWithColor(color: .white), for: .normal)
         btnTextDraw.tag = 102
         btnTextDraw.setImage(UIImage(named: "StoryIcons_FilterText")!.maskWithColor(color: .white), for: .normal)
-        self.containerViewCapture.bringSubview(toFront: viewMovingActive)
-        self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
-        self.view.bringSubview(toFront: viewGrowingTextField)
-        self.view.bringSubview(toFront: viewFilterIcon)
-        self.view.bringSubview(toFront: viewEffectsIcon)
+        self.containerViewCapture.bringSubviewToFront(viewMovingActive)
+        self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
+        self.view.bringSubviewToFront(viewGrowingTextField)
+        self.view.bringSubviewToFront(viewFilterIcon)
+        self.view.bringSubviewToFront(viewEffectsIcon)
     }
     @IBAction func btnCropAction(_ sender: UIButton) {
         presentCropViewController()
@@ -2219,7 +2219,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         activityIndicatorView.startAnimating()
         
         self.imgAPIAppearenceView.isHidden = false
-        self.view.bringSubview(toFront: self.imgAPIAppearenceView)
+        self.view.bringSubviewToFront(self.imgAPIAppearenceView)
         
         for (index, var asset) in arrSelectedAssests.enumerated()
         {
@@ -2305,7 +2305,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     //MARK:- Gesture Methods and Delegates
     
     @objc func rotate(gesture : UIRotationGestureRecognizer){
-        if gesture.state == UIGestureRecognizerState.began || gesture.state == UIGestureRecognizerState.changed{
+        if gesture.state == UIGestureRecognizer.State.began || gesture.state == UIGestureRecognizer.State.changed{
             //print("UIRotationGestureRecognizer")
             gesture.view?.transform = (gesture.view?.transform)!.rotated(by: gesture.rotation)
             gesture.rotation = 0
@@ -2313,7 +2313,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     @objc func scale(gesture : UIPinchGestureRecognizer){
-        if gesture.state == UIGestureRecognizerState.began || gesture.state == UIGestureRecognizerState.changed{
+        if gesture.state == UIGestureRecognizer.State.began || gesture.state == UIGestureRecognizer.State.changed{
             //print("UIPinchGestureRecognizer")
             gesture.view?.transform = (gesture.view?.transform)!.scaledBy(x: gesture.scale, y: gesture.scale)
             gesture.view?.layer.contentsScale = UIScreen.main.scale + (4 * gesture.scale)
@@ -2363,7 +2363,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
     //        self.labelLetter.contentScaleFactor = scaleValue * x //scaleValue * native content scale  (2 on iPhone 8 and 3 on iPhone 8 plus)
     //    }
     @objc func pan(gesture : UIPanGestureRecognizer){
-        if gesture.state == UIGestureRecognizerState.began || gesture.state == UIGestureRecognizerState.changed
+        if gesture.state == UIGestureRecognizer.State.began || gesture.state == UIGestureRecognizer.State.changed
         {
             let point = gesture.location(in: view)
             let superBounds = viewMovingActive.frame
@@ -2413,22 +2413,22 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
             }
             viewDrawingActive.isUserInteractionEnabled = true
             viewDrawingUndoRedo10.isHidden = false
-            self.containerViewCapture.bringSubview(toFront: viewDrawingActive)
-            self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingActive)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
             setViewHideShow(view: viewDrawingActive, hidden: false)
-            self.view.bringSubview(toFront: viewBrush)
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.view.bringSubviewToFront(viewBrush)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
         }
         else if viewEffectsIconHeightConstraint.constant == viewEffectsIconHeightConstraintConstant
         {
             swipeUp.isEnabled = true
             swipeDown.isEnabled = true
             tapGesture.isEnabled = true
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
             setViewHideShow(view: viewGrowingTextField, hidden: false)
             setViewHideShow(view: viewFilterIcon, hidden: false)
             setViewHideShow(view: viewCropContainer, hidden: true)
@@ -2496,7 +2496,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         view.endEditing(true)
         if viewDrawingActive.isUserInteractionEnabled == false
         {
-            if gesture.direction == UISwipeGestureRecognizerDirection.up {
+            if gesture.direction == UISwipeGestureRecognizer.Direction.up {
                 setViewHideShow(view: viewGrowingTextField, hidden: true)
                 setViewHideShow(view: viewFilterIcon, hidden: true)
                 stackViewEffectsIcon.alpha = 1.0
@@ -2506,10 +2506,10 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
                     self.view.layoutIfNeeded()
                 }
             }
-            else if gesture.direction == UISwipeGestureRecognizerDirection.down {
-                self.view.bringSubview(toFront: viewGrowingTextField)
-                self.view.bringSubview(toFront: viewFilterIcon)
-                self.view.bringSubview(toFront: viewEffectsIcon)
+            else if gesture.direction == UISwipeGestureRecognizer.Direction.down {
+                self.view.bringSubviewToFront(viewGrowingTextField)
+                self.view.bringSubviewToFront(viewFilterIcon)
+                self.view.bringSubviewToFront(viewEffectsIcon)
                 setViewHideShow(view: viewGrowingTextField, hidden: false)
                 setViewHideShow(view: viewFilterIcon, hidden: false)
                 stackViewEffectsIcon.alpha = 0.0
@@ -2543,13 +2543,13 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
             }
             viewDrawingActive.isUserInteractionEnabled = true
             viewDrawingUndoRedo10.isHidden = false
-            self.containerViewCapture.bringSubview(toFront: viewDrawingActive)
-            self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingActive)
+            self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
             setViewHideShow(view: viewDrawingActive, hidden: false)
-            self.view.bringSubview(toFront: viewBrush)
-            self.view.bringSubview(toFront: viewGrowingTextField)
-            self.view.bringSubview(toFront: viewFilterIcon)
-            self.view.bringSubview(toFront: viewEffectsIcon)
+            self.view.bringSubviewToFront(viewBrush)
+            self.view.bringSubviewToFront(viewGrowingTextField)
+            self.view.bringSubviewToFront(viewFilterIcon)
+            self.view.bringSubviewToFront(viewEffectsIcon)
         }
         if viewFiltersCollectionConstraintHeight.constant == viewFilterHeightConstraintConstant
         {
@@ -2557,7 +2557,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
             UIView.animate(withDuration: 0.3){
                 self.view.layoutIfNeeded()
             }
-            if gesture.direction == UISwipeGestureRecognizerDirection.up
+            if gesture.direction == UISwipeGestureRecognizer.Direction.up
             {
                 setViewHideShow(view: viewCropContainer, hidden: false)
                 stackViewEffectsIcon.alpha = 1.0
@@ -2574,7 +2574,7 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
             UIView.animate(withDuration: 0.3){
                 self.view.layoutIfNeeded()
             }
-            if gesture.direction == UISwipeGestureRecognizerDirection.up
+            if gesture.direction == UISwipeGestureRecognizer.Direction.up
             {
                 setViewHideShow(view: viewCropContainer, hidden: false)
                 stackViewEffectsIcon.alpha = 1.0
@@ -2672,12 +2672,12 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         swipeUp.isEnabled = true
         swipeDown.isEnabled = true
         tapGesture.isEnabled = true
-        self.containerViewCapture.bringSubview(toFront: viewMovingActive)
-        self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
+        self.containerViewCapture.bringSubviewToFront(viewMovingActive)
+        self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
         setViewHideShow(view: viewMovingActive, hidden: false)
-        self.view.bringSubview(toFront: viewGrowingTextField)
-        self.view.bringSubview(toFront: viewFilterIcon)
-        self.view.bringSubview(toFront: viewEffectsIcon)
+        self.view.bringSubviewToFront(viewGrowingTextField)
+        self.view.bringSubviewToFront(viewFilterIcon)
+        self.view.bringSubviewToFront(viewEffectsIcon)
         self.setObjectInMovingView(strData: strImage, dataType: .stickerImage, frame: CGRect(x: 0, y: 0, width: 120, height: 120), strColor: .white)
     }
     
@@ -2703,12 +2703,12 @@ class StoryController: UIViewController, UICollectionViewDataSource, UICollectio
         swipeUp.isEnabled = true
         swipeDown.isEnabled = true
         tapGesture.isEnabled = true
-        self.containerViewCapture.bringSubview(toFront: viewMovingActive)
-        self.containerViewCapture.bringSubview(toFront: viewDrawingUndoRedo10)
+        self.containerViewCapture.bringSubviewToFront(viewMovingActive)
+        self.containerViewCapture.bringSubviewToFront(viewDrawingUndoRedo10)
         setViewHideShow(view: viewMovingActive, hidden: false)
-        self.view.bringSubview(toFront: viewGrowingTextField)
-        self.view.bringSubview(toFront: viewFilterIcon)
-        self.view.bringSubview(toFront: viewEffectsIcon)
+        self.view.bringSubviewToFront(viewGrowingTextField)
+        self.view.bringSubviewToFront(viewFilterIcon)
+        self.view.bringSubviewToFront(viewEffectsIcon)
         self.setObjectInMovingView(strData: strEmoji, dataType: .emojiText, frame: CGRect(x: 0, y: 0, width: 120, height: 120), strColor: .white)
         
     }

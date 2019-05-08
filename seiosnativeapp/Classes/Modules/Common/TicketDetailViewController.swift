@@ -38,8 +38,8 @@ class TicketDetailViewController: UIViewController, UITableViewDataSource, UITab
         TicketDetailTableview = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .grouped)
         TicketDetailTableview.register(TicketDetailTableCell.self, forCellReuseIdentifier: "Cell")
         TicketDetailTableview.estimatedRowHeight = 60.0
-        TicketDetailTableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        TicketDetailTableview.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0)
+        TicketDetailTableview.separatorStyle = UITableViewCell.SeparatorStyle.none
+        TicketDetailTableview.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         TicketDetailTableview.backgroundColor = tableViewBgColor
         self.TicketDetailTableview.isOpaque = false
         self.view.addSubview(TicketDetailTableview)
@@ -99,7 +99,7 @@ class TicketDetailViewController: UIViewController, UITableViewDataSource, UITab
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TicketDetailTableCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         let title = self.keysArray[indexPath.row]
         let titleInfo = self.valueArray[indexPath.row]

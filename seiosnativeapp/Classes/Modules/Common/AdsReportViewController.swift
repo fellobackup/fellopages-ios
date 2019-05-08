@@ -68,8 +68,8 @@ class AdsReportViewController: UIView, UITextFieldDelegate {
             
             let boldFont = CTFontCreateWithName((fontBold as CFString?)!, FONTSIZELarge+4, nil)
             let range = (addDescriptionDetailString as NSString).range(of: addDescriptionDetailString)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
-            mutableAttributedString?.addAttribute(NSAttributedStringKey(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String as String), value: boldFont, range: range)
+            mutableAttributedString?.addAttribute(NSAttributedString.Key(rawValue: kCTForegroundColorAttributeName as String as String), value:textColorDark , range: range)
             return mutableAttributedString
         })
         
@@ -89,15 +89,15 @@ class AdsReportViewController: UIView, UITextFieldDelegate {
             self.label1.isHidden = false
             self.label1.titleLabel?.font = UIFont(name: "FontAwesome", size: FONTSIZELarge)
             self.label1.tag = Int(k)!
-            self.label1.addTarget(view, action:Selector(("pressedAd:")), for: UIControlEvents.touchUpInside)
-            self.label1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            self.label1.addTarget(view, action:Selector(("pressedAd:")), for: UIControl.Event.touchUpInside)
+            self.label1.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
 //            self.addSubview(self.label1)
 
 //            self.label3 = createButton(CGRect(x:self.label1.frame.origin.x + self.label1.bounds.width + (2 * PADING),y:origin_labelheight_y, width:150 , height:25), title: "\(v)", border: false,bgColor: false, textColor: textColorDark)
             self.label3 = createButton(CGRect(x: 20 + (4 * PADING),y:origin_labelheight_y, width:150 , height:25), title: "\(v)", border: false,bgColor: false, textColor: textColorDark)
             self.label3.isHidden = false
             self.label3.titleLabel?.font = UIFont(name: fontName, size: FONTSIZELarge)
-            self.label3.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            self.label3.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             if self.label3.bounds.height >  self.label1.bounds.height {
                 origin_labelheight_y  = origin_labelheight_y + self.label3.bounds.height + 12
             }
@@ -111,7 +111,7 @@ class AdsReportViewController: UIView, UITextFieldDelegate {
         }
         
         otherReasonText = createTextField(CGRect(x: 4 * PADING, y: origin_labelheight_y - 5, width: self.bounds.width - (4 * PADING ), height: 30), borderColor: borderColorClear , placeHolderText:  NSLocalizedString("Type your reason here...",  comment: ""), corner: true)
-        otherReasonText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type your reason here...",  comment: ""), attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        otherReasonText.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Type your reason here...",  comment: ""), attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         otherReasonText.font =  UIFont(name: fontBold, size: FONTSIZEMedium)
         otherReasonText.delegate = self
         otherReasonText.backgroundColor = UIColor.white
@@ -130,15 +130,15 @@ class AdsReportViewController: UIView, UITextFieldDelegate {
         done.layer.borderColor = navColor.cgColor
         done.layer.cornerRadius = cornerRadiusSmall
         self.done.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-       // self.done.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+       // self.done.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
         self.addSubview(self.done)
-        self.done.addTarget(view, action:Selector(("removeOtherReason")), for: UIControlEvents.touchUpInside)
+        self.done.addTarget(view, action:Selector(("removeOtherReason")), for: UIControl.Event.touchUpInside)
         
         self.undo = createButton(CGRect(x:self.bounds.width/2.0 + 5,y:origin_labelheight_y ,width:self.bounds.width/2 - 20 , height:40), title: NSLocalizedString("Cancel",  comment: ""), border: true,bgColor: true, textColor: textColorPrime)
-//        self.undo.setImage(UIImage(named: "cross")!.maskWithColor(color: textColorDark), for: UIControlState())
+//        self.undo.setImage(UIImage(named: "cross")!.maskWithColor(color: textColorDark), for: UIControl.State())
         self.undo.titleLabel?.font = UIFont(name: fontBold, size: FONTSIZEMedium)
-       // self.undo.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-        self.undo.addTarget(view, action: Selector(("doneAfterReportSelect")), for: UIControlEvents.touchUpInside)
+       // self.undo.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        self.undo.addTarget(view, action: Selector(("doneAfterReportSelect")), for: UIControl.Event.touchUpInside)
         self.undo.tag = 1002
         undo.layer.shadowColor = navColor.cgColor
         undo.layer.borderColor = navColor.cgColor
@@ -154,9 +154,9 @@ class AdsReportViewController: UIView, UITextFieldDelegate {
         btnSubmit.layer.shadowColor = navColor.cgColor
         btnSubmit.layer.borderColor = navColor.cgColor
         btnSubmit.layer.cornerRadius = cornerRadiusSmall
-      //  self.btnSubmit.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+      //  self.btnSubmit.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
         self.addSubview(self.btnSubmit)
-        self.btnSubmit.addTarget(view, action:Selector(("submitReasonPressed")), for: UIControlEvents.touchUpInside)
+        self.btnSubmit.addTarget(view, action:Selector(("submitReasonPressed")), for: UIControl.Event.touchUpInside)
         self.btnSubmit.alpha = 0.3
         
         origin_labelheight_y  = origin_labelheight_y + self.label3.bounds.height + 15

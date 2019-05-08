@@ -71,9 +71,9 @@ class ClassifiedSearchViewController: UIViewController , UITableViewDataSource, 
         self.navigationItem.leftBarButtonItem = barButtonItem
 
         
-        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItemStyle.plain , target:self , action: #selector(ClassifiedSearchViewController.filter))
+        let filter = UIBarButtonItem( title: fiterIcon , style: UIBarButtonItem.Style.plain , target:self , action: #selector(ClassifiedSearchViewController.filter))
         
-        filter.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControlState())
+        filter.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome", size: FONTSIZEExtraLarge)!],for: UIControl.State())
         filter.tintColor = textColorPrime
         self.navigationItem.rightBarButtonItem = filter
         
@@ -97,7 +97,7 @@ class ClassifiedSearchViewController: UIViewController , UITableViewDataSource, 
         classifiedTableView.dataSource = self
         classifiedTableView.delegate = self
         classifiedTableView.estimatedRowHeight = 160.0
-        classifiedTableView.rowHeight = UITableViewAutomaticDimension
+        classifiedTableView.rowHeight = UITableView.automaticDimension
         classifiedTableView.backgroundColor = UIColor.clear
         classifiedTableView.separatorColor = UIColor.clear
         view.addSubview(classifiedTableView)
@@ -112,7 +112,7 @@ class ClassifiedSearchViewController: UIViewController , UITableViewDataSource, 
         activityIndicatorView.startAnimating()
         classifiedTableView.tableFooterView = footerView
         classifiedTableView.tableFooterView?.isHidden = true
-         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableViewStyle.plain)
+         tblAutoSearchSuggestions = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420), style: UITableView.Style.plain)
         tblAutoSearchSuggestions.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         tblAutoSearchSuggestions.dataSource = self
         tblAutoSearchSuggestions.delegate = self
@@ -272,7 +272,7 @@ class ClassifiedSearchViewController: UIViewController , UITableViewDataSource, 
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(ClassifiedSearchViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(ClassifiedSearchViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.view.addSubview(self.refreshButton)
@@ -389,7 +389,7 @@ class ClassifiedSearchViewController: UIViewController , UITableViewDataSource, 
         else
         {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ClassifiedTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        cell.selectionStyle = UITableViewCell.SelectionStyle.blue
         
         
         var index:Int!
@@ -720,7 +720,7 @@ class ClassifiedSearchViewController: UIViewController , UITableViewDataSource, 
         classifiedTableView.tableFooterView?.isHidden = true
         searchDic.removeAll(keepingCapacity: false)
         self.navigationController?.navigationBar.isTranslucent = true
-        if (self.isMovingFromParentViewController){
+        if (self.isMovingFromParent){
             if fromGlobSearch{
                 conditionalForm = ""
                 loadFilter("search")

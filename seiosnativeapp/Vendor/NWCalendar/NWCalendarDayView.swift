@@ -48,15 +48,15 @@ class NWCalendarDayView: UIView {
         
         if dateString1 == dateString
         {
-            dayButton.setTitle("\(day!.day!)", for: UIControlState())
+            dayButton.setTitle("\(day!.day!)", for: UIControl.State())
             backgroundColor = kSelectedColor
-            dayButton.setTitleColor(UIColor.blue, for: UIControlState())
+            dayButton.setTitleColor(UIColor.blue, for: UIControl.State())
             dayButton.setTitleColor(UIColor.blue, for: .disabled)
 
         }
         else
         {
-         dayButton.setTitle("\(day!.day!)", for: UIControlState())
+            dayButton.setTitle("\(day!.day!)", for: UIControl.State())
         }
       
  
@@ -88,13 +88,13 @@ class NWCalendarDayView: UIView {
       if isSelected
       {
         backgroundColor = kSelectedColor
-        dayButton.setTitleColor(UIColor.white, for: UIControlState())
+        dayButton.setTitleColor(UIColor.white, for: UIControl.State())
         dayButton.setTitleColor(UIColor.white, for: .disabled)
       }
       else
       {
         setNotSelectedBackgroundColor()
-        dayButton.setTitleColor(kAvailableColor, for: UIControlState())
+        dayButton.setTitleColor(kAvailableColor, for: UIControl.State())
         dayButton.setTitleColor(kNotAvailableColor, for: .disabled)
       }
     }
@@ -111,7 +111,7 @@ class NWCalendarDayView: UIView {
     dayButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
     dayButton.titleLabel?.textAlignment = .center
     dayButton.titleLabel?.font = kDayFont
-    dayButton.setTitleColor(kAvailableColor, for: UIControlState())
+    dayButton.setTitleColor(kAvailableColor, for: UIControl.State())
     dayButton.setTitleColor(kNotAvailableColor, for: .disabled)
     dayButton.addTarget(self, action: #selector(NWCalendarDayView.dayButtonPressed(_:)), for: .touchUpInside)
     addSubview(dayButton)

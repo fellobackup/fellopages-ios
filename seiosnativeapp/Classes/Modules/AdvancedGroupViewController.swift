@@ -272,17 +272,17 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
         mainView.addSubview( categoryTableView)
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(AdvancedGroupViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(AdvancedGroupViewController.refresh), for: UIControl.Event.valueChanged)
         advGroupTableView.addSubview(refresher)
         
         refresher1 = UIRefreshControl()
         refresher1.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher1.addTarget(self, action: #selector(AdvancedGroupViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher1.addTarget(self, action: #selector(AdvancedGroupViewController.refresh), for: UIControl.Event.valueChanged)
         myAdvGroupTableView.addSubview(refresher1)
         
         refresher2 = UIRefreshControl()
         refresher2.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher2.addTarget(self, action: #selector(AdvancedGroupViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher2.addTarget(self, action: #selector(AdvancedGroupViewController.refresh), for: UIControl.Event.valueChanged)
         categoryTableView.addSubview(refresher2)
         
         self.contentIcon = createLabel(CGRect(x: self.view.bounds.width/2 - 30,y: self.view.bounds.height/2-50,width: 60 , height: 50), text: NSLocalizedString("\(groupIcon)",  comment: "") , alignment: .center, textColor: textColorMedium)
@@ -302,7 +302,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
         self.refreshButton.backgroundColor = bgColor
         self.refreshButton.layer.borderColor = navColor.cgColor
         self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-        self.refreshButton.addTarget(self, action: #selector(AdvancedGroupViewController.browseEntries), for: UIControlEvents.touchUpInside)
+        self.refreshButton.addTarget(self, action: #selector(AdvancedGroupViewController.browseEntries), for: UIControl.Event.touchUpInside)
         self.refreshButton.layer.cornerRadius = 5.0
         self.refreshButton.layer.masksToBounds = true
         self.mainView.addSubview(self.refreshButton)
@@ -805,7 +805,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: self.adImageView.bounds.height + 10 + self.adImageView.frame.origin.y, width: 70, height: 30))
         
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -919,7 +919,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
 //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-80,y: self.adImageView.bounds.height + 10 + self.adImageView.frame.origin.y, width: 70, height: 30))
 //
 //        adCallToActionButton.setTitle(
-//            nativeAd.callToAction, for: UIControlState())
+//            nativeAd.callToAction, for: UIControl.State())
 //
 //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
 //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -1033,7 +1033,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: appInstallAdView.bounds.width-75, y:(appInstallAdView.imageView as! UIImageView).bounds.height + 15 + (appInstallAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1113,7 +1113,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: contentAdView.bounds.width-75, y: (contentAdView.imageView as! UIImageView).bounds.height + 15 + (contentAdView.imageView as! UIImageView).frame.origin.y,width: 70,height: 30)
         
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1714,8 +1714,8 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                                     if (response["canCreate"] as! Bool == true)
                                     {
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
-                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedGroupViewController.addNewPage))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
+                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvancedGroupViewController.addNewPage))
                                         self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
                                         addPage.tintColor = textColorPrime
@@ -1794,8 +1794,8 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                                         if (response["canCreate"] as! Bool == true)
                                         {
                                             
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
-                                            let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedGroupViewController.addNewPage))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
+                                            let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvancedGroupViewController.addNewPage))
                                             self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                             searchItem.tintColor = textColorPrime
                                             addPage.tintColor = textColorPrime
@@ -1804,7 +1804,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                                         }
                                         else
                                         {
-                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
+                                            let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
                                             self.navigationItem.rightBarButtonItem = searchItem
                                             searchItem.tintColor = textColorPrime
                                             
@@ -1878,8 +1878,8 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                                     if (response["canCreate"] as! Bool == true)
                                     {
                                         
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
-                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(AdvancedGroupViewController.addNewPage))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
+                                        let addPage = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(AdvancedGroupViewController.addNewPage))
                                         self.navigationItem.setRightBarButtonItems([addPage,searchItem], animated: true)
                                         searchItem.tintColor = textColorPrime
                                         addPage.tintColor = textColorPrime
@@ -1891,7 +1891,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                                     }
                                     else
                                     {
-                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
+                                        let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(AdvancedGroupViewController.searchItem))
                                         self.navigationItem.rightBarButtonItem = searchItem
                                         searchItem.tintColor = textColorPrime
                                         
@@ -2110,7 +2110,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
         if tableView.tag == 11
         {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.backgroundColor = tableViewBgColor
             cell.textLabel?.text = guttermenuoption[(indexPath as NSIndexPath).row]
             return cell
@@ -2125,7 +2125,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
             {
                 advGroupTableView.register(NativeGroupCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = advGroupTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeGroupCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_page-1)
@@ -2290,7 +2290,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                 let cell = advGroupTableView.dequeueReusableCell(withIdentifier: "CellThree1") as! GroupTableViewCell
                 
                 
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = bgColor
                 
                 var pageInfo:NSDictionary!
@@ -2591,7 +2591,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
             {  // or 9 == if you don't want the first cell to be an ad!
                 myAdvGroupTableView.register(NativeGroupCell.self, forCellReuseIdentifier: "Cell1")
                 let cell = myAdvGroupTableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! NativeGroupCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = tableViewBgColor
                 var Adcount: Int = 0
                 Adcount = row/(kFrequencyAdsInCells_page-1)
@@ -2734,7 +2734,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
                 
                 let cell = myAdvGroupTableView.dequeueReusableCell(withIdentifier: "CellThree1") as! GroupTableViewCell
                 
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.backgroundColor = bgColor
                 
                 var pageInfo:NSDictionary!
@@ -2993,7 +2993,7 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
             
             
             let cell = categoryTableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryBrowseTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell.categoryName.isHidden = false
             cell.categoryName1.isHidden = false
             cell.categoryName2.isHidden = false
@@ -3400,42 +3400,42 @@ class AdvancedGroupViewController: UIViewController, UITableViewDataSource, UITa
 //            print("ok")
         case 1:
             searchType = ""
-            feedFilter.setTitle("See All", for: UIControlState())
+            feedFilter.setTitle("See All", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 2:
             searchType = "creation_date"
-            feedFilter.setTitle("Most Recent", for: UIControlState())
+            feedFilter.setTitle("Most Recent", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 3:
             searchType = "view_count"
-            feedFilter.setTitle("Most Viewed", for: UIControlState())
+            feedFilter.setTitle("Most Viewed", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 4:
             searchType = "comment_count"
-            feedFilter.setTitle("Most Commented", for: UIControlState())
+            feedFilter.setTitle("Most Commented", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 5:
             searchType = "like_count"
-            feedFilter.setTitle("Most Liked", for: UIControlState())
+            feedFilter.setTitle("Most Liked", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 6:
             searchType = "title"
-            feedFilter.setTitle("Alphabetical", for: UIControlState())
+            feedFilter.setTitle("Alphabetical", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 7:
             searchType = "review_count"
-            feedFilter.setTitle("Most Reviewed", for: UIControlState())
+            feedFilter.setTitle("Most Reviewed", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         case 8:
             searchType = "rating"
-            feedFilter.setTitle("Most Rated", for: UIControlState())
+            feedFilter.setTitle("Most Rated", for: UIControl.State())
             self.showSpinner = true
             browseEntries()
         default:

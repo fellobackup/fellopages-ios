@@ -113,11 +113,11 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
         userinfoTableView1 = UITableView(frame: CGRect(x: 0,y: 0, width: view.bounds.width, height: view.bounds.height), style: .grouped)
         userinfoTableView1.register(UserInfoTableViewCell.self, forCellReuseIdentifier: "Cell")
         userinfoTableView1.estimatedRowHeight = 30.0
-        userinfoTableView1.rowHeight = UITableViewAutomaticDimension
+        userinfoTableView1.rowHeight = UITableView.automaticDimension
         userinfoTableView1.backgroundColor = tableViewBgColor
-        userinfoTableView1.separatorStyle = UITableViewCellSeparatorStyle.none
+        userinfoTableView1.separatorStyle = UITableViewCell.SeparatorStyle.none
         userinfoTableView1.isScrollEnabled = true
-        userinfoTableView1.contentInset = UIEdgeInsetsMake(-TOPPADING, 0, 0, 0)
+        userinfoTableView1.contentInset = UIEdgeInsets(top: -TOPPADING, left: 0, bottom: 0, right: 0)
         //userinfoTableView1.backgroundColor = UIColor.blue
         view.addSubview(userinfoTableView1)
        
@@ -134,7 +134,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
         
         coverImage =   CoverImageViewWithGradient(frame:CGRect(x: 0, y: 0, width: mainSubView.bounds.width, height: mainSubView.bounds.height))
         
-        coverImage.contentMode = UIViewContentMode.scaleAspectFill
+        coverImage.contentMode = UIView.ContentMode.scaleAspectFill
         coverImage.layer.masksToBounds = true
         coverImage.backgroundColor = placeholderColor
         coverImage.isUserInteractionEnabled = true
@@ -438,7 +438,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserInfoTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.label2.backgroundColor = UIColor.clear
         cell.backgroundColor =  UIColor.clear
         var subChild = [AnyObject]()
@@ -515,7 +515,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
         for i in stride(from: 1, through: 5, by: 1){
             let rate = createButton(CGRect(x: origin_x, y: 0, width: 10, height: 10), title: "", border: false, bgColor: false, textColor: textColorLight)
             rate.backgroundColor = UIColor.clear
-            rate.setImage(UIImage(named: "graystar.png"), for: UIControlState() )
+            rate.setImage(UIImage(named: "graystar.png"), for: UIControl.State() )
             
             if rated == false
             {
@@ -526,7 +526,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
             {
                 if i <= rating
                 {
-                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControlState() )
+                    rate.setImage(UIImage(named: "yellowStar.png"), for: UIControl.State() )
                 }
                 
             }
@@ -606,7 +606,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
             if let dic = menu as? NSDictionary{
                 if dic["name"] as! String == "share"{
                     
-                    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+                    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
                     alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share in App",comment: ""), style: .default) { action -> Void in
                         
                         let pv = AdvanceShareViewController()
@@ -627,7 +627,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
                     
                     if (self.contentUrl != nil && self.contentUrl != ""){
                         
-                        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share External",comment: ""), style: UIAlertActionStyle.default) { action -> Void in
+                        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Share External",comment: ""), style: UIAlertAction.Style.default) { action -> Void in
                             
                             var sharingItems = [AnyObject]()
                             
@@ -642,7 +642,7 @@ class AdvHostMemberViewController: UIViewController, TTTAttributedLabelDelegate,
                             }
                             
                             let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
-                            activityViewController.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                            activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
                             
                             
                             if(activityViewController.popoverPresentationController != nil) {

@@ -107,7 +107,7 @@ class AdminDiaryViewController: UIViewController,UITableViewDelegate,UITableView
         // Set pull to referseh for eventtableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: NSLocalizedString("Pull to Refresh", comment: ""))
-        refresher.addTarget(self, action: Selector(("refresh")), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: Selector(("refresh")), for: UIControl.Event.valueChanged)
         DiaryTableView.addSubview(refresher)
         
     
@@ -211,7 +211,7 @@ class AdminDiaryViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = DiaryTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DiaryTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         var eventInfo:NSDictionary!
         
@@ -281,8 +281,8 @@ class AdminDiaryViewController: UIViewController,UITableViewDelegate,UITableView
                 cell.coverImage4.isHidden = false
                 cell.coverImage5.isHidden = false
                 
-                cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
-                cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControlState())
+                cell.coverImage4.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
+                cell.coverImage5.setImage(UIImage(named: "nophoto_diary_thumb_profile.png"), for: UIControl.State())
                 
                 let imagedic1 = eventInfo["images_1"] as! NSDictionary
                 let imagedic2 = eventInfo["images_2"] as! NSDictionary

@@ -72,7 +72,7 @@ class UploadPhotosViewController: UIViewController, ELCImagePickerControllerDele
         
         
         
-        selectedPhotostableView = UITableView(frame: CGRect(x: 0,y: TOPPADING , width: view.bounds.width, height: view.bounds.height-TOPPADING - tabBarHeight), style: UITableViewStyle.grouped)
+        selectedPhotostableView = UITableView(frame: CGRect(x: 0,y: TOPPADING , width: view.bounds.width, height: view.bounds.height-TOPPADING - tabBarHeight), style: UITableView.Style.grouped)
         selectedPhotostableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "Cell")
         selectedPhotostableView.rowHeight = 120.0
         selectedPhotostableView.dataSource = self
@@ -332,10 +332,10 @@ class UploadPhotosViewController: UIViewController, ELCImagePickerControllerDele
         for dic in info{
             if let photoDic = dic as? NSDictionary{
                 
-                if photoDic.object(forKey: UIImagePickerControllerMediaType) as! String == ALAssetTypePhoto {
+                if photoDic.object(forKey: UIImagePickerController.InfoKey.mediaType) as! String == ALAssetTypePhoto {
                     
-                    if (photoDic.object(forKey: UIImagePickerControllerOriginalImage) != nil){
-                        let image = photoDic.object(forKey: UIImagePickerControllerOriginalImage) as! UIImage
+                    if (photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) != nil){
+                        let image = photoDic.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
                         allPhotos.append(image)
                     }
                 }
@@ -390,7 +390,7 @@ class UploadPhotosViewController: UIViewController, ELCImagePickerControllerDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotosTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = tableViewBgColor
         
         var index:Int!
@@ -403,14 +403,14 @@ class UploadPhotosViewController: UIViewController, ELCImagePickerControllerDele
         if allPhotos.count > index {
             
             cell.image1.isHidden = false
-            cell.image1.setImage((allPhotos[index]), for: UIControlState())
+            cell.image1.setImage((allPhotos[index]), for: UIControl.State())
             
         }
         dynamicHeight = cell.image1.bounds.width
         //2
         if allPhotos.count > index + 1{
             cell.image2.isHidden = false
-            cell.image2.setImage((allPhotos[index+1]), for: UIControlState())
+            cell.image2.setImage((allPhotos[index+1]), for: UIControl.State())
         }
         
         if(UIDevice.current.userInterfaceIdiom == .pad){
@@ -419,7 +419,7 @@ class UploadPhotosViewController: UIViewController, ELCImagePickerControllerDele
             if allPhotos.count > index + 2{
                 
                 cell.image3.isHidden = false
-                cell.image3.setImage((allPhotos[index+2]), for: UIControlState())
+                cell.image3.setImage((allPhotos[index+2]), for: UIControl.State())
                 
             }
             
@@ -427,7 +427,7 @@ class UploadPhotosViewController: UIViewController, ELCImagePickerControllerDele
             //4
             if allPhotos.count > index + 3{
                 cell.image4.isHidden = false
-                cell.image4.setImage((allPhotos[index+3]), for: UIControlState())
+                cell.image4.setImage((allPhotos[index+3]), for: UIControl.State())
             }
         }
         

@@ -312,11 +312,11 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applicationDidBecomeActive),
-                                               name: .UIApplicationDidBecomeActive,
+                                               name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
         
         if viewContainerViewCount.isHidden == false
@@ -375,7 +375,7 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
         // Pause player when view removed.
         
         player?.pause()
-        player?.seek(to: kCMTimeZero)
+        player?.seek(to: CMTime.zero)
         playerLayer?.player = nil
         playerLayer?.removeFromSuperlayer()
         playbackLikelyToKeepUpKeyPathObserver?.invalidate()
@@ -578,9 +578,9 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
             txtViewStory.text = currentlySelectedStory.description_Stories
             txtTemp.text = currentlySelectedStory.description_Stories
             txtViewStorySetting.text = nil
-            let readMoreTextAttributes: [NSAttributedStringKey: Any] = [
-                NSAttributedStringKey.foregroundColor: UIColor.white,
-                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)
+            let readMoreTextAttributes: [NSAttributedString.Key: Any] = [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)
             ]
             var strTextMore = ""
             var strTextLess = ""
@@ -685,7 +685,7 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
     {
         self.timer.invalidate()
         player?.pause()
-        player?.seek(to: kCMTimeZero)
+        player?.seek(to: CMTime.zero)
         playerLayer?.player = nil
         playerLayer?.removeFromSuperlayer()
         playbackLikelyToKeepUpKeyPathObserver?.invalidate()
@@ -716,10 +716,10 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
         viewVideo.layer.addSublayer(playerLayer!)
         viewVideo.layer.backgroundColor = UIColor.clear.cgColor
         viewVideo.alpha = 0.0
-        self.view.bringSubview(toFront: spb)
+        self.view.bringSubviewToFront(spb)
        // player?.automaticallyWaitsToMinimizeStalling = false
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
         }
         catch {
             // report for an error
@@ -952,9 +952,9 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
         txtViewStory.text = nil
         txtViewStory.text = currentlySelectedStory.description_Stories
         txtTemp.text = currentlySelectedStory.description_Stories
-        let readMoreTextAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)
+        let readMoreTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)
         ]
         var strTextMore = ""
         var strTextLess = ""
@@ -1635,8 +1635,8 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
         viewContainerReplyStory.isHidden = true
         viewContainerStorySetting.isHidden = true
         viewContainerViewCount.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         scrollViewStorySetting.keyboardDismissMode = .onDrag
         
@@ -1907,7 +1907,7 @@ class StoryPreviewController: UIViewController , SegmentedProgressBarDelegate, U
     //MARK:- KeyBoard Handling Methods
     @objc func keyboardWillShow(notification: NSNotification) {
         var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
         var contentInset:UIEdgeInsets = self.scrollViewStorySetting.contentInset
@@ -2645,13 +2645,13 @@ extension AVPlayer {
 extension UIView {
     func fadeIn() {
         // Move our fade out code from earlier
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.alpha = 1.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
         }, completion: nil)
     }
     
     func fadeOut() {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.alpha = 0.0
         }, completion: nil)
     }
@@ -2662,11 +2662,11 @@ extension UIView {
         // Create a CATransition animation
         let slideInFromLeftTransition = CATransition()
         // Customize the animation's properties
-        slideInFromLeftTransition.type = kCATransitionPush
-        slideInFromLeftTransition.subtype = kCATransitionFromLeft
+        slideInFromLeftTransition.type = CATransitionType.push
+        slideInFromLeftTransition.subtype = CATransitionSubtype.fromLeft
         slideInFromLeftTransition.duration = duration
-        slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        slideInFromLeftTransition.fillMode = kCAFillModeRemoved
+        slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        slideInFromLeftTransition.fillMode = CAMediaTimingFillMode.removed
         
         // Add the animation to the View's layer
         self.layer.add(slideInFromLeftTransition, forKey: "slideInFromLeftTransition")
@@ -2675,11 +2675,11 @@ extension UIView {
         // Create a CATransition animation
         let slideInFromLeftTransition = CATransition()
         // Customize the animation's properties
-        slideInFromLeftTransition.type = kCATransitionPush
-        slideInFromLeftTransition.subtype = kCATransitionFromRight
+        slideInFromLeftTransition.type = CATransitionType.push
+        slideInFromLeftTransition.subtype = CATransitionSubtype.fromRight
         slideInFromLeftTransition.duration = duration
-        slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        slideInFromLeftTransition.fillMode = kCAFillModeRemoved
+        slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        slideInFromLeftTransition.fillMode = CAMediaTimingFillMode.removed
         
         // Add the animation to the View's layer
         self.layer.add(slideInFromLeftTransition, forKey: "slideInFromRightTransition")

@@ -272,7 +272,7 @@ class ChooseFromAlbumsViewController: UIViewController, UITableViewDataSource, U
         let albumTitle = albumInfo["title"] as! String
         let photoCount = albumInfo["photo_count"] as! Int
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.lineView.isHidden = false
         
         cell.imgUser.frame = CGRect(x: 5, y: 7, width: 60, height: 60)
@@ -298,7 +298,7 @@ class ChooseFromAlbumsViewController: UIViewController, UITableViewDataSource, U
             })
         }
         
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         cell.lineView.frame = CGRect(x: 0, y: cell.bounds.height, width: (UIScreen.main.bounds).width, height: 2)
         cell.lineView.isHidden = false
         

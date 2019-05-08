@@ -182,7 +182,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
         mainView.addSubview(listingsTableView)
         
         refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(MLTBrowseListViewController.refresh), for: UIControlEvents.valueChanged)
+        refresher.addTarget(self, action: #selector(MLTBrowseListViewController.refresh), for: UIControl.Event.valueChanged)
         listingsTableView.addSubview(refresher)
         
     
@@ -231,7 +231,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
         self.btnFloaty.layer.borderWidth = 1
         self.btnFloaty.layer.borderColor = buttonColor.cgColor
         self.btnFloaty.layer.cornerRadius = self.btnFloaty.frame.height/2
-        self.btnFloaty.setTitle("\u{f0ca}", for: UIControlState.normal)
+        self.btnFloaty.setTitle("\u{f0ca}", for: UIControl.State.normal)
         if sitereviewMenuDictionary != nil{
             let anotherViewBrowseType = sitereviewMenuDictionary["anotherViewBrowseType"] as? Int ?? 0
             if anotherViewBrowseType != 0 {
@@ -244,26 +244,26 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
                 
                 if browseType == 1
                 {
-                    self.btnFloaty.setTitle("\u{f0ca}", for: UIControlState.normal)
+                    self.btnFloaty.setTitle("\u{f0ca}", for: UIControl.State.normal)
                 }
                 else if browseType == 2
                 {
-                    self.btnFloaty.setTitle("\u{f00a}", for: UIControlState.normal)
+                    self.btnFloaty.setTitle("\u{f00a}", for: UIControl.State.normal)
                 }
                 else if browseType == 3
                 {
-                    self.btnFloaty.setTitle("\u{f0db}", for: UIControlState.normal)
+                    self.btnFloaty.setTitle("\u{f0db}", for: UIControl.State.normal)
                 }
                 else
                 {
-                    self.btnFloaty.setTitle("\u{f279}", for: UIControlState.normal)
+                    self.btnFloaty.setTitle("\u{f279}", for: UIControl.State.normal)
                 }
             }
         }
         self.btnFloaty.titleLabel?.font = UIFont(name: "FontAwesome", size:FONTSIZELarge)
         self.btnFloaty.backgroundColor = buttonColor
         self.btnFloaty.clipsToBounds = true
-        self.btnFloaty.addTarget(self, action: #selector(MLTBrowseListViewController.toggleView), for: UIControlEvents.touchUpInside)
+        self.btnFloaty.addTarget(self, action: #selector(MLTBrowseListViewController.toggleView), for: UIControl.Event.touchUpInside)
         self.view.addSubview(self.btnFloaty)
         if browseOrMyListings == false || showOnlyMyContent == true
         {
@@ -1001,7 +1001,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
                 
                 
                 adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-(30), y: 5,width: 20,height: 20))
-                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControlState())
+                adCallToActionButton.setImage(UIImage(named: "cross_icon")!.maskWithColor(color: textColorDark), for: UIControl.State())
                 adCallToActionButton.backgroundColor = UIColor.clear
                 adCallToActionButton.layer.cornerRadius = 2; // this value vary as per your desire
                 //                adCallToActionButton.clipsToBounds = true
@@ -1025,7 +1025,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
                 {
                     adImageView1 = createImageView(CGRect(x: 0,y: 0,width: self.fbView.bounds.width-10,height: 300), border: false)
                 }
-                adImageView1.contentMode = UIViewContentMode.scaleAspectFit
+                adImageView1.contentMode = UIView.ContentMode.scaleAspectFit
                 adImageView1.clipsToBounds = true
                 if dic["image"] != nil{
                     let icon = dic["image"]
@@ -1181,7 +1181,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
     for ob in adsReportView.subviews{
         if ob .isKind(of: UIButton.self){
             if ob.tag == 0 || ob.tag == 1 || ob.tag == 2 || ob.tag == 3 || ob.tag == 4{
-                (ob as! UIButton).setTitle("\u{f10c}", for: UIControlState.normal)
+                (ob as! UIButton).setTitle("\u{f10c}", for: UIControl.State.normal)
             }
             if ob.tag == 1005
             {
@@ -1192,7 +1192,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
     }
         
         parametersNeedToAdd["adCancelReason"] =  configArray["\(sender.tag)"]!
-        sender.setTitle("\u{f111}", for: UIControlState.normal)
+        sender.setTitle("\u{f111}", for: UIControl.State.normal)
         if parametersNeedToAdd["adCancelReason"] != "Other"{
             
             for ob in adsReportView.subviews{
@@ -1361,7 +1361,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
         
         adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-75,y: adImageView.bounds.height/2 + adImageView.frame.origin.y/2-10, width: 70, height: 30))
         adCallToActionButton.setTitle(
-            nativeAd.callToAction, for: UIControlState())
+            nativeAd.callToAction, for: UIControl.State())
         
         adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
         adCallToActionButton.titleLabel?.textColor = navColor
@@ -1449,7 +1449,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
 //
 //        adCallToActionButton = UIButton(frame:CGRect(x: self.fbView.bounds.width-75,y: adImageView.bounds.height/2 + adImageView.frame.origin.y/2-10, width: 70, height: 30))
 //        adCallToActionButton.setTitle(
-//            nativeAd.callToAction, for: UIControlState())
+//            nativeAd.callToAction, for: UIControl.State())
 //
 //        adCallToActionButton.titleLabel?.font = UIFont(name: fontBold , size: FONTSIZESmall)
 //        adCallToActionButton.titleLabel?.textColor = navColor
@@ -1554,7 +1554,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
         
         (appInstallAdView.callToActionView as! UIButton).frame = CGRect(x: (appInstallAdView.bounds).width-75,y: ((appInstallAdView.imageView as! UIImageView).bounds).height/2 + (appInstallAdView.imageView as! UIImageView).frame.origin.y/2-10, width: 65, height: 30)
         (appInstallAdView.callToActionView as! UIButton).setTitle(
-            nativeAppInstallAd.callToAction, for: UIControlState.normal)
+            nativeAppInstallAd.callToAction, for: UIControl.State.normal)
         (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (appInstallAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1621,7 +1621,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
         
         (contentAdView.callToActionView as! UIButton).frame = CGRect(x: (contentAdView.bounds).width-75,y: ((contentAdView.imageView as! UIImageView).bounds).height/2 + (contentAdView.imageView as! UIImageView).frame.origin.y/2-10, width: 65, height: 30)
         (contentAdView.callToActionView as! UIButton).setTitle(
-            nativeContentAd.callToAction, for: UIControlState.normal)
+            nativeContentAd.callToAction, for: UIControl.State.normal)
         (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
         (contentAdView.callToActionView as! UIButton).titleLabel?.font = UIFont(name: fontName , size: verySmallFontSize)
         (contentAdView.callToActionView as! UIButton).titleLabel?.textColor = buttonColor
@@ -1751,7 +1751,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
             let cellIdentifier = String((indexPath as NSIndexPath).section) + "-" + String((indexPath as NSIndexPath).row)
             listingsTableView.register(NativeAdBlogcell.self, forCellReuseIdentifier: cellIdentifier)
             let cell1 = listingsTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NativeAdBlogcell
-            cell1.selectionStyle = UITableViewCellSelectionStyle.none
+            cell1.selectionStyle = UITableViewCell.SelectionStyle.none
             var Adcount: Int = 0
             Adcount = row/(kFrequencyAdsInCells_mltlist-1)
             if adsType_mltlist == 2{
@@ -1800,7 +1800,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
             }
             //LAYOUT LIKE BLOG VIEW
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell.selectionStyle = UITableViewCell.SelectionStyle.blue
             
             var listingInfo:NSDictionary
             listingInfo = listingsResponse[row] as! NSDictionary
@@ -2227,18 +2227,18 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
                                 if(response["canCreate"] != nil && response["canCreate"] as! Bool == true){
                                     
                                     
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MLTBrowseListViewController.searchItem))
-                                    searchItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -20.0)
-                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(MLTBrowseListViewController.addNewListing))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(MLTBrowseListViewController.searchItem))
+                                    searchItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -20.0)
+                                    let addBlog = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(MLTBrowseListViewController.addNewListing))
                                     self.navigationItem.setRightBarButtonItems([addBlog,searchItem], animated: true)
-                                    addBlog.imageInsets = UIEdgeInsetsMake(0,-20, 0, 0)
+                                    addBlog.imageInsets = UIEdgeInsets(top: 0,left: -20, bottom: 0, right: 0)
                                     searchItem.tintColor = textColorPrime
                                     addBlog.tintColor = textColorPrime
                                     self.showAppTour()
                                     
                                 }else{
                                     
-                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MLTBrowseListViewController.searchItem))
+                                    let searchItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(MLTBrowseListViewController.searchItem))
                                     self.navigationItem.rightBarButtonItem = searchItem
                                     searchItem.tintColor = textColorPrime
                                     
@@ -2269,7 +2269,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
                             self.refreshButton.backgroundColor = bgColor
                             self.refreshButton.layer.borderColor = navColor.cgColor
                             self.refreshButton.titleLabel?.font = UIFont(name: fontName, size: FONTSIZEMedium)
-                            self.refreshButton.addTarget(self, action: #selector(MLTBrowseListViewController.browseEntries), for: UIControlEvents.touchUpInside)
+                            self.refreshButton.addTarget(self, action: #selector(MLTBrowseListViewController.browseEntries), for: UIControl.Event.touchUpInside)
                             self.refreshButton.layer.cornerRadius = 5.0
                             self.refreshButton.layer.masksToBounds = true
                             self.mainView.addSubview(self.refreshButton)
@@ -2594,7 +2594,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
         editListingID = listingInfo["listing_id"] as! Int
         
         let menuOption = listingInfo["gutterMenus"] as! NSArray
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         
         for menu in menuOption{
@@ -2609,7 +2609,7 @@ class MLTBrowseListViewController: UIViewController, UITableViewDataSource, UITa
                 
                 if titleString.range(of: "delete") != nil{
                     
-                    alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertActionStyle.destructive , handler:{ (UIAlertAction) -> Void in
+                    alertController.addAction(UIAlertAction(title: (menuItem["label"] as! String), style: UIAlertAction.Style.destructive , handler:{ (UIAlertAction) -> Void in
                         let condition = menuItem["name"] as! String
                         
                         switch(condition){
